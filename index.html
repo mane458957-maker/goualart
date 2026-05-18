@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Create Viral AI Animations — The Full Workflow Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --purple: #c084fc;
+    --purple-dim: rgba(160,80,255,0.15);
+    --purple-border: rgba(160,80,255,0.4);
+    --bg: #0a0a0f;
+    --bg2: #10101a;
+    --border: #2a2a3a;
+    --border2: #1e1e2e;
+    --text: #f0f0f0;
+    --muted: #a0a0b0;
+    --faint: #666;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 80px 24px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 500px;
+    background: radial-gradient(ellipse, rgba(160,80,255,0.14) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--purple-dim);
+    border: 1px solid var(--purple-border);
+    color: var(--purple);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+    letter-spacing: 0.5px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 12vw, 100px);
+    line-height: 0.93;
+    letter-spacing: 2px;
+    color: #fff;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  h1 span { color: var(--purple); }
+
+  .subtitle {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 500px;
+    margin: 24px auto 0;
+    line-height: 1.65;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .social-proof {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin: 40px auto 56px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .stat { text-align: center; }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: -4px;
+  }
+
+  .divider-v {
+    width: 1px;
+    height: 44px;
+    background: var(--border);
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 56px 24px;
+    max-width: 660px;
+    margin: 0 auto;
+  }
+
+  .sep {
+    height: 1px;
+    background: var(--border2);
+    max-width: 660px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--purple);
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-bottom: 24px;
+    line-height: 1.05;
+  }
+
+  /* PAIN LIST */
+  .pain-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .pain-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .pain-list li::before {
+    content: '→';
+    color: var(--purple);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* CHAPTERS */
+  .chapter-list {
+    list-style: none;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .chapter {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--border2);
+    background: var(--bg2);
+    transition: background 0.2s;
+  }
+
+  .chapter:hover { background: #14142a; }
+  .chapter:last-child { border-bottom: none; }
+
+  .ch-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    color: #3a3a5a;
+    min-width: 30px;
+  }
+
+  .ch-title {
+    font-weight: 500;
+    font-size: 15px;
+    color: #e0e0f0;
+    flex: 1;
+  }
+
+  .ch-tag {
+    font-size: 11px;
+    padding: 3px 11px;
+    border-radius: 20px;
+    background: var(--purple-dim);
+    color: var(--purple);
+    border: 1px solid var(--purple-border);
+    white-space: nowrap;
+  }
+
+  /* CTA BLOCK */
+  .cta-section {
+    padding: 0 24px 64px;
+    max-width: 660px;
+    margin: 0 auto;
+  }
+
+  .cta-block {
+    background: #0f0818;
+    border: 1px solid #3a1a6a;
+    border-radius: 24px;
+    padding: 48px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-block::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 400px; height: 300px;
+    background: radial-gradient(ellipse, rgba(160,80,255,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    color: #fff;
+    letter-spacing: 3px;
+    line-height: 1;
+    margin: 20px 0 4px;
+  }
+
+  .price-note {
+    font-size: 13px;
+    color: var(--faint);
+    margin-bottom: 28px;
+  }
+
+  .cta-btn {
+    display: block;
+    width: 100%;
+    padding: 20px 32px;
+    background: var(--purple);
+    color: #0a0a0f;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 2.5px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.15s;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+  .cta-btn:active { transform: scale(0.98); }
+
+  .cta-small {
+    font-size: 12px;
+    color: #444;
+    margin-top: 12px;
+  }
+
+  .guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+    padding: 16px 20px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    border: 1px solid var(--border2);
+  }
+
+  .guarantee-icon { font-size: 24px; }
+
+  .guarantee-text {
+    font-size: 13px;
+    color: #777;
+    text-align: left;
+    line-height: 1.5;
+  }
+
+  .guarantee-text strong {
+    color: #bbb;
+    font-weight: 500;
+  }
+
+  /* FAQ */
+  .faq-item {
+    border-bottom: 1px solid var(--border2);
+    padding: 22px 0;
+  }
+
+  .faq-q {
+    font-weight: 500;
+    font-size: 15px;
+    color: #e0e0f0;
+    margin-bottom: 8px;
+  }
+
+  .faq-a {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.65;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 32px 24px 48px;
+    font-size: 12px;
+    color: #333;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    h1 { font-size: 64px; }
+    h2 { font-size: 32px; }
+    .price { font-size: 64px; }
+    .cta-block { padding: 36px 20px; }
+    .chapter { padding: 14px 16px; }
+    .ch-tag { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">⚡ The guide creators actually need</div>
+  <h1>Create <span>Viral</span><br>AI<br>Animations</h1>
+  <p class="subtitle">Learn how to make cinematic AI animations that go viral — and turn your channel into an income stream.</p>
+
+  <div class="social-proof">
+    <div class="stat">
+      <div class="stat-num">100K+</div>
+      <div class="stat-label">Followers reached</div>
+    </div>
+    <div class="divider-v"></div>
+    <div class="stat">
+      <div class="stat-num">0€</div>
+      <div class="stat-label">Paid ads</div>
+    </div>
+    <div class="divider-v"></div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Organic growth</div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- PROBLEM -->
+<section class="section">
+  <div class="section-label">The problem</div>
+  <h2>You see viral videos.<br>You don't know how they're made.</h2>
+  <ul class="pain-list">
+    <li>You don't know which AI tools to use or how to combine them</li>
+    <li>Your characters look different in every scene — no visual consistency</li>
+    <li>Your videos get views but nobody follows, shares, or buys</li>
+    <li>You've watched tutorials but none show the full workflow from idea to publish</li>
+  </ul>
+</section>
+
+<div class="sep"></div>
+
+<!-- CHAPTERS -->
+<section class="section">
+  <div class="section-label">What you get</div>
+  <h2>The full workflow.<br>Every step. No fluff.</h2>
+  <ul class="chapter-list">
+    <li class="chapter">
+      <span class="ch-num">01</span>
+      <span class="ch-title">Finding a concept that hooks in the first second</span>
+      <span class="ch-tag">Strategy</span>
+    </li>
+    <li class="chapter">
+      <span class="ch-num">02</span>
+      <span class="ch-title">My AI image stack — tools and exact prompts</span>
+      <span class="ch-tag">Tools</span>
+    </li>
+    <li class="chapter">
+      <span class="ch-num">03</span>
+      <span class="ch-title">Character consistency across every video</span>
+      <span class="ch-tag">Key skill</span>
+    </li>
+    <li class="chapter">
+      <span class="ch-num">04</span>
+      <span class="ch-title">Animated typography that stops the scroll</span>
+      <span class="ch-tag">Design</span>
+    </li>
+    <li class="chapter">
+      <span class="ch-num">05</span>
+      <span class="ch-title">Editing rhythm — how to keep viewers until the end</span>
+      <span class="ch-tag">Editing</span>
+    </li>
+    <li class="chapter">
+      <span class="ch-num">06</span>
+      <span class="ch-title">Audio: music, sound design, no voiceover needed</span>
+      <span class="ch-tag">Audio</span>
+    </li>
+    <li class="chapter">
+      <span class="ch-num">07</span>
+      <span class="ch-title">The series format that builds a loyal audience</span>
+      <span class="ch-tag">Growth</span>
+    </li>
+    <li class="chapter">
+      <span class="ch-num">08</span>
+      <span class="ch-title">How to monetise your channel once it grows</span>
+      <span class="ch-tag">Money</span>
+    </li>
+  </ul>
+</section>
+
+<div class="sep"></div>
+
+<!-- CTA -->
+<section class="section" style="padding-bottom: 0;">
+  <div class="section-label" style="text-align:center;">Get instant access</div>
+  <h2 style="text-align:center; font-size:34px;">Start making viral<br>AI content today</h2>
+</section>
+
+<div class="cta-section">
+  <div class="cta-block">
+    <div class="price">€37</div>
+    <div class="price-note">One-time payment · Instant PDF download</div>
+    <a class="cta-btn" href="https://maneuver43.gumroad.com/l/nrrgi" target="_blank">GET THE GUIDE NOW →</a>
+    <div class="cta-small">Secure checkout · Instant delivery to your inbox</div>
+    <div class="guarantee">
+      <div class="guarantee-icon">🛡️</div>
+      <div class="guarantee-text"><strong>30-day money-back guarantee.</strong> If you don't find value in it, I'll refund you. No questions asked.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="section" style="padding-top: 56px;">
+  <div class="section-label">FAQ</div>
+  <h2 style="font-size:32px;">Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q">Do I need any experience?</div>
+    <div class="faq-a">Zero. This guide is built for complete beginners. I explain every tool and every step from scratch.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">What tools do you use?</div>
+    <div class="faq-a">All revealed inside the guide. You only need one single subscription to get started — no need to juggle 10 different tools.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Does this work for any niche?</div>
+    <div class="faq-a">Yes. The workflow is universal — you can apply the exact same system to any niche: sports, music, pop culture, gaming, anything.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Is this the full workflow or a teaser?</div>
+    <div class="faq-a">It's the real thing. 8 chapters, no upsell traps, no "buy part 2 to learn the rest." Everything is in here.</div>
+  </div>
+</section>
+
+<footer>
+  © 2026 goual_art · All rights reserved
+</footer>
+
+</body>
+</html>
