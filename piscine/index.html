@@ -435,12 +435,13 @@ const CONFIG = {
 
   // FORMES DE PISCINE : photos génériques (pas les créations du client). Remplacer "img" par vos photos.
   slides: [
-    { title:"Classique", place:"Rectangulaire, lignes droites, nage confortable.", specs:["Toutes dimensions","Béton ou coque","Meilleur rapport qualité-prix"], img:"https://images.pexels.com/photos/1488267/pexels-photo-1488267.png?auto=compress&cs=tinysrgb&w=1920" },
-    { title:"À débordement", place:"L'eau se fond dans le paysage, effet infini.", specs:["Terrain en pente idéal","Bac tampon","Effet waouh garanti"], img:"https://images.pexels.com/photos/3155693/pexels-photo-3155693.jpeg?auto=compress&cs=tinysrgb&w=1920" },
-    { title:"Miroir", place:"Une lame d'eau au ras des margelles, comme un miroir.", specs:["Débordement sur 4 côtés","Architecture contemporaine","Reflet parfait"], img:"https://images.pexels.com/photos/1134175/pexels-photo-1134175.jpeg?auto=compress&cs=tinysrgb&w=1920" },
-    { title:"Piscine bois", place:"Chaleureuse, naturelle, rapide à installer.", specs:["Hors-sol ou semi-enterrée","Pose en 1 semaine","Budget maîtrisé"], img:"" },
-    { title:"Couloir de nage", place:"Long et étroit, pour nager tous les jours.", specs:["Jardins étroits","Nage à contre-courant","Sport & bien-être"], img:"" },
-    { title:"Naturelle", place:"Plage immergée, végétation, eau turquoise.", specs:["Forme libre","Plage immergée","Ambiance tropicale"], img:"https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=1920" }
+    // mask = zone d'eau (blanc) animée ; amp = force des ondulations ; glint = reflets du soleil
+    { title:"Classique", place:"Rectangulaire, lignes droites, nage confortable.", specs:["Toutes dimensions","Béton ou coque","Meilleur rapport qualité-prix"], img:"formes/classique.webp", mask:"formes/classique-mask.png", amp:1, glint:1 },
+    { title:"À débordement", place:"L'eau se fond dans l'horizon, effet infini.", specs:["Vue dégagée","Bac tampon","Effet waouh garanti"], img:"formes/debordement.webp", mask:"formes/debordement-mask.png", amp:.7, glint:.9 },
+    { title:"Miroir", place:"Une lame d'eau au ras des margelles, reflet parfait.", specs:["Débordement 4 côtés","Architecture contemporaine","Éclairage LED"], img:"formes/miroir.webp", mask:"formes/miroir-mask.png", amp:.35, glint:.35 },
+    { title:"Piscine bois", place:"Chaleureuse, naturelle, rapide à installer.", specs:["Hors-sol ou semi-enterrée","Pose en 1 semaine","Budget maîtrisé"], img:"formes/bois.webp", mask:"formes/bois-mask.png", amp:1, glint:1 },
+    { title:"Couloir de nage", place:"Long et étroit, pour nager tous les jours.", specs:["Jardins étroits","Nage à contre-courant","Sport & bien-être"], img:"formes/couloir.webp", mask:"formes/couloir-mask.png", amp:.7, glint:.8 },
+    { title:"Naturelle", place:"Plage immergée, cascade, ambiance tropicale.", specs:["Forme libre","Plage immergée","Cascade en rochers"], img:"formes/naturelle.webp", mask:"formes/naturelle-mask.png", amp:1, glint:1 }
   ],
 
   // CRÉATIONS DU CLIENT : ses propres chantiers (photo + titre + ville). img vide = visuel d'attente.
@@ -509,6 +510,43 @@ CONFIG.slides.forEach((s,i)=>{
   stack.appendChild(el);
 });
 const cards=[...stack.children];
+// ---- eau vivante sur les photos (WebGL) ----
+const LFS=`precision mediump float;uniform sampler2D I,M;uniform vec2 R,IS;uniform float T,A,G;
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float nz(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+1.),f.x),f.y);}
+void main(){vec2 fc=gl_FragCoord.xy/R;fc.y=1.-fc.y;float ca=R.x/R.y,ia=IS.x/IS.y;vec2 uv=fc;
+ if(ca>ia)uv.y=(fc.y-.5)*ia/ca+.5;else uv.x=(fc.x-.5)*ca/ia+.5;
+ float m=texture2D(M,uv).r;vec3 c;
+ if(m<.01){c=texture2D(I,uv).rgb;}else{
+  float persp=.35+.65*uv.y;vec2 w=vec2(uv.x*ia*16.,uv.y*48.)/persp;float t=T;
+  vec2 d=vec2(nz(w+vec2(t*.7,t*.4))-.5,nz(w*1.6-vec2(t*.5,-t*.8))-.5);
+  c=texture2D(I,uv+d*.0035*A*m*persp).rgb;
+  float g=nz(w*1.4+vec2(t*1.3,-t*.9))*nz(w*2.1-vec2(-t*1.1,t*1.2));g=smoothstep(.5,.82,g);
+  float lum=dot(c,vec3(.3,.6,.1));c+=g*G*m*(c*.7+vec3(.22))*(.25+lum)*.9;}
+ gl_FragColor=vec4(c,1.);}`;
+function liveWater(card,s){
+  const media=card.querySelector(".media"), c=document.createElement("canvas"); c.style.cssText="width:100%;height:100%;display:block";
+  const g=c.getContext("webgl"); if(!g||!s.mask) return null;
+  const sh=(t,src)=>{const o=g.createShader(t);g.shaderSource(o,src);g.compileShader(o);return o};
+  const pr=g.createProgram();g.attachShader(pr,sh(g.VERTEX_SHADER,"attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}"));g.attachShader(pr,sh(g.FRAGMENT_SHADER,LFS));g.linkProgram(pr);
+  if(!g.getProgramParameter(pr,g.LINK_STATUS)) return null; g.useProgram(pr);
+  const b=g.createBuffer();g.bindBuffer(g.ARRAY_BUFFER,b);g.bufferData(g.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),g.STATIC_DRAW);
+  const la=g.getAttribLocation(pr,"a");g.enableVertexAttribArray(la);g.vertexAttribPointer(la,2,g.FLOAT,false,0,0);
+  const u={};["I","M","R","IS","T","A","G"].forEach(k=>u[k]=g.getUniformLocation(pr,k));
+  const L={ok:0,c,g,u,vis:false,img:null};
+  const tex=(im,unit)=>{const t=g.createTexture();g.activeTexture(g.TEXTURE0+unit);g.bindTexture(g.TEXTURE_2D,t);
+    [g.TEXTURE_WRAP_S,g.TEXTURE_WRAP_T].forEach(p=>g.texParameteri(g.TEXTURE_2D,p,g.CLAMP_TO_EDGE));g.texParameteri(g.TEXTURE_2D,g.TEXTURE_MIN_FILTER,g.LINEAR);
+    g.texImage2D(g.TEXTURE_2D,0,g.RGB,g.RGB,g.UNSIGNED_BYTE,im);};
+  const load=src=>new Promise((res,rej)=>{const im=new Image();im.onload=()=>res(im);im.onerror=rej;im.src=src;});
+  Promise.all([load(s.img),load(s.mask)]).then(([im,mk])=>{tex(im,0);tex(mk,1);g.uniform1i(u.I,0);g.uniform1i(u.M,1);g.uniform2f(u.IS,im.naturalWidth,im.naturalHeight);
+    g.uniform1f(u.A,s.amp??1);g.uniform1f(u.G,s.glint??1);media.innerHTML="";media.appendChild(c);L.ok=1;L.size();}).catch(()=>{});
+  L.size=()=>{const d=Math.min(devicePixelRatio||1,1.5);c.width=Math.max(2,c.clientWidth*d);c.height=Math.max(2,c.clientHeight*d);g.viewport(0,0,c.width,c.height);};
+  new IntersectionObserver(es=>L.vis=es[0].isIntersecting,{rootMargin:"100px"}).observe(card);
+  addEventListener("resize",()=>L.ok&&L.size());
+  return L;
+}
+const lives=cards.map((c,i)=>liveWater(c,CONFIG.slides[i])).filter(Boolean);
+function livesFrame(){const t=performance.now()/1000;lives.forEach(L=>{if(!L.ok||!L.vis)return;const g=L.g;g.uniform2f(L.u.R,L.c.width,L.c.height);g.uniform1f(L.u.T,t);g.drawArrays(g.TRIANGLES,0,3);});}
 function cardsFrame(){
   const H=innerHeight;
   cards.forEach((c,i)=>{
@@ -786,7 +824,7 @@ let visible=true;
 new IntersectionObserver(es=>visible=es[0].isIntersecting).observe(cv);
 function loop(){
   buildFrame();
-  cardsFrame();
+  cardsFrame(); livesFrame();
   // eau
   st.night+=(st.nightT-st.night)*.04; st.lights+=(st.lightsT-st.lights)*.08;
   if(waterOK&&visible){
