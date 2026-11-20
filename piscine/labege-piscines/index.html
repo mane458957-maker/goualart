@@ -213,7 +213,7 @@ button{font:inherit;cursor:pointer}
   .sw button.on:before{inset:-2px;border-radius:12px}
   .sw button.ping:after{border-radius:10px}
   .sw button .smp{aspect-ratio:1/1;border-radius:7px}
-  .sw button .t{font-size:10px;margin-top:5px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sw button .t{font-size:9.5px;line-height:1.15;margin-top:5px;text-align:center;overflow-wrap:anywhere;hyphens:auto}
   .sw button .m,.sw button .w{display:none}
 }
 .dn button{padding:10px 18px;font-size:13px}
@@ -510,13 +510,13 @@ const CONFIG = {
     { name:"Élodie F.", city:"Cagnes-sur-Mer", project:"Entretien annuel", date:"Mars", text:"Contrat d'entretien depuis deux ans, eau toujours parfaite. Réactifs quand la pompe a eu un souci." }
   ],
 
-  // MODÈLES : forme dessinée dans la villa. img (optionnel) = vignette du client à la place du dessin. shape : 0 classique, 1 romaine, 2 couloir de nage, 3 mini, 4 plage immergée, 5 forme libre
+  // MODÈLES : forme dessinée dans la villa. img (optionnel) = vignette du client à la place du dessin. shape : 0 classique, 1 romaine, 2 en L, 3 mini, 4 ovale, 5 forme libre
   models: [
     { name:"Classique",       dims:"10 × 5 m",  shape:0 },
     { name:"Romaine",         dims:"9 × 4,5 m", shape:1 },
-    { name:"Couloir de nage", dims:"12 × 2,5 m",shape:2 },
+    { name:"En L",            dims:"10 × 6 m",  shape:2 },
     { name:"Mini piscine",    dims:"5 × 3 m",   shape:3 },
-    { name:"Plage immergée",  dims:"10 × 5 m",  shape:4 },
+    { name:"Ovale",           dims:"8 × 4 m",   shape:4 },
     { name:"Forme libre",     dims:"9 × 5 m",   shape:5 }
   ],
 
@@ -669,12 +669,13 @@ float sdEl(vec2 p,vec2 c,vec2 r){return (length((p-c)/r)-1.)*min(r.x,r.y);}
 float smin(float a,float b,float k){float h=clamp(.5+.5*(b-a)/k,0.,1.);return mix(b,a,h)-k*h*(1.-h);}
 // formes du bassin, en coordonnées du bassin (x 0→2, y 0→1)
 float shapeSD(float s,vec2 p){
- if(s<.5||abs(s-4.)<.5)return sdBox(p,vec2(1.,.5),vec2(1.,.5));
+ if(s<.5)return sdBox(p,vec2(1.,.5),vec2(1.,.5));
  if(s<1.5)return min(sdBox(p,vec2(1.21,.5),vec2(.79,.42)),length(p-vec2(.42,.5))-.42);
- if(s<2.5)return sdBox(p,vec2(1.,.5),vec2(1.,.17));
+ if(s<2.5)return min(sdBox(p,vec2(1.05,.38),vec2(.85,.22)),sdBox(p,vec2(.5,.56),vec2(.3,.34)));
  if(s<3.5)return sdBox(p,vec2(1.,.5),vec2(.42,.33));
+ if(s<4.5)return sdEl(p,vec2(1.,.5),vec2(.82,.38));
  return smin(sdEl(p,vec2(.62,.52),vec2(.55,.40)),sdEl(p,vec2(1.42,.47),vec2(.55,.44)),.15);}
-float isFull(float s){return (s<.5||abs(s-4.)<.5)?1.:0.;}
+float isFull(float s){return s<.5?1.:0.;}
 float mir(float x){return abs(fract(x*.5)*2.-1.);}
 float cr(vec2 a,vec2 b,vec2 p){return (b.x-a.x)*(p.y-a.y)-(b.y-a.y)*(p.x-a.x);}
 float zoneS(vec2 q){return min(cr(Z1,Z2,q)/length(Z2-Z1),min(cr(Z2,Z3,q)/length(Z3-Z2),cr(Z3,Z0,q)/length(Z0-Z3)));}
@@ -703,7 +704,7 @@ void main(){
  vec2 p=vec2(uv.x*${PW.toFixed(1)},uv.y);
  float e=.0025;vec2 n=vec2(H(p+vec2(e,0))-H(p-vec2(e,0)),H(p+vec2(0,e))-H(p-vec2(0,e)))/(2.*e);
  float mo=smoothstep(0.,.9,T-SHT);float sd=mix(shapeSD(SH0,p),shapeSD(SH1,p),mo);float sh=mo<.5?SH0:SH1;
- float m=1.-smoothstep(-.003,.003,sd);bool full=sh<.5||abs(sh-4.)<.5;
+ float m=1.-smoothstep(-.003,.003,sd);bool full=sh<.5;
  vec2 fp=p+n*.008;
  // paroi du fond visible (on regarde par-dessus la paroi avant)
  float wall=.11;bool isW=full&&fp.y<wall;
@@ -718,8 +719,7 @@ void main(){
  // marches romaines / plage immergée : zones peu profondes plus claires
  float sf=0.,stepL=0.;
  if(abs(sh-1.)<.5&&p.x<.42){float d=length(p-vec2(.42,.5));sf=d>.30?1.:(d>.18?.66:.33);stepL=(1.-smoothstep(0.,.006,abs(d-.30)))+(1.-smoothstep(0.,.006,abs(d-.18)));}
- if(abs(sh-4.)<.5){sf=smoothstep(1.45,1.62,p.x);stepL=1.-smoothstep(0.,.006,abs(p.x-1.5));}
- vec3 shallow=abs(sh-4.)<.5?vec3(.80,.93,.90):tile*vec3(.86,.97,1.)+vec3(.02,.07,.09);col=mix(col,shallow,sf*.7);col+=stepL*.12*vec3(1.,1.,.95);
+ vec3 shallow=tile*vec3(.86,.97,1.)+vec3(.02,.07,.09);col=mix(col,shallow,sf*.7);col+=stepL*.12*vec3(1.,1.,.95);
  col*=mix(1.,.06,NIGHT);
  // 4 projecteurs : 2 de chaque côté
  vec3 lit=vec3(0.);
@@ -804,7 +804,7 @@ function sizeWater(){const s=Math.min(devicePixelRatio||1,1.5);cv.width=cv.clien
 addEventListener("resize",sizeWater); sizeWater();
 
 const tp=t=>[t.style==='large'?5.:24.,t.var,t.hue];
-const SHAPE_BB=[[0,2,0,1],[0,2,.08,.92],[0,2,.33,.67],[.58,1.42,.17,.83],[0,2,0,1],[.07,1.97,.08,.92]];
+const SHAPE_BB=[[0,2,0,1],[0,2,.08,.92],[.2,1.9,.16,.9],[.58,1.42,.17,.83],[.18,1.82,.12,.88],[.07,1.97,.08,.92]];
 const st={sh0:CONFIG.models[0].shape, sh1:CONFIG.models[0].shape, sht:-99, mcur:0, cur:0, P0:tp(CONFIG.tiles[0]), P1:tp(CONFIG.tiles[0]), A0:hex3(CONFIG.tiles[0].tile), G0:hex3(CONFIG.tiles[0].joint), A1:hex3(CONFIG.tiles[0].tile), G1:hex3(CONFIG.tiles[0].joint), rip:[0,0,-99], night:0, nightT:0, lights:0, lightsT:0, drops:[[0,0,-99,0],[0,0,-99,0],[0,0,-99,0],[0,0,-99,0]], di:0};
 const now=()=>performance.now()/1000;
 const toP=(cx,cy)=>{const r=cv.getBoundingClientRect();const [u,v]=toUV((cx-r.left)/r.width,(cy-r.top)/r.height);return[u*PW,v]};
@@ -869,7 +869,8 @@ const mdl=document.getElementById("mdl"), mname=document.getElementById("mname")
 // vignettes : coque vue du dessus, dessinée en code
 function shellPath(shape){const p=new Path2D();
   if(shape===1){p.moveTo(80,30);p.lineTo(296,30);p.quadraticCurveTo(306,30,306,40);p.lineTo(306,140);p.quadraticCurveTo(306,150,296,150);p.lineTo(80,150);p.arc(80,90,60,Math.PI/2,Math.PI*1.5);p.closePath();}
-  else if(shape===2)p.roundRect(14,62,292,56,8);
+  else if(shape===2){p.moveTo(28,30);p.lineTo(292,30);p.quadraticCurveTo(300,30,300,38);p.lineTo(300,100);p.lineTo(130,100);p.lineTo(130,142);p.quadraticCurveTo(130,150,122,150);p.lineTo(28,150);p.quadraticCurveTo(20,150,20,142);p.lineTo(20,38);p.quadraticCurveTo(20,30,28,30);p.closePath();}
+  else if(shape===4)p.ellipse(160,90,140,62,0,0,Math.PI*2);
   else if(shape===3)p.roundRect(85,38,150,104,10);
   else if(shape===5){const k=4.6,ox=4,oy=8,P=(x,y)=>[x*k+ox,y*k+oy];p.moveTo(...P(8,18));p.bezierCurveTo(...P(8,6),...P(27,4),...P(34,10));p.bezierCurveTo(...P(41,4),...P(60,6),...P(60,18));p.bezierCurveTo(...P(60,30),...P(41,32),...P(34,26));p.bezierCurveTo(...P(27,32),...P(8,30),...P(8,18));p.closePath();}
   else p.roundRect(20,30,280,120,10);
@@ -883,9 +884,9 @@ function drawShell(cv,shape){const x=cv.getContext("2d"),P=shellPath(shape);x.cl
   if(shape===0){[[95,"#bfe4f3"],[70,"#b3dff0"],[45,"#a6d8ec"]].forEach(([d,c])=>{const s_=new Path2D();s_.moveTo(20,30);s_.lineTo(20+d,30);s_.lineTo(20,30+d*.95);s_.closePath();step(s_,c);});
     const b_=new Path2D();b_.rect(268,30,32,120);step(b_,"#b6e0f1");}
   if(shape===1){[[60,"#bfe4f3"],[44,"#b3dff0"],[28,"#a6d8ec"]].forEach(([r,c])=>{const s_=new Path2D();s_.arc(80,90,r,Math.PI/2,Math.PI*1.5);s_.closePath();step(s_,c);});}
-  if(shape===2){[[14,64,"#bfe4f3"],[14,48,"#b3dff0"],[14,32,"#a6d8ec"]].forEach(([a_,w,c])=>{const s_=new Path2D();s_.rect(a_,62,w,56);step(s_,c);});}
+  if(shape===2){[[150,"#bfe4f3"],[134,"#b3dff0"],[118,"#a6d8ec"]].forEach(([y,c])=>{const s_=new Path2D();s_.rect(20,y-16,110,16);step(s_,c);});}
   if(shape===3){const s_=new Path2D();s_.rect(85,38,150,26);step(s_,"#b8e1f1");const s2=new Path2D();s2.rect(85,38,40,104);step(s2,"#bfe4f3");}
-  if(shape===4){const s_=new Path2D();s_.rect(205,30,95,120);const gg=x.createLinearGradient(205,0,300,0);gg.addColorStop(0,"#bfe6ef");gg.addColorStop(1,"#e3efe2");x.fillStyle=gg;x.fill(s_);x.strokeStyle="rgba(255,255,255,.7)";x.lineWidth=2;x.beginPath();x.moveTo(205,30);x.lineTo(205,150);x.stroke();}
+  if(shape===4){[[50,"#bfe4f3"],[36,"#b3dff0"]].forEach(([r,c])=>{const s_=new Path2D();s_.ellipse(40,90,r*1.25,r,0,-Math.PI/2,Math.PI/2);s_.closePath();step(s_,c);});}
   if(shape===5){[[46,"#bfe4f3"],[32,"#b3dff0"]].forEach(([r,c])=>{const s_=new Path2D();s_.arc(70,90,r,Math.PI*.55,Math.PI*1.45);s_.lineTo(70,90);s_.closePath();step(s_,c);});}
   x.lineWidth=22;x.strokeStyle="rgba(20,80,110,.28)";x.stroke(P);x.lineWidth=12;x.strokeStyle="rgba(20,80,110,.22)";x.stroke(P);
   x.restore();
