@@ -443,7 +443,7 @@ const CONFIG = {
   // CHANTIER : images extraites de la vidéo (dossier /frames)
   // map = avancement de la vidéo (0→1) au début/fin de chaque étape de texte (terrassement, béton, carrelage, mise en eau)
   build: {
-    mobile:  { path:"frames/f_",    ext:".webp", count:121, pad:3, map:[0,.317,.512,.78,1] },
+    mobile:  { path:"frames/f_",    ext:".webp", count:122, pad:3, map:[0,.15,.3,.4,1] },
     desktop: { path:"frames-pc/f_", ext:".webp", count:122, pad:3, map:[0,.14,.34,.42,1] }
   },
 
@@ -801,7 +801,7 @@ function sizeBuild(){const d=Math.min(devicePixelRatio||1,2);fc.width=fc.clientW
 addEventListener("resize",sizeBuild); sizeBuild();
 function nearest(i){ if(loaded[i]) return i; for(let d=1;d<B.count;d++){ if(i-d>=0&&loaded[i-d]) return i-d; if(i+d<B.count&&loaded[i+d]) return i+d; } return -1; }
 // zoom : au départ on cadre la maison (pas la pelouse), puis on dézoome
-function cover(ctx,im,w,h,z,ay){const r=Math.max(w/im.naturalWidth,h/im.naturalHeight)*z,iw=im.naturalWidth*r,ih=im.naturalHeight*r;ctx.drawImage(im,(w-iw)/2,(h-ih)*ay,iw,ih);}
+function cover(ctx,im,w,h,z,ay){ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality="high";const r=Math.max(w/im.naturalWidth,h/im.naturalHeight)*z,iw=im.naturalWidth*r,ih=im.naturalHeight*r;ctx.drawImage(im,(w-iw)/2,(h-ih)*ay,iw,ih);}
 const sst=(a,b,x)=>{const t=clamp((x-a)/(b-a));return t*t*(3-2*t)};
 const blocks=[...document.querySelectorAll(".flow .blk")], steps=[...document.querySelectorAll(".flow .step")], finalBlk=document.querySelector(".blk.final");
 const bbars=[...document.querySelectorAll(".bhud b")], bhint=document.getElementById("bhint"), bhud=document.getElementById("bhud");
@@ -820,7 +820,7 @@ function buildFrame(){
   // image
   let vp=1; for(let i=0;i<4;i++){ if(fpC<=SB[i+1]){ vp=B.map[i]+(B.map[i+1]-B.map[i])*(fpC-SB[i])/(SB[i+1]-SB[i]); break; } }
   const want=Math.round(clamp(vp)*(B.count-1)), f=nearest(want);
-  const z=1+.35*(1-e), ay=.18+.32*e;
+  const z=1+(innerWidth>=900?.12:.3)*(1-e), ay=.18+.32*e;
   const key=f+"|"+z.toFixed(3);
   if(f>=0 && key!==lastKey){ lastKey=key; fx.clearRect(0,0,fc.width,fc.height); cover(fx,imgs[f],fc.width,fc.height,z,ay); if(getComputedStyle(bgc).display!=="none") cover(bx,imgs[f],bgc.width,bgc.height,1,.5); }
   // intro : logo qui monte et rejoint le menu
