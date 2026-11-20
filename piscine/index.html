@@ -33,33 +33,42 @@ button{font:inherit;cursor:pointer}
 
 
 /* ============ CHANTIER AU SCROLL (images extraites de la vidéo) ============ */
-#build{position:relative;height:620vh;background:#05111a}
-#build .stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#build{position:relative;background:#05111a}
+#build .stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;z-index:0}
 #bgc{position:absolute;inset:-60px;width:calc(100% + 120px);height:calc(100% + 120px);filter:blur(40px) brightness(.55) saturate(1.2);display:none}
 #fc{position:absolute;inset:0;width:100%;height:100%;display:block}
-#build .shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(3,12,20,.6) 0%,rgba(3,12,20,0) 26%,rgba(3,12,20,0) 62%,rgba(3,12,20,.75) 100%)}
-.bstep{position:absolute;left:22px;right:22px;top:84px;color:#fff;opacity:0;will-change:transform,opacity}
-.bstep .k{font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:700;opacity:.9;margin-bottom:10px;display:flex;align-items:center;gap:10px}
-.bstep .k:before{content:"";width:26px;height:1px;background:currentColor}
-.bstep h1,.bstep h2{font-size:clamp(36px,9vw,76px);text-shadow:0 4px 30px rgba(0,0,0,.35)}
-.bstep p{margin-top:10px;font-size:15px;max-width:420px;opacity:.92;line-height:1.5;text-shadow:0 2px 14px rgba(0,0,0,.5)}
-.bstep.final{top:auto;bottom:86px;pointer-events:auto}
-.bstep .cta{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
-.bhud{position:absolute;left:22px;right:22px;bottom:30px;display:flex;gap:6px}
+#veil{position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 45%,rgba(3,12,20,.35),rgba(3,12,20,.85));pointer-events:none}
+#build .shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(3,12,20,.45) 0%,rgba(3,12,20,0) 22%,rgba(3,12,20,0) 70%,rgba(3,12,20,.6) 100%)}
+.intro{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:0 24px;pointer-events:none}
+.bigLogo{font-family:"DM Serif Display",serif;font-size:clamp(54px,15vw,170px);letter-spacing:2px;line-height:1;will-change:transform,opacity;text-shadow:0 10px 50px rgba(0,0,0,.35)}
+.bigLogo span{color:var(--aqua2)}
+.tagline{margin-top:22px;font-family:"DM Serif Display",serif;font-size:clamp(24px,5.4vw,46px);line-height:1.15;max-width:760px;will-change:transform,opacity}
+.tagline em{color:var(--aqua2)}
+.subtag{margin-top:14px;font-size:14px;letter-spacing:3px;text-transform:uppercase;font-weight:700;opacity:.8}
+.flow{position:relative;z-index:2;margin-top:-100vh;margin-top:-100svh;pointer-events:none}
+.blk{display:flex;align-items:center;padding:0 18px}
+.blk .txt{pointer-events:auto;max-width:460px;color:#fff;background:rgba(5,17,26,.42);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:22px 22px 24px;will-change:transform,opacity}
+.blk .k{font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--aqua2);margin-bottom:10px}
+.blk h2{font-size:clamp(32px,8vw,64px)}
+.blk p{margin-top:10px;font-size:15px;opacity:.9;line-height:1.55}
+.blk.final .txt{background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0;text-shadow:0 4px 30px rgba(0,0,0,.5)}
+.blk.final{align-items:flex-end;padding-bottom:90px}
+.blk.final h2{font-size:clamp(42px,11vw,96px)}
+.blk .cta{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
+.bhud{position:absolute;left:22px;right:22px;bottom:30px;display:flex;gap:6px;transition:opacity .5s}
 .bhud i{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden;position:relative}
 .bhud i b{position:absolute;inset:0;background:#fff;transform-origin:left;transform:scaleX(0)}
-.bhint{position:absolute;left:50%;bottom:58px;transform:translateX(-50%);color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:8px;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.bhint{position:absolute;left:50%;bottom:44px;transform:translateX(-50%);color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:8px}
 .bhint:after{content:"";width:1px;height:30px;background:currentColor;animation:bh 1.6s infinite}
 @keyframes bh{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 .loader{position:absolute;right:22px;top:76px;font-size:11px;color:rgba(255,255,255,.7);letter-spacing:1px;transition:opacity .6s}
+#nav .logo{transition:opacity .2s}
 @media(min-width:900px){
   #bgc{display:block}
-  #fc{left:auto;right:7vw;width:calc(100vh * 9 / 16);border-radius:0;box-shadow:0 40px 120px rgba(0,0,0,.6)}
-  #build .shade{background:linear-gradient(90deg,rgba(3,12,20,.7),rgba(3,12,20,0) 55%)}
-  .bstep,.bstep.final{left:7vw;right:auto;top:30vh;bottom:auto;max-width:40vw}
-  .bstep h1,.bstep h2{font-size:clamp(44px,5vw,84px)}
+  #fc{left:auto;right:7vw;width:calc(100vh * 9 / 16);box-shadow:0 40px 120px rgba(0,0,0,.6)}
+  .blk{padding:0 7vw}
+  .blk .txt{max-width:38vw}
   .bhud{left:7vw;right:auto;width:36vw}
-  .bhint{left:7vw;transform:none;align-items:flex-start}
 }
 
 /* ============ HERO : défilement horizontal des piscines ============ */
@@ -116,6 +125,16 @@ button{font:inherit;cursor:pointer}
 .dn .knob{position:absolute;top:5px;bottom:5px;left:5px;border-radius:99px;background:#fff;transition:transform .6s var(--ease),width .6s var(--ease),background .6s}
 .dn button.on{color:var(--navy)}
 #config .glow{position:absolute;width:70vw;height:70vw;border-radius:50%;filter:blur(90px);opacity:.25;left:-20vw;top:10%;pointer-events:none;transition:background 1s}
+.cfg1{max-width:1000px}
+.cfg1 h2{font-size:clamp(30px,4.4vw,52px);margin-bottom:26px}
+#config .pool{aspect-ratio:16/9}
+@media(max-width:600px){#config .pool{aspect-ratio:3/2}}
+.bar2{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin:20px 0 16px}
+.bar2 .result{margin:0}
+.sw{grid-template-columns:repeat(3,1fr)}
+@media(min-width:700px){.sw{grid-template-columns:repeat(6,1fr)}}
+.sw button .chip{height:42px}
+.dn button{padding:10px 18px;font-size:13px}
 </style>
 <style>
 /* SECTIONS */
@@ -196,15 +215,24 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <canvas id="bgc"></canvas>
     <canvas id="fc"></canvas>
     <div class="shade"></div>
-    <div class="bstep"><div class="k" data-c="city">Côte d'Azur</div><h1>Votre jardin.<br><em>Aujourd'hui.</em></h1><p>Faites défiler : on construit votre piscine sous vos yeux.</p></div>
-    <div class="bstep"><div class="k">Étape 01</div><h2>Implantation &amp; terrassement</h2><p>Piquetage au centimètre, puis on creuse.</p></div>
-    <div class="bstep"><div class="k">Étape 02</div><h2>Ferraillage &amp; béton</h2><p>Une structure béton armé, garantie 10 ans.</p></div>
-    <div class="bstep"><div class="k">Étape 03</div><h2>Carrelage &amp; margelles</h2><p>Mosaïque et pierre naturelle posées à la main.</p></div>
-    <div class="bstep"><div class="k">Étape 04</div><h2>Mise en eau</h2><p>Filtration, chauffage, éclairage : tout est réglé.</p></div>
-    <div class="bstep final"><div class="k">Le résultat</div><h2>Votre piscine.<br><em>Clé en main.</em></h2><div class="cta"><a href="#devis" class="btn">Devis gratuit</a><a href="#config" class="btn ghost">Choisir mon carrelage</a></div></div>
+    <div id="veil"></div>
+    <div class="intro">
+      <div class="bigLogo" id="bigLogo" data-c="logoHtml">AQUA<span>VILLA</span></div>
+      <div class="tagline" id="tagline">Votre jardin a du potentiel.<br><em>On le transforme en piscine.</em></div>
+      <div class="subtag" id="subtag"><span data-c="city">Côte d'Azur</span> · Devis gratuit</div>
+    </div>
     <div class="loader" id="loader"></div>
     <div class="bhint" id="bhint">Scroll</div>
-    <div class="bhud"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+    <div class="bhud" id="bhud"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+  </div>
+  <!-- Les textes défilent par-dessus la vidéo. La hauteur de chaque bloc = durée de l'étape -->
+  <div class="flow">
+    <div class="blk" style="height:150vh"></div>
+    <div class="blk step" style="height:130vh"><div class="txt"><div class="k">Étape 01</div><h2>Implantation &amp; terrassement</h2><p>Piquetage au centimètre près, puis on creuse. Accès difficile ? On a les engins adaptés.</p></div></div>
+    <div class="blk step" style="height:80vh"><div class="txt"><div class="k">Étape 02</div><h2>Ferraillage &amp; béton</h2><p>Une structure en béton armé, garantie décennale.</p></div></div>
+    <div class="blk step" style="height:110vh"><div class="txt"><div class="k">Étape 03</div><h2>Carrelage &amp; margelles</h2><p>Mosaïque et pierre naturelle posées à la main.</p></div></div>
+    <div class="blk step" style="height:90vh"><div class="txt"><div class="k">Étape 04</div><h2>Mise en eau</h2><p>Filtration, chauffage, éclairage : tout est réglé avant de vous rendre les clés.</p></div></div>
+    <div class="blk final" style="height:130vh"><div class="txt"><div class="k">Le résultat</div><h2>Votre piscine.<br><em>Clé en main.</em></h2><div class="cta"><a href="#devis" class="btn">Devis gratuit</a><a href="#config" class="btn ghost">Choisir mon carrelage</a></div></div></div>
   </div>
 </section>
 
@@ -219,20 +247,18 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <!-- ======================= CONFIGURATEUR ======================= -->
 <section id="config">
   <div class="glow" id="glow"></div>
-  <div class="wrap cfg">
+  <div class="wrap cfg1">
+    <div class="eyebrow rv">Configurateur</div>
+    <h2 class="rv">Choisissez le carrelage.<br>Découvrez la couleur de l'eau.</h2>
     <div class="pool rv" id="pool">
       <canvas id="water"></canvas>
       <div class="tap" id="tapHint">Touchez l'eau</div>
     </div>
-    <div>
-      <div class="eyebrow rv">Configurateur</div>
-      <h2 class="rv" style="font-size:clamp(34px,4.4vw,56px)">Choisissez votre carrelage, on s'occupe de la couleur de l'eau.</h2>
-      <div class="result rv"><small>Couleur d'eau obtenue :</small><span class="flip" id="flip"><span>Bleu lagon</span></span></div>
-      <div class="lbl">Carrelage du bassin</div>
-      <div class="sw" id="sw"></div>
-      <div class="lbl">Ambiance</div>
+    <div class="bar2">
+      <div class="result"><small>Couleur d'eau :</small><span class="flip" id="flip"><span>Bleu lagon</span></span></div>
       <div class="dn" id="dn"><div class="knob" id="knob"></div><button class="on" data-n="0">☀️ Jour</button><button data-n="1">🌙 Nuit</button></div>
     </div>
+    <div class="sw" id="sw"></div>
   </div>
 </section>
 
@@ -533,37 +559,58 @@ if(!waterOK){cv.style.background="linear-gradient(160deg,#6fd6e6,#1b8fb4)";}
 
 
 /* =====================================================================
-   CHANTIER : séquence d'images pilotée par le scroll
+   CHANTIER : séquence d'images pilotée par le scroll + textes qui défilent
    ===================================================================== */
 const B=CONFIG.build, build=document.getElementById("build"), fc=document.getElementById("fc"), fx=fc.getContext("2d"), bgc=document.getElementById("bgc"), bx=bgc.getContext("2d");
 const imgs=new Array(B.count), loaded=new Array(B.count).fill(false); let nLoaded=0;
 const order=[]; [16,8,4,2,1].forEach(st=>{for(let i=0;i<B.count;i+=st) if(!order.includes(i)) order.push(i)}); if(!order.includes(B.count-1)) order.splice(1,0,B.count-1);
 let qi=0; const loaderEl=document.getElementById("loader");
 function loadNext(){ if(qi>=order.length) return; const i=order[qi++]; const im=new Image(); im.decoding="async";
-  im.onload=()=>{loaded[i]=true; nLoaded++; loaderEl.textContent=nLoaded<B.count?Math.round(nLoaded/B.count*100)+" %":""; if(nLoaded===B.count) loaderEl.style.opacity=0; loadNext();};
+  im.onload=()=>{loaded[i]=true; nLoaded++; lastKey=""; loaderEl.textContent=nLoaded<B.count?Math.round(nLoaded/B.count*100)+" %":""; if(nLoaded===B.count) loaderEl.style.opacity=0; loadNext();};
   im.onerror=loadNext; im.src=B.path+String(i+1).padStart(B.pad,"0")+B.ext; imgs[i]=im; }
 for(let k=0;k<6;k++) loadNext();
-function sizeBuild(){const d=Math.min(devicePixelRatio||1,2);fc.width=fc.clientWidth*d;fc.height=fc.clientHeight*d;bgc.width=Math.max(1,bgc.clientWidth/4);bgc.height=Math.max(1,bgc.clientHeight/4);lastF=-1;}
-let lastF=-1; addEventListener("resize",sizeBuild); sizeBuild();
+let lastKey="";
+function sizeBuild(){const d=Math.min(devicePixelRatio||1,2);fc.width=fc.clientWidth*d;fc.height=fc.clientHeight*d;bgc.width=Math.max(1,bgc.clientWidth/4);bgc.height=Math.max(1,bgc.clientHeight/4);lastKey="";}
+addEventListener("resize",sizeBuild); sizeBuild();
 function nearest(i){ if(loaded[i]) return i; for(let d=1;d<B.count;d++){ if(i-d>=0&&loaded[i-d]) return i-d; if(i+d<B.count&&loaded[i+d]) return i+d; } return -1; }
-function cover(ctx,im,w,h){const r=Math.max(w/im.naturalWidth,h/im.naturalHeight),iw=im.naturalWidth*r,ih=im.naturalHeight*r;ctx.drawImage(im,(w-iw)/2,(h-ih)/2,iw,ih);}
-const bsteps=[...document.querySelectorAll(".bstep")], bbars=[...document.querySelectorAll(".bhud b")], bhint=document.getElementById("bhint");
-const BR=[[0,.06],[.06,.3],[.3,.47],[.47,.74],[.74,.93],[.93,1.01]];
-let bT=0,bC=0;
-function buildScroll(){const r=build.getBoundingClientRect(); bT=clamp(-r.top/(r.height-innerHeight));}
-addEventListener("scroll",buildScroll,{passive:true}); buildScroll();
+// zoom : au départ on cadre la maison (pas la pelouse), puis on dézoome
+function cover(ctx,im,w,h,z,ay){const r=Math.max(w/im.naturalWidth,h/im.naturalHeight)*z,iw=im.naturalWidth*r,ih=im.naturalHeight*r;ctx.drawImage(im,(w-iw)/2,(h-ih)*ay,iw,ih);}
 const sst=(a,b,x)=>{const t=clamp((x-a)/(b-a));return t*t*(3-2*t)};
+const blocks=[...document.querySelectorAll(".flow .blk")], steps=[...document.querySelectorAll(".flow .step")], finalBlk=document.querySelector(".blk.final");
+const bbars=[...document.querySelectorAll(".bhud b")], bhint=document.getElementById("bhint"), bhud=document.getElementById("bhud");
+const bigLogo=document.getElementById("bigLogo"), tagline=document.getElementById("tagline"), subtag=document.getElementById("subtag"), veil=document.getElementById("veil"), navLogo=document.querySelector("#nav .logo");
+let ipT=0,ipC=0,fpT=0,fpC=0;
+function buildScroll(){
+  const H=innerHeight, intro=blocks[0].getBoundingClientRect();
+  ipT=clamp(-intro.top/(intro.height-H*.35));               // 0 → 1 pendant l'intro
+  const a=H*.6, r1=steps[0].getBoundingClientRect(), rF=finalBlk.getBoundingClientRect();
+  fpT=clamp((a-r1.top)/(rF.top-r1.top));                    // 0 → 1 pendant les étapes
+}
+addEventListener("scroll",buildScroll,{passive:true}); addEventListener("resize",buildScroll); buildScroll();
 function buildFrame(){
-  bC+=(bT-bC)*.12;
-  const fp=clamp(bC/.92);
-  const want=Math.round(fp*(B.count-1)), f=nearest(want);
-  if(f>=0 && f!==lastF){ lastF=f; cover(fx,imgs[f],fc.width,fc.height); if(bgc.offsetParent!==null||getComputedStyle(bgc).display!=="none") cover(bx,imgs[f],bgc.width,bgc.height); }
-  const p=bC<.92?fp*.93:.93+(bC-.92)/.08*.07;
-  bsteps.forEach((el,i)=>{const [a,b]=BR[i],w=.035;
-    let o=i===0?1-sst(b-w,b+w*.5,p):i===5?sst(a-w*.5,a+w,p):sst(a-w*.5,a+w,p)*(1-sst(b-w,b+w*.5,p));
-    el.style.opacity=o; el.style.transform=`translateY(${(1-o)*26}px)`;});
-  bbars.forEach((b,i)=>{const [a,e]=BR[i+1]; b.style.transform=`scaleX(${clamp((p-a)/(Math.min(e,1)-a))})`;});
-  bhint.style.opacity=1-sst(.005,.04,p);
+  ipC+=(ipT-ipC)*.12; fpC+=(fpT-fpC)*.12;
+  const e=ease(ipC);
+  // image
+  const want=Math.round(fpC*(B.count-1)), f=nearest(want);
+  const z=1+.35*(1-e), ay=.18+.32*e;
+  const key=f+"|"+z.toFixed(3);
+  if(f>=0 && key!==lastKey){ lastKey=key; fx.clearRect(0,0,fc.width,fc.height); cover(fx,imgs[f],fc.width,fc.height,z,ay); if(getComputedStyle(bgc).display!=="none") cover(bx,imgs[f],bgc.width,bgc.height,1,.5); }
+  // intro : logo qui monte et rejoint le menu
+  const H=innerHeight;
+  bigLogo.style.transform=`translateY(${-e*H*.42}px) scale(${1-.72*e})`;
+  bigLogo.style.opacity=1-sst(.75,1,ipC);
+  navLogo.style.opacity=sst(.8,1,ipC);
+  tagline.style.transform=`translateY(${-e*H*.25}px)`; tagline.style.opacity=1-sst(.05,.55,ipC);
+  subtag.style.opacity=1-sst(0,.35,ipC);
+  veil.style.opacity=1-sst(.1,.9,ipC);
+  bhint.style.opacity=1-sst(0,.12,ipC);
+  bhud.style.opacity=sst(.7,1,ipC);
+  // textes : fondu + léger parallaxe selon la position à l'écran
+  [...steps,finalBlk].forEach(b=>{const r=b.getBoundingClientRect(), t=b.firstElementChild;
+    const c=(r.top+r.height/2-H/2)/(H*.75); const o=b===finalBlk?sst(1.1,.35,c+.2):clamp(1-Math.abs(c)*1.15);
+    t.style.opacity=o; t.style.transform=`translateY(${c*-40}px)`;});
+  // barres
+  const ends=[0,.317,.512,.78,1]; bbars.forEach((b,i)=>b.style.transform=`scaleX(${clamp((fpC-ends[i])/(ends[i+1]-ends[i]))})`);
 }
 
 /* ---------- Boucle principale ---------- */
