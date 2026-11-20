@@ -530,14 +530,19 @@ void main(){
  col*=mix(1.,.06,NIGHT);
  // 4 projecteurs : 2 de chaque côté
  vec3 lit=vec3(0.);
+ // éclairage doux : remplissage homogène + halo léger autour de chaque projecteur + petite lentille
+ float halo=0.,lens=0.;
  for(int i=0;i<6;i++){vec2 L;
   if(i==0)L=vec2(0.,.55);else if(i==1)L=vec2(PWV,.55);
   else if(i==2)L=vec2(PWV*.33,.05);else if(i==3)L=vec2(PWV*.67,.05);
   else if(i==4)L=vec2(PWV*.33,.97);else L=vec2(PWV*.67,.97);
-  vec2 d=(p-L)*vec2(1.,1.25);float g=exp(-dot(d,d)*16.);float core=exp(-dot(d,d)*260.);
-  lit+=g*(tile*vec3(.55,.97,1.)*2.+vec3(0.,.2,.26))+g*c*.4*vec3(.6,1.,1.)+core*vec3(.85,1.,1.)*1.6;}
- col+=lit*LIGHTS*mix(.35,1.,NIGHT);
- col+=LIGHTS*NIGHT*(tile*vec3(.08,.2,.24)+vec3(0.,.03,.05));
+  vec2 d=(p-L)*vec2(1.,1.3);float dd=dot(d,d);
+  halo+=exp(-dd*10.);lens+=exp(-dd*500.);}
+ vec3 tint=vec3(.3,.85,1.);
+ vec3 light=tile*tint*(.22+1.1*halo)+vec3(0.,.07,.11)*(1.+2.5*halo)+c*.08*tint*halo;
+ light=1.-exp(-light*1.5);                 // pas de zones brûlées
+ light+=lens*vec3(.85,1.,1.)*.8;            // le projecteur lui-même
+ col=mix(col,col*mix(.6,.15,NIGHT)+light*mix(.45,1.,NIGHT),LIGHTS);
  // surface : reflets
  vec3 N=normalize(vec3(-n*.5,1.));vec3 Hh=normalize(vec3(.35,.55,.75)+vec3(0,0,1));
  col+=pow(max(dot(N,Hh),0.),140.)*mix(vec3(1.,.97,.9)*.9,vec3(1.,.8,.5)*.25,NIGHT);
