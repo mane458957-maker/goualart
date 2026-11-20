@@ -130,6 +130,19 @@ button{font:inherit;cursor:pointer}
 .pool .villa{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;transition:opacity 1.4s ease;user-select:none;-webkit-user-drag:none}
 @media(max-width:600px){#config .pool{margin:0 -22px;border-radius:0}}
 .ctrls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.sw-elec{border:0;background:none;color:#fff;display:flex;align-items:center;gap:12px;padding:0;-webkit-tap-highlight-color:transparent}
+.sw-elec .plate{width:62px;height:62px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(150deg,#ffffff 0%,#eceef0 45%,#cfd3d7 100%);box-shadow:0 10px 22px -6px rgba(0,0,0,.55),inset 0 1px 1px #fff,inset 0 -3px 6px rgba(0,0,0,.12);position:relative}
+.sw-elec .plate:after{content:"";position:absolute;inset:0;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,0) 40%);pointer-events:none}
+.sw-elec .slot{width:28px;height:44px;border-radius:3px;background:linear-gradient(180deg,#2a2d31,#4a4f55);box-shadow:inset 0 2px 4px rgba(0,0,0,.6);perspective:120px;display:block;padding:2px}
+.sw-elec .rocker{display:block;position:relative;width:100%;height:100%;border-radius:2px;transform-origin:50% 50%;transition:transform .22s cubic-bezier(.3,1.6,.5,1),background .22s;
+  transform:rotateX(-18deg);background:linear-gradient(180deg,#fdfdfd 0%,#e9eaeb 48%,#c9ccd0 52%,#f2f3f4 100%);box-shadow:0 2px 3px rgba(0,0,0,.35)}
+.sw-elec.on .rocker{transform:rotateX(18deg);background:linear-gradient(180deg,#f2f3f4 0%,#c9ccd0 48%,#e9eaeb 52%,#fdfdfd 100%)}
+.sw-elec .rocker i{position:absolute;left:0;right:0;text-align:center;font-style:normal;font-weight:800;font-size:7.5px;letter-spacing:.3px;color:#8a8f95;transition:opacity .15s}
+.sw-elec .rocker .off{top:5px}.sw-elec .rocker .on{bottom:5px;opacity:0}
+.sw-elec.on .rocker .on{opacity:1}.sw-elec.on .rocker .off{opacity:0}
+.sw-elec .cap2{font-weight:700;font-size:13px;opacity:.8;transition:color .3s,text-shadow .3s}
+.sw-elec.on .cap2{color:var(--aqua2);opacity:1;text-shadow:0 0 14px rgba(127,224,232,.8)}
+.sw-elec:active .plate{transform:scale(.97)}
 .lt{border:0;border-radius:99px;padding:13px 18px;font-weight:700;font-size:13px;color:#fff;background:rgba(255,255,255,.08);transition:background .4s,box-shadow .4s,color .4s}
 .lt b{margin-left:4px;font-size:11px;opacity:.7}
 .lt.on{background:#9fe9f0;color:var(--navy);box-shadow:0 0 30px rgba(127,224,232,.6)}
@@ -266,7 +279,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     </div>
     <div class="bar2">
       <div class="result"><small>Couleur d'eau :</small><span class="flip" id="flip"><span>Bleu lagon</span></span></div>
-      <div class="ctrls"><div class="dn" id="dn"><div class="knob" id="knob"></div><button class="on" data-n="0">☀️ Jour</button><button data-n="1">🌙 Nuit</button></div><button class="lt" id="lightBtn">💡 Projecteurs <b>OFF</b></button></div>
+      <div class="ctrls"><div class="dn" id="dn"><div class="knob" id="knob"></div><button class="on" data-n="0">☀️ Jour</button><button data-n="1">🌙 Nuit</button></div><button class="sw-elec" id="lightBtn" aria-pressed="false" aria-label="Projecteurs"><span class="plate"><span class="slot"><span class="rocker"><i class="on">ON</i><i class="off">OFF</i></span></span></span><span class="cap2">Projecteurs</span></button></div>
     </div>
     <div class="sw" id="sw"></div>
   </div>
@@ -483,6 +496,7 @@ const PW=2.0; // le bassin fait 2x plus long que large
 const VS="attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}";
 const FS=`precision highp float;
 uniform vec2 R;uniform float T,NIGHT,LIGHTS;uniform vec3 A0,G0,A1,G1,RIP;uniform vec4 D0,D1,D2,D3;uniform mat3 HM;
+const float PWV=${PW.toFixed(1)};
 float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 vec2 h2(vec2 p){return fract(sin(vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))))*43758.5453);}
 float nz(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+1.),f.x),f.y);}
@@ -516,8 +530,11 @@ void main(){
  col*=mix(1.,.06,NIGHT);
  // 4 projecteurs : 2 de chaque côté
  vec3 lit=vec3(0.);
- for(int i=0;i<4;i++){float side=i<2?0.:1.;float vy=mod(float(i),2.)<.5?.38:.74;
-  vec2 L=vec2(side*${PW.toFixed(1)},vy);vec2 d=(p-L)*vec2(1.,1.25);float g=exp(-dot(d,d)*16.);float core=exp(-dot(d,d)*260.);
+ for(int i=0;i<6;i++){vec2 L;
+  if(i==0)L=vec2(0.,.55);else if(i==1)L=vec2(PWV,.55);
+  else if(i==2)L=vec2(PWV*.33,.05);else if(i==3)L=vec2(PWV*.67,.05);
+  else if(i==4)L=vec2(PWV*.33,.97);else L=vec2(PWV*.67,.97);
+  vec2 d=(p-L)*vec2(1.,1.25);float g=exp(-dot(d,d)*16.);float core=exp(-dot(d,d)*260.);
   lit+=g*(tile*vec3(.55,.97,1.)*2.+vec3(0.,.2,.26))+g*c*.4*vec3(.6,1.,1.)+core*vec3(.85,1.,1.)*1.6;}
  col+=lit*LIGHTS*mix(.35,1.,NIGHT);
  col+=LIGHTS*NIGHT*(tile*vec3(.08,.2,.24)+vec3(0.,.03,.05));
@@ -589,7 +606,12 @@ dnb.forEach(b=>b.onclick=()=>{dnb.forEach(x=>x.classList.remove("on"));b.classLi
 addEventListener("resize",placeKnob); setTimeout(placeKnob,50); document.fonts&&document.fonts.ready.then(placeKnob);
 // projecteurs
 const lightBtn=document.getElementById("lightBtn");
-lightBtn.onclick=()=>{st.lightsT=st.lightsT?0:1; lightBtn.classList.toggle("on",!!st.lightsT); lightBtn.querySelector("b").textContent=st.lightsT?"ON":"OFF"; if(navigator.vibrate) navigator.vibrate(10);};
+let actx;
+function clickSound(on){try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();const t=actx.currentTime,len=.05,buf=actx.createBuffer(1,actx.sampleRate*len,actx.sampleRate),d=buf.getChannelData(0);
+  for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,8);
+  const src=actx.createBufferSource(),f=actx.createBiquadFilter(),g=actx.createGain();src.buffer=buf;f.type="bandpass";f.frequency.value=on?2600:2000;f.Q.value=1.2;g.gain.value=.9;
+  src.connect(f).connect(g).connect(actx.destination);src.start(t);}catch(e){}}
+lightBtn.onclick=()=>{st.lightsT=st.lightsT?0:1; const on=!!st.lightsT; lightBtn.classList.toggle("on",on); lightBtn.setAttribute("aria-pressed",on); clickSound(on); if(navigator.vibrate) navigator.vibrate(15);};
 
 // toucher l'eau
 function addDropUV(x,y,s=1){st.drops[st.di]=[x,y,now(),s]; st.di=(st.di+1)%4;}
