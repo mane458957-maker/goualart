@@ -510,7 +510,7 @@ const CONFIG = {
     { name:"Élodie F.", city:"Cagnes-sur-Mer", project:"Entretien annuel", date:"Mars", text:"Contrat d'entretien depuis deux ans, eau toujours parfaite. Réactifs quand la pompe a eu un souci." }
   ],
 
-  // MODÈLES : forme dessinée dans la villa. img (optionnel) = vignette du client à la place du dessin. shape : 0 classique, 1 romaine, 2 en L, 3 mini, 4 ovale, 5 forme libre
+  // MODÈLES : forme dessinée dans la villa. img (optionnel) = vignette du client à la place du dessin. shape : 0 classique, 1 romaine, 2 en L, 3 mini, 4 ovale, 5 forme libre, 6 rectangle aux dimensions réelles (avec L et W en mètres)
   models: [
     { name:"Classique",       dims:"10 × 5 m",  shape:0 },
     { name:"Romaine",         dims:"9 × 4,5 m", shape:1 },
@@ -659,7 +659,7 @@ const toUV=(x,y)=>{const m=HM,w=m[6]*x+m[7]*y+m[8];return[(m[0]*x+m[1]*y+m[2])/w
 const PW=2.0; // le bassin fait 2x plus long que large
 const VS="attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}";
 const FS=`precision highp float;
-uniform vec2 R;uniform float T,NIGHT,LIGHTS;uniform vec3 A0,G0,A1,G1,P0,P1,RIP;uniform vec4 D0,D1,D2,D3,BB;uniform mat3 HM;uniform float SH0,SH1,SHT;uniform sampler2D TD,TN;uniform vec2 Z0,Z1,Z2,Z3;
+uniform vec2 R;uniform float T,NIGHT,LIGHTS;uniform vec3 A0,G0,A1,G1,P0,P1,RIP;uniform vec4 D0,D1,D2,D3,BB;uniform mat3 HM;uniform float SH0,SH1,SHT;uniform vec2 RS0,RS1;uniform sampler2D TD,TN;uniform vec2 Z0,Z1,Z2,Z3;
 const float PWV=${PW.toFixed(1)};
 float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 vec2 h2(vec2 p){return fract(sin(vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))))*43758.5453);}
@@ -668,7 +668,8 @@ float sdBox(vec2 p,vec2 c,vec2 b){vec2 d=abs(p-c)-b;return length(max(d,0.))+min
 float sdEl(vec2 p,vec2 c,vec2 r){return (length((p-c)/r)-1.)*min(r.x,r.y);}
 float smin(float a,float b,float k){float h=clamp(.5+.5*(b-a)/k,0.,1.);return mix(b,a,h)-k*h*(1.-h);}
 // formes du bassin, en coordonnées du bassin (x 0→2, y 0→1)
-float shapeSD(float s,vec2 p){
+float shapeSD(float s,vec2 p,vec2 rs){
+ if(s>5.5)return sdBox(p,vec2(1.,.52),rs);
  if(s<.5)return sdBox(p,vec2(1.,.5),vec2(1.,.5));
  if(s<1.5)return min(sdBox(p,vec2(1.21,.5),vec2(.79,.42)),length(p-vec2(.42,.5))-.42);
  if(s<2.5)return min(sdBox(p,vec2(1.05,.38),vec2(.85,.22)),sdBox(p,vec2(.5,.56),vec2(.3,.34)));
@@ -703,7 +704,7 @@ void main(){
  vec3 w=HM*vec3(q,1.);vec2 uv=w.xy/w.z;
  vec2 p=vec2(uv.x*${PW.toFixed(1)},uv.y);
  float e=.0025;vec2 n=vec2(H(p+vec2(e,0))-H(p-vec2(e,0)),H(p+vec2(0,e))-H(p-vec2(0,e)))/(2.*e);
- float mo=smoothstep(0.,.9,T-SHT);float sd=mix(shapeSD(SH0,p),shapeSD(SH1,p),mo);float sh=mo<.5?SH0:SH1;
+ float mo=smoothstep(0.,.9,T-SHT);float sd=mix(shapeSD(SH0,p,RS0),shapeSD(SH1,p,RS1),mo);float sh=mo<.5?SH0:SH1;
  float m=1.-smoothstep(-.003,.003,sd);bool full=sh<.5;
  vec2 fp=p+n*.008;
  // paroi du fond visible (on regarde par-dessus la paroi avant)
@@ -786,7 +787,7 @@ if(gl){
     gl.useProgram(pr);
     const b=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,b); gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
     const loc=gl.getAttribLocation(pr,"a"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
-    ["R","T","NIGHT","LIGHTS","SH0","SH1","SHT","BB","TD","TN","Z0","Z1","Z2","Z3","A0","G0","A1","G1","P0","P1","RIP","D0","D1","D2","D3","HM"].forEach(k=>U[k]=gl.getUniformLocation(pr,k));
+    ["R","T","NIGHT","LIGHTS","SH0","SH1","SHT","BB","RS0","RS1","TD","TN","Z0","Z1","Z2","Z3","A0","G0","A1","G1","P0","P1","RIP","D0","D1","D2","D3","HM"].forEach(k=>U[k]=gl.getUniformLocation(pr,k));
     // mat3 en colonnes pour GLSL
     gl.uniformMatrix3fv(U.HM,false,[HM[0],HM[3],HM[6],HM[1],HM[4],HM[7],HM[2],HM[5],HM[8]]);
     waterOK=true;
@@ -805,7 +806,9 @@ addEventListener("resize",sizeWater); sizeWater();
 
 const tp=t=>[t.style==='large'?5.:24.,t.var,t.hue];
 const SHAPE_BB=[[0,2,0,1],[0,2,.08,.92],[.2,1.9,.16,.9],[.58,1.42,.17,.83],[.18,1.82,.12,.88],[.07,1.97,.08,.92]];
-const st={sh0:CONFIG.models[0].shape, sh1:CONFIG.models[0].shape, sht:-99, mcur:0, cur:0, P0:tp(CONFIG.tiles[0]), P1:tp(CONFIG.tiles[0]), A0:hex3(CONFIG.tiles[0].tile), G0:hex3(CONFIG.tiles[0].joint), A1:hex3(CONFIG.tiles[0].tile), G1:hex3(CONFIG.tiles[0].joint), rip:[0,0,-99], night:0, nightT:0, lights:0, lightsT:0, drops:[[0,0,-99,0],[0,0,-99,0],[0,0,-99,0],[0,0,-99,0]], di:0};
+const rsOf=m=>m.shape===6?[Math.min(1,m.L*.1),Math.min(.5,m.W*.1)]:[1,.5];
+const bbOf=m=>{if(m.shape!==6)return SHAPE_BB[m.shape];const r=rsOf(m);return[1-r[0],1+r[0],.52-r[1],.52+r[1]];};
+const st={rs0:rsOf(CONFIG.models[0]), rs1:rsOf(CONFIG.models[0]), sh0:CONFIG.models[0].shape, sh1:CONFIG.models[0].shape, sht:-99, mcur:0, cur:0, P0:tp(CONFIG.tiles[0]), P1:tp(CONFIG.tiles[0]), A0:hex3(CONFIG.tiles[0].tile), G0:hex3(CONFIG.tiles[0].joint), A1:hex3(CONFIG.tiles[0].tile), G1:hex3(CONFIG.tiles[0].joint), rip:[0,0,-99], night:0, nightT:0, lights:0, lightsT:0, drops:[[0,0,-99,0],[0,0,-99,0],[0,0,-99,0],[0,0,-99,0]], di:0};
 const now=()=>performance.now()/1000;
 const toP=(cx,cy)=>{const r=cv.getBoundingClientRect();const [u,v]=toUV((cx-r.left)/r.width,(cy-r.top)/r.height);return[u*PW,v]};
 const inPool=(cx,cy)=>{const r=cv.getBoundingClientRect();const [u,v]=toUV((cx-r.left)/r.width,(cy-r.top)/r.height);return u>-.02&&u<1.02&&v>-.02&&v<1.02};
@@ -867,7 +870,8 @@ setTimeout(()=>{flip.querySelector("span").textContent=CONFIG.tiles[0].name},0);
 // modèles de piscine
 const mdl=document.getElementById("mdl"), mname=document.getElementById("mname");
 // vignettes : coque vue du dessus, dessinée en code
-function shellPath(shape){const p=new Path2D();
+function shellPath(shape,md){const p=new Path2D();
+  if(shape===6){const w=Math.min(290,md.L*26),h=Math.min(150,md.W*26);p.roundRect(160-w/2,90-h/2,w,h,8);return p;}
   if(shape===1){p.moveTo(80,30);p.lineTo(296,30);p.quadraticCurveTo(306,30,306,40);p.lineTo(306,140);p.quadraticCurveTo(306,150,296,150);p.lineTo(80,150);p.arc(80,90,60,Math.PI/2,Math.PI*1.5);p.closePath();}
   else if(shape===2){p.moveTo(28,30);p.lineTo(292,30);p.quadraticCurveTo(300,30,300,38);p.lineTo(300,100);p.lineTo(130,100);p.lineTo(130,142);p.quadraticCurveTo(130,150,122,150);p.lineTo(28,150);p.quadraticCurveTo(20,150,20,142);p.lineTo(20,38);p.quadraticCurveTo(20,30,28,30);p.closePath();}
   else if(shape===4)p.ellipse(160,90,140,62,0,0,Math.PI*2);
@@ -875,7 +879,7 @@ function shellPath(shape){const p=new Path2D();
   else if(shape===5){const k=4.6,ox=4,oy=8,P=(x,y)=>[x*k+ox,y*k+oy];p.moveTo(...P(8,18));p.bezierCurveTo(...P(8,6),...P(27,4),...P(34,10));p.bezierCurveTo(...P(41,4),...P(60,6),...P(60,18));p.bezierCurveTo(...P(60,30),...P(41,32),...P(34,26));p.bezierCurveTo(...P(27,32),...P(8,30),...P(8,18));p.closePath();}
   else p.roundRect(20,30,280,120,10);
   return p;}
-function drawShell(cv,shape){const x=cv.getContext("2d"),P=shellPath(shape);x.clearRect(0,0,320,180);
+function drawShell(cv,shape,md){const x=cv.getContext("2d"),P=shellPath(shape,md);x.clearRect(0,0,320,180);
   x.save();x.shadowColor="rgba(0,0,0,.45)";x.shadowBlur=18;x.shadowOffsetY=8;x.fillStyle="#cfe9f5";x.fill(P);x.restore();
   x.save();x.clip(P);
   let g=x.createLinearGradient(0,0,320,180);g.addColorStop(0,"#a8d9ee");g.addColorStop(1,"#6fb3d3");x.fillStyle=g;x.fillRect(0,0,320,180);
@@ -885,6 +889,8 @@ function drawShell(cv,shape){const x=cv.getContext("2d"),P=shellPath(shape);x.cl
     const b_=new Path2D();b_.rect(268,30,32,120);step(b_,"#b6e0f1");}
   if(shape===1){[[60,"#bfe4f3"],[44,"#b3dff0"],[28,"#a6d8ec"]].forEach(([r,c])=>{const s_=new Path2D();s_.arc(80,90,r,Math.PI/2,Math.PI*1.5);s_.closePath();step(s_,c);});}
   if(shape===2){[[150,"#bfe4f3"],[134,"#b3dff0"],[118,"#a6d8ec"]].forEach(([y,c])=>{const s_=new Path2D();s_.rect(20,y-16,110,16);step(s_,c);});}
+  if(shape===6){const w=Math.min(290,md.L*26),h=Math.min(150,md.W*26),x0=160-w/2,y0=90-h/2,d=Math.min(70,h*.6);
+    [[d,"#bfe4f3"],[d*.72,"#b3dff0"],[d*.45,"#a6d8ec"]].forEach(([k,c])=>{const s_=new Path2D();s_.moveTo(x0,y0);s_.lineTo(x0+k,y0);s_.lineTo(x0,y0+k*.95);s_.closePath();step(s_,c);});}
   if(shape===3){const s_=new Path2D();s_.rect(85,38,150,26);step(s_,"#b8e1f1");const s2=new Path2D();s2.rect(85,38,40,104);step(s2,"#bfe4f3");}
   if(shape===4){[[50,"#bfe4f3"],[36,"#b3dff0"]].forEach(([r,c])=>{const s_=new Path2D();s_.ellipse(40,90,r*1.25,r,0,-Math.PI/2,Math.PI/2);s_.closePath();step(s_,c);});}
   if(shape===5){[[46,"#bfe4f3"],[32,"#b3dff0"]].forEach(([r,c])=>{const s_=new Path2D();s_.arc(70,90,r,Math.PI*.55,Math.PI*1.45);s_.lineTo(70,90);s_.closePath();step(s_,c);});}
@@ -893,9 +899,9 @@ function drawShell(cv,shape){const x=cv.getContext("2d"),P=shellPath(shape);x.cl
   x.lineWidth=7;x.strokeStyle="#dff3fb";x.stroke(P);x.lineWidth=1.2;x.strokeStyle="rgba(255,255,255,.9)";x.stroke(P);}
 CONFIG.models.forEach((md,i)=>{const b=document.createElement("button"); if(!i)b.className="on";
   b.innerHTML=(md.img?`<img class="smp" src="${md.img}" alt="${md.name}">`:`<canvas class="smp" width="320" height="180"></canvas>`)+`<span class="t">${md.name}</span><span class="m">${md.dims}</span>`;
-  if(!md.img) drawShell(b.querySelector("canvas"),md.shape);
+  if(!md.img) drawShell(b.querySelector("canvas"),md.shape,md);
   b.onclick=()=>{ if(i===st.mcur) return; st.mcur=i; const now_=now(); const cur=(now_-st.sht)>.9?st.sh1:(now_-st.sht>.45?st.sh1:st.sh0);
-    st.sh0=cur; st.sh1=md.shape; st.sht=now_; st.rip=[PW*.5,.5,now_];
+    st.rs0=(now_-st.sht)>.45?st.rs1:st.rs0; st.sh0=cur; st.sh1=md.shape; st.rs1=rsOf(md); st.sht=now_; st.rip=[PW*.5,.5,now_];
     [...mdl.children].forEach(x=>x.classList.remove("on","ping")); b.classList.add("on"); void b.offsetWidth; b.classList.add("ping");
     mname.textContent=md.name+" · "+md.dims; if(navigator.vibrate) navigator.vibrate(10); };
   mdl.appendChild(b);});
@@ -992,7 +998,7 @@ function loop(){
   st.night+=(st.nightT-st.night)*.04; st.lights+=(st.lightsT-st.lights)*.08;
   if(waterOK&&visible){
     const t=now();
-    gl.uniform2f(U.R,cv.width,cv.height); gl.uniform1f(U.T,t); gl.uniform1f(U.NIGHT,st.night); gl.uniform1f(U.LIGHTS,st.lights); gl.uniform1f(U.SH0,st.sh0); gl.uniform1f(U.SH1,st.sh1); gl.uniform1f(U.SHT,st.sht); gl.uniform4fv(U.BB,SHAPE_BB[st.sh1]);
+    gl.uniform2f(U.R,cv.width,cv.height); gl.uniform1f(U.T,t); gl.uniform1f(U.NIGHT,st.night); gl.uniform1f(U.LIGHTS,st.lights); gl.uniform1f(U.SH0,st.sh0); gl.uniform1f(U.SH1,st.sh1); gl.uniform1f(U.SHT,st.sht); gl.uniform4fv(U.BB,bbOf(CONFIG.models[st.mcur])); gl.uniform2fv(U.RS0,st.rs0); gl.uniform2fv(U.RS1,st.rs1);
     gl.uniform3fv(U.A0,st.A0); gl.uniform3fv(U.G0,st.G0); gl.uniform3fv(U.A1,st.A1); gl.uniform3fv(U.G1,st.G1); gl.uniform3fv(U.P0,st.P0); gl.uniform3fv(U.P1,st.P1);
     gl.uniform3fv(U.RIP,st.rip);
     st.drops.forEach((d,i)=>gl.uniform4fv(U["D"+i],d));
