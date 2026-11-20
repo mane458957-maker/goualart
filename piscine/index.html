@@ -71,26 +71,26 @@ button{font:inherit;cursor:pointer}
   .bhud{left:7vw;right:auto;width:36vw}
 }
 
-/* ============ HERO : défilement horizontal des piscines ============ */
-#hero{position:relative;background:#06131c}
-#hero .stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
-.track{position:absolute;top:0;left:0;height:100%;display:flex;will-change:transform}
-.slide{position:relative;width:100vw;height:100%;flex:none;overflow:hidden;background:linear-gradient(160deg,#2b8fa8,#0b3a52 60%,#06131c)}
-.slide .media{position:absolute;inset:-4%;will-change:transform}
-.slide img,.slide video{width:100%;height:100%;object-fit:cover;display:block}
-.slide .media.fail img{display:none}
-.slide:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,14,22,.55) 0%,rgba(4,14,22,0) 30%,rgba(4,14,22,0) 45%,rgba(4,14,22,.8) 100%);pointer-events:none}
-.cap{position:absolute;left:22px;right:22px;bottom:96px;z-index:2;color:#fff}
-.cap .no{font-size:13px;letter-spacing:3px;font-weight:700;opacity:.85}
-.cap h1,.cap h2{font-size:clamp(46px,8.5vw,120px);margin-top:10px;overflow:hidden}
-.cap h1 span,.cap h2 span{display:block;will-change:transform}
-.cap p{margin-top:12px;max-width:440px;font-size:16px;opacity:.85;line-height:1.5}
-.cap .cta{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
-@media(min-width:900px){.cap{left:6vw;bottom:110px}}
-.hud{position:absolute;left:22px;right:22px;bottom:30px;z-index:3;display:flex;align-items:center;gap:16px;color:#fff;font-size:12px;letter-spacing:2px;font-weight:700}
-.hud .bar{flex:1;height:2px;background:rgba(255,255,255,.25);position:relative;overflow:hidden;border-radius:2px}
-.hud .bar b{position:absolute;inset:0;background:#fff;transform-origin:left;transform:scaleX(0)}
-@media(min-width:900px){.hud{left:6vw;right:6vw}}
+/* ============ RÉALISATIONS : cartes empilées au scroll ============ */
+#real{background:var(--navy);color:#fff;padding:100px 0 12vh}
+.real-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:46px}
+.real-head h2{font-size:clamp(36px,5vw,64px);max-width:640px}
+.real-head p{color:rgba(255,255,255,.6);max-width:340px;line-height:1.6}
+.stack{padding:0 12px}
+.card2{position:sticky;height:calc(100vh - 120px);height:calc(100svh - 120px);max-width:1240px;margin:0 auto 5vh;border-radius:28px;overflow:hidden;transform-origin:50% 0;will-change:transform;background:linear-gradient(160deg,#2b8fa8,#0b3a52 60%,#06131c);box-shadow:0 -24px 60px -20px rgba(0,0,0,.6)}
+.card2 .media{position:absolute;inset:-6% 0;will-change:transform}
+.card2 img{width:100%;height:100%;object-fit:cover;display:block}
+.card2 .media.fail img{display:none}
+.card2:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,14,22,.35) 0%,rgba(4,14,22,0) 30%,rgba(4,14,22,0) 45%,rgba(4,14,22,.85) 100%)}
+.card2 .dim{position:absolute;inset:0;z-index:3;background:#04101a;opacity:0;pointer-events:none}
+.card2 .info{position:absolute;left:22px;right:22px;bottom:24px;z-index:2}
+.card2 .no{font-size:12px;letter-spacing:3px;font-weight:700;opacity:.8}
+.card2 h3{font-size:clamp(40px,7vw,96px);margin:8px 0 6px}
+.card2 .place{opacity:.85;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chips span{font-size:12px;font-weight:700;padding:8px 12px;border-radius:99px;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18)}
+.card2 .tag{position:absolute;top:20px;right:20px;z-index:2;font-size:11px;letter-spacing:2px;font-weight:700;text-transform:uppercase;padding:8px 12px;border-radius:99px;background:rgba(0,0,0,.3);backdrop-filter:blur(8px)}
+@media(min-width:900px){.card2{height:calc(100vh - 160px)}.card2 .info{left:44px;bottom:40px;right:auto;max-width:60%}.stack{padding:0 32px}}
 
 /* ============ CONFIGURATEUR ============ */
 #config{position:relative;background:var(--navy);color:#fff;padding:90px 0 70px;overflow:hidden;transition:background 1.2s}
@@ -154,7 +154,13 @@ button{font:inherit;cursor:pointer}
 .bar2 .result{margin:0}
 .sw{grid-template-columns:repeat(3,1fr)}
 @media(min-width:700px){.sw{grid-template-columns:repeat(6,1fr)}}
-.sw button .chip{height:42px}
+.sw button .smp{display:block;width:100%;aspect-ratio:16/11;border-radius:10px;box-shadow:0 8px 18px -8px rgba(0,0,0,.6)}
+.sw button .t{margin-top:10px;font-size:14px}
+.sw button .m{display:block;font-size:11px;opacity:.55;margin-top:2px}
+.sw button .w{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:11px;opacity:.85}
+.sw button .w i{width:9px;height:9px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.15)}
+.sw button:hover .smp{transform:translateY(-2px)}
+.sw button .smp{transition:transform .3s var(--ease)}
 .dn button{padding:10px 18px;font-size:13px}
 </style>
 <style>
@@ -257,12 +263,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   </div>
 </section>
 
-<!-- ======================= HERO : les piscines défilent ======================= -->
-<section id="hero">
-  <div class="stick">
-    <div class="track" id="track"><!-- slides générées depuis CONFIG.slides --></div>
-    <div class="hud"><span id="cnt">01</span><div class="bar"><b id="bar"></b></div><span id="tot">05</span></div>
+<!-- ======================= RÉALISATIONS : cartes empilées ======================= -->
+<section id="real">
+  <div class="wrap real-head">
+    <div><div class="eyebrow rv">Nos réalisations</div><h2 class="rv">Chaque piscine raconte une maison.</h2></div>
+    <p class="rv">Contemporaine, tropicale, à débordement : quelques projets livrés clé en main ces derniers mois.</p>
   </div>
+  <div class="stack" id="stack"><!-- cartes générées depuis CONFIG.slides --></div>
 </section>
 
 <!-- ======================= CONFIGURATEUR ======================= -->
@@ -328,23 +335,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   </div>
 </section>
 
-<!-- ======================= RÉALISATIONS ======================= -->
-<!-- Remplacer chaque <div class="water"> par style="background-image:url(photos/1.jpg)" sur .ph -->
-<section class="s" id="realisations">
-  <div class="wrap">
-    <div class="eyebrow rv">Réalisations</div>
-    <h2 class="rv">Quelques plongeons récents.</h2>
-    <div class="gallery">
-      <figure class="ph rv"><div class="water"></div><figcaption>Piscine à débordement<small>Villa · Mougins</small></figcaption></figure>
-      <figure class="ph rv"><div class="water" style="--a:#5fd6d0;--b:#127b86"></div><figcaption>Bassin miroir<small>Mas · Grasse</small></figcaption></figure>
-      <figure class="ph rv"><div class="water" style="--a:#7fd0f0;--b:#1d5f9a"></div><figcaption>Couloir de nage<small>Maison · Antibes</small></figcaption></figure>
-      <figure class="ph rv"><div class="water" style="--a:#3fb6c9;--b:#0d4f6e"></div><figcaption>Rénovation complète<small>Villa · Cannes</small></figcaption></figure>
-      <figure class="ph rv"><div class="water" style="--a:#8ee3d9;--b:#1c8a8a"></div><figcaption>Piscine coque 8×4<small>Maison · Nice</small></figcaption></figure>
-      <figure class="ph rv"><div class="water" style="--a:#55c3e8;--b:#164b7a"></div><figcaption>Plage immergée<small>Villa · Saint-Paul</small></figcaption></figure>
-    </div>
-  </div>
-</section>
-
 <!-- ======================= AVIS (à remplacer par les vrais avis du client) ======================= -->
 <section class="s" style="padding-top:0">
   <div class="wrap">
@@ -403,24 +393,24 @@ const CONFIG = {
   // CHANTIER : images extraites de la vidéo (dossier /frames)
   build: { path:"frames/f_", ext:".webp", count:121, pad:3 },
 
-  // HERO : une slide par piscine. "video" (mp4) est prioritaire sur "img" s'il est rempli.
-  // Photos de démo : Pexels (libres de droits). Remplacer par les photos/vidéos du client.
+  // RÉALISATIONS : une carte par projet. Photos de démo Pexels (libres de droits) : remplacer par celles du client.
   slides: [
-    { title:"Contemporaine", sub:"Lignes pures, margelles fines, bassin taillé pour l'architecture de votre maison.", img:"https://images.pexels.com/photos/1488267/pexels-photo-1488267.png?auto=compress&cs=tinysrgb&w=1920", video:"" },
-    { title:"Resort", sub:"L'ambiance d'un hôtel 5 étoiles, chez vous, tous les jours.", img:"https://images.pexels.com/photos/1134175/pexels-photo-1134175.jpeg?auto=compress&cs=tinysrgb&w=1920", video:"" },
-    { title:"Tropicale", sub:"Végétation luxuriante, plage immergée, eau turquoise.", img:"https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=1920", video:"" },
-    { title:"Vue mer", sub:"Le bassin se fond dans l'horizon. Effet débordement garanti.", img:"https://images.pexels.com/photos/3155693/pexels-photo-3155693.jpeg?auto=compress&cs=tinysrgb&w=1920", video:"" },
-    { title:"Signature", sub:"Pièce unique, dessinée sur-mesure avec vous.", img:"https://images.pexels.com/photos/1198838/pexels-photo-1198838.jpeg?auto=compress&cs=tinysrgb&w=1920", video:"" }
+    { title:"Contemporaine", place:"Villa · Mougins", specs:["10 × 4 m","Béton armé","Mosaïque blanche","7 semaines"], img:"https://images.pexels.com/photos/1488267/pexels-photo-1488267.png?auto=compress&cs=tinysrgb&w=1920" },
+    { title:"Resort", place:"Propriété · Saint-Paul-de-Vence", specs:["14 × 5 m","Plage immergée","Grès sable","9 semaines"], img:"https://images.pexels.com/photos/1134175/pexels-photo-1134175.jpeg?auto=compress&cs=tinysrgb&w=1920" },
+    { title:"Tropicale", place:"Maison · Antibes", specs:["9 × 4 m","Forme libre","Mosaïque verre","6 semaines"], img:"https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=1920" },
+    { title:"Vue mer", place:"Villa · Cap d'Antibes", specs:["12 × 4 m","Débordement","Grès anthracite","10 semaines"], img:"https://images.pexels.com/photos/3155693/pexels-photo-3155693.jpeg?auto=compress&cs=tinysrgb&w=1920" },
+    { title:"Signature", place:"Domaine · Grasse", specs:["16 × 6 m","Sur-mesure","Mosaïque noire","12 semaines"], img:"https://images.pexels.com/photos/1198838/pexels-photo-1198838.jpeg?auto=compress&cs=tinysrgb&w=1920" }
   ],
 
   // CONFIGURATEUR : couleur du carrelage -> couleur d'eau obtenue
+  // style : "mosaic" (petits carreaux) ou "large" (grand format effet pierre) ; var = nuances entre carreaux ; hue = mélange de teintes
   tiles: [
-    { name:"Blanc",       water:"Bleu lagon",        tile:"#f1f3f2", joint:"#d3d9d8" },
-    { name:"Sable",       water:"Vert caraïbe",      tile:"#e2cfa8", joint:"#cbb994" },
-    { name:"Gris perle",  water:"Bleu Méditerranée", tile:"#aab3b8", joint:"#8f989d" },
-    { name:"Bleu",        water:"Bleu intense",      tile:"#3d79c2", joint:"#2f5f98" },
-    { name:"Anthracite",  water:"Vert émeraude",     tile:"#4b5458", joint:"#3a4245" },
-    { name:"Noir",        water:"Effet miroir",      tile:"#1d2024", joint:"#2b2f34" }
+    { name:"Blanc",      material:"Mosaïque émaillée",        water:"Bleu lagon",        tile:"#f2f4f3", joint:"#d3dad9", style:"mosaic", var:.08, hue:.05 },
+    { name:"Sable",      material:"Grès cérame effet pierre", water:"Vert caraïbe",      tile:"#dfcba3", joint:"#cdbb94", style:"large",  var:.10, hue:0 },
+    { name:"Gris perle", material:"Mosaïque de verre",        water:"Bleu Méditerranée", tile:"#aab4b9", joint:"#c9d0d3", style:"mosaic", var:.16, hue:.25 },
+    { name:"Bleu",       material:"Mosaïque verre nuancée",   water:"Bleu intense",      tile:"#3b78c3", joint:"#d8e2ea", style:"mosaic", var:.30, hue:.55 },
+    { name:"Anthracite", material:"Grès cérame anthracite",   water:"Vert émeraude",     tile:"#4a5357", joint:"#3c4346", style:"large",  var:.10, hue:0 },
+    { name:"Noir",       material:"Mosaïque noire brillante", water:"Effet miroir",      tile:"#1d2024", joint:"#30353a", style:"mosaic", var:.14, hue:.1 }
   ]
 };
 
@@ -443,35 +433,32 @@ const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
 const ease=t=>1-Math.pow(1-t,3);
 
 /* =====================================================================
-   HERO : défilement horizontal
+   RÉALISATIONS : cartes empilées
    ===================================================================== */
-const hero=document.getElementById("hero"), track=document.getElementById("track");
-const N=CONFIG.slides.length;
-hero.style.height=(N*100+40)+"vh";
-document.getElementById("tot").textContent=String(N).padStart(2,"0");
+const stack=document.getElementById("stack"), nav=document.getElementById("nav"), N=CONFIG.slides.length;
 CONFIG.slides.forEach((s,i)=>{
-  const el=document.createElement("div"); el.className="slide";
-  const media = s.video
-    ? `<video src="${s.video}" autoplay muted loop playsinline poster="${s.img||""}"></video>`
-    : `<img src="${s.img}" alt="Piscine ${s.title}" ${i?'loading="lazy"':''} onerror="this.parentNode.classList.add('fail')">`;
-  const isFirst=i===0;
-  el.innerHTML=`<div class="media">${media}</div>
-    <div class="cap">
-      <div class="no">${String(i+1).padStart(2,"0")} — ${isFirst?"NOS PISCINES":"PISCINE"}</div>
-      <h2><span>${s.title}</span></h2>
-      <p>${s.sub}</p>
-      ${isFirst?`<div class="cta"><a href="#devis" class="btn">Devis gratuit</a><a href="#config" class="btn ghost">Configurer ma piscine</a></div>`:""}
-    </div>`;
-  track.appendChild(el);
+  const el=document.createElement("article"); el.className="card2";
+  el.style.top=`calc(${innerWidth<900?76:110}px + ${i*10}px)`;
+  el.innerHTML=`<div class="media"><img src="${s.img}" alt="Piscine ${s.title}" loading="lazy" onerror="this.parentNode.classList.add('fail')"></div>
+    <div class="tag">${String(i+1).padStart(2,"0")} / ${String(N).padStart(2,"0")}</div>
+    <div class="info"><div class="no">RÉALISATION</div><h3>${s.title}</h3><div class="place">${s.place}</div>
+    <div class="chips">${s.specs.map(x=>`<span>${x}</span>`).join("")}</div></div><div class="dim"></div>`;
+  stack.appendChild(el);
 });
-const slides=[...track.children], cnt=document.getElementById("cnt"), bar=document.getElementById("bar"), nav=document.getElementById("nav");
-let hT=0,hC=0;
-function heroScroll(){
-  const r=hero.getBoundingClientRect();
-  hT=clamp(-r.top/(r.height-innerHeight));
-  nav.classList.toggle("solid", document.getElementById("build").getBoundingClientRect().bottom<innerHeight*.6);
+const cards=[...stack.children];
+function cardsFrame(){
+  const H=innerHeight;
+  cards.forEach((c,i)=>{
+    const r=c.getBoundingClientRect(), img=c.firstElementChild;
+    img.style.transform=`translateY(${clamp((r.top)/H,-1,1)*-5}%)`;
+    const next=cards[i+1]; if(!next) return;
+    const nr=next.getBoundingClientRect(), topStick=parseFloat(getComputedStyle(next).top)||0;
+    const k=clamp(1-(nr.top-topStick)/(H*.85));
+    c.style.transform=`scale(${1-.07*k})`; c.lastElementChild.style.opacity=k*.55;
+  });
 }
-addEventListener("scroll",heroScroll,{passive:true}); heroScroll();
+function navScroll(){ nav.classList.toggle("solid", document.getElementById("build").getBoundingClientRect().bottom<innerHeight*.6); }
+addEventListener("scroll",navScroll,{passive:true}); navScroll();
 
 /* =====================================================================
    CONFIGURATEUR : villa + eau en temps réel (WebGL) dans le bassin
@@ -495,7 +482,7 @@ const toUV=(x,y)=>{const m=HM,w=m[6]*x+m[7]*y+m[8];return[(m[0]*x+m[1]*y+m[2])/w
 const PW=2.0; // le bassin fait 2x plus long que large
 const VS="attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}";
 const FS=`precision highp float;
-uniform vec2 R;uniform float T,NIGHT,LIGHTS;uniform vec3 A0,G0,A1,G1,RIP;uniform vec4 D0,D1,D2,D3;uniform mat3 HM;
+uniform vec2 R;uniform float T,NIGHT,LIGHTS;uniform vec3 A0,G0,A1,G1,P0,P1,RIP;uniform vec4 D0,D1,D2,D3;uniform mat3 HM;
 const float PWV=${PW.toFixed(1)};
 float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 vec2 h2(vec2 p){return fract(sin(vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))))*43758.5453);}
@@ -509,8 +496,15 @@ float H(vec2 p){float t=T*.5;
 float caust(vec2 p,float t){vec2 i=floor(p),f=fract(p);float f1=8.,f2=8.;
  for(int y=-1;y<=1;y++)for(int x=-1;x<=1;x++){vec2 g=vec2(float(x),float(y));vec2 o=h2(i+g);o=.5+.45*sin(t+6.2831*o);vec2 r=g+o-f;float d=dot(r,r);if(d<f1){f2=f1;f1=d;}else if(d<f2)f2=d;}
  return pow(1.-smoothstep(0.,.14,sqrt(f2)-sqrt(f1)),4.);}
-vec3 tiles(vec2 q,vec3 A,vec3 G){vec2 g=q*22.;vec2 id=floor(g),f=fract(g);float m=min(min(f.x,1.-f.x),min(f.y,1.-f.y));
- float jt=1.-smoothstep(.04,.09,m);vec3 c=A*(.88+.22*h(id));c*=.93+.07*smoothstep(0.,.3,m);return mix(c,G,jt);}
+vec3 tiles(vec2 q,vec3 A,vec3 G,vec3 P){bool big=P.x<10.;vec2 g=q*P.x;
+ if(big)g.x+=floor(g.y)*.5; // pose décalée pour le grand format
+ vec2 id=floor(g),f=fract(g);float m=min(min(f.x,1.-f.x),min(f.y,1.-f.y));
+ float jw=big?.018:.06;float jt=1.-smoothstep(jw,jw+.035,m);
+ float r=h(id);vec2 r2=h2(id+7.);
+ vec3 c=A*(1.-P.y*.5+P.y*r)+(r2.x-.5)*P.z*vec3(-.22,.06,.3);
+ if(big){c*=.9+.16*nz(q*26.+id*3.)+.06*nz(q*90.);c=mix(c,c*1.08,smoothstep(.6,.9,nz(q*12.+id)));}
+ c*=.9+.1*smoothstep(0.,big?.06:.22,m);
+ return mix(max(c,0.),G,jt);}
 void main(){
  vec2 q=vec2(gl_FragCoord.x/R.x,1.-gl_FragCoord.y/R.y);
  vec3 w=HM*vec3(q,1.);vec2 uv=w.xy/w.z;
@@ -521,7 +515,7 @@ void main(){
  float wall=.11;bool isW=fp.y<wall;
  vec2 tq=isW?vec2(fp.x,fp.y/wall*.32):vec2(fp.x,.32+(fp.y-wall)/(1.-wall)*.95);
  float a=T-RIP.z,r=length(p-RIP.xy),f=max(a,0.)*.75;float k=1.-smoothstep(f-.03,f+.03,r);
- vec3 tile=mix(tiles(tq,A0,G0),tiles(tq,A1,G1),k);
+ vec3 tile=mix(tiles(tq,A0,G0,P0),tiles(tq,A1,G1,P1),k);
  vec3 col=tile*vec3(.6,.88,.96)+vec3(0.,.085,.15);
  if(isW)col*=.72;
  float c=caust(tq*5.,T*1.1)*.6+caust(tq*8.+3.,T*1.5)*.4;
@@ -561,7 +555,7 @@ if(gl){
     gl.useProgram(pr);
     const b=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,b); gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
     const loc=gl.getAttribLocation(pr,"a"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
-    ["R","T","NIGHT","LIGHTS","A0","G0","A1","G1","RIP","D0","D1","D2","D3","HM"].forEach(k=>U[k]=gl.getUniformLocation(pr,k));
+    ["R","T","NIGHT","LIGHTS","A0","G0","A1","G1","P0","P1","RIP","D0","D1","D2","D3","HM"].forEach(k=>U[k]=gl.getUniformLocation(pr,k));
     // mat3 en colonnes pour GLSL
     gl.uniformMatrix3fv(U.HM,false,[HM[0],HM[3],HM[6],HM[1],HM[4],HM[7],HM[2],HM[5],HM[8]]);
     waterOK=true;
@@ -570,17 +564,46 @@ if(gl){
 function sizeWater(){const s=Math.min(devicePixelRatio||1,1.5);cv.width=cv.clientWidth*s;cv.height=cv.clientHeight*s;if(gl)gl.viewport(0,0,cv.width,cv.height);}
 addEventListener("resize",sizeWater); sizeWater();
 
-const st={cur:0, A0:hex3(CONFIG.tiles[0].tile), G0:hex3(CONFIG.tiles[0].joint), A1:hex3(CONFIG.tiles[0].tile), G1:hex3(CONFIG.tiles[0].joint), rip:[0,0,-99], night:0, nightT:0, lights:0, lightsT:0, drops:[[0,0,-99,0],[0,0,-99,0],[0,0,-99,0],[0,0,-99,0]], di:0};
+const tp=t=>[t.style==='large'?5.:24.,t.var,t.hue];
+const st={cur:0, P0:tp(CONFIG.tiles[0]), P1:tp(CONFIG.tiles[0]), A0:hex3(CONFIG.tiles[0].tile), G0:hex3(CONFIG.tiles[0].joint), A1:hex3(CONFIG.tiles[0].tile), G1:hex3(CONFIG.tiles[0].joint), rip:[0,0,-99], night:0, nightT:0, lights:0, lightsT:0, drops:[[0,0,-99,0],[0,0,-99,0],[0,0,-99,0],[0,0,-99,0]], di:0};
 const now=()=>performance.now()/1000;
 const toP=(cx,cy)=>{const r=cv.getBoundingClientRect();const [u,v]=toUV((cx-r.left)/r.width,(cy-r.top)/r.height);return[u*PW,v]};
 const inPool=(cx,cy)=>{const r=cv.getBoundingClientRect();const [u,v]=toUV((cx-r.left)/r.width,(cy-r.top)/r.height);return u>-.02&&u<1.02&&v>-.02&&v<1.02};
 
 // pastilles
 const sw=document.getElementById("sw"), flip=document.getElementById("flip");
+// échantillon de carrelage dessiné en code (brillance, joints, nuances, partie sous l'eau)
+function drawSample(cv2,t){
+  const x=cv2.getContext("2d"),W=cv2.width,H=cv2.height; let seed=t.name.length*97+7; const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+  const base=hex3(t.tile).map(v=>v*255), big=t.style==="large";
+  x.fillStyle=t.joint; x.fillRect(0,0,W,H);
+  const ts=big?118:30, gap=big?3:4, cols=Math.ceil(W/ts)+1, rows=Math.ceil(H/ts)+1;
+  for(let r=0;r<rows;r++)for(let c=-1;c<cols;c++){
+    const ox=big&&r%2?ts/2:0, px=c*ts+ox+gap/2, py=r*ts+gap/2, s=ts-gap;
+    const k=1-t.var/2+t.var*rnd(), hs=(rnd()-.5)*t.hue;
+    const col=[base[0]*k-60*hs,base[1]*k+15*hs,base[2]*k+75*hs].map(v=>Math.max(0,Math.min(255,v|0)));
+    const g=x.createLinearGradient(px,py,px+s,py+s);
+    g.addColorStop(0,`rgb(${col.map(v=>Math.min(255,v+28))})`); g.addColorStop(.55,`rgb(${col})`); g.addColorStop(1,`rgb(${col.map(v=>v*.82|0)})`);
+    x.fillStyle=g; const rr=big?3:4; x.beginPath(); x.roundRect?x.roundRect(px,py,s,s,rr):x.rect(px,py,s,s); x.fill();
+    if(big){ for(let n=0;n<70;n++){x.fillStyle=`rgba(${rnd()<.5?"255,255,255":"0,0,0"},${rnd()*.07})`;x.beginPath();x.arc(px+rnd()*s,py+rnd()*s,rnd()*7+1,0,7);x.fill();} }
+    x.strokeStyle="rgba(255,255,255,.55)"; x.lineWidth=1.2; x.beginPath(); x.moveTo(px+2,py+s-3); x.lineTo(px+2,py+2); x.lineTo(px+s-3,py+2); x.stroke();
+    x.strokeStyle="rgba(0,0,0,.18)"; x.beginPath(); x.moveTo(px+s-1,py+3); x.lineTo(px+s-1,py+s-1); x.lineTo(px+3,py+s-1); x.stroke();
+    if(!big&&rnd()<.35){x.fillStyle="rgba(255,255,255,.35)";x.beginPath();x.ellipse(px+s*.3,py+s*.28,s*.14,s*.07,-.6,0,7);x.fill();}
+  }
+  // reflet brillant
+  const sh=x.createLinearGradient(0,0,W,H); sh.addColorStop(0,"rgba(255,255,255,0)"); sh.addColorStop(.38,"rgba(255,255,255,.22)"); sh.addColorStop(.46,"rgba(255,255,255,0)"); x.fillStyle=sh; x.fillRect(0,0,W,H);
+  // partie droite sous l'eau
+  x.save(); x.beginPath(); x.moveTo(W*.6,0); for(let y=0;y<=H;y+=8) x.lineTo(W*.6+Math.sin(y*.05)*7,y); x.lineTo(W,H); x.lineTo(W,0); x.closePath(); x.clip();
+  const w=waterHex(t.tile).match(/\d+/g).map(Number); x.fillStyle=`rgba(${w},.62)`; x.fillRect(0,0,W,H);
+  x.strokeStyle="rgba(255,255,255,.35)"; x.lineWidth=2; for(let i=0;i<9;i++){x.beginPath(); for(let X=W*.55;X<W;X+=6){const Y=i*26+12+Math.sin(X*.07+i)*6; X===W*.55?x.moveTo(X,Y):x.lineTo(X,Y);} x.stroke();}
+  x.restore();
+  x.strokeStyle="rgba(255,255,255,.75)"; x.lineWidth=2; x.beginPath(); for(let y=0;y<=H;y+=8) {const X=W*.6+Math.sin(y*.05)*7; y?x.lineTo(X,y):x.moveTo(X,y);} x.stroke();
+}
 const waterHex=(t)=>{const a=hex3(t);const w=[a[0]*.6,a[1]*.88+.085,a[2]*.96+.15].map(v=>Math.round(Math.min(1,v)*255));return`rgb(${w})`};
 CONFIG.tiles.forEach((t,i)=>{
   const b=document.createElement("button"); if(!i) b.className="on";
-  b.innerHTML=`<span class="chip"><i style="background:${t.tile};background-image:linear-gradient(${t.joint} 1px,transparent 1px),linear-gradient(90deg,${t.joint} 1px,transparent 1px)"></i><i style="background:linear-gradient(160deg,${waterHex(t.tile)},rgba(0,0,0,.25)),${waterHex(t.tile)}"></i></span><span class="t">${t.name}</span><span class="w">${t.water}</span>`;
+  b.innerHTML=`<canvas class="smp" width="320" height="220"></canvas><span class="t">${t.name}</span><span class="m">${t.material}</span><span class="w"><i style="background:${waterHex(t.tile)}"></i>${t.water}</span>`;
+  drawSample(b.querySelector("canvas"),t);
   b.onclick=()=>selectTile(i,b);
   sw.appendChild(b);
 });
@@ -591,7 +614,7 @@ function setFlip(txt){
 function selectTile(i,btn){
   if(i===st.cur) return;
   const t=CONFIG.tiles[i]; st.cur=i;
-  st.A0=st.A1; st.G0=st.G1; st.A1=hex3(t.tile); st.G1=hex3(t.joint);
+  st.A0=st.A1; st.G0=st.G1; st.P0=st.P1; st.A1=hex3(t.tile); st.G1=hex3(t.joint); st.P1=tp(t);
   st.rip=[PW*(.3+Math.random()*.4), .35+Math.random()*.3, now()];
   [...sw.children].forEach(b=>b.classList.remove("on","ping")); btn.classList.add("on"); void btn.offsetWidth; btn.classList.add("ping");
   setFlip(t.water);
@@ -686,26 +709,13 @@ let visible=true;
 new IntersectionObserver(es=>visible=es[0].isIntersecting).observe(cv);
 function loop(){
   buildFrame();
-  // hero
-  hC+=(hT-hC)*.085;
-  const vw=innerWidth, prog=hC*(N-1);
-  track.style.transform=`translate3d(${-prog*vw}px,0,0)`;
-  slides.forEach((s,i)=>{
-    const d=prog-i; // -1 .. 0 .. 1
-    const m=s.firstElementChild; m.style.transform=`translate3d(${d*vw*.35}px,0,0) scale(${1.08-.08*clamp(1-Math.abs(d))})`;
-    const sp=s.querySelector(".cap h2 span"), cap=s.querySelector(".cap");
-    const v=clamp(1-Math.abs(d)*1.6);
-    sp.style.transform=`translateY(${(1-ease(v))*105}%)`;
-    cap.style.opacity=v; cap.style.transform=`translateX(${d*-60}px)`;
-  });
-  const idx=Math.min(N-1,Math.round(prog)); cnt.textContent=String(idx+1).padStart(2,"0");
-  bar.style.transform=`scaleX(${hC})`;
+  cardsFrame();
   // eau
   st.night+=(st.nightT-st.night)*.04; st.lights+=(st.lightsT-st.lights)*.08;
   if(waterOK&&visible){
     const t=now();
     gl.uniform2f(U.R,cv.width,cv.height); gl.uniform1f(U.T,t); gl.uniform1f(U.NIGHT,st.night); gl.uniform1f(U.LIGHTS,st.lights);
-    gl.uniform3fv(U.A0,st.A0); gl.uniform3fv(U.G0,st.G0); gl.uniform3fv(U.A1,st.A1); gl.uniform3fv(U.G1,st.G1);
+    gl.uniform3fv(U.A0,st.A0); gl.uniform3fv(U.G0,st.G0); gl.uniform3fv(U.A1,st.A1); gl.uniform3fv(U.G1,st.G1); gl.uniform3fv(U.P0,st.P0); gl.uniform3fv(U.P1,st.P1);
     gl.uniform3fv(U.RIP,st.rip);
     st.drops.forEach((d,i)=>gl.uniform4fv(U["D"+i],d));
     gl.drawArrays(gl.TRIANGLES,0,3);
