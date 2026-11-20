@@ -64,8 +64,6 @@ button{font:inherit;cursor:pointer}
 .loader{position:absolute;right:22px;top:76px;font-size:11px;color:rgba(255,255,255,.7);letter-spacing:1px;transition:opacity .6s}
 #nav .logo{transition:opacity .2s}
 @media(min-width:900px){
-  #bgc{display:block}
-  #fc{left:auto;right:7vw;width:calc(100vh * 9 / 16);box-shadow:0 40px 120px rgba(0,0,0,.6)}
   .blk{padding:0 7vw}
   .blk .txt{max-width:38vw}
   .bhud{left:7vw;right:auto;width:36vw}
@@ -300,7 +298,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <div class="blk step" style="height:130vh"><div class="txt"><div class="k">Étape 01</div><h2>Implantation &amp; terrassement</h2><p>Piquetage au centimètre près, puis on creuse. Accès difficile ? On a les engins adaptés.</p></div></div>
     <div class="blk step" style="height:80vh"><div class="txt"><div class="k">Étape 02</div><h2>Ferraillage &amp; béton</h2><p>Une structure en béton armé, garantie décennale.</p></div></div>
     <div class="blk step" style="height:110vh"><div class="txt"><div class="k">Étape 03</div><h2>Carrelage &amp; margelles</h2><p>Mosaïque et pierre naturelle posées à la main.</p></div></div>
-    <div class="blk step" style="height:90vh"><div class="txt"><div class="k">Étape 04</div><h2>Mise en eau</h2><p>Filtration, chauffage, éclairage : tout est réglé avant de vous rendre les clés.</p></div></div>
+    <div class="blk step" style="height:90vh"><div class="txt"><div class="k">Étape 04</div><h2>Mise en eau</h2><p>Filtration, chauffage, éclairage… et le soir venu, les projecteurs s'allument.</p></div></div>
     <div class="blk final" style="height:130vh"><div class="txt"><div class="k">Le résultat</div><h2>Votre piscine.<br><em>Clé en main.</em></h2><div class="cta"><a href="#devis" class="btn">Devis gratuit</a><a href="#config" class="btn ghost">Choisir mon carrelage</a></div></div></div>
   </div>
 </section>
@@ -443,7 +441,11 @@ const CONFIG = {
   whatsappMsg: "Bonjour, je souhaite un devis pour une piscine.",
 
   // CHANTIER : images extraites de la vidéo (dossier /frames)
-  build: { path:"frames/f_", ext:".webp", count:121, pad:3 },
+  // map = avancement de la vidéo (0→1) au début/fin de chaque étape de texte (terrassement, béton, carrelage, mise en eau)
+  build: {
+    mobile:  { path:"frames/f_",    ext:".webp", count:121, pad:3, map:[0,.317,.512,.78,1] },
+    desktop: { path:"frames-pc/f_", ext:".webp", count:122, pad:3, map:[0,.14,.34,.42,1] }
+  },
 
   // FORMES DE PISCINE : photos génériques (pas les créations du client). Remplacer "img" par vos photos.
   liveWater: false, // true = eau animée sur les photos des formes
@@ -786,7 +788,7 @@ if(!waterOK){cv.style.background="linear-gradient(160deg,#6fd6e6,#1b8fb4)";}
 /* =====================================================================
    CHANTIER : séquence d'images pilotée par le scroll + textes qui défilent
    ===================================================================== */
-const B=CONFIG.build, build=document.getElementById("build"), fc=document.getElementById("fc"), fx=fc.getContext("2d"), bgc=document.getElementById("bgc"), bx=bgc.getContext("2d");
+const B=innerWidth>=900?CONFIG.build.desktop:CONFIG.build.mobile, SB=[0,.317,.512,.78,1], build=document.getElementById("build"), fc=document.getElementById("fc"), fx=fc.getContext("2d"), bgc=document.getElementById("bgc"), bx=bgc.getContext("2d");
 const imgs=new Array(B.count), loaded=new Array(B.count).fill(false); let nLoaded=0;
 const order=[]; [16,8,4,2,1].forEach(st=>{for(let i=0;i<B.count;i+=st) if(!order.includes(i)) order.push(i)}); if(!order.includes(B.count-1)) order.splice(1,0,B.count-1);
 let qi=0; const loaderEl=document.getElementById("loader");
@@ -816,7 +818,8 @@ function buildFrame(){
   ipC+=(ipT-ipC)*.12; fpC+=(fpT-fpC)*.12;
   const e=ease(ipC);
   // image
-  const want=Math.round(fpC*(B.count-1)), f=nearest(want);
+  let vp=1; for(let i=0;i<4;i++){ if(fpC<=SB[i+1]){ vp=B.map[i]+(B.map[i+1]-B.map[i])*(fpC-SB[i])/(SB[i+1]-SB[i]); break; } }
+  const want=Math.round(clamp(vp)*(B.count-1)), f=nearest(want);
   const z=1+.35*(1-e), ay=.18+.32*e;
   const key=f+"|"+z.toFixed(3);
   if(f>=0 && key!==lastKey){ lastKey=key; fx.clearRect(0,0,fc.width,fc.height); cover(fx,imgs[f],fc.width,fc.height,z,ay); if(getComputedStyle(bgc).display!=="none") cover(bx,imgs[f],bgc.width,bgc.height,1,.5); }
