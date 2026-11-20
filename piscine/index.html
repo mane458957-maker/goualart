@@ -434,6 +434,7 @@ const CONFIG = {
   build: { path:"frames/f_", ext:".webp", count:121, pad:3 },
 
   // FORMES DE PISCINE : photos génériques (pas les créations du client). Remplacer "img" par vos photos.
+  liveWater: false, // true = eau animée sur les photos des formes
   slides: [
     // mask = zone d'eau (blanc) animée ; amp = force des ondulations ; glint = reflets du soleil
     { title:"Classique", place:"Rectangulaire, lignes droites, nage confortable.", specs:["Toutes dimensions","Béton ou coque","Meilleur rapport qualité-prix"], img:"formes/classique.webp", mask:"formes/classique-mask.png", amp:1, glint:1 },
@@ -545,7 +546,7 @@ function liveWater(card,s){
   addEventListener("resize",()=>L.ok&&L.size());
   return L;
 }
-const lives=cards.map((c,i)=>liveWater(c,CONFIG.slides[i])).filter(Boolean);
+const lives=CONFIG.liveWater?cards.map((c,i)=>liveWater(c,CONFIG.slides[i])).filter(Boolean):[];
 function livesFrame(){const t=performance.now()/1000;lives.forEach(L=>{if(!L.ok||!L.vis)return;const g=L.g;g.uniform2f(L.u.R,L.c.width,L.c.height);g.uniform1f(L.u.T,t);g.drawArrays(g.TRIANGLES,0,3);});}
 function cardsFrame(){
   const H=innerHeight;
