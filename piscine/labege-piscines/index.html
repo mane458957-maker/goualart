@@ -677,6 +677,7 @@ float shapeSD(float s,vec2 p){
 float isFull(float s){return (s<.5||abs(s-4.)<.5)?1.:0.;}
 float mir(float x){return abs(fract(x*.5)*2.-1.);}
 float cr(vec2 a,vec2 b,vec2 p){return (b.x-a.x)*(p.y-a.y)-(b.y-a.y)*(p.x-a.x);}
+float zoneS(vec2 q){return min(cr(Z1,Z2,q)/length(Z2-Z1),min(cr(Z2,Z3,q)/length(Z3-Z2),cr(Z3,Z0,q)/length(Z0-Z3)));}
 float zoneD(vec2 q){return min(min(cr(Z0,Z1,q)/length(Z1-Z0),cr(Z1,Z2,q)/length(Z2-Z1)),min(cr(Z2,Z3,q)/length(Z3-Z2),cr(Z3,Z0,q)/length(Z0-Z3)));}
 float drop(vec2 p,vec4 d){float a=T-d.z;if(a<0.||a>4.)return 0.;float r=length(p-d.xy),f=a*.5;return d.w*sin((r-f)*45.)*exp(-pow((r-f)*9.,2.))*exp(-a*.9);}
 float H(vec2 p){float t=T*.5;
@@ -755,16 +756,25 @@ void main(){
  vec3 outc=orig;
  float zd=zoneD(q);
  if(zw<.999&&zd>0.){
-  float cw=.055;
-  vec2 gsrc=vec2(.04+.92*mir(p.x*.45+.13+.015*nz(p*2.)),.937+.055*mir(p.y*4.5+.3));
-  vec3 grass=mix(texture2D(TD,gsrc).rgb,texture2D(TN,gsrc).rgb,NIGHT)*(.93+.12*nz(p*9.));
-  grass*=.72+.28*smoothstep(cw,cw+.06,sd);
-  vec2 csrc=vec2(.1+.8*mir(p.x*.6+sd*3.),.893+.022*mir(sd*14.));
-  vec3 cop=mix(texture2D(TD,csrc).rgb,texture2D(TN,csrc).rgb,NIGHT);
-  cop*=.94+.08*smoothstep(0.,.01,sd);
-  cop+=LIGHTS*NIGHT*exp(-max(sd,0.)*25.)*vec3(.02,.2,.24);
-  vec3 gen=mix(mix(col,cop,smoothstep(-.002,.002,sd)),grass,smoothstep(cw-.002,cw+.002,sd));
-  outc=mix(orig,gen,(1.-zw)*smoothstep(0.,.012,zd));
+  float cw=.05;
+  // dallage travertin assorti à la margelle de la photo, jusqu'au contour du bassin
+  vec3 bD=(texture2D(TD,vec2(.3,.905)).rgb+texture2D(TD,vec2(.5,.905)).rgb+texture2D(TD,vec2(.7,.905)).rgb)/3.;
+  vec3 bN=(texture2D(TN,vec2(.3,.905)).rgb+texture2D(TN,vec2(.5,.905)).rgb+texture2D(TN,vec2(.7,.905)).rgb)/3.;
+  vec3 base=mix(bD,bN,NIGHT);
+  vec2 gg=vec2(uv.x*5.,uv.y*2.6);gg.x+=floor(gg.y)*.5;vec2 gid=floor(gg),gf=fract(gg);
+  float jm=min(min(gf.x,1.-gf.x)*1.6,min(gf.y,1.-gf.y));
+  vec2 dsrc=vec2(.1+.8*mir(p.x*.7+h(gid)),.893+.02*mir(p.y*3.+h(gid+3.)));
+  vec3 det=mix(texture2D(TD,dsrc).rgb,texture2D(TN,dsrc).rgb,NIGHT);
+  float dl=dot(det,vec3(.33))/max(dot(base,vec3(.33)),.01);
+  vec3 pav=base*(.95+.09*h(gid))*mix(1.,clamp(dl,.8,1.2),.6)*(.985+.03*nz(uv*240.));
+  pav*=.9+.1*smoothstep(0.,.025,jm);
+  vec3 cop=base*1.05*mix(1.,clamp(dl,.85,1.15),.5);
+  cop*=1.-.12*(1.-smoothstep(0.,.004,abs(sd-cw)));   // joint entre margelle et dallage
+  cop*=.93+.07*smoothstep(0.,.008,sd);               // arête côté eau
+  vec3 deck2=mix(cop,pav,smoothstep(cw-.002,cw+.002,sd));
+  deck2+=LIGHTS*NIGHT*exp(-max(sd,0.)*22.)*vec3(.02,.2,.24);
+  vec3 gen=mix(col,deck2,smoothstep(-.002,.002,sd));
+  outc=mix(orig,gen,(1.-zw)*smoothstep(.003,.014,zoneS(q)));
  }
  col=outc;
  gl_FragColor=vec4(col,1.);}`;
@@ -781,7 +791,7 @@ if(gl){
     gl.uniformMatrix3fv(U.HM,false,[HM[0],HM[3],HM[6],HM[1],HM[4],HM[7],HM[2],HM[5],HM[8]]);
     waterOK=true;
     // textures de la villa + zone de la margelle d'origine (à redessiner pour les petits bassins)
-    const ZONE=[[350,563],[1338,563],[1700,890],[-10,890]];
+    const ZONE=[[380,553],[1309,553],[1642,874],[54,874]];
     ZONE.forEach((z,i)=>gl.uniform2f(U["Z"+i],z[0]/POOL.w,z[1]/POOL.h));
     const loadTex=(src,unit)=>new Promise(res=>{const im=new Image();im.onload=()=>{const t=gl.createTexture();gl.activeTexture(gl.TEXTURE0+unit);gl.bindTexture(gl.TEXTURE_2D,t);
       [gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T].forEach(p=>gl.texParameteri(gl.TEXTURE_2D,p,gl.CLAMP_TO_EDGE));gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
