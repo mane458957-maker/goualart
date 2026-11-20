@@ -92,6 +92,39 @@ button{font:inherit;cursor:pointer}
 .card2 .tag{position:absolute;top:20px;right:20px;z-index:2;font-size:11px;letter-spacing:2px;font-weight:700;text-transform:uppercase;padding:8px 12px;border-radius:99px;background:rgba(0,0,0,.3);backdrop-filter:blur(8px)}
 @media(min-width:900px){.card2{height:calc(100vh - 160px)}.card2 .info{left:44px;bottom:40px;right:auto;max-width:60%}.stack{padding:0 32px}}
 
+/* ============ CRÉATIONS (bento) ============ */
+.bento{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:42vw;gap:12px;margin-top:46px}
+@media(min-width:900px){.bento{grid-template-columns:repeat(4,1fr);grid-auto-rows:240px}.bento .b0{grid-column:span 2;grid-row:span 2}.bento .b3{grid-column:span 2}}
+.bento .b0{grid-column:span 2}
+.bento figure{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;background:#1a8fb0}
+.bento img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.bento .ph2{position:absolute;inset:0;background:radial-gradient(120% 60% at 30% 20%,rgba(255,255,255,.35),transparent 55%),repeating-radial-gradient(circle at 70% 60%,rgba(255,255,255,.12) 0 6px,transparent 6px 22px),linear-gradient(160deg,var(--a,#38c6d9),var(--b,#0f6f96));transition:transform 1.2s var(--ease)}
+.bento figure:hover img,.bento figure:hover .ph2{transform:scale(1.08)}
+.bento figure:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(4,14,22,.7))}
+.bento figcaption{position:absolute;left:16px;bottom:14px;right:16px;color:#fff;z-index:1;font-weight:600;font-size:15px;transform:translateY(6px);transition:transform .5s var(--ease)}
+.bento figcaption small{display:block;opacity:.75;font-weight:500;font-size:12px}
+.bento figure:hover figcaption{transform:none}
+/* ============ AVIS (défilement continu) ============ */
+.rev{overflow:hidden}
+.rev-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:34px}
+.score{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--stone);border-radius:18px;padding:14px 20px}
+.score .big{font-family:"DM Serif Display",serif;font-size:48px;line-height:1;color:var(--navy)}
+.score small{color:var(--muted);font-size:12px}
+.demo-note{max-width:1180px;margin:0 auto 18px;padding:0 22px;font-size:12px;color:var(--muted);font-style:italic}
+.marquee{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);padding:6px 0}
+.row{display:flex;gap:14px;width:max-content;animation:mq 60s linear infinite}
+.row.rev2{animation-duration:75s;animation-direction:reverse}
+.marquee:hover .row{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+.rc{width:320px;flex:none;background:#fff;border:1px solid var(--stone);border-radius:18px;padding:20px;box-shadow:0 14px 30px -24px rgba(11,29,42,.4)}
+.rc .who{display:flex;align-items:center;gap:12px}
+.rc .av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:15px}
+.rc .who b{display:block;font-size:14px}.rc .who small{color:var(--muted);font-size:12px}
+.rc .g{margin-left:auto;font-weight:800;font-size:15px;background:linear-gradient(90deg,#4285f4,#ea4335,#fbbc05,#34a853);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rc .stars{margin:12px 0 8px;font-size:14px}
+.rc p{font-size:14px;line-height:1.55;color:#2b3a44}
+.rc .pj{margin-top:12px;display:inline-block;font-size:11px;font-weight:700;color:var(--aqua);background:rgba(43,179,192,.1);padding:5px 10px;border-radius:99px}
+
 /* ============ CONFIGURATEUR ============ */
 #config{position:relative;background:var(--navy);color:#fff;padding:90px 0 70px;overflow:hidden;transition:background 1.2s}
 #config.night{background:#040b12}
@@ -263,11 +296,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   </div>
 </section>
 
-<!-- ======================= RÉALISATIONS : cartes empilées ======================= -->
+<!-- ======================= FORMES DE PISCINE : cartes empilées ======================= -->
 <section id="real">
   <div class="wrap real-head">
-    <div><div class="eyebrow rv">Nos réalisations</div><h2 class="rv">Chaque piscine raconte une maison.</h2></div>
-    <p class="rv">Contemporaine, tropicale, à débordement : quelques projets livrés clé en main ces derniers mois.</p>
+    <div><div class="eyebrow rv">Formes de piscine</div><h2 class="rv">Une forme pour chaque jardin.</h2></div>
+    <p class="rv">Classique, à débordement, miroir, en bois… Faites défiler pour trouver celle qui vous ressemble.</p>
   </div>
   <div class="stack" id="stack"><!-- cartes générées depuis CONFIG.slides --></div>
 </section>
@@ -335,17 +368,24 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   </div>
 </section>
 
-<!-- ======================= AVIS (à remplacer par les vrais avis du client) ======================= -->
-<section class="s" style="padding-top:0">
+<!-- ======================= CRÉATIONS DU CLIENT ======================= -->
+<section class="s" id="creations">
   <div class="wrap">
-    <div class="eyebrow rv">Avis clients</div>
-    <h2 class="rv">Ils ont plongé.</h2>
-    <div class="quotes">
-      <div class="q rv"><div class="stars">★★★★★</div><p>« Texte de l'avis client n°1 à remplacer. »</p><span>Prénom N. · Ville</span></div>
-      <div class="q rv"><div class="stars">★★★★★</div><p>« Texte de l'avis client n°2 à remplacer. »</p><span>Prénom N. · Ville</span></div>
-      <div class="q rv"><div class="stars">★★★★★</div><p>« Texte de l'avis client n°3 à remplacer. »</p><span>Prénom N. · Ville</span></div>
-    </div>
+    <div class="eyebrow rv">Nos créations</div>
+    <h2 class="rv">Les piscines que nous avons construites.</h2>
+    <div class="bento" id="bento"></div>
   </div>
+</section>
+
+<!-- ======================= AVIS ======================= -->
+<section class="s rev" id="avis">
+  <div class="wrap rev-head">
+    <div><div class="eyebrow rv">Avis clients</div><h2 class="rv">Ils ont plongé.</h2></div>
+    <div class="score rv"><div class="big">4,9</div><div><div class="stars">★★★★★</div><small>Note moyenne · avis Google</small></div></div>
+  </div>
+  <div class="demo-note" id="demoNote">Exemple d'avis : vos vrais avis Google s'afficheront ici</div>
+  <div class="marquee"><div class="row" id="row1"></div></div>
+  <div class="marquee"><div class="row rev2" id="row2"></div></div>
 </section>
 
 <!-- ======================= DEVIS ======================= -->
@@ -393,16 +433,39 @@ const CONFIG = {
   // CHANTIER : images extraites de la vidéo (dossier /frames)
   build: { path:"frames/f_", ext:".webp", count:121, pad:3 },
 
-  // RÉALISATIONS : une carte par projet. Photos de démo Pexels (libres de droits) : remplacer par celles du client.
+  // FORMES DE PISCINE : photos génériques (pas les créations du client). Remplacer "img" par vos photos.
   slides: [
-    { title:"Contemporaine", place:"Villa · Mougins", specs:["10 × 4 m","Béton armé","Mosaïque blanche","7 semaines"], img:"https://images.pexels.com/photos/1488267/pexels-photo-1488267.png?auto=compress&cs=tinysrgb&w=1920" },
-    { title:"Resort", place:"Propriété · Saint-Paul-de-Vence", specs:["14 × 5 m","Plage immergée","Grès sable","9 semaines"], img:"https://images.pexels.com/photos/1134175/pexels-photo-1134175.jpeg?auto=compress&cs=tinysrgb&w=1920" },
-    { title:"Tropicale", place:"Maison · Antibes", specs:["9 × 4 m","Forme libre","Mosaïque verre","6 semaines"], img:"https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=1920" },
-    { title:"Vue mer", place:"Villa · Cap d'Antibes", specs:["12 × 4 m","Débordement","Grès anthracite","10 semaines"], img:"https://images.pexels.com/photos/3155693/pexels-photo-3155693.jpeg?auto=compress&cs=tinysrgb&w=1920" },
-    { title:"Signature", place:"Domaine · Grasse", specs:["16 × 6 m","Sur-mesure","Mosaïque noire","12 semaines"], img:"https://images.pexels.com/photos/1198838/pexels-photo-1198838.jpeg?auto=compress&cs=tinysrgb&w=1920" }
+    { title:"Classique", place:"Rectangulaire, lignes droites, nage confortable.", specs:["Toutes dimensions","Béton ou coque","Meilleur rapport qualité-prix"], img:"https://images.pexels.com/photos/1488267/pexels-photo-1488267.png?auto=compress&cs=tinysrgb&w=1920" },
+    { title:"À débordement", place:"L'eau se fond dans le paysage, effet infini.", specs:["Terrain en pente idéal","Bac tampon","Effet waouh garanti"], img:"https://images.pexels.com/photos/3155693/pexels-photo-3155693.jpeg?auto=compress&cs=tinysrgb&w=1920" },
+    { title:"Miroir", place:"Une lame d'eau au ras des margelles, comme un miroir.", specs:["Débordement sur 4 côtés","Architecture contemporaine","Reflet parfait"], img:"https://images.pexels.com/photos/1134175/pexels-photo-1134175.jpeg?auto=compress&cs=tinysrgb&w=1920" },
+    { title:"Piscine bois", place:"Chaleureuse, naturelle, rapide à installer.", specs:["Hors-sol ou semi-enterrée","Pose en 1 semaine","Budget maîtrisé"], img:"" },
+    { title:"Couloir de nage", place:"Long et étroit, pour nager tous les jours.", specs:["Jardins étroits","Nage à contre-courant","Sport & bien-être"], img:"" },
+    { title:"Naturelle", place:"Plage immergée, végétation, eau turquoise.", specs:["Forme libre","Plage immergée","Ambiance tropicale"], img:"https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=1920" }
   ],
 
-  // CONFIGURATEUR : couleur du carrelage -> couleur d'eau obtenue
+  // CRÉATIONS DU CLIENT : ses propres chantiers (photo + titre + ville). img vide = visuel d'attente.
+  creations: [
+    { title:"Piscine à débordement", place:"Mougins", img:"" },
+    { title:"Bassin miroir", place:"Grasse", img:"" },
+    { title:"Couloir de nage", place:"Antibes", img:"" },
+    { title:"Rénovation complète", place:"Cannes", img:"" },
+    { title:"Piscine coque 8×4", place:"Nice", img:"" },
+    { title:"Plage immergée", place:"Saint-Paul", img:"" }
+  ],
+
+  // AVIS : avis d'EXEMPLE pour la démo. À remplacer par les vrais avis Google du client avant mise en ligne.
+  demoReviews: true,
+  reviews: [
+    { name:"Julien M.", city:"Mougins", project:"Piscine béton 10×4", date:"Septembre", text:"Du premier rendez-vous à la mise en eau, tout a été carré. Le chantier a pris 6 semaines comme annoncé, et l'équipe a laissé le jardin propre." },
+    { name:"Sophie L.", city:"Antibes", project:"Couloir de nage", date:"Août", text:"On avait un jardin très étroit, ils ont trouvé la solution. Le plan 3D nous a vraiment aidés à nous décider." },
+    { name:"Karim B.", city:"Nice", project:"Rénovation", date:"Juillet", text:"Liner, margelles et éclairage refaits. La piscine a 20 ans et on dirait qu'elle est neuve. Très bon suivi photo chaque semaine." },
+    { name:"Claire D.", city:"Grasse", project:"Piscine miroir", date:"Juin", text:"Résultat magnifique, exactement ce qu'on avait imaginé. Les projecteurs le soir, c'est magique." },
+    { name:"Thomas R.", city:"Cannes", project:"Piscine à débordement", date:"Mai", text:"Terrain en pente compliqué, mais aucun souci. Devis clair, pas de mauvaise surprise sur la facture finale." },
+    { name:"Nadia K.", city:"Vence", project:"Piscine coque", date:"Avril", text:"Installée en 3 semaines. Ils nous ont expliqué tout l'entretien à la livraison. Je recommande sans hésiter." },
+    { name:"Marc P.", city:"Saint-Raphaël", project:"Plage immergée", date:"Avril", text:"Les enfants ne sortent plus de l'eau ! Équipe sérieuse, ponctuelle et de bon conseil sur le choix du carrelage." },
+    { name:"Élodie F.", city:"Cagnes-sur-Mer", project:"Entretien annuel", date:"Mars", text:"Contrat d'entretien depuis deux ans, eau toujours parfaite. Réactifs quand la pompe a eu un souci." }
+  ],
+
   // style : "mosaic" (petits carreaux) ou "large" (grand format effet pierre) ; var = nuances entre carreaux ; hue = mélange de teintes
   tiles: [
     { name:"Blanc",      material:"Mosaïque émaillée",        water:"Bleu lagon",        tile:"#f2f4f3", joint:"#d3dad9", style:"mosaic", var:.08, hue:.05 },
@@ -439,9 +502,9 @@ const stack=document.getElementById("stack"), nav=document.getElementById("nav")
 CONFIG.slides.forEach((s,i)=>{
   const el=document.createElement("article"); el.className="card2";
   el.style.top=`calc(${innerWidth<900?76:110}px + ${i*10}px)`;
-  el.innerHTML=`<div class="media"><img src="${s.img}" alt="Piscine ${s.title}" loading="lazy" onerror="this.parentNode.classList.add('fail')"></div>
+  el.innerHTML=`<div class="media">${s.img?`<img src="${s.img}" alt="Piscine ${s.title}" loading="lazy" onerror="this.parentNode.classList.add('fail')">`:""}</div>
     <div class="tag">${String(i+1).padStart(2,"0")} / ${String(N).padStart(2,"0")}</div>
-    <div class="info"><div class="no">RÉALISATION</div><h3>${s.title}</h3><div class="place">${s.place}</div>
+    <div class="info"><div class="no">FORME DE PISCINE</div><h3>${s.title}</h3><div class="place">${s.place}</div>
     <div class="chips">${s.specs.map(x=>`<span>${x}</span>`).join("")}</div></div><div class="dim"></div>`;
   stack.appendChild(el);
 });
@@ -459,6 +522,20 @@ function cardsFrame(){
 }
 function navScroll(){ nav.classList.toggle("solid", document.getElementById("build").getBoundingClientRect().bottom<innerHeight*.6); }
 addEventListener("scroll",navScroll,{passive:true}); navScroll();
+
+/* =====================================================================
+   CRÉATIONS + AVIS
+   ===================================================================== */
+const bento=document.getElementById("bento"), waterGrad=[["#38c6d9","#0f6f96"],["#5fd6d0","#127b86"],["#7fd0f0","#1d5f9a"],["#3fb6c9","#0d4f6e"],["#8ee3d9","#1c8a8a"],["#55c3e8","#164b7a"]];
+CONFIG.creations.forEach((c,i)=>{const f=document.createElement("figure");f.className="rv b"+i;
+  const [a,b]=waterGrad[i%6];
+  f.innerHTML=(c.img?`<img src="${c.img}" alt="${c.title}" loading="lazy">`:`<div class="ph2" style="--a:${a};--b:${b}"></div>`)+`<figcaption>${c.title}<small>${c.place}</small></figcaption>`;
+  bento.appendChild(f);});
+const avCols=["#2bb3c0","#e07a5f","#3d5a80","#81b29a","#b5838d","#f2a541","#6d597a","#457b9d"];
+const revCard=(r,i)=>`<div class="rc"><div class="who"><div class="av" style="background:${avCols[i%8]}">${r.name.split(" ").map(w=>w[0]).join("").slice(0,2)}</div><div><b>${r.name}</b><small>${r.city} · ${r.date}</small></div><span class="g">G</span></div><div class="stars">★★★★★</div><p>${r.text}</p><span class="pj">${r.project}</span></div>`;
+const R=CONFIG.reviews, half=Math.ceil(R.length/2);
+[[R.slice(0,half),"row1"],[R.slice(half),"row2"]].forEach(([list,id],k)=>{const html=list.map((r,i)=>revCard(r,i+k*half)).join("");document.getElementById(id).innerHTML=html+html;});
+document.getElementById("demoNote").style.display=CONFIG.demoReviews?"block":"none";
 
 /* =====================================================================
    CONFIGURATEUR : villa + eau en temps réel (WebGL) dans le bassin
