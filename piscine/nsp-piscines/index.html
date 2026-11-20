@@ -196,6 +196,7 @@ button{font:inherit;cursor:pointer}
 .sw button .w i{width:9px;height:9px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.15)}
 .sw button:hover .smp{transform:translateY(-2px)}
 .sw button .smp{transition:transform .3s var(--ease)}
+.mdl svg.smp{display:block;width:100%;aspect-ratio:16/11;border-radius:10px;box-shadow:0 8px 18px -8px rgba(0,0,0,.6)}
 /* mobile : tout le configurateur tient sur un écran */
 @media(max-width:600px){
   #config{padding:70px 0 40px}
@@ -338,7 +339,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   <div class="glow" id="glow"></div>
   <div class="wrap cfg1">
     <div class="eyebrow rv">Configurateur</div>
-    <h2 class="rv">Choisissez le carrelage.<br>Découvrez la couleur de l'eau.</h2>
+    <h2 class="rv">Choisissez votre modèle et votre carrelage.<br>Voyez le résultat chez vous.</h2>
     <div class="pool rv" id="pool">
       <canvas id="water"></canvas>
       <img class="villa" src="../villa/jour.webp" alt="Villa avec piscine">
@@ -349,7 +350,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <div class="result"><small>Choix du carrelage :</small><span class="flip" id="flip"><span>Blanc</span></span></div>
       <div class="ctrls"><div class="dn" id="dn"><div class="knob" id="knob"></div><button class="on" data-n="0">☀️ Jour</button><button data-n="1">🌙 Nuit</button></div><button class="sw-elec" id="lightBtn" aria-pressed="false" aria-label="Projecteurs"><span class="plate"><span class="slot"><span class="rocker"><i class="on">ON</i><i class="off">OFF</i></span></span></span><span class="cap2">Projecteurs</span></button></div>
     </div>
+    <div class="lbl">Carrelage</div>
     <div class="sw" id="sw"></div>
+    <div class="lbl">Modèle de piscine · <span id="mname" style="opacity:1;color:var(--aqua2);letter-spacing:1px"></span></div>
+    <div class="sw mdl" id="mdl"></div>
   </div>
 </section>
 
@@ -499,6 +503,16 @@ const CONFIG = {
     { name:"Nathalie Thomé", city:"", project:"Robot + remplacement des spots", date:"", text:"Professionnel, ponctuel et efficace.", stars:0, google:false }
   ],
 
+  // MODÈLES : forme dessinée dans la villa. shape : 0 classique, 1 romaine, 2 couloir de nage, 3 mini, 4 plage immergée, 5 forme libre
+  models: [
+    { name:"Classique",       dims:"10 × 5 m",  shape:0 },
+    { name:"Romaine",         dims:"9 × 4,5 m", shape:1 },
+    { name:"Couloir de nage", dims:"12 × 2,5 m",shape:2 },
+    { name:"Mini piscine",    dims:"5 × 3 m",   shape:3 },
+    { name:"Plage immergée",  dims:"10 × 5 m",  shape:4 },
+    { name:"Forme libre",     dims:"9 × 5 m",   shape:5 }
+  ],
+
   // style : "mosaic" (petits carreaux) ou "large" (grand format effet pierre) ; var = nuances entre carreaux ; hue = mélange de teintes
   tiles: [
     { name:"Blanc",      material:"Mosaïque émaillée",        water:"Bleu lagon",        tile:"#f2f4f3", joint:"#d3dad9", style:"mosaic", var:.08, hue:.05 },
@@ -638,11 +652,21 @@ const toUV=(x,y)=>{const m=HM,w=m[6]*x+m[7]*y+m[8];return[(m[0]*x+m[1]*y+m[2])/w
 const PW=2.0; // le bassin fait 2x plus long que large
 const VS="attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}";
 const FS=`precision highp float;
-uniform vec2 R;uniform float T,NIGHT,LIGHTS;uniform vec3 A0,G0,A1,G1,P0,P1,RIP;uniform vec4 D0,D1,D2,D3;uniform mat3 HM;
+uniform vec2 R;uniform float T,NIGHT,LIGHTS;uniform vec3 A0,G0,A1,G1,P0,P1,RIP;uniform vec4 D0,D1,D2,D3,BB;uniform mat3 HM;uniform float SH0,SH1,SHT;
 const float PWV=${PW.toFixed(1)};
 float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 vec2 h2(vec2 p){return fract(sin(vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))))*43758.5453);}
 float nz(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+1.),f.x),f.y);}
+float sdBox(vec2 p,vec2 c,vec2 b){vec2 d=abs(p-c)-b;return length(max(d,0.))+min(max(d.x,d.y),0.);}
+float sdEl(vec2 p,vec2 c,vec2 r){return (length((p-c)/r)-1.)*min(r.x,r.y);}
+float smin(float a,float b,float k){float h=clamp(.5+.5*(b-a)/k,0.,1.);return mix(b,a,h)-k*h*(1.-h);}
+// formes du bassin, en coordonnées du bassin (x 0→2, y 0→1)
+float shapeSD(float s,vec2 p){
+ if(s<.5||abs(s-4.)<.5)return sdBox(p,vec2(1.,.5),vec2(1.,.5));
+ if(s<1.5)return min(sdBox(p,vec2(1.21,.5),vec2(.79,.42)),length(p-vec2(.42,.5))-.42);
+ if(s<2.5)return sdBox(p,vec2(1.,.5),vec2(1.,.17));
+ if(s<3.5)return sdBox(p,vec2(1.,.5),vec2(.42,.33));
+ return smin(sdEl(p,vec2(.62,.52),vec2(.55,.40)),sdEl(p,vec2(1.42,.47),vec2(.55,.44)),.15);}
 float drop(vec2 p,vec4 d){float a=T-d.z;if(a<0.||a>4.)return 0.;float r=length(p-d.xy),f=a*.5;return d.w*sin((r-f)*45.)*exp(-pow((r-f)*9.,2.))*exp(-a*.9);}
 float H(vec2 p){float t=T*.5;
  float v=nz(p*3.+vec2(t,t*.7))*.5+nz(p*6.-vec2(t*1.3,-t))*.25+nz(p*13.+vec2(-t*2.,t*1.6))*.12;
@@ -666,9 +690,11 @@ void main(){
  vec3 w=HM*vec3(q,1.);vec2 uv=w.xy/w.z;
  vec2 p=vec2(uv.x*${PW.toFixed(1)},uv.y);
  float e=.0025;vec2 n=vec2(H(p+vec2(e,0))-H(p-vec2(e,0)),H(p+vec2(0,e))-H(p-vec2(0,e)))/(2.*e);
+ float mo=smoothstep(0.,.9,T-SHT);float sd=mix(shapeSD(SH0,p),shapeSD(SH1,p),mo);float sh=mo<.5?SH0:SH1;
+ float m=1.-smoothstep(-.003,.003,sd);bool full=sh<.5||abs(sh-4.)<.5;
  vec2 fp=p+n*.008;
  // paroi du fond visible (on regarde par-dessus la paroi avant)
- float wall=.11;bool isW=fp.y<wall;
+ float wall=.11;bool isW=full&&fp.y<wall;
  vec2 tq=isW?vec2(fp.x,fp.y/wall*.32):vec2(fp.x,.32+(fp.y-wall)/(1.-wall)*.95);
  float a=T-RIP.z,r=length(p-RIP.xy),f=max(a,0.)*.75;float k=1.-smoothstep(f-.03,f+.03,r);
  vec3 tile=mix(tiles(tq,A0,G0,P0),tiles(tq,A1,G1,P1),k);
@@ -677,17 +703,24 @@ void main(){
  float c=caust(tq*5.,T*1.1)*.6+caust(tq*8.+3.,T*1.5)*.4;
  float day=1.-NIGHT;
  col+=c*vec3(1.,1.,.94)*.2*day*(.45+.55*dot(tile,vec3(.33)))*(isW?.4:1.);
+ // marches romaines / plage immergée : zones peu profondes plus claires
+ float sf=0.,stepL=0.;
+ if(abs(sh-1.)<.5&&p.x<.42){float d=length(p-vec2(.42,.5));sf=d>.30?1.:(d>.18?.66:.33);stepL=(1.-smoothstep(0.,.006,abs(d-.30)))+(1.-smoothstep(0.,.006,abs(d-.18)));}
+ if(abs(sh-4.)<.5){sf=smoothstep(1.45,1.62,p.x);stepL=1.-smoothstep(0.,.006,abs(p.x-1.5));}
+ vec3 shallow=abs(sh-4.)<.5?vec3(.80,.93,.90):tile*vec3(.86,.97,1.)+vec3(.02,.07,.09);col=mix(col,shallow,sf*.7);col+=stepL*.12*vec3(1.,1.,.95);
  col*=mix(1.,.06,NIGHT);
  // 4 projecteurs : 2 de chaque côté
  vec3 lit=vec3(0.);
  // éclairage doux : remplissage homogène + halo léger autour de chaque projecteur + petite lentille
  float halo=0.,lens=0.;
  for(int i=0;i<6;i++){vec2 L;
-  if(i==0)L=vec2(0.,.55);else if(i==1)L=vec2(PWV,.55);
-  else if(i==2)L=vec2(PWV*.33,.05);else if(i==3)L=vec2(PWV*.67,.05);
-  else if(i==4)L=vec2(PWV*.33,.97);else L=vec2(PWV*.67,.97);
+  float lx=BB.y-BB.x,my=(BB.z+BB.w)*.5;
+  if(i==0)L=vec2(BB.x+.02,my);else if(i==1)L=vec2(BB.y-.02,my);
+  else if(i==2)L=vec2(BB.x+lx*.33,BB.z+.05);else if(i==3)L=vec2(BB.x+lx*.67,BB.z+.05);
+  else if(i==4)L=vec2(BB.x+lx*.33,BB.w-.03);else L=vec2(BB.x+lx*.67,BB.w-.03);
   vec2 d=(p-L)*vec2(1.,1.3);float dd=dot(d,d);
   halo+=exp(-dd*10.);lens+=exp(-dd*500.);}
+ halo*=m;lens*=m;
  vec3 tint=vec3(.3,.85,1.);
  vec3 light=tile*tint*(.22+1.1*halo)+vec3(0.,.07,.11)*(1.+2.5*halo)+c*.08*tint*halo;
  light=1.-exp(-light*1.5);                 // pas de zones brûlées
@@ -701,7 +734,14 @@ void main(){
  col=mix(col,mix(vec3(.85,.88,.85),vec3(.06,.09,.2),NIGHT),fres);
  col+=NIGHT*vec3(1.,.7,.35)*.22*exp(-pow(p.y*5.,2.))*(.6+.4*nz(vec2(p.x*8.,T)));  // reflet des lumières de la maison
  // ombre portée des parois
- float ed=min(min(uv.x,1.-uv.x)*${PW.toFixed(1)},min(uv.y,1.-uv.y));col*=.62+.38*smoothstep(0.,.07,ed);
+ col*=.62+.38*smoothstep(0.,.07,-sd);
+ // plage en travertin autour des bassins plus petits que la margelle
+ vec2 g=vec2(uv.x*7.,uv.y*4.);g.x+=floor(g.y)*.5;vec2 gf=fract(g);float jm=min(min(gf.x,1.-gf.x),min(gf.y,1.-gf.y));
+ vec3 deck=mix(vec3(.90,.76,.62),vec3(.30,.23,.19),NIGHT)*(.92+.12*nz(uv*60.+floor(g)*7.)+.04*nz(uv*300.));
+ deck*=.93+.07*smoothstep(0.,.03,jm);
+ float rim=1.-smoothstep(.0,.045,sd);deck=mix(deck,deck*1.08+vec3(.02),rim);deck*=1.-.25*smoothstep(.045,.0,abs(sd-.045))*(1.-NIGHT*.5);
+ deck+=LIGHTS*NIGHT*exp(-max(sd,0.)*28.)*vec3(.02,.22,.26);
+ col=mix(deck,col,m);
  gl_FragColor=vec4(pow(max(col,0.),vec3(.96)),1.);}`;
 let U={}, waterOK=false;
 if(gl){
@@ -711,7 +751,7 @@ if(gl){
     gl.useProgram(pr);
     const b=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,b); gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
     const loc=gl.getAttribLocation(pr,"a"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
-    ["R","T","NIGHT","LIGHTS","A0","G0","A1","G1","P0","P1","RIP","D0","D1","D2","D3","HM"].forEach(k=>U[k]=gl.getUniformLocation(pr,k));
+    ["R","T","NIGHT","LIGHTS","SH0","SH1","SHT","BB","A0","G0","A1","G1","P0","P1","RIP","D0","D1","D2","D3","HM"].forEach(k=>U[k]=gl.getUniformLocation(pr,k));
     // mat3 en colonnes pour GLSL
     gl.uniformMatrix3fv(U.HM,false,[HM[0],HM[3],HM[6],HM[1],HM[4],HM[7],HM[2],HM[5],HM[8]]);
     waterOK=true;
@@ -721,7 +761,8 @@ function sizeWater(){const s=Math.min(devicePixelRatio||1,1.5);cv.width=cv.clien
 addEventListener("resize",sizeWater); sizeWater();
 
 const tp=t=>[t.style==='large'?5.:24.,t.var,t.hue];
-const st={cur:0, P0:tp(CONFIG.tiles[0]), P1:tp(CONFIG.tiles[0]), A0:hex3(CONFIG.tiles[0].tile), G0:hex3(CONFIG.tiles[0].joint), A1:hex3(CONFIG.tiles[0].tile), G1:hex3(CONFIG.tiles[0].joint), rip:[0,0,-99], night:0, nightT:0, lights:0, lightsT:0, drops:[[0,0,-99,0],[0,0,-99,0],[0,0,-99,0],[0,0,-99,0]], di:0};
+const SHAPE_BB=[[0,2,0,1],[0,2,.08,.92],[0,2,.33,.67],[.58,1.42,.17,.83],[0,2,0,1],[.07,1.97,.08,.92]];
+const st={sh0:CONFIG.models[0].shape, sh1:CONFIG.models[0].shape, sht:-99, mcur:0, cur:0, P0:tp(CONFIG.tiles[0]), P1:tp(CONFIG.tiles[0]), A0:hex3(CONFIG.tiles[0].tile), G0:hex3(CONFIG.tiles[0].joint), A1:hex3(CONFIG.tiles[0].tile), G1:hex3(CONFIG.tiles[0].joint), rip:[0,0,-99], night:0, nightT:0, lights:0, lightsT:0, drops:[[0,0,-99,0],[0,0,-99,0],[0,0,-99,0],[0,0,-99,0]], di:0};
 const now=()=>performance.now()/1000;
 const toP=(cx,cy)=>{const r=cv.getBoundingClientRect();const [u,v]=toUV((cx-r.left)/r.width,(cy-r.top)/r.height);return[u*PW,v]};
 const inPool=(cx,cy)=>{const r=cv.getBoundingClientRect();const [u,v]=toUV((cx-r.left)/r.width,(cy-r.top)/r.height);return u>-.02&&u<1.02&&v>-.02&&v<1.02};
@@ -779,6 +820,18 @@ function selectTile(i,btn){
 }
 document.getElementById("glow").style.background=waterHex(CONFIG.tiles[0].tile);
 setTimeout(()=>{flip.querySelector("span").textContent=CONFIG.tiles[0].name},0);
+
+// modèles de piscine
+const mdl=document.getElementById("mdl"), mname=document.getElementById("mname");
+const ICON=["<rect x='4' y='4' width='56' height='28' rx='1'/>","<path d='M14 4H60V32H14A14 14 0 0 1 14 4Z'/>","<rect x='4' y='12' width='56' height='12' rx='1'/>","<rect x='19' y='8' width='26' height='20' rx='1'/>","<rect x='4' y='4' width='56' height='28' rx='1'/><rect x='46' y='4' width='14' height='28' fill='#9fe6ea'/>","<path d='M8 18C8 6 27 4 34 10C41 4 60 6 60 18C60 30 41 32 34 26C27 32 8 30 8 18Z'/>"];
+CONFIG.models.forEach((md,i)=>{const b=document.createElement("button"); if(!i)b.className="on";
+  b.innerHTML=`<svg class="smp" viewBox="0 0 64 36"><defs><linearGradient id="wg${i}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7fe0e8"/><stop offset="1" stop-color="#1f8fb5"/></linearGradient></defs><rect width="64" height="36" fill="#dccab0"/><g fill="url(#wg${i})">${ICON[md.shape]}</g></svg><span class="t">${md.name}</span><span class="m">${md.dims}</span>`;
+  b.onclick=()=>{ if(i===st.mcur) return; st.mcur=i; const now_=now(); const cur=(now_-st.sht)>.9?st.sh1:(now_-st.sht>.45?st.sh1:st.sh0);
+    st.sh0=cur; st.sh1=md.shape; st.sht=now_; st.rip=[PW*.5,.5,now_];
+    [...mdl.children].forEach(x=>x.classList.remove("on","ping")); b.classList.add("on"); void b.offsetWidth; b.classList.add("ping");
+    mname.textContent=md.name+" · "+md.dims; if(navigator.vibrate) navigator.vibrate(10); };
+  mdl.appendChild(b);});
+mname.textContent=CONFIG.models[0].name+" · "+CONFIG.models[0].dims;
 
 // jour / nuit
 const dn=document.getElementById("dn"), knob=document.getElementById("knob"), dnb=[...dn.querySelectorAll("button")], vNuit=document.getElementById("vNuit");
@@ -871,7 +924,7 @@ function loop(){
   st.night+=(st.nightT-st.night)*.04; st.lights+=(st.lightsT-st.lights)*.08;
   if(waterOK&&visible){
     const t=now();
-    gl.uniform2f(U.R,cv.width,cv.height); gl.uniform1f(U.T,t); gl.uniform1f(U.NIGHT,st.night); gl.uniform1f(U.LIGHTS,st.lights);
+    gl.uniform2f(U.R,cv.width,cv.height); gl.uniform1f(U.T,t); gl.uniform1f(U.NIGHT,st.night); gl.uniform1f(U.LIGHTS,st.lights); gl.uniform1f(U.SH0,st.sh0); gl.uniform1f(U.SH1,st.sh1); gl.uniform1f(U.SHT,st.sht); gl.uniform4fv(U.BB,SHAPE_BB[st.sh1]);
     gl.uniform3fv(U.A0,st.A0); gl.uniform3fv(U.G0,st.G0); gl.uniform3fv(U.A1,st.A1); gl.uniform3fv(U.G1,st.G1); gl.uniform3fv(U.P0,st.P0); gl.uniform3fv(U.P1,st.P1);
     gl.uniform3fv(U.RIP,st.rip);
     st.drops.forEach((d,i)=>gl.uniform4fv(U["D"+i],d));
