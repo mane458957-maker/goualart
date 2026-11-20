@@ -538,6 +538,7 @@ document.querySelectorAll("[data-c]").forEach(el=>{
   const k=el.dataset.c, v=CONFIG[k]; if(v==null) return;
   if(k==="logoHtml") el.innerHTML=v; else el.textContent=v;
 });
+if(!CONFIG.email) document.querySelectorAll('[data-c="email"]').forEach(el=>el.parentElement.remove());
 document.querySelectorAll("[data-href]").forEach(el=>{
   el.href = el.dataset.href==="tel" ? "tel:"+CONFIG.phone.replace(/\s/g,"") : "mailto:"+CONFIG.email;
 });
@@ -545,6 +546,7 @@ document.getElementById("y").textContent=new Date().getFullYear();
 document.getElementById("form").addEventListener("submit",e=>{
   e.preventDefault(); const f=new FormData(e.target);
   const body=[...f.entries()].map(([k,v])=>k+" : "+v).join("\n");
+  if(!CONFIG.email){ location.href="tel:"+CONFIG.phone.replace(/\s/g,""); return; }
   location.href="mailto:"+CONFIG.email+"?subject="+encodeURIComponent("Demande de devis piscine")+"&body="+encodeURIComponent(body);
 });
 
