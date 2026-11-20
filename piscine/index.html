@@ -610,9 +610,13 @@ CONFIG.creations.forEach((c,i)=>{const f=document.createElement("figure");f.clas
   f.innerHTML=(c.img?`<img src="${c.img}" alt="${c.title}" loading="lazy">`:`<div class="ph2" style="--a:${a};--b:${b}"></div>`)+(c.title||c.place?`<figcaption>${c.title||""}${c.place?`<small>${c.place}</small>`:""}</figcaption>`:"");
   bento.appendChild(f);});
 const avCols=["#2bb3c0","#e07a5f","#3d5a80","#81b29a","#b5838d","#f2a541","#6d597a","#457b9d"];
-const revCard=(r,i)=>`<div class="rc"><div class="who"><div class="av" style="background:${avCols[i%8]}">${r.name.split(" ").map(w=>w[0]).join("").slice(0,2)}</div><div><b>${r.name}</b><small>${[r.city,r.date].filter(Boolean).join(" · ")}</small></div><span class="g">G</span></div><div class="stars">★★★★★</div><p>${r.text}</p><span class="pj">${r.project}</span></div>`;
+const revCard=(r,i)=>`<div class="rc"><div class="who"><div class="av" style="background:${avCols[i%8]}">${r.name.split(" ").map(w=>w[0]).join("").slice(0,2)}</div><div><b>${r.name}</b><small>${[r.city,r.date].filter(Boolean).join(" · ")}</small></div>${r.google===false?"":`<span class="g">G</span>`}</div>${r.stars===0?"<div style=\"height:12px\"></div>":`<div class="stars">★★★★★</div>`}<p>${r.text}</p><span class="pj">${r.project}</span></div>`;
 const R=CONFIG.reviews, half=Math.ceil(R.length/2);
-[[R.slice(0,half),"row1"],[R.slice(half),"row2"]].forEach(([list,id],k)=>{const html=list.map((r,i)=>revCard(r,i+k*half)).join("");document.getElementById(id).innerHTML=html+html;});
+if(R.length<6){ // peu d'avis : grille fixe au lieu du défilement
+  const r1=document.getElementById("row1"); r1.innerHTML=R.map(revCard).join(""); r1.style.cssText="animation:none;width:auto;flex-wrap:wrap;justify-content:center;padding:0 22px";
+  r1.parentElement.style.cssText="-webkit-mask:none;mask:none"; document.getElementById("row2").parentElement.style.display="none";
+} else [[R.slice(0,half),"row1"],[R.slice(half),"row2"]].forEach(([list,id],k)=>{const html=list.map((r,i)=>revCard(r,i+k*half)).join("");document.getElementById(id).innerHTML=html+html;});
+if(!CONFIG.demoReviews&&!CONFIG.score) document.querySelector(".score").style.display="none";
 if(CONFIG.score){document.getElementById("scoreN").textContent=CONFIG.score.note;document.getElementById("scoreT").textContent=CONFIG.score.label;}
 document.getElementById("demoNote").style.display=CONFIG.demoReviews?"block":"none";
 
