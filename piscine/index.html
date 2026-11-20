@@ -285,7 +285,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <div class="tap" id="tapHint">Touchez l'eau</div>
     </div>
     <div class="bar2">
-      <div class="result"><small>Couleur d'eau :</small><span class="flip" id="flip"><span>Bleu lagon</span></span></div>
+      <div class="result"><small>Choix du carrelage :</small><span class="flip" id="flip"><span>Blanc</span></span></div>
       <div class="ctrls"><div class="dn" id="dn"><div class="knob" id="knob"></div><button class="on" data-n="0">☀️ Jour</button><button data-n="1">🌙 Nuit</button></div><button class="sw-elec" id="lightBtn" aria-pressed="false" aria-label="Projecteurs"><span class="plate"><span class="slot"><span class="rocker"><i class="on">ON</i><i class="off">OFF</i></span></span></span><span class="cap2">Projecteurs</span></button></div>
     </div>
     <div class="sw" id="sw"></div>
@@ -617,12 +617,12 @@ function selectTile(i,btn){
   st.A0=st.A1; st.G0=st.G1; st.P0=st.P1; st.A1=hex3(t.tile); st.G1=hex3(t.joint); st.P1=tp(t);
   st.rip=[PW*(.3+Math.random()*.4), .35+Math.random()*.3, now()];
   [...sw.children].forEach(b=>b.classList.remove("on","ping")); btn.classList.add("on"); void btn.offsetWidth; btn.classList.add("ping");
-  setFlip(t.water);
+  setFlip(t.name);
   document.getElementById("glow").style.background=waterHex(t.tile);
   if(navigator.vibrate) navigator.vibrate(10);
 }
 document.getElementById("glow").style.background=waterHex(CONFIG.tiles[0].tile);
-setTimeout(()=>{flip.querySelector("span").textContent=CONFIG.tiles[0].water},0);
+setTimeout(()=>{flip.querySelector("span").textContent=CONFIG.tiles[0].name},0);
 
 // jour / nuit
 const dn=document.getElementById("dn"), knob=document.getElementById("knob"), dnb=[...dn.querySelectorAll("button")], vNuit=document.getElementById("vNuit");
