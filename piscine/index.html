@@ -407,7 +407,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <section class="s rev" id="avis">
   <div class="wrap rev-head">
     <div><div class="eyebrow rv">Avis clients</div><h2 class="rv">Ils ont plongé.</h2></div>
-    <div class="score rv"><div class="big">4,9</div><div><div class="stars">★★★★★</div><small>Note moyenne · avis Google</small></div></div>
+    <div class="score rv"><div class="big" id="scoreN">4,9</div><div><div class="stars">★★★★★</div><small id="scoreT">Note moyenne · avis Google</small></div></div>
   </div>
   <div class="demo-note" id="demoNote">Exemple d'avis : vos vrais avis Google s'afficheront ici</div>
   <div class="marquee"><div class="row" id="row1"></div></div>
@@ -604,14 +604,16 @@ addEventListener("scroll",navScroll,{passive:true}); navScroll();
    CRÉATIONS + AVIS
    ===================================================================== */
 const bento=document.getElementById("bento"), waterGrad=[["#38c6d9","#0f6f96"],["#5fd6d0","#127b86"],["#7fd0f0","#1d5f9a"],["#3fb6c9","#0d4f6e"],["#8ee3d9","#1c8a8a"],["#55c3e8","#164b7a"]];
+if(!CONFIG.creations.length) document.getElementById("creations").style.display="none";
 CONFIG.creations.forEach((c,i)=>{const f=document.createElement("figure");f.className="rv b"+i;
   const [a,b]=waterGrad[i%6];
   f.innerHTML=(c.img?`<img src="${c.img}" alt="${c.title}" loading="lazy">`:`<div class="ph2" style="--a:${a};--b:${b}"></div>`)+(c.title||c.place?`<figcaption>${c.title||""}${c.place?`<small>${c.place}</small>`:""}</figcaption>`:"");
   bento.appendChild(f);});
 const avCols=["#2bb3c0","#e07a5f","#3d5a80","#81b29a","#b5838d","#f2a541","#6d597a","#457b9d"];
-const revCard=(r,i)=>`<div class="rc"><div class="who"><div class="av" style="background:${avCols[i%8]}">${r.name.split(" ").map(w=>w[0]).join("").slice(0,2)}</div><div><b>${r.name}</b><small>${r.city} · ${r.date}</small></div><span class="g">G</span></div><div class="stars">★★★★★</div><p>${r.text}</p><span class="pj">${r.project}</span></div>`;
+const revCard=(r,i)=>`<div class="rc"><div class="who"><div class="av" style="background:${avCols[i%8]}">${r.name.split(" ").map(w=>w[0]).join("").slice(0,2)}</div><div><b>${r.name}</b><small>${[r.city,r.date].filter(Boolean).join(" · ")}</small></div><span class="g">G</span></div><div class="stars">★★★★★</div><p>${r.text}</p><span class="pj">${r.project}</span></div>`;
 const R=CONFIG.reviews, half=Math.ceil(R.length/2);
 [[R.slice(0,half),"row1"],[R.slice(half),"row2"]].forEach(([list,id],k)=>{const html=list.map((r,i)=>revCard(r,i+k*half)).join("");document.getElementById(id).innerHTML=html+html;});
+if(CONFIG.score){document.getElementById("scoreN").textContent=CONFIG.score.note;document.getElementById("scoreT").textContent=CONFIG.score.label;}
 document.getElementById("demoNote").style.display=CONFIG.demoReviews?"block":"none";
 
 /* =====================================================================
