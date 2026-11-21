@@ -96,6 +96,7 @@ button{font:inherit;cursor:pointer}
 .bento{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:42vw;gap:12px;margin-top:46px}
 @media(min-width:900px){.bento{grid-template-columns:repeat(4,1fr);grid-auto-rows:240px}.bento .b0{grid-column:span 2;grid-row:span 2}.bento .b3{grid-column:span 2}}
 .bento .b0{grid-column:span 2}
+.bigLogo{font-size:clamp(44px,10vw,130px)!important;white-space:nowrap}
 @media(min-width:900px){.bento .b4,.bento .b5{grid-column:span 2}}
 @media(max-width:899px){.bento .b5{grid-column:span 2}}
 @media(max-width:899px){.bento .b7{grid-column:span 2}}
@@ -455,7 +456,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
    ===================================================================== */
 const CONFIG = {
   name: "Azur Pool Concept",
-  logoHtml: '<img src="https://azurpoolconcept.com/wp-content/uploads/elementor/thumbs/logo-azur-pool-blanc-rnc8m5thh1mybsx5hgi0nrpiwo5fxqf3za3f9cukua.png" alt="Azur Pool Concept">',
+  logoHtml: "Azur Pool <span>Concept</span>",
   city: "Saint-Tropez",
   since: "2009",
   zone: "le golfe de Saint-Tropez",
