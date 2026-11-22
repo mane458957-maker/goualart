@@ -37,7 +37,10 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .i-sin{background:linear-gradient(145deg,#ffffff,#e9ecef)}
 .i-serv{background:linear-gradient(145deg,#1e2d3b,#0b1620)}
 .i-mail{background:linear-gradient(145deg,#59c3ff,#1666d8)}
-.i-wa{background:linear-gradient(145deg,#5ff08a,#16a34a)}
+.i-wa{background:linear-gradient(160deg,#3fd34a,#22a52a)}
+.ic img{width:66%;height:66%;position:relative;z-index:1;object-fit:contain}
+.i-yt{background:linear-gradient(160deg,#ff3b3b,#c80d0d)}
+.i-tt{background:linear-gradient(160deg,#1c1c22,#000)}
 .i-me{background:linear-gradient(145deg,#c9b6ff,#6d4bd8)}
 .i-lang{background:linear-gradient(145deg,#ff8aa8,#d9365f)}
 .i-video{background:linear-gradient(145deg,#ff6b5b,#a3122f)}
@@ -109,7 +112,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .contact p{color:var(--mut);font-size:14.5px;margin:6px 0 20px}
 .contact .row{justify-content:center}
 .contact .nums{margin-top:18px;color:var(--mut);font-size:13.5px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
-.toast{position:absolute;top:44px;right:14px;width:320px;background:rgba(250,251,252,.92);backdrop-filter:blur(20px);color:var(--ink);border-radius:14px;padding:12px 14px;display:flex;gap:12px;align-items:center;box-shadow:0 20px 50px -18px rgba(0,0,0,.55);z-index:600;transform:translateX(120%);transition:transform .5s cubic-bezier(.2,.8,.3,1.1);cursor:pointer}
+.toast{position:absolute;bottom:110px;right:14px;width:320px;background:rgba(250,251,252,.92);backdrop-filter:blur(20px);color:var(--ink);border-radius:14px;padding:12px 14px;display:flex;gap:12px;align-items:center;box-shadow:0 20px 50px -18px rgba(0,0,0,.55);z-index:600;transform:translateX(120%);transition:transform .5s cubic-bezier(.2,.8,.3,1.1);cursor:pointer}
 .toast.show{transform:none}
 .toast .ic{width:38px;height:38px;border-radius:10px;flex:none}
 .toast b{font-size:13px;display:block}.toast span{font-size:12.5px;color:var(--mut)}
@@ -161,6 +164,28 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .sheet .sc{overflow:hidden}
 .sheet .sh a{font-size:13px;font-weight:600;color:#167f8a;margin-left:auto}
 .sheet .sh button{margin-left:10px}
+
+/* ---------- météo + humour ---------- */
+.bar .wx{display:flex;align-items:center;gap:5px}.bar .wx svg{width:15px;height:15px}
+.meteo{position:absolute;top:46px;right:18px;width:300px;padding:16px 18px;border-radius:20px;background:rgba(255,255,255,.13);backdrop-filter:blur(24px) saturate(170%);-webkit-backdrop-filter:blur(24px) saturate(170%);border:1px solid rgba(255,255,255,.2);box-shadow:0 20px 50px -20px rgba(0,0,0,.5);z-index:3}
+.meteo .top{display:flex;justify-content:space-between;align-items:flex-start}
+.meteo .city{font-size:13px;font-weight:600;opacity:.9}
+.meteo .deg{font-size:46px;font-weight:200;letter-spacing:-2px;line-height:1.05}
+.meteo .cond{font-size:12.5px;opacity:.85}
+.meteo .wic svg{width:52px;height:52px}
+.meteo .vs{margin-top:12px;padding-top:11px;border-top:1px solid rgba(255,255,255,.18);font-size:12.5px;display:flex;justify-content:space-between;opacity:.9}
+.meteo .vs b{font-weight:600}
+.meteo .joke{margin-top:10px;font-size:13px;line-height:1.45;font-style:italic;opacity:.95}
+.meteo .joke2{margin-top:6px;font-size:12px;opacity:.7}
+.meteo .wic svg{animation:sway 6s ease-in-out infinite}
+@keyframes sway{50%{transform:rotate(8deg) scale(1.05)}}
+.widget .wxl{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:13px}
+.widget .wxl svg{width:22px;height:22px;flex:none}
+.widget .joke{font-style:italic}
+.pdock{padding:10px 10px}
+.pdock .ic{width:50px;height:50px;border-radius:13px}
+@media (max-width:360px){.pdock .ic{width:44px;height:44px;border-radius:11px}}
+.dock .di .ic{width:58px;height:58px}
 </style>
 </head>
 <body>
@@ -170,8 +195,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   <div class="bar">
     <a class="brand" href="https://goual.fr">goual<i>.</i></a>
     <span class="m"><span data-fr>Mes sites web</span><span data-en>My websites</span></span>
-    <div class="r"><span class="lg"><button data-l="fr">FR</button><button data-l="en">EN</button></span><span>Dubai</span><span class="clock"></span></div>
+    <div class="r"><span class="lg"><button data-l="fr">FR</button><button data-l="en">EN</button></span><span class="wx" id="barWx"></span><span>Dubai</span><span class="clock"></span></div>
   </div>
+  <div class="meteo" id="meteo"><div class="top"><div><div class="city" data-fr>Dubaï, maintenant</div><div class="city" data-en>Dubai, right now</div><div class="deg" id="mDeg">--°</div><div class="cond" id="mCond"></div></div><div class="wic" id="mIc"></div></div><div class="vs" id="mVs"></div><div class="joke" id="mJoke"></div><div class="joke2" id="mJoke2"></div></div>
   <div class="icons" id="icons"></div>
   <div class="dock" id="dock"></div>
   <div class="toast" id="toast"><div class="ic i-goual" id="toastIc"></div><div><b>Goual Studio</b><span data-fr>Cliquez sur un projet pour ouvrir le site en direct.</span><span data-en>Click a project to open the live website.</span></div></div>
@@ -182,7 +208,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   <div class="home">
     <div class="widget">
       <div class="wl"><div><div class="lg2">goual<i>.</i></div><small>STUDIO</small></div><div class="clk"><b class="clock"></b><span>Dubai</span></div></div>
-      <p><span data-fr>Mes sites web : touchez une app pour ouvrir le site en direct.</span><span data-en>My websites: tap an app to open the live site.</span></p>
+      <div class="wxl" id="pWx"></div>
+      <p class="joke" id="pJoke"></p>
+      <p style="margin-top:6px;opacity:.75;font-size:12px"><span data-fr>Touchez une app pour ouvrir le site en direct.</span><span data-en>Tap an app to open the live site.</span></p>
     </div>
     <div class="grid" id="grid"></div>
     <div class="dots"><i class="on"></i><i></i></div>
@@ -193,7 +221,10 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 <div class="sheet" id="sheet"><div class="sh"><div class="ic" id="shIc"></div><b id="shT"></b><a id="shExt" target="_blank" rel="noopener">↗</a><button id="shX">OK</button></div><div class="sc" id="shC"></div><div class="hbar"></div></div>
 
 <script>
-const INSTAGRAM="https://www.instagram.com/";  // à remplacer par le lien du compte Instagram
+// liens réseaux : à compléter
+const INSTAGRAM="https://www.instagram.com/";
+const YOUTUBE="https://www.youtube.com/";
+const TIKTOK="https://www.tiktok.com/";
 const SVG={
  pool:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M3 15c1.5 1.2 3 1.2 4.5 0s3-1.2 4.5 0 3 1.2 4.5 0 3-1.2 4.5 0"/><path d="M3 19c1.5 1.2 3 1.2 4.5 0s3-1.2 4.5 0 3 1.2 4.5 0 3-1.2 4.5 0"/><path d="M8 13V5a2 2 0 0 1 4 0M16 13V5a2 2 0 0 0-4 0M8 8h8"/></svg>',
  komi:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M8 3h8v2H8z" opacity=".9"/><path d="M7 6h10a2 2 0 0 1 2 2v10a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V8a2 2 0 0 1 2-2z" opacity=".95"/><path d="M12 10l2.6 1.5v3L12 16l-2.6-1.5v-3z" fill="#f07a18"/></svg>',
@@ -202,6 +233,8 @@ const SVG={
  sin:'<svg viewBox="0 0 24 24"><path d="M3 15c0-5 4-9 9-9s9 4 9 9H3z" fill="#0b1620"/><path d="M12 15h9.5c1 0 1 2-.5 2H12z" fill="#0b1620"/><rect x="9" y="11" width="6" height="1.6" rx=".8" fill="#e11d48"/></svg>',
  shero:'<svg viewBox="0 0 24 24"><path d="M3 15c0-5 4-9 9-9s9 4 9 9H3z" fill="#fff"/><path d="M12 15h9.5c1 0 1 2-.5 2H12z" fill="#fff"/></svg>',
  goual:'<svg viewBox="0 0 24 24"><text x="11.4" y="17" text-anchor="middle" font-family="Inter,Arial" font-weight="800" font-size="13" letter-spacing="-.6" fill="#0b1620">g</text><circle cx="17.3" cy="15.6" r="1.7" fill="#2bb3c0"/></svg>',
+ yt:'<svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="4" fill="#fff"/><path d="M10.3 9.3l4.6 2.7-4.6 2.7z" fill="#d41414"/></svg>',
+ tt:'<svg viewBox="0 0 24 24"><g transform="translate(-.7 .5)"><path d="M13 4v10.2a2.8 2.8 0 1 1-2.8-2.8M13 4c.4 2.3 2 3.8 4.4 4" fill="none" stroke="#25f4ee" stroke-width="2.3" stroke-linecap="round"/></g><g transform="translate(.7 -.5)"><path d="M13 4v10.2a2.8 2.8 0 1 1-2.8-2.8M13 4c.4 2.3 2 3.8 4.4 4" fill="none" stroke="#fe2c55" stroke-width="2.3" stroke-linecap="round"/></g><path d="M13 4v10.2a2.8 2.8 0 1 1-2.8-2.8M13 4c.4 2.3 2 3.8 4.4 4" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg>',
  wa:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3zm0 2a7 7 0 1 1-3.6 13l-.3-.2-2.7.7.7-2.6-.2-.3A7 7 0 0 1 12 5zm-2.6 3.6c-.2 0-.5 0-.7.3-.3.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.8 2.2.9 2.6.7 3.1.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.4-.3-1.6-.8c-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a5.7 5.7 0 0 1-2.8-2.5c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4l-.7-1.8c-.2-.4-.3-.4-.5-.4z"/></svg>',
  mail:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg>',
  insta:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.2" cy="6.8" r="1" fill="#fff" stroke="none"/></svg>',
@@ -218,17 +251,19 @@ const P=[
 ];
 const L=()=>document.documentElement.lang;
 const waHref=()=>L()==='en'?'https://wa.me/971503154697':'https://wa.me/33659039438';
-const ic=(cls,k)=>`<div class="ic ${cls}">${SVG[k]}</div>`;
+const ic=(cls,k)=>`<div class="ic ${cls}">${k==='wa'?'<img src="img/wa.png" alt="WhatsApp">':SVG[k]}</div>`;
 const DOCK=()=>[
  {cls:'i-goual',k:'goual',href:'https://goual.fr',t:'goual.fr'},
  {cls:'i-wa',k:'wa',href:waHref(),t:'WhatsApp',ext:1},
  {cls:'i-mail',k:'mail',href:'mailto:contact@goual.fr',t:'contact@goual.fr'},
- {cls:'i-insta',k:'insta',href:INSTAGRAM,t:'Instagram',ext:1}
+ {cls:'i-insta',k:'insta',href:INSTAGRAM,t:'Instagram',ext:1},
+ {cls:'i-tt',k:'tt',href:TIKTOK,t:'TikTok',ext:1},
+ {cls:'i-yt',k:'yt',href:YOUTUBE,t:'YouTube',ext:1}
 ];
-function setLang(l){document.documentElement.lang=l;document.querySelectorAll('.lg button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));build();document.querySelectorAll('.win .tt').forEach(t=>t.textContent=P.find(p=>p.k===t.dataset.k)[l]);try{localStorage.setItem('gs-lang',l)}catch(e){}}
+function setLang(l){document.documentElement.lang=l;setTimeout(()=>{try{renderWx()}catch(e){}},0);document.querySelectorAll('.lg button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));build();document.querySelectorAll('.win .tt').forEach(t=>t.textContent=P.find(p=>p.k===t.dataset.k)[l]);try{localStorage.setItem('gs-lang',l)}catch(e){}}
 document.querySelectorAll('.lg button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
 function tick(){const t=new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Dubai'});document.querySelectorAll('.clock').forEach(c=>c.textContent=t)}
-tick();setInterval(tick,15000);
+tick();setInterval(()=>{tick();try{renderWx()}catch(e){}},15000);
 
 const desk=document.getElementById('desk'),icons=document.getElementById('icons'),dock=document.getElementById('dock');
 const grid=document.getElementById('grid'),pdock=document.getElementById('pdock'),sheet=document.getElementById('sheet');
@@ -270,6 +305,50 @@ function openP(k){
 function focus(el){el.style.zIndex=++z}
 document.addEventListener('click',e=>{const o=e.target.closest('[data-p]');if(o)openP(o.dataset.p)});
 document.getElementById('shX').onclick=()=>{sheet.classList.remove('show');setTimeout(()=>document.getElementById('shC').innerHTML='',400)};
+
+
+/* ---------- météo + humour ---------- */
+const WX_IC={
+ sun:'<svg viewBox="0 0 24 24" fill="none" stroke="#ffd25a" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2" fill="#ffd25a"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>',
+ moon:'<svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" fill="#f4e7b5"/></svg>',
+ cloud:'<svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3.6" fill="#ffd25a"/><path d="M7 19a4 4 0 0 1 .4-8 5 5 0 0 1 9.6 1.3A3.4 3.4 0 0 1 17 19z" fill="#fff"/></svg>',
+ rain:'<svg viewBox="0 0 24 24"><path d="M7 15a4 4 0 0 1 .4-8 5 5 0 0 1 9.6 1.3A3.4 3.4 0 0 1 17 15z" fill="#fff"/><path d="M8 18l-1 2.5M12 18l-1 2.5M16 18l-1 2.5" stroke="#7fd3ff" stroke-width="2" stroke-linecap="round"/></svg>'
+};
+const T={
+ fr:{cond:{sun:'Grand soleil',moon:'Nuit claire',cloud:'Quelques nuages',rain:'Pluie (oui, à Dubaï)'},
+  hot:'Parfait pour une piscine. Ça tombe bien, j’en fais les sites.',warm:'Température idéale pour signer un devis.',cool:'Frais pour Dubaï : on sort la petite laine… à 22°.',
+  vs:(a,b)=>`Dubaï <b>${a}°</b> · Paris <b>${b}°</b>`,vs2:d=>d>15?'Je dis ça, je dis rien.':'Match serré aujourd’hui.',
+  hour:h=>h<5?`Il est ${h}h à Dubaï. Oui, je suis encore en train de coder.`:h<9?'Le café chauffe, les sites aussi.':h<12?'Matinée productive : les maquettes sortent du four.':h<14?'Pause shawarma. Les sites, eux, ne s’arrêtent jamais.':h<18?'Il fait chaud dehors. Mes sites aussi.':h<22?'Coucher de soleil sur Dubaï, nouveau site à l’horizon.':`Il est ${h}h. Pas de souci, les sites ne dorment pas.`},
+ en:{cond:{sun:'Sunny',moon:'Clear night',cloud:'A few clouds',rain:'Rain (yes, in Dubai)'},
+  hot:'Perfect pool weather. Good thing I build pool websites.',warm:'Ideal temperature to sign a quote.',cool:'Chilly for Dubai: time for a jacket… at 22°.',
+  vs:(a,b)=>`Dubai <b>${a}°</b> · New York <b>${b}°</b>`,vs2:d=>d>15?'Just saying.':'Close match today.',
+  hour:h=>h<5?`It’s ${h}am in Dubai. Yes, I’m still coding.`:h<9?'Coffee’s brewing, so are the websites.':h<12?'Productive morning: fresh mockups out of the oven.':h<14?'Shawarma break. Websites never take one.':h<18?'It’s hot outside. So are my websites.':h<22?'Sunset over Dubai, new website on the horizon.':`It’s ${h>12?h-12:h}pm. Don’t worry, websites never sleep.`}
+};
+let WX=null;
+function dxbHour(){return +new Date().toLocaleString('en-GB',{hour:'2-digit',hour12:false,timeZone:'Asia/Dubai'})%24}
+function kind(code,h){if(code>=51)return 'rain';if(code>=2)return 'cloud';return(h<6||h>=18)?'moon':'sun'}
+function renderWx(){
+  const l=L(),t=T[l],h=dxbHour();
+  const k=WX?kind(WX.code,h):((h<6||h>=18)?'moon':'sun');
+  const joke2=t.hour(h);
+  document.getElementById('mIc').innerHTML=WX_IC[k];
+  document.getElementById('mCond').textContent=t.cond[k];
+  document.getElementById('mJoke2').textContent=joke2;
+  let joke=t.hot;
+  if(WX){
+    const d=Math.round(WX.dxb),o=Math.round(l==='en'?WX.ny:WX.par);
+    joke=d>=30?t.hot:d>=24?t.warm:t.cool;
+    document.getElementById('mDeg').textContent=d+'°';
+    document.getElementById('mVs').innerHTML=`<span>${t.vs(d,o)}</span><span>${t.vs2(d-o)}</span>`;
+    document.getElementById('barWx').innerHTML=WX_IC[k]+d+'°';
+    document.getElementById('pWx').innerHTML=WX_IC[k]+`<span>${t.vs(d,o)} — ${t.vs2(d-o)}</span>`;
+  }else{document.getElementById('mVs').style.display='none';document.getElementById('pWx').innerHTML=WX_IC[k]+`<span>${t.cond[k]}</span>`}
+  document.getElementById('mJoke').textContent=joke;
+  document.getElementById('pJoke').textContent=joke2;
+}
+fetch('https://api.open-meteo.com/v1/forecast?latitude=25.2,48.86,40.71&longitude=55.27,2.35,-74.01&current=temperature_2m,weather_code')
+ .then(r=>r.json()).then(a=>{WX={dxb:a[0].current.temperature_2m,code:a[0].current.weather_code,par:a[1].current.temperature_2m,ny:a[2].current.temperature_2m};document.getElementById('mVs').style.display='';renderWx()})
+ .catch(()=>{});
 
 let l0='fr';try{l0=localStorage.getItem('gs-lang')||((navigator.language||'').toLowerCase().startsWith('fr')?'fr':'en')}catch(e){}
 const q=new URLSearchParams(location.search).get('lang');if(q==='en'||q==='fr')l0=q;
