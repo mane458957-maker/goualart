@@ -186,6 +186,53 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .pdock .ic{width:50px;height:50px;border-radius:13px}
 @media (max-width:360px){.pdock .ic{width:44px;height:44px;border-radius:11px}}
 .dock .di .ic{width:58px;height:58px}
+
+/* ---------- badge, notif, dossier, iPhone duo, post-it ---------- */
+.badge{position:absolute;top:-6px;right:-6px;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:#ff3b30;color:#fff;font-size:12.5px;font-weight:700;display:grid;place-items:center;z-index:5;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid rgba(255,255,255,.9);animation:pop .5s 1.5s both cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.dock .di,.pdock a{position:relative}
+.wa-bounce{animation:bounce 1s 2.2s 2}
+@keyframes bounce{0%,100%{transform:none}30%{transform:translateY(-16px)}60%{transform:translateY(-4px)}}
+.notif{position:fixed;z-index:700;display:flex;gap:11px;align-items:center;background:rgba(250,251,252,.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);color:var(--ink);border-radius:18px;padding:11px 14px;box-shadow:0 22px 50px -18px rgba(0,0,0,.6);cursor:pointer;transition:transform .55s cubic-bezier(.2,.9,.3,1.15),opacity .4s;opacity:0}
+.notif .ic{width:40px;height:40px;border-radius:10px;flex:none}
+.notif b{font-size:13.5px;display:flex;justify-content:space-between;gap:10px}.notif b small{font-weight:400;color:var(--mut);font-size:11.5px}
+.notif span{font-size:13px;color:#33404c;line-height:1.35;display:block}
+.notif.d{top:42px;left:50%;width:360px;margin-left:-180px;transform:translateY(-140%)}
+.notif.m{top:calc(env(safe-area-inset-top) + 8px);left:10px;right:10px;transform:translateY(-160%)}
+.notif.show{transform:none;opacity:1}
+.folder .ic.fd{background:rgba(255,255,255,.22);backdrop-filter:blur(10px);display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:9px;place-items:stretch}
+.folder .ic.fd:after{display:none}
+.folder .ic.fd i{border-radius:5px;display:grid;place-items:center;overflow:hidden}
+.folder .ic.fd i svg{width:70%;height:70%}
+.fov{position:fixed;inset:0;z-index:60;display:grid;place-items:center;background:rgba(5,15,24,.35);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);opacity:0;pointer-events:none;transition:opacity .3s}
+.fov.show{opacity:1;pointer-events:auto}
+.fov .fbox{text-align:center;transform:scale(.6);transition:transform .4s cubic-bezier(.2,.9,.3,1.15)}
+.fov.show .fbox{transform:none}
+.fov h3{font-size:26px;font-weight:700;margin-bottom:18px;letter-spacing:-.5px}
+.fov .fin{display:grid;grid-template-columns:repeat(3,84px);gap:20px 14px;padding:24px 22px;border-radius:30px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.2)}
+.fov .fin a{display:flex;flex-direction:column;align-items:center;gap:7px;font-size:12px;font-weight:500}
+.fov .fin .ic{width:62px;height:62px}
+/* iPhone duo sur PC */
+.duo{position:absolute;right:340px;top:50%;transform:translateY(-54%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px}
+.iph{width:286px;height:590px;border-radius:52px;padding:11px;background:linear-gradient(145deg,#2a3440,#0c1117);box-shadow:0 40px 80px -30px rgba(0,0,0,.8),inset 0 0 0 2px rgba(255,255,255,.12);position:relative;animation:hover 7s ease-in-out infinite}
+@keyframes hover{50%{transform:translateY(-10px) rotate(-.6deg)}}
+.iph .scr{width:100%;height:100%;border-radius:42px;overflow:hidden;background:#fff;position:relative}
+.iph iframe{width:390px;height:845px;border:0;transform:scale(.678);transform-origin:0 0;position:absolute;top:0;left:0}
+.iph .isl{position:absolute;top:20px;left:50%;width:90px;height:26px;margin-left:-45px;background:#000;border-radius:14px;z-index:3}
+.iph .ld{position:absolute;inset:0;display:grid;place-items:center;color:var(--mut);font-size:12px;background:#f6f8fa;transition:opacity .4s;z-index:2}
+.duo .cap{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;background:rgba(255,255,255,.14);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.2);padding:6px 8px;border-radius:99px}
+.duo .cap button{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.18);font-size:15px;line-height:1}
+.duo .cap button:hover{background:rgba(255,255,255,.32)}
+.duo .cap span{min-width:150px;text-align:center}
+.duo .cap small{display:block;font-weight:400;font-size:10.5px;opacity:.7}
+.postit{position:absolute;top:300px;right:22px;width:230px;padding:16px 16px 18px;background:linear-gradient(170deg,#fff7a8,#ffe76a);color:#3b3510;border-radius:3px 3px 18px 3px;box-shadow:0 18px 30px -14px rgba(0,0,0,.6);transform:rotate(2.5deg);z-index:2;font-size:13.5px;line-height:1.55;transition:transform .3s}
+.postit:hover{transform:rotate(0) scale(1.04)}
+.postit b{display:block;font-size:14px;margin-bottom:6px}
+.postit s{opacity:.6}
+.postit .pin{position:absolute;top:-8px;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff8a8a,#c81e1e);box-shadow:0 3px 5px rgba(0,0,0,.4)}
+@media (max-width:1250px),(max-height:700px){.duo{display:none}}
+@media (max-width:1000px){.postit{display:none}}
+html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:none!important}
 </style>
 </head>
 <body>
@@ -199,6 +246,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   </div>
   <div class="meteo" id="meteo"><div class="top"><div><div class="city" data-fr>Dubaï, maintenant</div><div class="city" data-en>Dubai, right now</div><div class="deg" id="mDeg">--°</div><div class="cond" id="mCond"></div></div><div class="wic" id="mIc"></div></div><div class="vs" id="mVs"></div><div class="joke" id="mJoke"></div><div class="joke2" id="mJoke2"></div></div>
   <div class="icons" id="icons"></div>
+  <div class="duo" id="duo"><div class="iph"><div class="scr"><div class="isl"></div><div class="ld" id="duoLd">…</div><iframe id="duoF" title="aperçu mobile"></iframe></div></div><div class="cap"><button id="duoP" aria-label="précédent">‹</button><span><span id="duoT"></span><small data-fr>Version mobile, en direct</small><small data-en>Live mobile version</small></span><button id="duoN" aria-label="suivant">›</button></div></div>
+  <div class="postit"><div class="pin"></div><b data-fr>À faire aujourd’hui</b><b data-en>Today’s to-do</b><div data-fr><s>1. Boire un café</s><br><s>2. Coder un site qui fait waouh</s><br>3. Créer le vôtre 👉 WhatsApp</div><div data-en><s>1. Drink coffee</s><br><s>2. Code a wow website</s><br>3. Build yours 👉 WhatsApp</div></div>
   <div class="dock" id="dock"></div>
   <div class="toast" id="toast"><div class="ic i-goual" id="toastIc"></div><div><b>Goual Studio</b><span data-fr>Cliquez sur un projet pour ouvrir le site en direct.</span><span data-en>Click a project to open the live website.</span></div></div>
 </div>
@@ -218,6 +267,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   <div class="pdock" id="pdock"></div>
 </div>
 
+<div class="notif" id="notif"><div class="ic i-wa"><img src="img/wa.png" alt=""></div><div><b>Mohammed · Goual Studio <small data-fr>maintenant</small><small data-en>now</small></b><span data-fr>Salut 👋 Un projet de site ? Écrivez-moi ici, je réponds vite.</span><span data-en>Hi 👋 Got a website project? Message me here, I reply fast.</span></div></div>
+<div class="fov" id="fov"><div class="fbox"><h3 data-fr>Réseaux sociaux</h3><h3 data-en>Social media</h3><div class="fin" id="fin"></div></div></div>
 <div class="sheet" id="sheet"><div class="sh"><div class="ic" id="shIc"></div><b id="shT"></b><a id="shExt" target="_blank" rel="noopener">↗</a><button id="shX">OK</button></div><div class="sc" id="shC"></div><div class="hbar"></div></div>
 
 <script>
@@ -260,7 +311,8 @@ const DOCK=()=>[
  {cls:'i-tt',k:'tt',href:TIKTOK,t:'TikTok',ext:1},
  {cls:'i-yt',k:'yt',href:YOUTUBE,t:'YouTube',ext:1}
 ];
-function setLang(l){document.documentElement.lang=l;setTimeout(()=>{try{renderWx()}catch(e){}},0);document.querySelectorAll('.lg button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));build();document.querySelectorAll('.win .tt').forEach(t=>t.textContent=P.find(p=>p.k===t.dataset.k)[l]);try{localStorage.setItem('gs-lang',l)}catch(e){}}
+const SOC=[{cls:'i-insta',k:'insta',href:INSTAGRAM,t:'Instagram'},{cls:'i-tt',k:'tt',href:TIKTOK,t:'TikTok'},{cls:'i-yt',k:'yt',href:YOUTUBE,t:'YouTube'}];
+function setLang(l){document.documentElement.lang=l;setTimeout(()=>{try{renderWx()}catch(e){}},0);document.querySelectorAll('.lg button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));build();try{if(duoF&&duoF.src)document.getElementById('duoT').textContent=P[di][l]}catch(e){};document.querySelectorAll('.win .tt').forEach(t=>t.textContent=P.find(p=>p.k===t.dataset.k)[l]);try{localStorage.setItem('gs-lang',l)}catch(e){}}
 document.querySelectorAll('.lg button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
 function tick(){const t=new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Dubai'});document.querySelectorAll('.clock').forEach(c=>c.textContent=t)}
 tick();setInterval(()=>{tick();try{renderWx()}catch(e){}},15000);
@@ -271,9 +323,12 @@ function build(){
   const l=L();
   icons.innerHTML=P.map(p=>`<div class="dicon" data-p="${p.k}">${ic(p.cls,p.k)}<span>${p[l]}</span></div>`).join('');
   const d=DOCK();
-  dock.innerHTML=d.map(x=>`<a class="di" href="${x.href}" ${x.ext?'target="_blank" rel="noopener"':''}>${ic(x.cls,x.k)}<span class="tip">${x.t}</span></a>`).join('');
-  grid.innerHTML=P.map(p=>`<button class="app" data-p="${p.k}">${ic(p.cls,p.k)}<span>${p[l]}</span></button>`).join('')+`<button class="app" id="langApp">${ic('i-lang','lang')}<span>${l==='en'?'Français':'English'}</span></button>`;
-  pdock.innerHTML=d.map(x=>`<a href="${x.href}" ${x.ext?'target="_blank" rel="noopener"':''}>${ic(x.cls,x.k)}</a>`).join('');
+  const bd=x=>x.k==='wa'?'<span class="badge">1</span>':'';
+  dock.innerHTML=d.map(x=>`<a class="di${x.k==='wa'?' wa-bounce':''}" href="${x.href}" ${x.ext?'target="_blank" rel="noopener"':''}>${ic(x.cls,x.k)}${bd(x)}<span class="tip">${x.t}</span></a>`).join('');
+  grid.innerHTML=P.map(p=>`<button class="app" data-p="${p.k}">${ic(p.cls,p.k)}<span>${p[l]}</span></button>`).join('')+`<button class="app folder" id="fdApp"><div class="ic fd">${SOC.map(x=>`<i class="${x.cls}">${SVG[x.k]}</i>`).join('')}<i></i></div><span>${l==='en'?'Social':'Réseaux sociaux'}</span></button>`+`<button class="app" id="langApp">${ic('i-lang','lang')}<span>${l==='en'?'Français':'English'}</span></button>`;
+  document.getElementById('fin').innerHTML=SOC.map(x=>`<a href="${x.href}" target="_blank" rel="noopener">${ic(x.cls,x.k)}<span>${x.t}</span></a>`).join('');
+  document.getElementById('fdApp').onclick=()=>document.getElementById('fov').classList.add('show');
+  pdock.innerHTML=d.filter(x=>x.k!=='tt'&&x.k!=='yt').map(x=>`<a href="${x.href}" ${x.ext?'target="_blank" rel="noopener"':''}>${ic(x.cls,x.k)}${bd(x)}</a>`).join('');
   document.getElementById('langApp').onclick=()=>setLang(l==='en'?'fr':'en');
 }
 let z=10,wins={},cascade=0;
@@ -354,6 +409,18 @@ let l0='fr';try{l0=localStorage.getItem('gs-lang')||((navigator.language||'').to
 const q=new URLSearchParams(location.search).get('lang');if(q==='en'||q==='fr')l0=q;
 setLang(l0);
 document.getElementById('toastIc').innerHTML=SVG.goual;
+document.getElementById('fov').onclick=e=>{if(!e.target.closest('a'))e.currentTarget.classList.remove('show')};
+/* notification WhatsApp */
+const nf=document.getElementById('notif');
+nf.onclick=()=>window.open(waHref(),'_blank','noopener');
+setTimeout(()=>{nf.className='notif '+(innerWidth>820?'d':'m');requestAnimationFrame(()=>nf.classList.add('show'))},innerWidth>820?9000:4500);
+setTimeout(()=>nf.classList.remove('show'),innerWidth>820?17000:11000);
+/* iPhone duo : aperçu mobile des projets */
+let di=0;const duoF=document.getElementById('duoF'),duoLd=document.getElementById('duoLd');
+function duo(i){di=(i+P.length)%P.length;const p=P[di];document.getElementById('duoT').textContent=p[L()];duoLd.style.opacity=1;duoLd.textContent=L()==='en'?'Loading…':'Chargement…';duoF.src=p.url}
+duoF.onload=()=>duoLd.style.opacity=0;
+document.getElementById('duoP').onclick=()=>duo(di-1);document.getElementById('duoN').onclick=()=>duo(di+1);
+if(getComputedStyle(document.getElementById('duo')).display!=='none'&&innerWidth>820)setTimeout(()=>duo(0),600);
 if(innerWidth>820){setTimeout(()=>document.getElementById('toast').classList.add('show'),1200);setTimeout(()=>document.getElementById('toast').classList.remove('show'),7000)}
 </script>
 </body>
