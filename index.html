@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -213,7 +213,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .fov .fin a{display:flex;flex-direction:column;align-items:center;gap:7px;font-size:12px;font-weight:500}
 .fov .fin .ic{width:62px;height:62px}
 /* iPhone duo sur PC */
-.duo{position:absolute;right:340px;top:50%;transform:translateY(-54%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px}
+.duo{display:none!important;position:absolute;right:340px;top:50%;transform:translateY(-54%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px}
 .iph{width:286px;height:590px;border-radius:52px;padding:11px;background:linear-gradient(145deg,#2a3440,#0c1117);box-shadow:0 40px 80px -30px rgba(0,0,0,.8),inset 0 0 0 2px rgba(255,255,255,.12);position:relative;animation:hover 7s ease-in-out infinite}
 @keyframes hover{50%{transform:translateY(-10px) rotate(-.6deg)}}
 .iph .scr{width:100%;height:100%;border-radius:42px;overflow:hidden;background:#fff;position:relative}
@@ -274,7 +274,7 @@ html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:n
   <div class="pdock" id="pdock"></div>
 </div>
 
-<div class="notif" id="notif"><div class="ic i-wa"><img src="img/wa.png" alt=""></div><div><b>Mohammed · Goual Studio <small data-fr>maintenant</small><small data-en>now</small></b><span data-fr>Salut 👋 Un projet de site ? Écrivez-moi ici, je réponds vite.</span><span data-en>Hi 👋 Got a website project? Message me here, I reply fast.</span></div></div>
+<div class="notif" id="notif"><div class="ic i-wa"><img src="img/wa.png" alt=""></div><div><b>Goual Studio <small data-fr>maintenant</small><small data-en>now</small></b><span data-fr>Salut 👋 Un projet de site ? Écrivez-moi ici, je réponds vite.</span><span data-en>Hi 👋 Got a website project? Message me here, I reply fast.</span></div></div>
 <div class="fov" id="fov"><div class="fbox"><h3 data-fr>Réseaux sociaux</h3><h3 data-en>Social media</h3><div class="fin" id="fin"></div></div></div>
 <div class="sheet" id="sheet"><div class="sh"><div class="ic" id="shIc"></div><b id="shT"></b><a id="shExt" target="_blank" rel="noopener">↗</a><button id="shX">OK</button></div><div class="sc" id="shC"></div><div class="hbar"></div></div>
 
@@ -476,7 +476,7 @@ function frame(){gl.uniform2f(uR,cv.width,cv.height);gl.uniform1f(uT,still?3:now
 frame();
 })();
 
-let l0='fr';try{l0=localStorage.getItem('gs-lang')||((navigator.language||'').toLowerCase().startsWith('fr')?'fr':'en')}catch(e){}
+let l0='en';try{l0=localStorage.getItem('gs-lang')||'en'}catch(e){}
 const q=new URLSearchParams(location.search).get('lang');if(q==='en'||q==='fr')l0=q;
 setLang(l0);
 document.getElementById('toastIc').innerHTML=SVG.goual;
@@ -491,7 +491,7 @@ let di=0;const duoF=document.getElementById('duoF'),duoLd=document.getElementByI
 function duo(i){di=(i+P.length)%P.length;const p=P[di];document.getElementById('duoT').textContent=p[L()];duoLd.style.opacity=1;duoLd.textContent=L()==='en'?'Loading…':'Chargement…';duoF.src=p.url}
 duoF.onload=()=>duoLd.style.opacity=0;
 document.getElementById('duoP').onclick=()=>duo(di-1);document.getElementById('duoN').onclick=()=>duo(di+1);
-if(getComputedStyle(document.getElementById('duo')).display!=='none'&&innerWidth>820)setTimeout(()=>duo(0),600);
+
 if(innerWidth>820){setTimeout(()=>document.getElementById('toast').classList.add('show'),1200);setTimeout(()=>document.getElementById('toast').classList.remove('show'),7000)}
 </script>
 </body>
