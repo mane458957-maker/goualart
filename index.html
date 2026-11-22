@@ -2,179 +2,350 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#071a26">
 <title>Goual Studio — Sites web premium & vidéo IA</title>
 <meta name="description" content="Goual Studio crée des sites web premium qui font waouh : scroll animé, 3D, configurateurs. Basé à Dubaï, pour la France, le Golfe et les États-Unis.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0b1620;--ink2:#1d2a36;--mut:#5b6875;--line:#e3e8ee;--aq:#2bb3c0;--aq2:#38c6d9;--bg:#f6f8fa}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.55;-webkit-font-smoothing:antialiased}
+:root{--aq:#2bb3c0;--aq2:#38c6d9;--ink:#0b1620;--mut:#5b6875;--glass:rgba(255,255,255,.16);--glass2:rgba(255,255,255,.7)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{font-family:Inter,system-ui,sans-serif;color:#fff;-webkit-font-smoothing:antialiased;user-select:none;background:#071a26}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
-.logo{display:flex;flex-direction:column;line-height:1}
-.logo b{font-weight:800;font-size:26px;letter-spacing:-1.2px}.logo b i{font-style:normal;color:var(--aq)}
-.logo small{font-size:9px;letter-spacing:4px;color:var(--mut);margin:3px 0 0 2px}
-.nav-r{display:flex;align-items:center;gap:22px;font-size:14px;font-weight:500;color:var(--ink2)}
-.nav-r a:hover{color:var(--aq)}
-.lang{display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden}
-.lang button{border:0;background:none;padding:6px 11px;font:600 12px Inter;color:var(--mut);cursor:pointer}
-.lang button.on{background:var(--ink);color:#fff}
-.btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;padding:13px 22px;border-radius:12px;font-weight:600;font-size:15px;transition:transform .2s,background .2s}
-.btn:hover{transform:translateY(-2px);background:var(--ink2)}
-.btn.aq{background:var(--aq)}.btn.aq:hover{background:#249fab}
-.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
-header{padding:96px 0 70px;background:radial-gradient(1200px 500px at 85% -10%,rgba(56,198,217,.16),transparent 60%),#fff}
-.eyebrow{font-size:12px;font-weight:700;letter-spacing:3px;color:var(--aq);text-transform:uppercase}
-h1{font-size:clamp(40px,6.4vw,78px);line-height:1.02;letter-spacing:-2.6px;font-weight:800;margin:18px 0 22px;max-width:900px}
-h1 em{font-style:normal;background:linear-gradient(90deg,var(--aq2),#0f6f96);-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{font-size:clamp(17px,1.6vw,20px);color:var(--mut);max-width:640px}
-.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
-.facts{display:flex;gap:40px;flex-wrap:wrap;margin-top:56px;padding-top:28px;border-top:1px solid var(--line)}
-.facts div b{display:block;font-size:26px;font-weight:800;letter-spacing:-1px}.facts div span{font-size:13px;color:var(--mut)}
-section{padding:90px 0}
-h2{font-size:clamp(30px,4vw,48px);letter-spacing:-1.6px;line-height:1.08;font-weight:800;margin:12px 0 14px}
-.sub{color:var(--mut);max-width:620px;font-size:17px}
-.proj{display:grid;grid-template-columns:1.25fr 1fr;gap:44px;align-items:center;margin-top:64px}
-.proj:nth-of-type(even){grid-template-columns:1fr 1.25fr}.proj:nth-of-type(even) .shot{order:2}
-.shot{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(11,22,32,.45),0 0 0 1px var(--line);background:var(--bg);aspect-ratio:16/10}
-.shot img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .6s,transform .8s}
-.shot img.b{position:absolute;inset:0;opacity:0}
-.shot:hover img.b{opacity:1}.shot:hover img{transform:scale(1.02)}
-.bar{position:absolute;top:0;left:0;right:0;height:26px;background:rgba(255,255,255,.92);display:flex;align-items:center;gap:6px;padding:0 12px;z-index:2}
-.bar i{width:9px;height:9px;border-radius:50%;background:#e3e8ee}
-.shot.has-bar img{margin-top:0}
-.tag{display:inline-block;font-size:12px;font-weight:600;color:var(--aq);background:rgba(43,179,192,.1);padding:5px 11px;border-radius:99px;margin-right:6px}
-.proj h3{font-size:30px;letter-spacing:-1px;margin:14px 0 10px}
-.proj p{color:var(--mut)}
-.proj ul{list-style:none;margin:18px 0 24px}.proj li{padding:6px 0 6px 26px;position:relative;font-size:15px}
-.proj li:before{content:"";position:absolute;left:0;top:13px;width:14px;height:2px;background:var(--aq)}
-.services{background:var(--ink);color:#fff}
-.services .sub{color:#9fb0bf}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
-.card{background:#122332;border:1px solid #1f3446;border-radius:18px;padding:28px}
-.card .n{font-size:13px;color:var(--aq2);font-weight:700;letter-spacing:2px}
-.card h4{font-size:21px;margin:12px 0 8px;letter-spacing:-.4px}.card p{color:#9fb0bf;font-size:15px}
-.contact{text-align:center}
-.contact .cta{justify-content:center}
-.c-lines{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:26px;color:var(--mut);font-size:15px}
-footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut);font-size:13px}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.rv{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s}.rv.in{opacity:1;transform:none}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 [data-en]{display:none}html[lang=en] [data-fr]{display:none}html[lang=en] [data-en]{display:revert}
-@media(max-width:860px){.proj,.proj:nth-of-type(even){grid-template-columns:1fr;gap:26px}.proj:nth-of-type(even) .shot{order:0}.cards{grid-template-columns:1fr}.nav-r a.hide{display:none}header{padding:64px 0 50px}}
+
+/* ---------- fond d'écran (commun) ---------- */
+.wall{position:fixed;inset:0;overflow:hidden;background:radial-gradient(120% 90% at 10% 0%,#0f4c66 0%,#08263a 45%,#050f18 100%)}
+.wall i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.75;animation:float 22s ease-in-out infinite alternate}
+.wall i:nth-child(1){width:55vmax;height:55vmax;left:-12vmax;top:-18vmax;background:#1fa7b8}
+.wall i:nth-child(2){width:45vmax;height:45vmax;right:-14vmax;top:10vh;background:#1b5fa8;animation-duration:28s}
+.wall i:nth-child(3){width:40vmax;height:40vmax;left:25vw;bottom:-22vmax;background:#2bd0b4;opacity:.45;animation-duration:34s}
+.wall i:nth-child(4){width:22vmax;height:22vmax;right:18vw;bottom:8vh;background:#f2a65a;opacity:.28;animation-duration:26s}
+@keyframes float{to{transform:translate(6vmax,4vmax) scale(1.12)}}
+.wall .wm{position:absolute;right:4vw;bottom:15vh;text-align:right;opacity:.16;font-weight:800;line-height:.9;letter-spacing:-.06em;font-size:15vw;filter:none;animation:none;border-radius:0}
+.wall .wm small{display:block;font-size:2vw;letter-spacing:1.2vw;font-weight:400;margin-top:1vw}
+
+/* ---------- icônes d'apps (dessin maison) ---------- */
+.ic{width:62px;height:62px;border-radius:16px;display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.35);position:relative;overflow:hidden}
+.ic:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.22),transparent 45%)}
+.ic svg{width:58%;height:58%;position:relative;z-index:1}
+.i-pool{background:linear-gradient(145deg,#4fe0f0,#1279a8)}
+.i-komi{background:linear-gradient(145deg,#ffc04d,#f07a18)}
+.i-sin{background:linear-gradient(145deg,#ffffff,#e9ecef)}
+.i-serv{background:linear-gradient(145deg,#1e2d3b,#0b1620)}
+.i-mail{background:linear-gradient(145deg,#59c3ff,#1666d8)}
+.i-wa{background:linear-gradient(145deg,#5ff08a,#16a34a)}
+.i-me{background:linear-gradient(145deg,#c9b6ff,#6d4bd8)}
+.i-lang{background:linear-gradient(145deg,#ff8aa8,#d9365f)}
+.i-video{background:linear-gradient(145deg,#ff6b5b,#a3122f)}
+
+/* =================== BUREAU (desktop) =================== */
+.desk{position:fixed;inset:0}
+.bar{position:absolute;top:0;left:0;right:0;height:30px;background:rgba(5,15,24,.38);backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);display:flex;align-items:center;padding:0 14px;font-size:13px;z-index:500;gap:18px}
+.bar .brand{font-weight:800;letter-spacing:-.5px;font-size:15px}.bar .brand i{font-style:normal;color:var(--aq2)}
+.bar .m{opacity:.88;cursor:pointer}.bar .m:hover{opacity:1}
+.bar .r{margin-left:auto;display:flex;gap:16px;align-items:center;opacity:.92}
+.bar .lg button{padding:1px 6px;border-radius:5px;font-size:12px;font-weight:600;opacity:.6}.bar .lg button.on{opacity:1;background:rgba(255,255,255,.18)}
+.icons{position:absolute;top:150px;right:22px;display:grid;gap:18px;z-index:2}
+.dicon{width:96px;display:flex;flex-direction:column;align-items:center;gap:7px;font-size:12px;font-weight:500;text-shadow:0 1px 6px rgba(0,0,0,.5);cursor:pointer;padding:6px;border-radius:10px}
+.dicon:hover{background:rgba(255,255,255,.1)}
+.dicon .ic{width:56px;height:56px;border-radius:14px}
+.dock{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:10px;padding:9px 12px;border-radius:24px;background:rgba(255,255,255,.14);backdrop-filter:blur(26px) saturate(170%);-webkit-backdrop-filter:blur(26px) saturate(170%);border:1px solid rgba(255,255,255,.22);z-index:400;align-items:flex-end}
+.dock .di{position:relative;transition:transform .18s cubic-bezier(.3,.7,.4,1.4),margin .18s;cursor:pointer}
+.dock .di:hover{transform:translateY(-12px) scale(1.25);margin:0 10px}
+.dock .di .tip{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);white-space:nowrap;background:rgba(10,20,30,.85);padding:4px 9px;border-radius:7px;font-size:12px;opacity:0;pointer-events:none;transition:opacity .15s}
+.dock .di:hover .tip{opacity:1}
+.dock .di.open:after{content:"";position:absolute;bottom:-6px;left:50%;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:#fff}
+.dock .sep{width:1px;align-self:stretch;background:rgba(255,255,255,.25);margin:4px 2px}
+
+.win{position:absolute;background:#fafbfc;color:var(--ink);border-radius:14px;box-shadow:0 40px 90px -20px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.4);overflow:hidden;display:flex;flex-direction:column;min-width:380px;min-height:260px;opacity:0;transform:scale(.94) translateY(14px);transition:opacity .22s,transform .25s cubic-bezier(.2,.8,.3,1.1)}
+.win.show{opacity:1;transform:none}
+.win.max{left:8px!important;top:38px!important;width:calc(100% - 16px)!important;height:calc(100% - 128px)!important}
+.tb{height:42px;display:flex;align-items:center;padding:0 10px 0 16px;gap:10px;background:linear-gradient(#fff,#f1f4f7);border-bottom:1px solid #e3e8ee;cursor:grab;flex:none}
+.tb:active{cursor:grabbing}
+.tb .t{font-size:13px;font-weight:600;display:flex;align-items:center;gap:9px}
+.tb .t .ic{width:22px;height:22px;border-radius:6px;box-shadow:none}
+.tb .tabs{display:flex;gap:4px;margin-left:14px}
+.tb .tabs button{font-size:12px;font-weight:600;padding:5px 11px;border-radius:8px;color:var(--mut)}
+.tb .tabs button.on{background:#e6f6f8;color:#167f8a}
+.tb .ctl{margin-left:auto;display:flex;gap:4px}
+.tb .ctl button{width:30px;height:28px;border-radius:7px;display:grid;place-items:center;color:#55626e}
+.tb .ctl button:hover{background:#e7ecf1}.tb .ctl button.x:hover{background:#e5484d;color:#fff}
+.body{flex:1;overflow:auto;user-select:text;position:relative}
+.body iframe{width:100%;height:100%;border:0;display:block;background:#fff}
+.pane{display:none;height:100%}.pane.on{display:block}
+.proj{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;padding:26px;align-items:start}
+.proj .shot{border-radius:12px;overflow:hidden;box-shadow:0 18px 40px -18px rgba(11,22,32,.45),0 0 0 1px #e3e8ee;position:relative;aspect-ratio:16/10;background:#eef2f5}
+.proj .shot img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .5s}
+.proj .shot img.b{position:absolute;inset:0;opacity:0}.proj .shot:hover img.b{opacity:1}
+.tag{display:inline-block;font-size:11px;font-weight:700;color:#167f8a;background:#e6f6f8;padding:4px 9px;border-radius:99px;margin:0 4px 4px 0;letter-spacing:.3px}
+.proj h3{font-size:26px;letter-spacing:-.8px;line-height:1.1;margin:10px 0 10px}
+.proj p{color:var(--mut);font-size:14.5px;line-height:1.6}
+.proj ul{list-style:none;margin:14px 0 20px}.proj li{font-size:14px;padding:5px 0 5px 22px;position:relative;color:#243241}
+.proj li:before{content:"";position:absolute;left:0;top:13px;width:12px;height:2px;background:var(--aq)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;padding:11px 18px;border-radius:11px;font-weight:600;font-size:14px;transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}.btn.aq{background:var(--aq)}.btn.gh{background:#eef2f5;color:var(--ink)}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.welcome{padding:34px 34px 30px}
+.welcome .ey{font-size:11px;font-weight:700;letter-spacing:3px;color:var(--aq)}
+.welcome h1{font-size:40px;line-height:1.04;letter-spacing:-1.6px;margin:12px 0 12px;font-weight:800}
+.welcome h1 em{font-style:normal;background:linear-gradient(90deg,#1fb6c9,#0f5f8a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.welcome p{color:var(--mut);font-size:15px;line-height:1.6;max-width:520px}
+.welcome .launch{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 18px}
+.welcome .launch button{display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;background:#f2f5f8;text-align:left;font-size:13px;font-weight:600;transition:background .15s}
+.welcome .launch button:hover{background:#e6f6f8}
+.welcome .launch .ic{width:36px;height:36px;border-radius:10px;flex:none}
+.notes{padding:28px 30px}
+.notes h2{font-size:26px;letter-spacing:-.8px;margin-bottom:16px}
+.svc{display:grid;gap:12px}
+.svc div{padding:16px 18px;border-radius:12px;background:#f2f5f8}
+.svc b{display:block;font-size:15px;margin-bottom:4px}.svc span{color:var(--mut);font-size:14px}
+.contact{padding:30px;text-align:center}
+.contact .ic{width:72px;height:72px;margin:0 auto 14px;border-radius:20px}
+.contact h2{font-size:26px;letter-spacing:-.8px}
+.contact p{color:var(--mut);font-size:14.5px;margin:6px 0 20px}
+.contact .row{justify-content:center}
+.contact .nums{margin-top:18px;color:var(--mut);font-size:13.5px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.toast{position:absolute;top:44px;right:14px;width:320px;background:rgba(250,251,252,.92);backdrop-filter:blur(20px);color:var(--ink);border-radius:14px;padding:12px 14px;display:flex;gap:12px;align-items:center;box-shadow:0 20px 50px -18px rgba(0,0,0,.55);z-index:600;transform:translateX(120%);transition:transform .5s cubic-bezier(.2,.8,.3,1.1);cursor:pointer}
+.toast.show{transform:none}
+.toast .ic{width:38px;height:38px;border-radius:10px;flex:none}
+.toast b{font-size:13px;display:block}.toast span{font-size:12.5px;color:var(--mut)}
+
+/* =================== TÉLÉPHONE (mobile) =================== */
+.phone{position:fixed;inset:0;display:none;flex-direction:column;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.sbar{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 26px;font-size:15px;font-weight:600;flex:none}
+.sbar .ri{display:flex;gap:6px;align-items:center}
+.batt{width:25px;height:12px;border:1.5px solid rgba(255,255,255,.75);border-radius:4px;padding:1.5px;position:relative}.batt:after{content:"";position:absolute;right:-4px;top:3px;width:2px;height:4px;background:rgba(255,255,255,.75);border-radius:1px}.batt i{display:block;height:100%;width:80%;background:#fff;border-radius:1.5px}
+.home{flex:1;overflow:hidden;padding:10px 22px 0;display:flex;flex-direction:column}
+.widget{border-radius:24px;background:rgba(255,255,255,.14);backdrop-filter:blur(24px) saturate(170%);-webkit-backdrop-filter:blur(24px) saturate(170%);border:1px solid rgba(255,255,255,.2);padding:16px 18px;margin-bottom:22px}
+.widget .wl{display:flex;justify-content:space-between;align-items:flex-start}
+.widget .lg2{font-weight:800;font-size:30px;letter-spacing:-1.4px;line-height:1}.widget .lg2 i{font-style:normal;color:var(--aq2)}
+.widget small{display:block;font-size:9px;letter-spacing:4px;opacity:.75;margin-top:3px}
+.widget .clk{text-align:right}.widget .clk b{font-size:26px;font-weight:300;letter-spacing:-1px;display:block;line-height:1}.widget .clk span{font-size:11.5px;opacity:.8}
+.widget p{font-size:13.5px;line-height:1.45;margin-top:12px;opacity:.95}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px 0;justify-items:center}
+.app{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11.5px;font-weight:500;text-shadow:0 1px 4px rgba(0,0,0,.4);transition:transform .15s}
+.app:active{transform:scale(.9)}
+.app .ic{width:60px;height:60px;border-radius:15px}
+.dots{display:flex;gap:7px;justify-content:center;margin:auto 0 14px}.dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45)}.dots i.on{background:#fff}
+.pdock{margin:0 12px 10px;padding:12px 14px;border-radius:30px;background:rgba(255,255,255,.16);backdrop-filter:blur(26px) saturate(170%);-webkit-backdrop-filter:blur(26px) saturate(170%);display:flex;justify-content:space-around;flex:none}
+.pdock .ic{width:58px;height:58px;border-radius:15px}
+.sheet{position:fixed;inset:0;background:#f6f8fa;color:var(--ink);z-index:50;display:flex;flex-direction:column;border-radius:34px;transform:scale(.3);opacity:0;pointer-events:none;transition:transform .42s cubic-bezier(.2,.9,.25,1.05),opacity .3s,border-radius .42s}
+.sheet.show{transform:none;opacity:1;pointer-events:auto;border-radius:0}
+.sheet .sh{padding:calc(env(safe-area-inset-top) + 14px) 18px 12px;display:flex;align-items:center;gap:10px;background:rgba(246,248,250,.92);backdrop-filter:blur(14px);border-bottom:1px solid #e3e8ee;flex:none}
+.sheet .sh b{font-size:17px}
+.sheet .sh .ic{width:30px;height:30px;border-radius:8px;box-shadow:none}
+.sheet .sh button{margin-left:auto;background:#e7ecf1;border-radius:99px;padding:7px 14px;font-size:13px;font-weight:600;color:var(--ink)}
+.sheet .sc{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;user-select:text}
+.sheet .proj{grid-template-columns:1fr;padding:18px}
+.sheet .welcome{padding:24px 20px}.sheet .welcome h1{font-size:32px}
+.sheet .welcome .launch{grid-template-columns:1fr 1fr}
+.hbar{position:absolute;bottom:calc(env(safe-area-inset-bottom) + 8px);left:50%;width:134px;height:5px;margin-left:-67px;border-radius:3px;background:rgba(11,22,32,.85)}
+.plang{position:absolute;top:calc(env(safe-area-inset-top) + 54px);right:22px;display:none}
+
+@media (max-width:820px){.desk{display:none}.phone{display:flex}}
+@media (min-width:821px){.sheet{display:none}}
 </style>
 </head>
 <body>
-<nav><div class="wrap">
-  <a href="#" class="logo"><b>goual<i>.</i></b><small>STUDIO</small></a>
-  <div class="nav-r">
-    <a class="hide" href="#projets"><span data-fr>Projets</span><span data-en>Work</span></a>
-    <a class="hide" href="#services">Services</a>
-    <div class="lang"><button data-l="fr" class="on">FR</button><button data-l="en">EN</button></div>
-    <a class="btn aq" href="#contact" style="padding:10px 16px;font-size:14px"><span data-fr>Me contacter</span><span data-en>Contact</span></a>
+<div class="wall"><i></i><i></i><i></i><i></i><div class="wm">goual.<small>STUDIO</small></div></div>
+
+<!-- =============== BUREAU =============== -->
+<div class="desk" id="desk">
+  <div class="bar">
+    <span class="brand">goual<i>.</i></span>
+    <span class="m" data-open="welcome"><span data-fr>Accueil</span><span data-en>Home</span></span>
+    <span class="m" data-open="pool"><span data-fr>Projets</span><span data-en>Work</span></span>
+    <span class="m" data-open="serv">Services</span>
+    <span class="m" data-open="contact">Contact</span>
+    <div class="r"><span class="lg"><button data-l="fr">FR</button><button data-l="en">EN</button></span><span>Dubai</span><span class="clock"></span></div>
   </div>
-</div></nav>
 
-<header><div class="wrap">
-  <div class="eyebrow rv">Goual Studio · Dubai</div>
-  <h1 class="rv"><span data-fr>Des sites web qui font <em>waouh</em>.</span><span data-en>Websites that make people say <em>wow</em>.</span></h1>
-  <p class="lead rv"><span data-fr>Scroll animé, 3D, configurateurs interactifs : je crée des sites premium qui donnent envie d'acheter, pour les artisans, les marques et les entreprises qui veulent se démarquer.</span><span data-en>Scroll animations, 3D, interactive configurators: I build premium websites that make people want to buy, for craftsmen, brands and businesses that want to stand out.</span></p>
-  <div class="cta rv"><a class="btn" href="#projets"><span data-fr>Voir les projets</span><span data-en>See the work</span> →</a><a class="btn ghost" href="#contact"><span data-fr>Demander un devis</span><span data-en>Get a quote</span></a></div>
-  <div class="facts rv">
-    <div><b>3D</b><span data-fr>et animations au scroll</span><span data-en>and scroll animations</span></div>
-    <div><b>FR · EN</b><span data-fr>France, Golfe, États-Unis</span><span data-en>France, Gulf, United States</span></div>
-    <div><b>7 j</b><span data-fr>pour une mise en ligne</span><span data-en>to go live</span></div>
+  <div class="icons">
+    <div class="dicon" data-open="pool"><div class="ic i-pool"></div><span data-fr>Piscine 3D</span><span data-en>Pool 3D</span></div>
+    <div class="dicon" data-open="komi"><div class="ic i-komi"></div>KŌMI</div>
+    <div class="dicon" data-open="sin"><div class="ic i-sin"></div>SIN Red Paris</div>
   </div>
-</div></header>
 
-<section id="projets"><div class="wrap">
-  <div class="eyebrow rv"><span data-fr>Projets</span><span data-en>Selected work</span></div>
-  <h2 class="rv"><span data-fr>Quelques sites récents.</span><span data-en>A few recent websites.</span></h2>
-  <p class="sub rv"><span data-fr>Survolez une image pour voir une autre section du site, cliquez pour l'ouvrir.</span><span data-en>Hover an image to see another section, click to open the live site.</span></p>
+  <div class="dock" id="dock"></div>
 
-  <div class="proj rv">
-    <a class="shot" href="https://studio.goual.fr/piscine/" target="_blank" rel="noopener"><img src="img/portfolio/piscine.webp" alt="Configurateur de piscine en 3D" loading="lazy"></a>
-    <div>
-      <span class="tag"><span data-fr>Piscinistes</span><span data-en>Pool builders</span></span><span class="tag">WebGL</span>
-      <h3><span data-fr>Site pisciniste avec configurateur 3D</span><span data-en>Pool builder website with a 3D configurator</span></h3>
-      <p><span data-fr>Le visiteur fait défiler la construction de sa piscine, puis choisit son modèle et son carrelage et voit le résultat dans une villa, de jour comme de nuit.</span><span data-en>Visitors scroll through the construction of their pool, then choose a model and tiles and see the result in a villa, by day or by night.</span></p>
-      <ul>
-        <li data-fr>Chantier animé au scroll (terrassement → mise en eau)</li><li data-en>Construction animated on scroll (excavation → filling)</li>
-        <li data-fr>Eau en temps réel, projecteurs, mode nuit</li><li data-en>Real-time water, pool lights, night mode</li>
-        <li data-fr>Personnalisé pour chaque client en 48 h</li><li data-en>Customised for each client within 48 h</li>
-      </ul>
-      <a class="btn" href="https://studio.goual.fr/piscine/" target="_blank" rel="noopener"><span data-fr>Voir le site</span><span data-en>Open the site</span> ↗</a>
+  <div class="toast" id="toast" data-open="contact"><div class="ic i-mail"></div><div><b>Goual Studio</b><span data-fr>Un projet ? Réponse sous 24 h. Cliquez ici.</span><span data-en>Have a project? Reply within 24 h. Click here.</span></div></div>
+</div>
+
+<!-- =============== TÉLÉPHONE =============== -->
+<div class="phone" id="phone">
+  <div class="sbar"><span class="clock"></span><span class="ri"><svg width="18" height="12" viewBox="0 0 18 12" fill="#fff"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><span class="batt"><i></i></span></span></div>
+  <div class="home">
+    <div class="widget">
+      <div class="wl"><div><div class="lg2">goual<i>.</i></div><small>STUDIO</small></div><div class="clk"><b class="clock"></b><span>Dubai</span></div></div>
+      <p><span data-fr>Des sites web qui font waouh : scroll animé, 3D, configurateurs. Touchez une app pour voir mes projets.</span><span data-en>Websites that make people say wow: scroll animations, 3D, configurators. Tap an app to see my work.</span></p>
     </div>
+    <div class="grid" id="grid"></div>
+    <div class="dots"><i class="on"></i><i></i></div>
   </div>
+  <div class="pdock" id="pdock"></div>
+</div>
 
-  <div class="proj rv">
-    <a class="shot" href="https://mane458957-maker.github.io/komi/" target="_blank" rel="noopener"><img src="img/portfolio/komi.webp" alt="Site KŌMI, miels aromatisés" loading="lazy"><img class="b" src="img/portfolio/komi-2.webp" alt="" loading="lazy"></a>
-    <div>
-      <span class="tag">E-commerce</span><span class="tag"><span data-fr>Alimentaire</span><span data-en>Food</span></span>
-      <h3>KŌMI</h3>
-      <p><span data-fr>Boutique de miels aromatisés : un slider produit coloré où chaque parfum change l'ambiance du site, puis le catalogue et les coffrets.</span><span data-en>Flavoured honey store: a colourful product slider where each flavour changes the mood of the site, then the catalogue and gift boxes.</span></p>
-      <ul>
-        <li data-fr>Ambiance qui change selon le produit</li><li data-en>Mood that changes with each product</li>
-        <li data-fr>Catalogue, coffrets et panier</li><li data-en>Catalogue, gift boxes and cart</li>
-        <li data-fr>Modèle réutilisable pour d'autres marques</li><li data-en>Reusable template for other brands</li>
-      </ul>
-      <a class="btn" href="https://mane458957-maker.github.io/komi/" target="_blank" rel="noopener"><span data-fr>Voir le site</span><span data-en>Open the site</span> ↗</a>
-    </div>
+<div class="sheet" id="sheet"><div class="sh"><div class="ic" id="shIc"></div><b id="shT"></b><button id="shX">OK</button></div><div class="sc" id="shC"></div><div class="hbar"></div></div>
+
+<!-- contenus des apps -->
+<template id="t-welcome"><div class="welcome">
+  <div class="ey">GOUAL STUDIO · DUBAI</div>
+  <h1><span data-fr>Des sites web qui font <em>waouh</em>.</span><span data-en>Websites that make people say <em>wow</em>.</span></h1>
+  <p><span data-fr>Scroll animé, 3D, configurateurs interactifs : je crée des sites premium qui donnent envie d'acheter, pour les artisans, les marques et les entreprises qui veulent se démarquer. Ouvrez un projet pour l'essayer en direct.</span><span data-en>Scroll animations, 3D, interactive configurators: I build premium websites that make people want to buy, for craftsmen, brands and businesses that want to stand out. Open a project to try it live.</span></p>
+  <div class="launch">
+    <button data-open="pool"><div class="ic i-pool"></div><span data-fr>Piscine 3D</span><span data-en>Pool 3D</span></button>
+    <button data-open="komi"><div class="ic i-komi"></div>KŌMI</button>
+    <button data-open="sin"><div class="ic i-sin"></div>SIN</button>
   </div>
+  <div class="row"><button class="btn aq" data-open="contact"><span data-fr>Demander un devis</span><span data-en>Get a quote</span></button><button class="btn gh" data-open="serv">Services</button></div>
+</div></template>
 
-  <div class="proj rv">
-    <a class="shot" href="https://mane458957-maker.github.io/sin-red-paris-scroll-story/" target="_blank" rel="noopener"><img src="img/portfolio/sin.webp" alt="Site SIN Red Paris, casquette en 3D" loading="lazy"><img class="b" src="img/portfolio/sin-2.webp" alt="" loading="lazy"></a>
-    <div>
-      <span class="tag"><span data-fr>Mode</span><span data-en>Fashion</span></span><span class="tag">3D</span>
-      <h3>SIN Red Paris</h3>
-      <p><span data-fr>Une « scroll story » pour une marque de casquettes : le produit en 3D tourne et se dévoile au fil du défilement, détail après détail.</span><span data-en>A scroll story for a cap brand: the 3D product turns and reveals itself detail by detail as you scroll.</span></p>
-      <ul>
-        <li data-fr>Modèle 3D piloté par le scroll</li><li data-en>Scroll-driven 3D model</li>
-        <li data-fr>Narration produit éditoriale</li><li data-en>Editorial product storytelling</li>
-        <li data-fr>Direction artistique minimaliste</li><li data-en>Minimal art direction</li>
-      </ul>
-      <a class="btn" href="https://mane458957-maker.github.io/sin-red-paris-scroll-story/" target="_blank" rel="noopener"><span data-fr>Voir le site</span><span data-en>Open the site</span> ↗</a>
-    </div>
+<template id="t-pool"><div class="proj">
+  <a class="shot" href="https://studio.goual.fr/piscine/" target="_blank" rel="noopener"><img src="img/portfolio/piscine.webp" alt=""></a>
+  <div><span class="tag"><span data-fr>PISCINISTES</span><span data-en>POOL BUILDERS</span></span><span class="tag">WEBGL</span>
+  <h3><span data-fr>Site pisciniste avec configurateur 3D</span><span data-en>Pool builder website with a 3D configurator</span></h3>
+  <p><span data-fr>Le visiteur fait défiler la construction de sa piscine, puis choisit son modèle et son carrelage et voit le résultat dans une villa, de jour comme de nuit.</span><span data-en>Visitors scroll through the construction of their pool, then choose a model and tiles and see the result in a villa, by day or by night.</span></p>
+  <ul><li data-fr>Chantier animé au scroll, du terrassement à la mise en eau</li><li data-en>Construction animated on scroll, from excavation to filling</li><li data-fr>Eau en temps réel, projecteurs, mode nuit</li><li data-en>Real-time water, pool lights, night mode</li><li data-fr>Personnalisé pour chaque client en 48 h</li><li data-en>Customised for each client within 48 h</li></ul>
+  <div class="row"><button class="btn" data-live><span data-fr>Essayer en direct</span><span data-en>Try it live</span></button><a class="btn gh" href="https://studio.goual.fr/piscine/" target="_blank" rel="noopener"><span data-fr>Ouvrir le site</span><span data-en>Open the site</span> ↗</a></div></div>
+</div></template>
+
+<template id="t-komi"><div class="proj">
+  <a class="shot" href="https://mane458957-maker.github.io/komi/" target="_blank" rel="noopener"><img src="img/portfolio/komi.webp" alt=""><img class="b" src="img/portfolio/komi-2.webp" alt=""></a>
+  <div><span class="tag">E-COMMERCE</span><span class="tag"><span data-fr>ALIMENTAIRE</span><span data-en>FOOD</span></span>
+  <h3>KŌMI</h3>
+  <p><span data-fr>Boutique de miels aromatisés : un slider produit coloré où chaque parfum change l'ambiance du site, puis le catalogue et les coffrets.</span><span data-en>Flavoured honey store: a colourful product slider where each flavour changes the mood of the site, then the catalogue and gift boxes.</span></p>
+  <ul><li data-fr>Ambiance qui change selon le produit</li><li data-en>Mood that changes with each product</li><li data-fr>Catalogue, coffrets et panier</li><li data-en>Catalogue, gift boxes and cart</li><li data-fr>Modèle réutilisable pour d'autres marques</li><li data-en>Reusable template for other brands</li></ul>
+  <div class="row"><button class="btn" data-live><span data-fr>Essayer en direct</span><span data-en>Try it live</span></button><a class="btn gh" href="https://mane458957-maker.github.io/komi/" target="_blank" rel="noopener"><span data-fr>Ouvrir le site</span><span data-en>Open the site</span> ↗</a></div></div>
+</div></template>
+
+<template id="t-sin"><div class="proj">
+  <a class="shot" href="https://mane458957-maker.github.io/sin-red-paris-scroll-story/" target="_blank" rel="noopener"><img src="img/portfolio/sin.webp" alt=""><img class="b" src="img/portfolio/sin-2.webp" alt=""></a>
+  <div><span class="tag"><span data-fr>MODE</span><span data-en>FASHION</span></span><span class="tag">3D</span>
+  <h3>SIN Red Paris</h3>
+  <p><span data-fr>Une « scroll story » pour une marque de casquettes : le produit en 3D tourne et se dévoile au fil du défilement, détail après détail.</span><span data-en>A scroll story for a cap brand: the 3D product turns and reveals itself detail by detail as you scroll.</span></p>
+  <ul><li data-fr>Modèle 3D piloté par le scroll</li><li data-en>Scroll-driven 3D model</li><li data-fr>Narration produit éditoriale</li><li data-en>Editorial product storytelling</li><li data-fr>Direction artistique minimaliste</li><li data-en>Minimal art direction</li></ul>
+  <div class="row"><button class="btn" data-live><span data-fr>Essayer en direct</span><span data-en>Try it live</span></button><a class="btn gh" href="https://mane458957-maker.github.io/sin-red-paris-scroll-story/" target="_blank" rel="noopener"><span data-fr>Ouvrir le site</span><span data-en>Open the site</span> ↗</a></div></div>
+</div></template>
+
+<template id="t-serv"><div class="notes">
+  <h2><span data-fr>Ce que je fais pour vous</span><span data-en>What I do for you</span></h2>
+  <div class="svc">
+    <div><b><span data-fr>Sites premium</span><span data-en>Premium websites</span></b><span><span data-fr>Design sur mesure, animations, 3D, rapide sur mobile. Nom de domaine et mail pro connectés.</span><span data-en>Custom design, animations, 3D, fast on mobile. Domain and professional email connected.</span></span></div>
+    <div><b>E-commerce</b><span><span data-fr>Boutiques Shopify ou sur mesure, pages produits qui convertissent, paiement en ligne.</span><span data-en>Shopify or custom stores, product pages that convert, online payment.</span></span></div>
+    <div><b><span data-fr>Vidéo IA</span><span data-en>AI video</span></b><span><span data-fr>Publicités et contenus pour les réseaux sociaux, créés avec les meilleurs outils d'IA.</span><span data-en>Ads and social media content made with the best AI tools.</span></span></div>
+    <div><b><span data-fr>Maquette offerte</span><span data-en>Free mock-up</span></b><span><span data-fr>Je vous montre votre futur site avant même que vous signiez.</span><span data-en>I show you your future website before you even sign.</span></span></div>
   </div>
-</div></section>
+</div></template>
 
-<section class="services" id="services"><div class="wrap">
-  <div class="eyebrow">Services</div>
-  <h2><span data-fr>Ce que je fais pour vous.</span><span data-en>What I do for you.</span></h2>
-  <p class="sub"><span data-fr>Du site vitrine premium à la vidéo publicitaire générée par IA.</span><span data-en>From premium showcase websites to AI-generated ad videos.</span></p>
-  <div class="cards">
-    <div class="card"><div class="n">01</div><h4><span data-fr>Sites premium</span><span data-en>Premium websites</span></h4><p><span data-fr>Design sur mesure, animations, 3D, rapide sur mobile. Nom de domaine et mail pro connectés.</span><span data-en>Custom design, animations, 3D, fast on mobile. Domain and professional email connected.</span></p></div>
-    <div class="card"><div class="n">02</div><h4>E-commerce</h4><p><span data-fr>Boutiques Shopify ou sur mesure, pages produits qui convertissent, paiement en ligne.</span><span data-en>Shopify or custom stores, product pages that convert, online payment.</span></p></div>
-    <div class="card"><div class="n">03</div><h4><span data-fr>Vidéo IA</span><span data-en>AI video</span></h4><p><span data-fr>Publicités et contenus pour les réseaux sociaux, créés avec les meilleurs outils d'IA.</span><span data-en>Ads and social media content made with the best AI tools.</span></p></div>
-  </div>
-</div></section>
-
-<section class="contact" id="contact"><div class="wrap">
-  <div class="eyebrow">Contact</div>
+<template id="t-contact"><div class="contact">
+  <div class="ic i-mail"></div>
   <h2><span data-fr>Un projet ? Parlons-en.</span><span data-en>Have a project? Let's talk.</span></h2>
-  <p class="sub" style="margin:0 auto"><span data-fr>Réponse sous 24 h. Je vous envoie une maquette avant même de signer.</span><span data-en>Reply within 24 h. I send you a mock-up before you even sign.</span></p>
-  <div class="cta">
-    <a class="btn aq" href="mailto:contact@goual.fr">contact@goual.fr</a>
-    <a class="btn ghost" id="wa" href="https://wa.me/33659039438" target="_blank" rel="noopener">WhatsApp</a>
-  </div>
-  <div class="c-lines"><span>🇫🇷 +33 6 59 03 94 38</span><span>🇦🇪 +971 50 315 4697</span></div>
-</div></section>
-
-<footer><div class="wrap"><span>© <span id="y"></span> Goual Studio · goual.fr</span><span>Dubai · France</span></div></footer>
+  <p><span data-fr>Réponse sous 24 h. Maquette offerte avant signature.</span><span data-en>Reply within 24 h. Free mock-up before you sign.</span></p>
+  <div class="row"><a class="btn aq" href="mailto:contact@goual.fr">contact@goual.fr</a><a class="btn" data-wa target="_blank" rel="noopener">WhatsApp</a></div>
+  <div class="nums"><span>🇫🇷 +33 6 59 03 94 38</span><span>🇦🇪 +971 50 315 4697</span></div>
+</div></template>
 
 <script>
-const setLang=l=>{document.documentElement.lang=l;document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));document.getElementById('wa').href=l==='en'?'https://wa.me/971503154697':'https://wa.me/33659039438';try{localStorage.setItem('gs-lang',l)}catch(e){}};
-document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
-let l0='fr';try{l0=localStorage.getItem('gs-lang')||((navigator.language||'').startsWith('fr')?'fr':'en')}catch(e){}
-const q=new URLSearchParams(location.search).get('lang');if(q==='en'||q==='fr')l0=q;setLang(l0);
-document.getElementById('y').textContent=new Date().getFullYear();
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const SVG={
+ pool:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M3 15c1.5 1.2 3 1.2 4.5 0s3-1.2 4.5 0 3 1.2 4.5 0 3-1.2 4.5 0"/><path d="M3 19c1.5 1.2 3 1.2 4.5 0s3-1.2 4.5 0 3 1.2 4.5 0 3-1.2 4.5 0"/><path d="M8 13V5a2 2 0 0 1 4 0M16 13V5a2 2 0 0 0-4 0M8 8h8"/></svg>',
+ komi:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M8 3h8v2H8z" opacity=".9"/><path d="M7 6h10a2 2 0 0 1 2 2v10a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V8a2 2 0 0 1 2-2z" opacity=".95"/><path d="M12 10l2.6 1.5v3L12 16l-2.6-1.5v-3z" fill="#f07a18"/></svg>',
+ sin:'<svg viewBox="0 0 24 24"><path d="M3 15c0-5 4-9 9-9s9 4 9 9H3z" fill="#0b1620"/><path d="M12 15h9.5c1 0 1 2-.5 2H12z" fill="#0b1620"/><rect x="9" y="11" width="6" height="1.6" rx=".8" fill="#e11d48"/></svg>',
+ serv:'<svg viewBox="0 0 24 24" fill="none" stroke="#38c6d9" stroke-width="2" stroke-linecap="round"><rect x="4" y="3" width="16" height="18" rx="3" stroke="#fff"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>',
+ contact:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg>',
+ wa:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3zm0 2a7 7 0 1 1-3.6 13l-.3-.2-2.7.7.7-2.6-.2-.3A7 7 0 0 1 12 5zm-2.6 3.6c-.2 0-.5 0-.7.3-.3.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.8 2.2.9 2.6.7 3.1.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.4-.3-1.6-.8c-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a5.7 5.7 0 0 1-2.8-2.5c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4l-.7-1.8c-.2-.4-.3-.4-.5-.4z"/></svg>',
+ me:'<svg viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="9" r="4"/><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6z"/></svg>',
+ welcome:'<svg viewBox="0 0 24 24"><text x="12" y="17" text-anchor="middle" font-family="Inter,Arial" font-weight="800" font-size="13" fill="#fff">g.</text></svg>',
+ lang:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>'
+};
+const APPS={
+ welcome:{fr:'Bienvenue',en:'Welcome',cls:'i-serv',ic:'welcome',w:640,h:500},
+ pool:{fr:'Piscine 3D',en:'Pool 3D',cls:'i-pool',ic:'pool',w:900,h:560,live:'https://studio.goual.fr/piscine/'},
+ komi:{fr:'KŌMI',en:'KŌMI',cls:'i-komi',ic:'komi',w:900,h:560,live:'https://mane458957-maker.github.io/komi/'},
+ sin:{fr:'SIN Red Paris',en:'SIN Red Paris',cls:'i-sin',ic:'sin',w:900,h:560,live:'https://mane458957-maker.github.io/sin-red-paris-scroll-story/'},
+ serv:{fr:'Services',en:'Services',cls:'i-serv',ic:'serv',w:520,h:470},
+ contact:{fr:'Contact',en:'Contact',cls:'i-mail',ic:'contact',w:480,h:400}
+};
+const L=()=>document.documentElement.lang;
+const icon=(k,extra='')=>`<div class="ic ${APPS[k]?APPS[k].cls:extra}">${SVG[APPS[k]?APPS[k].ic:k]||''}</div>`;
+const waHref=()=>L()==='en'?'https://wa.me/971503154697':'https://wa.me/33659039438';
+const ICMAP={'i-pool':'pool','i-komi':'komi','i-sin':'sin','i-mail':'contact','i-serv':'serv','i-wa':'wa','i-me':'me','i-lang':'lang'};
+const fill=root=>{root.querySelectorAll('[data-wa]').forEach(a=>a.href=waHref());root.querySelectorAll('.ic').forEach(el=>{const k=[...el.classList].find(c=>ICMAP[c]);if(k&&!el.innerHTML.trim())el.innerHTML=SVG[ICMAP[k]]});};
+document.querySelectorAll('.ic').forEach(el=>{const k=[...el.classList].find(c=>c.startsWith('i-'));const map={'i-pool':'pool','i-komi':'komi','i-sin':'sin','i-mail':'contact','i-serv':'serv'};if(map[k]&&!el.innerHTML.trim())el.innerHTML=SVG[map[k]];});
+
+/* ---------- langue ---------- */
+function setLang(l){document.documentElement.lang=l;document.querySelectorAll('.lg button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));document.querySelectorAll('[data-wa]').forEach(a=>a.href=waHref());document.querySelectorAll('.win .tb .tt').forEach(t=>t.textContent=APPS[t.dataset.k][l]);buildPhone();try{localStorage.setItem('gs-lang',l)}catch(e){}}
+document.querySelectorAll('.lg button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+
+/* ---------- horloge (heure de Dubaï) ---------- */
+function tick(){const t=new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Dubai'});document.querySelectorAll('.clock').forEach(c=>c.textContent=t)}
+tick();setInterval(tick,15000);
+
+/* =================== BUREAU =================== */
+const desk=document.getElementById('desk'),dock=document.getElementById('dock');
+['welcome','pool','komi','sin','sep','serv','contact','wa'].forEach(k=>{
+  if(k==='sep'){dock.insertAdjacentHTML('beforeend','<div class="sep"></div>');return}
+  if(k==='wa'){dock.insertAdjacentHTML('beforeend',`<a class="di" data-wa target="_blank" rel="noopener"><div class="ic i-wa">${SVG.wa}</div><span class="tip">WhatsApp</span></a>`);return}
+  dock.insertAdjacentHTML('beforeend',`<div class="di" data-open="${k}" data-k="${k}">${icon(k)}<span class="tip"><span data-fr>${APPS[k].fr}</span><span data-en>${APPS[k].en}</span></span></div>`);
+});
+let z=10,wins={},cascade=0;
+function openWin(k){
+  if(innerWidth<=820)return openSheet(k);
+  if(wins[k]){focus(wins[k]);wins[k].classList.remove('min');wins[k].style.display='flex';return}
+  const a=APPS[k],w=Math.min(a.w,innerWidth-60),h=Math.min(a.h,innerHeight-150);
+  const x=Math.max(20,(innerWidth-w)/2-120+cascade*34),y=Math.max(44,(innerHeight-h)/2-50+cascade*26);cascade=(cascade+1)%5;
+  const el=document.createElement('div');el.className='win';el.style.cssText=`left:${x}px;top:${y}px;width:${w}px;height:${h}px`;
+  el.innerHTML=`<div class="tb"><div class="t">${icon(k)}<span class="tt" data-k="${k}">${a[L()]}</span></div>${a.live?`<div class="tabs"><button class="on" data-p="0"><span data-fr>Aperçu</span><span data-en>Overview</span></button><button data-p="1"><span data-fr>En direct</span><span data-en>Live</span></button></div>`:''}<div class="ctl"><button class="mn" title="Réduire"><svg width="12" height="12"><path d="M2 6h8" stroke="currentColor" stroke-width="1.6"/></svg></button><button class="mx" title="Agrandir"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="8" height="8" rx="1.5"/></svg></button><button class="x" title="Fermer"><svg width="12" height="12"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.6"/></svg></button></div></div><div class="body"><div class="pane on"></div>${a.live?'<div class="pane"></div>':''}</div>`;
+  el.querySelector('.pane').appendChild(document.getElementById('t-'+k).content.cloneNode(true));fill(el);
+  desk.appendChild(el);wins[k]=el;focus(el);requestAnimationFrame(()=>el.classList.add('show'));
+  const tabs=el.querySelectorAll('.tabs button'),panes=el.querySelectorAll('.pane');
+  const showTab=i=>{tabs.forEach((t,j)=>t.classList.toggle('on',i===j));panes.forEach((p,j)=>p.classList.toggle('on',i===j));if(i===1&&!panes[1].firstChild)panes[1].innerHTML=`<iframe src="${a.live}" loading="lazy" allow="fullscreen"></iframe>`};
+  tabs.forEach((t,i)=>t.onclick=()=>showTab(i));
+  el.querySelectorAll('[data-live]').forEach(b=>b.onclick=()=>{showTab(1);if(!el.classList.contains('max'))el.classList.add('max')});
+  el.querySelector('.x').onclick=e=>{e.stopPropagation();el.classList.remove('show');setTimeout(()=>{el.remove();delete wins[k];markDock()},220)};
+  el.querySelector('.mn').onclick=e=>{e.stopPropagation();el.classList.remove('show');setTimeout(()=>el.style.display='none',200)};
+  el.querySelector('.mx').onclick=e=>{e.stopPropagation();el.classList.toggle('max')};
+  el.addEventListener('mousedown',()=>focus(el));
+  const tb=el.querySelector('.tb');let dx,dy,drag=false;
+  tb.addEventListener('mousedown',e=>{if(e.target.closest('button'))return;drag=true;dx=e.clientX-el.offsetLeft;dy=e.clientY-el.offsetTop;el.style.transition='none';el.classList.remove('max')});
+  addEventListener('mousemove',e=>{if(!drag)return;el.style.left=Math.min(innerWidth-120,Math.max(-w+160,e.clientX-dx))+'px';el.style.top=Math.min(innerHeight-120,Math.max(32,e.clientY-dy))+'px';if(panes[1])panes[1].style.pointerEvents='none'});
+  addEventListener('mouseup',()=>{if(drag){drag=false;el.style.transition='';if(panes[1])panes[1].style.pointerEvents=''}});
+  tb.addEventListener('dblclick',()=>el.classList.toggle('max'));
+  markDock();
+}
+function focus(el){el.style.zIndex=++z}
+function markDock(){dock.querySelectorAll('.di[data-k]').forEach(d=>d.classList.toggle('open',!!wins[d.dataset.k]))}
+document.addEventListener('click',e=>{const o=e.target.closest('[data-open]');if(o){e.preventDefault();openWin(o.dataset.open)}});
+
+/* =================== TÉLÉPHONE =================== */
+const grid=document.getElementById('grid'),pdock=document.getElementById('pdock'),sheet=document.getElementById('sheet');
+function buildPhone(){
+  const l=L();
+  grid.innerHTML=['pool','komi','sin','serv','welcome'].map(k=>`<button class="app" data-open="${k}">${icon(k)}<span>${k==='welcome'?(l==='en'?'About':'À propos'):APPS[k][l]}</span></button>`).join('')+
+   `<button class="app" id="langApp">${icon('lang','i-lang')}<span>${l==='en'?'Français':'English'}</span></button>`;
+  pdock.innerHTML=`<button data-open="contact">${icon('contact')}</button><a data-wa target="_blank" rel="noopener"><div class="ic i-wa">${SVG.wa}</div></a><button data-open="pool">${icon('pool')}</button><a href="mailto:contact@goual.fr"><div class="ic i-me">${SVG.me}</div></a>`;
+  pdock.querySelectorAll('[data-wa]').forEach(a=>a.href=waHref());
+  document.getElementById('langApp').onclick=()=>setLang(l==='en'?'fr':'en');
+}
+function openSheet(k){
+  const a=APPS[k],c=document.getElementById('shC');c.innerHTML='';c.appendChild(document.getElementById('t-'+k).content.cloneNode(true));fill(c);c.scrollTop=0;
+  c.querySelectorAll('[data-live]').forEach(b=>{b.onclick=()=>open(a.live,'_blank')});
+  document.getElementById('shIc').className='ic '+a.cls;document.getElementById('shIc').innerHTML=SVG[a.ic];
+  document.getElementById('shT').textContent=k==='welcome'?(L()==='en'?'About':'À propos'):a[L()];
+  sheet.classList.add('show');
+}
+document.getElementById('shX').onclick=()=>sheet.classList.remove('show');
+let ty=null;sheet.addEventListener('touchstart',e=>{const t=e.touches[0];ty=(t.clientY>innerHeight-60)?t.clientY:null});
+sheet.addEventListener('touchend',e=>{if(ty!==null&&e.changedTouches[0].clientY<ty-60)sheet.classList.remove('show');ty=null});
+
+/* ---------- démarrage ---------- */
+let l0='fr';try{l0=localStorage.getItem('gs-lang')||((navigator.language||'').toLowerCase().startsWith('fr')?'fr':'en')}catch(e){}
+const q=new URLSearchParams(location.search).get('lang');if(q==='en'||q==='fr')l0=q;
+setLang(l0);
+if(innerWidth>820){setTimeout(()=>openWin('welcome'),350);setTimeout(()=>document.getElementById('toast').classList.add('show'),2600);setTimeout(()=>document.getElementById('toast').classList.remove('show'),9000)}
 </script>
 </body>
 </html>
