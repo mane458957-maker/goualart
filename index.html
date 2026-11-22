@@ -232,11 +232,18 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .postit .pin{position:absolute;top:-8px;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff8a8a,#c81e1e);box-shadow:0 3px 5px rgba(0,0,0,.4)}
 @media (max-width:1250px),(max-height:700px){.duo{display:none}}
 @media (max-width:1000px){.postit{display:none}}
+
+/* ---------- fond eau de piscine ---------- */
+#water{position:absolute;inset:0;width:100%;height:100%;display:block}
+.wall.gl i{display:none}
+.wall.gl .wm{opacity:.1;mix-blend-mode:overlay}
+.i-goualart{background:linear-gradient(160deg,#1c2140,#070912)}
+.ic img.gart{width:92%;height:92%}
 html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:none!important}
 </style>
 </head>
 <body>
-<div class="wall"><i></i><i></i><i></i><i></i><div class="wm">goual.<small>STUDIO</small></div></div>
+<div class="wall" id="wall"><canvas id="water"></canvas><i></i><i></i><i></i><i></i><div class="wm">goual.<small>STUDIO</small></div></div>
 
 <div class="desk" id="desk">
   <div class="bar">
@@ -302,9 +309,9 @@ const P=[
 ];
 const L=()=>document.documentElement.lang;
 const waHref=()=>L()==='en'?'https://wa.me/971503154697':'https://wa.me/33659039438';
-const ic=(cls,k)=>`<div class="ic ${cls}">${k==='wa'?'<img src="img/wa.png" alt="WhatsApp">':SVG[k]}</div>`;
+const ic=(cls,k)=>`<div class="ic ${cls}">${k==='wa'?'<img src="img/wa.png" alt="WhatsApp">':k==='gart'?'<img class="gart" src="img/goualart-logo.png" alt="Goual Art">':SVG[k]}</div>`;
 const DOCK=()=>[
- {cls:'i-goual',k:'goual',href:'https://goual.fr',t:'goual.fr'},
+ {cls:'i-goualart',k:'gart',href:'https://goual.fr',t:'Goual Art · goual.fr'},
  {cls:'i-wa',k:'wa',href:waHref(),t:'WhatsApp',ext:1},
  {cls:'i-mail',k:'mail',href:'mailto:contact@goual.fr',t:'contact@goual.fr'},
  {cls:'i-insta',k:'insta',href:INSTAGRAM,t:'Instagram',ext:1},
@@ -404,6 +411,70 @@ function renderWx(){
 fetch('https://api.open-meteo.com/v1/forecast?latitude=25.2,48.86,40.71&longitude=55.27,2.35,-74.01&current=temperature_2m,weather_code')
  .then(r=>r.json()).then(a=>{WX={dxb:a[0].current.temperature_2m,code:a[0].current.weather_code,par:a[1].current.temperature_2m,ny:a[2].current.temperature_2m};document.getElementById('mVs').style.display='';renderWx()})
  .catch(()=>{});
+
+
+/* ---------- fond : eau de piscine animée (WebGL) ---------- */
+(function(){
+const cv=document.getElementById('water');
+const gl=cv.getContext('webgl',{antialias:false,alpha:false,premultipliedAlpha:false});
+if(!gl)return;
+const VS='attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
+const FS=`precision highp float;
+uniform vec2 R;uniform float T;uniform vec4 P[10];uniform vec2 M;
+vec2 h2(vec2 p){p=vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3)));return fract(sin(p)*43758.5453);}
+float cell(vec2 p,float t){
+  vec2 i=floor(p),f=fract(p);float d1=8.,d2=8.;
+  for(int y=-1;y<=1;y++)for(int x=-1;x<=1;x++){
+    vec2 g=vec2(float(x),float(y));vec2 o=h2(i+g);o=.5+.42*sin(t*.9+6.2831*o);
+    float d=length(g+o-f);if(d<d1){d2=d1;d1=d;}else if(d<d2)d2=d;}
+  return d2-d1;}
+float caus(vec2 p,float t){
+  p+=.35*vec2(sin(p.y*.9+t*.6),cos(p.x*.8-t*.5));
+  float e=cell(p,t);return pow(1.-smoothstep(0.,.13,e),2.6);}
+void main(){
+  vec2 uv=gl_FragCoord.xy/R.y;vec2 q=gl_FragCoord.xy/R;
+  vec2 off=vec2(0.);float rl=0.;
+  for(int k=0;k<10;k++){vec4 r=P[k];float age=T-r.z;if(r.w<=0.||age<0.||age>4.)continue;
+    vec2 dv=uv-r.xy;float d=length(dv);float front=age*.32;
+    float w=sin((d-front)*55.)*exp(-abs(d-front)*14.)*exp(-age*1.1)*r.w;
+    off+=normalize(dv+1e-4)*w*.018;rl+=w;}
+  vec2 m=uv-M;off+=normalize(m+1e-4)*.004*sin(length(m)*30.-T*4.)*exp(-length(m)*6.);
+  vec2 p=uv+off;
+  float t=T*.55;
+  float c=caus(p*3.2,t)*.75+caus(p*5.3+7.,t*1.3)*.45;
+  vec2 tile=abs(fract(p*5.+vec2(.03*sin(T*.7+p.y*6.),.03*cos(T*.6+p.x*6.)))-.5);
+  float grout=smoothstep(.47,.5,max(tile.x,tile.y));
+  vec3 deep=vec3(.02,.20,.29),mid=vec3(.04,.42,.53),shal=vec3(.10,.62,.70);
+  vec3 col=mix(deep,mid,smoothstep(0.,1.,q.y*.9+.1*sin(T*.2)));
+  col=mix(col,shal,.25*smoothstep(.3,1.,1.-length(q-vec2(.3,.85))));
+  col*=1.-.12*grout;
+  col+=vec3(.55,.95,1.)*c*.38;
+  col+=vec3(.6,1.,1.)*rl*.06;
+  col*=1.-.45*pow(length(q-.5)*1.15,2.2);
+  gl_FragColor=vec4(col,1.);}`;
+function sh(t,src){const o=gl.createShader(t);gl.shaderSource(o,src);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS)){console.warn(gl.getShaderInfoLog(o));return null}return o}
+const v=sh(gl.VERTEX_SHADER,VS),f=sh(gl.FRAGMENT_SHADER,FS);if(!v||!f)return;
+const pr=gl.createProgram();gl.attachShader(pr,v);gl.attachShader(pr,f);gl.linkProgram(pr);if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return;
+gl.useProgram(pr);
+const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+const la=gl.getAttribLocation(pr,'a');gl.enableVertexAttribArray(la);gl.vertexAttribPointer(la,2,gl.FLOAT,false,0,0);
+const uR=gl.getUniformLocation(pr,'R'),uT=gl.getUniformLocation(pr,'T'),uP=gl.getUniformLocation(pr,'P'),uM=gl.getUniformLocation(pr,'M');
+document.getElementById('wall').classList.add('gl');
+const Q=innerWidth>820?.6:.5;
+function size(){cv.width=Math.round(innerWidth*Q*Math.min(devicePixelRatio,1.5));cv.height=Math.round(innerHeight*Q*Math.min(devicePixelRatio,1.5));gl.viewport(0,0,cv.width,cv.height)}
+size();addEventListener('resize',size);
+const rip=new Float32Array(40);let ri=0;const t0=performance.now();
+const now=()=>(performance.now()-t0)/1000;
+let mx=-5,my=-5,lx=-99,ly=-99,lt=0;
+function toUV(x,y){return[x/innerHeight,(innerHeight-y)/innerHeight]}
+function drop(x,y,a){const u=toUV(x,y);rip.set([u[0],u[1],now(),a],ri*4);ri=(ri+1)%10}
+addEventListener('pointermove',e=>{const u=toUV(e.clientX,e.clientY);mx=u[0];my=u[1];const t=now();if(t-lt>.14&&Math.hypot(e.clientX-lx,e.clientY-ly)>60){drop(e.clientX,e.clientY,.35);lx=e.clientX;ly=e.clientY;lt=t}},{passive:true});
+addEventListener('pointerdown',e=>drop(e.clientX,e.clientY,1),{passive:true});
+setInterval(()=>{if(document.hidden)return;drop(Math.random()*innerWidth,Math.random()*innerHeight,.5)},3500);
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function frame(){gl.uniform2f(uR,cv.width,cv.height);gl.uniform1f(uT,still?3:now());gl.uniform4fv(uP,rip);gl.uniform2f(uM,mx,my);gl.drawArrays(gl.TRIANGLES,0,3);if(!still)requestAnimationFrame(frame)}
+frame();
+})();
 
 let l0='fr';try{l0=localStorage.getItem('gs-lang')||((navigator.language||'').toLowerCase().startsWith('fr')?'fr':'en')}catch(e){}
 const q=new URLSearchParams(location.search).get('lang');if(q==='en'||q==='fr')l0=q;
