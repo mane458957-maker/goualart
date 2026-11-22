@@ -245,6 +245,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .i-rev{background:linear-gradient(160deg,#7cc4ff,#2f74d0)}
 .i-trash{background:transparent;box-shadow:none}.i-trash:after{display:none}
 .i-trash svg{width:88%;height:88%;filter:drop-shadow(0 6px 10px rgba(0,0,0,.35))}
+.icons2{position:absolute;top:452px;right:40px;display:grid;grid-template-columns:repeat(2,96px);gap:18px;z-index:2}
+@media (max-width:1000px){.icons2{top:48px;right:22px}}
 .trash{position:absolute;right:20px;bottom:16px;z-index:2}
 .lock{position:absolute;right:-3px;bottom:-3px;width:22px;height:22px;border-radius:50%;background:#0b1620;display:grid;place-items:center;z-index:4;border:2px solid #fff}
 .lock svg{width:11px;height:11px}
@@ -274,6 +276,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .rv{text-align:center;padding:40px 30px}
 .rv .big{font-size:54px;margin-bottom:10px}
 .rv .stars{font-size:26px;letter-spacing:4px;color:#d6dbe0;margin:10px 0}
+.trashapp{grid-column:4}
 .app .i-trash{background:rgba(255,255,255,.2);backdrop-filter:blur(10px)}.app .i-trash svg{width:70%;height:70%}
 @media (max-width:820px){.floater svg{transform:scale(.7)}}
 .floater{position:fixed;left:0;top:0;z-index:1;pointer-events:none;will-change:transform}
@@ -295,6 +298,7 @@ html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:n
   <div class="meteo" id="meteo"><div class="top"><div><div class="city" data-fr>Dubaï, maintenant</div><div class="city" data-en>Dubai, right now</div><div class="deg" id="mDeg">--°</div><div class="cond" id="mCond"></div></div><div class="wic" id="mIc"></div></div><div class="vs" id="mVs"></div><div class="joke" id="mJoke"></div><div class="joke2" id="mJoke2"></div></div>
   <div class="icons" id="icons"></div>
   <div class="trash" id="trash"></div>
+  <div class="icons2" id="icons2"></div>
   <div class="duo" id="duo"><div class="iph"><div class="scr"><div class="isl"></div><div class="ld" id="duoLd">…</div><iframe id="duoF" title="aperçu mobile"></iframe></div></div><div class="cap"><button id="duoP" aria-label="précédent">‹</button><span><span id="duoT"></span><small data-fr>Version mobile, en direct</small><small data-en>Live mobile version</small></span><button id="duoN" aria-label="suivant">›</button></div></div>
   <div class="postit"><div class="pin"></div><b data-fr>À faire aujourd’hui</b><b data-en>Today’s to-do</b><div data-fr><s>1. Boire un café</s><br><s>2. Coder un site qui fait waouh</s><br>3. Créer le vôtre 👉 WhatsApp</div><div data-en><s>1. Drink coffee</s><br><s>2. Code a wow website</s><br>3. Build yours 👉 WhatsApp</div></div>
   <div class="dock" id="dock"></div>
@@ -358,7 +362,7 @@ const LOCK='<span class="lock"><svg viewBox="0 0 24 24" fill="#fff"><path d="M7 
 const X=[
  {k:'pdf',cls:'i-pdf',fr:'Tarifs.pdf',en:'Prices.pdf',w:640,h:640,html:l=>{const en=l==='en';const r=(a,b,c,d)=>`<div class="row2"><div><b>${a}</b><span>${b}</span></div><div class="pr">${c}<small>${d||''}</small></div></div>`;
   return `<div class="pdf"><div class="pg"><div class="hd"><div><div class="lg3">goual<i>.</i></div><small>STUDIO</small></div><small>${en?'PRICE LIST 2026':'TARIFS 2026'}</small></div>`+
-  r(en?'Pool-builder website':'Site pour pisciniste',en?'Premium template personalised with your logo, photos and models. 3D pool configurator included.':'Template premium personnalisé avec votre logo, vos photos et vos modèles. Configurateur 3D de piscine inclus.',en?'$500 · AED 2,500':'500 € TTC',en?'one-off':'paiement unique')+
+  r(en?'Pool-builder website':'Site pour pisciniste',en?'Premium template personalised with your logo, photos and models. 3D pool configurator included.':'Template premium personnalisé avec votre logo, vos photos et vos modèles. Configurateur 3D de piscine inclus.',en?'$500':'500 €',en?'Limited-time offer':'Offre du moment')+
   r(en?'Custom premium website':'Site premium sur mesure',en?'Scroll animations, 3D, configurators. The kind of site people screenshot.':'Animations au scroll, 3D, configurateurs. Le genre de site qu’on montre à ses amis.',en?'On quote':'Sur devis')+
   r(en?'AI videos':'Vidéos IA',en?'Ads and social content made with AI.':'Publicités et contenus réseaux sociaux faits avec l’IA.',en?'On quote':'Sur devis')+
   `<p class="fine">${en?'Free coffee not included. Good mood included.':'Café non compris. Bonne humeur incluse.'}</p><a class="cta" href="${waHref()}" target="_blank" rel="noopener">${WAIMG}${en?'Ask for a quote on WhatsApp':'Demander un devis sur WhatsApp'}</a></div></div>`}},
@@ -392,12 +396,13 @@ const desk=document.getElementById('desk'),icons=document.getElementById('icons'
 const grid=document.getElementById('grid'),pdock=document.getElementById('pdock'),sheet=document.getElementById('sheet');
 function build(){
   const l=L();
-  icons.innerHTML=P.concat(X.filter(x=>x.k!=='trash')).map(p=>`<div class="dicon" data-p="${p.k}">${ic(p.cls,p.k)}<span>${p[l]}</span></div>`).join('');
+  document.getElementById('icons2').innerHTML=X.filter(x=>x.k!=='trash').map(p=>`<div class="dicon" data-p="${p.k}">${ic(p.cls,p.k)}<span>${p[l]}</span></div>`).join('');
+  icons.innerHTML=P.map(p=>`<div class="dicon" data-p="${p.k}">${ic(p.cls,p.k)}<span>${p[l]}</span></div>`).join('');
   document.getElementById('trash').innerHTML=`<div class="dicon" data-p="trash">${ic('i-trash','trash')}<span>${X[2][l]}</span></div>`;
   const d=DOCK();
   const bd=x=>x.k==='wa'?'<span class="badge">1</span>':'';
   dock.innerHTML=d.map(x=>`<a class="di${x.k==='wa'?' wa-bounce':''}" href="${x.href}" ${x.ext?'target="_blank" rel="noopener"':''}>${ic(x.cls,x.k)}${bd(x)}<span class="tip">${x.t}</span></a>`).join('');
-  grid.innerHTML=ALL().map(p=>`<button class="app" data-p="${p.k}">${ic(p.cls,p.k)}<span>${p[l]}</span></button>`).join('')+`<button class="app folder" id="fdApp"><div class="ic fd">${SOC.map(x=>`<i class="${x.cls}">${SVG[x.k]}</i>`).join('')}<i></i></div><span>${l==='en'?'Social':'Réseaux sociaux'}</span></button>`+`<button class="app" id="langApp">${ic('i-lang','lang')}<span>${l==='en'?'Français':'English'}</span></button>`;
+  grid.innerHTML=`${P.map(p=>`<button class="app" data-p="${p.k}">${ic(p.cls,p.k)}<span>${p[l]}</span></button>`).join('')}<button class="app" id="langApp">${ic('i-lang','lang')}<span>${l==='en'?'Français':'English'}</span></button><button class="app folder" id="fdApp"><div class="ic fd">${SOC.map(x=>`<i class="${x.cls}">${SVG[x.k]}</i>`).join('')}<i></i></div><span>${l==='en'?'Social':'Réseaux sociaux'}</span></button>${X.filter(x=>x.k!=='trash').map(p=>`<button class="app" data-p="${p.k}">${ic(p.cls,p.k)}<span>${p[l]}</span></button>`).join('')}<button class="app trashapp" data-p="trash">${ic('i-trash','trash')}<span>${X[2][l]}</span></button>`;
   document.getElementById('fin').innerHTML=SOC.map(x=>`<a href="${x.href}" target="_blank" rel="noopener">${ic(x.cls,x.k)}<span>${x.t}</span></a>`).join('');
   document.getElementById('fdApp').onclick=()=>document.getElementById('fov').classList.add('show');
   pdock.innerHTML=d.filter(x=>x.k!=='tt'&&x.k!=='yt').map(x=>`<a href="${x.href}" ${x.ext?'target="_blank" rel="noopener"':''}>${ic(x.cls,x.k)}${bd(x)}</a>`).join('');
