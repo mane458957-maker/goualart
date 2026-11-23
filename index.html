@@ -357,6 +357,79 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 html.wp-sunset #water{filter:hue-rotate(200deg) saturate(1.25) brightness(1.1)}
 html.wp-night #water{filter:brightness(.42) saturate(1.3) hue-rotate(15deg)}
 html.nofloat .floater{display:none}
+
+/* ---------- pages mobiles ---------- */
+.home{padding:10px 0 0!important}
+.pages{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;flex:1;min-height:0}
+.pages::-webkit-scrollbar{display:none}
+.pages .pg{flex:0 0 100%;scroll-snap-align:start;padding:0 22px;overflow:hidden}
+.widget.w2 b{font-size:17px;font-weight:700;letter-spacing:-.3px}.widget.w2 p{font-size:13px;opacity:.85;margin-top:6px;line-height:1.4}
+/* ---------- icônes outils ---------- */
+.i-calc{background:linear-gradient(180deg,#3a3a3c,#111)}.i-cal{background:#fff}.i-maps{background:#eaf3e2}.i-cam{background:linear-gradient(180deg,#e6e8eb,#a9aeb4)}
+.i-calc svg,.i-cal svg,.i-maps svg,.i-cam svg{width:100%!important;height:100%!important}
+.icons2{top:262px!important;right:22px!important;grid-template-columns:repeat(4,92px)!important;gap:14px 10px!important}
+.postit{top:512px!important;right:40px!important}
+@media (max-height:760px){.postit{display:none}}
+/* ---------- calculatrice ---------- */
+.calc{background:#000;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:18px 18px 22px;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Inter,sans-serif;user-select:none}
+.calc .q{color:#8e8e93;font-size:15px;text-align:right;min-height:20px;letter-spacing:-.2px}
+.calc .q b{color:#ff9f0a;font-weight:600}
+.calc .dsp{font-size:64px;font-weight:300;text-align:right;letter-spacing:-2px;line-height:1.1;margin:4px 4px 16px;white-space:nowrap;overflow:hidden}
+.calc .dsp.ph{color:#5a5a5e}
+.calc .sum{text-align:right;font-size:17px;line-height:1.7;margin-bottom:12px;color:#d1d1d6}.calc .sum b{color:#fff;font-weight:600}
+.calc .keys{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.calc .keys button{aspect-ratio:1;border-radius:50%;font-size:30px;font-weight:400;color:#fff;background:#333;font-family:inherit;transition:filter .1s}
+.calc .keys button:active{filter:brightness(1.6)}
+.calc .keys .g{background:#5c5c5e;color:#fff;font-size:28px;font-weight:400}.calc .keys button{display:grid;place-items:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}.calc .keys .o{background:#f19a37!important}
+.calc .keys .o{background:#ff9f0a;font-size:34px}
+.calc .keys .o.on{background:#fff;color:#ff9f0a}
+.calc .keys .z{grid-column:span 2;aspect-ratio:auto;border-radius:999px;text-align:left;padding-left:30px}
+.calc .wa{display:none;margin:0 auto 14px;background:#25d366;color:#fff;font-weight:600;font-size:16px;padding:13px 22px;border-radius:999px;align-items:center;gap:8px}
+.calc .wa img{width:20px;height:20px}.calc.done .wa{display:inline-flex}
+.win .calc{min-height:100%}.win .calc .keys{gap:10px}.win .calc .keys button{font-size:26px;aspect-ratio:auto;height:62px}.win .calc .keys .g{font-size:22px}.win .calc .dsp{font-size:52px}
+/* ---------- calendrier ---------- */
+.cal{background:#fff;height:100%;overflow:auto;padding:16px 18px 24px;color:#000;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,sans-serif}
+.cal .mh{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cal .mh b{font-size:24px;font-weight:700;letter-spacing:-.4px}.cal .mh b i{font-style:normal;color:#ff3b30}
+.cal .mh button{color:#ff3b30;font-size:26px;width:36px;height:36px}
+.cal .wd,.cal .dd{display:grid;grid-template-columns:repeat(7,1fr);text-align:center}
+.cal .wd span{font-size:12px;color:#8e8e93;font-weight:600;padding:4px 0 8px}
+.cal .dd button{height:44px;font-size:19px;border-radius:50%;width:44px;margin:2px auto;font-family:inherit;color:#000}
+.cal .dd button.x{color:#c7c7cc;pointer-events:none}.cal .dd button.t{color:#ff3b30;font-weight:600}
+.cal .dd button.on{background:#ff3b30;color:#fff;font-weight:600}
+.cal h4{font-size:13px;text-transform:uppercase;color:#6d6d72;margin:18px 2px 8px;font-weight:500}
+.cal .sl{display:flex;flex-wrap:wrap;gap:8px}
+.cal .sl button{padding:9px 14px;border-radius:10px;background:#f2f2f7;font-size:15px;font-family:inherit;color:#000}
+.cal .sl button.on{background:#ff3b30;color:#fff}
+.cal .book{margin-top:18px;width:100%;padding:14px;border-radius:12px;background:#25d366;color:#fff;font-weight:600;font-size:16px;display:flex;align-items:center;justify-content:center;gap:8px;opacity:.35;pointer-events:none}
+.cal .book.ok{opacity:1;pointer-events:auto}.cal .book img{width:20px;height:20px}
+/* ---------- plans ---------- */
+.maps{position:relative;height:100%;background:#e9efe3}
+.maps iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.maps .pinc{position:absolute;left:12px;right:12px;bottom:14px;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:16px;padding:14px 16px;color:#000;box-shadow:0 10px 30px rgba(0,0,0,.25);font-family:-apple-system,BlinkMacSystemFont,Inter,sans-serif}
+.maps .pinc b{font-size:18px;display:block;letter-spacing:-.3px}.maps .pinc small{color:#6d6d72;font-size:13px;display:block;margin:3px 0 10px;line-height:1.4}
+.maps .pinc .rate{color:#ff9500;font-size:13px;margin-bottom:8px}
+.maps .pinc a{display:inline-flex;align-items:center;gap:8px;background:#007aff;color:#fff;font-weight:600;font-size:15px;padding:10px 16px;border-radius:10px}
+/* ---------- appareil photo ---------- */
+.cam{background:#000;height:100%;display:flex;flex-direction:column;color:#fff;font-family:-apple-system,BlinkMacSystemFont,Inter,sans-serif;user-select:none}
+.cam .vf{flex:1;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 40%,#2c2c2e,#000)}
+.cam .vf:before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px) 0 0/100% 33.33%,linear-gradient(90deg,rgba(255,255,255,.18) 1px,transparent 1px) 0 0/33.33% 100%;z-index:2;pointer-events:none}
+.cam .vf .hint{position:absolute;inset:0;display:grid;place-items:center;color:#8e8e93;font-size:15px;text-align:center;padding:20px}
+.cam .vf .dog{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;opacity:0;transform:scale(1.08);transition:opacity .3s,transform .6s}
+.cam.shot .vf .dog{opacity:1;transform:none}.cam .th img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}.cam.shot .vf .hint{display:none}
+.cam .cap{position:absolute;left:12px;right:12px;bottom:12px;z-index:3;background:rgba(0,0,0,.55);backdrop-filter:blur(10px);border-radius:12px;padding:10px 14px;font-size:14.5px;line-height:1.4;opacity:0;transform:translateY(10px);transition:.4s .3s}
+.cam.shot .cap{opacity:1;transform:none}
+.cam .fl{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:4}
+.cam .fl.go{animation:flash .45s}
+@keyframes flash{0%{opacity:0}10%{opacity:1}100%{opacity:0}}
+.cam .mode{text-align:center;font-size:13px;color:#ffd60a;letter-spacing:1.5px;font-weight:600;padding:10px 0 6px}
+.cam .bar2{display:flex;align-items:center;justify-content:space-between;padding:8px 34px 20px}
+.cam .th{width:46px;height:46px;border-radius:8px;background:#1c1c1e;overflow:hidden;border:1.5px solid #333}
+.cam .th svg{width:100%;height:100%}
+.cam .sh{width:74px;height:74px;border-radius:50%;border:4px solid #fff;display:grid;place-items:center}
+.cam .sh i{width:60px;height:60px;border-radius:50%;background:#fff;transition:transform .1s}
+.cam .sh:active i{transform:scale(.88)}
+.cam .fx{width:46px;height:46px;border-radius:50%;background:#1c1c1e;display:grid;place-items:center;font-size:20px}
 html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:none!important}
 </style>
 </head>
@@ -381,7 +454,7 @@ html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:n
 
 <div class="phone" id="phone">
   <div class="sbar"><span class="clock"></span><span class="ri"><svg width="18" height="12" viewBox="0 0 18 12" fill="#fff"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><span class="batt"><i></i></span></span></div>
-  <div class="home">
+  <div class="home"><div class="pages" id="pages"><div class="pg">
     <div class="widget">
       <div class="wl"><div><div class="lg2">goual<i>.</i></div><small>STUDIO</small></div><div class="clk"><b class="clock"></b><span>Dubai</span></div></div>
       <div class="wxl" id="pWx"></div>
@@ -389,7 +462,8 @@ html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:n
       <p style="margin-top:6px;opacity:.75;font-size:12px"><span data-fr>Touchez une app pour ouvrir le site en direct.</span><span data-en>Tap an app to open the live site.</span></p>
     </div>
     <div class="grid" id="grid"></div>
-    <div class="dots"><i class="on"></i><i></i></div>
+    </div><div class="pg"><div class="widget w2"><b data-fr>Outils utiles</b><b data-en>Handy tools</b><p data-fr>Devis express, rendez-vous, café à Dubaï… et un photographe très spécial.</p><p data-en>Instant quote, book a call, coffee in Dubai… and a very special photographer.</p></div><div class="grid" id="grid2"></div></div></div>
+    <div class="dots" id="dots"><i class="on"></i><i></i></div>
   </div>
   <div class="pdock" id="pdock"></div>
 </div>
@@ -415,6 +489,9 @@ const SVG={
  tt:'<svg viewBox="0 0 24 24"><g transform="translate(-.7 .5)"><path d="M13 4v10.2a2.8 2.8 0 1 1-2.8-2.8M13 4c.4 2.3 2 3.8 4.4 4" fill="none" stroke="#25f4ee" stroke-width="2.3" stroke-linecap="round"/></g><g transform="translate(.7 -.5)"><path d="M13 4v10.2a2.8 2.8 0 1 1-2.8-2.8M13 4c.4 2.3 2 3.8 4.4 4" fill="none" stroke="#fe2c55" stroke-width="2.3" stroke-linecap="round"/></g><path d="M13 4v10.2a2.8 2.8 0 1 1-2.8-2.8M13 4c.4 2.3 2 3.8 4.4 4" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg>',
  set:'<svg viewBox="0 0 60 60"><defs><linearGradient id="gS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbfbfc"/><stop offset="1" stop-color="#c9ced4"/></linearGradient></defs><g transform="translate(30 30)"><g fill="#5f666e"><rect x="-2.6" y="-22.5" width="5.2" height="7" rx="1.2" transform="rotate(0)"/><rect x="-2.6" y="-22.5" width="5.2" height="7" rx="1.2" transform="rotate(30)"/><rect x="-2.6" y="-22.5" width="5.2" height="7" rx="1.2" transform="rotate(60)"/><rect x="-2.6" y="-22.5" width="5.2" height="7" rx="1.2" transform="rotate(90)"/><rect x="-2.6" y="-22.5" width="5.2" height="7" rx="1.2" transform="rotate(120)"/><rect x="-2.6" y="-22.5" width="5.2" height="7" rx="1.2" transform="rotate(150)"/><rect x="-2.6" y="-22.5" width="5.2" height="7" rx="1.2" transform="rotate(180)"/><rect x="-2.6" y="-22.5" width="5.2" height="7" rx="1.2" transform="rotate(210)"/><rect x="-2.6" y="-22.5" width="5.2" height="7" rx="1.2" transform="rotate(240)"/><rect x="-2.6" y="-22.5" width="5.2" height="7" rx="1.2" transform="rotate(270)"/><rect x="-2.6" y="-22.5" width="5.2" height="7" rx="1.2" transform="rotate(300)"/><rect x="-2.6" y="-22.5" width="5.2" height="7" rx="1.2" transform="rotate(330)"/></g><circle r="17" fill="#5f666e"/><circle r="15" fill="url(#gS)"/><g stroke="#8a929b" stroke-width="2.2" stroke-linecap="round"><line x1="0" y1="-7" x2="0" y2="-13.5" transform="rotate(0)"/><line x1="0" y1="-7" x2="0" y2="-13.5" transform="rotate(45)"/><line x1="0" y1="-7" x2="0" y2="-13.5" transform="rotate(90)"/><line x1="0" y1="-7" x2="0" y2="-13.5" transform="rotate(135)"/><line x1="0" y1="-7" x2="0" y2="-13.5" transform="rotate(180)"/><line x1="0" y1="-7" x2="0" y2="-13.5" transform="rotate(225)"/><line x1="0" y1="-7" x2="0" y2="-13.5" transform="rotate(270)"/><line x1="0" y1="-7" x2="0" y2="-13.5" transform="rotate(315)"/></g><circle r="6.5" fill="#5f666e"/><circle r="4.2" fill="url(#gS)"/></g></svg>',
  pho:'<svg viewBox="0 0 60 60"><g transform="translate(30 31)"><rect x="-19" y="-17" width="26" height="20" rx="5" fill="#ffb020" transform="rotate(-12)"/><rect x="-6" y="-19" width="26" height="20" rx="5" fill="#ff4f6d" transform="rotate(10)"/><rect x="-15" y="-6" width="32" height="23" rx="6" fill="#2f8cff"/><path d="M-3 0.5v10.5l9.2-5.25z" fill="#fff"/></g></svg>',
+ calc:'<svg viewBox="0 0 60 60"><g><circle cx="20" cy="20" r="7" fill="#a5a5a5"/><circle cx="40" cy="20" r="7" fill="#ff9f0a"/><circle cx="20" cy="40" r="7" fill="#505055"/><circle cx="40" cy="40" r="7" fill="#ff9f0a"/><path d="M37 20h6M40 17v6" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><path d="M37 38.5h6M37 41.5h6" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><path d="M17.5 20h5" stroke="#1c1c1e" stroke-width="2.2" stroke-linecap="round"/></g></svg>',
+ maps:'<svg viewBox="0 0 60 60"><path d="M0 38L60 22v10L0 48z" fill="#ffffff"/><path d="M18 0h7l-6 60h-7z" fill="#fcd770"/><path d="M0 14c18 4 30 14 60 8" stroke="#8fd0ff" stroke-width="5" fill="none"/><path d="M40 60c-4-10-2-22 20-30" stroke="#ffffff" stroke-width="4" fill="none"/><g transform="translate(36 14)"><path d="M0 0a7 7 0 0 1 7 7c0 5-7 12-7 12S-7 12-7 7a7 7 0 0 1 7-7z" fill="#ff3b30"/><circle cx="0" cy="7" r="2.6" fill="#fff"/></g></svg>',
+ cam:'<svg viewBox="0 0 60 60"><rect x="9" y="19" width="42" height="28" rx="6" fill="#2c2c2e"/><path d="M22 19l3-5h10l3 5z" fill="#2c2c2e"/><circle cx="30" cy="33" r="10" fill="#48484a"/><circle cx="30" cy="33" r="7" fill="#1c1c1e"/><circle cx="30" cy="33" r="4" fill="#0a84ff" opacity=".55"/><circle cx="27.5" cy="30.5" r="1.6" fill="#fff" opacity=".8"/><circle cx="44" cy="24" r="1.8" fill="#ffd60a"/></svg>',
  pdf:'<svg viewBox="0 0 24 24"><path d="M6 2.5h8l5 5v14H6z" fill="#fff" stroke="#c9d1d9"/><path d="M14 2.5v5h5" fill="#eef1f4" stroke="#c9d1d9"/><rect x="4" y="12" width="13" height="6" rx="1.5" fill="#e5322d"/><text x="10.5" y="16.6" text-anchor="middle" font-family="Inter,Arial" font-weight="800" font-size="4.6" fill="#fff">PDF</text></svg>',
  rev:'<svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" fill="#fff" opacity=".95"/><path d="M12 9.6l1.2 2.4 2.6.4-1.9 1.8.5 2.6-2.4-1.2-2.4 1.2.5-2.6-1.9-1.8 2.6-.4z" fill="#ffb400"/></svg>',
  trash:'<svg viewBox="0 0 48 48"><defs><linearGradient id="tg" x1="0" x2="1"><stop offset="0" stop-color="#cfd6dd"/><stop offset=".5" stop-color="#f4f7f9"/><stop offset="1" stop-color="#b9c2cb"/></linearGradient></defs><path d="M10 13h28l-3 30a3 3 0 0 1-3 2.7H16a3 3 0 0 1-3-2.7z" fill="url(#tg)"/><path d="M17 18l1 23M24 18v23M31 18l-1 23" stroke="#9aa5b0" stroke-width="1.6"/><path d="M14 16c3-3 6 1 9-2s6 1 10-1" stroke="#ffd25a" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M16 14.5c1-4 4-5 7-3.5" stroke="#7cc4ff" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="24" cy="13" rx="15" ry="3" fill="#e4e9ee" stroke="#aeb8c2"/></svg>',
@@ -453,7 +530,83 @@ const X=[
   `</div><p class="sub" style="margin-top:16px" id="tlm">${en?'Want yours to be next?':'Vous voulez que le vôtre soit le prochain ?'}</p><a class="cta" href="${waHref()}" target="_blank" rel="noopener">${WAIMG}${en?'Replace my old website':'Remplacer mon vieux site'}</a><button class="ghost" id="empty">${en?'Empty trash':'Vider la corbeille'}</button></div>`},
   after:(el,l)=>{const b=el.querySelector('#empty');if(!b)return;b.onclick=()=>{el.querySelectorAll('#tl div').forEach((d,i)=>setTimeout(()=>d.classList.add('gone'),i*160));setTimeout(()=>{el.querySelector('#tl').style.display='none';el.querySelector('#tlm').textContent=l==='en'?'All clean ✨ Now let’s build the new one.':'Tout propre ✨ Maintenant, on construit le nouveau.';b.remove()},800)}}}
 ];
-const ALL=()=>P.concat(X);
+
+/* ================= outils : calculatrice-devis, calendrier, plans, appareil photo ================= */
+(function(){const d=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Dubai'}));
+ SVG.cal=`<svg viewBox="0 0 60 60"><text x="30" y="19" text-anchor="middle" font-family="-apple-system,Inter,Arial" font-weight="600" font-size="9.5" fill="#ff3b30">${d.toLocaleDateString('en-US',{weekday:'short'}).toUpperCase()}</text><text x="30" y="46" text-anchor="middle" font-family="-apple-system,Inter,Arial" font-weight="300" font-size="30" fill="#000">${d.getDate()}</text></svg>`})();
+const WAIMG2='<img src="img/wa.png" alt="">';
+const waTo=(msg)=>(L()==='fr'?'https://wa.me/33659039438':'https://wa.me/971503154697')+'?text='+encodeURIComponent(msg);
+/* ---- calculatrice ---- */
+function calcHTML(l){return `<div class="calc"><a class="wa" target="_blank" rel="noopener">${WAIMG2}<span></span></a><div class="sum"></div><div class="q"></div><div class="dsp ph"></div><div class="keys">
+<button class="g" data-c="bk"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M8.5 5.5h11a1.5 1.5 0 0 1 1.5 1.5v10a1.5 1.5 0 0 1-1.5 1.5h-11L3 12z" fill="none" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M11 9.5l5 5M16 9.5l-5 5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></button><button class="g" data-c="ac">AC</button><button class="g" data-c="op">%</button><button class="o" data-c="op">÷</button>
+<button data-c="7">7</button><button data-c="8">8</button><button data-c="9">9</button><button class="o" data-c="op">×</button>
+<button data-c="4">4</button><button data-c="5">5</button><button data-c="6">6</button><button class="o" data-c="op">−</button>
+<button data-c="1">1</button><button data-c="2">2</button><button data-c="3">3</button><button class="o" data-c="op">+</button>
+<button data-c="pv" title="back">⁺∕₋</button><button data-c="0">0</button><button data-c="op">,</button><button class="o" data-c="eq">=</button></div></div>`}
+function calcAfter(el,l){const en=l==='en';const c=el.querySelector('.calc'),q=c.querySelector('.q'),dsp=c.querySelector('.dsp'),sum=c.querySelector('.sum'),wa=c.querySelector('.wa');
+ const Q=[{q:en?'How many pages for your website?':'Combien de pages pour votre site ?',f:n=>n+(en?(n==1?' page':' pages'):(n<=1?' page':' pages')),max:4},
+          {q:en?'What is your budget?':'Quel est votre budget ?',f:n=>en?'$'+n.toLocaleString('en-US'):n.toLocaleString('fr-FR')+' €',max:7},
+          {q:en?'What is your deadline?':'Quel est votre délai ?',f:n=>n+(en?(n==1?' day':' days'):(n<=1?' jour':' jours')),max:3}];
+ let st=0,v='',A=[];
+ const fit=()=>{const L2=dsp.textContent.length;dsp.style.fontSize=(L2>9?Math.max(30,64-(L2-9)*5):64)+'px'};
+ const draw=()=>{if(st>=3){c.classList.add('done');q.innerHTML=en?'Your quote request is ready ✓':'Votre demande de devis est prête ✓';dsp.textContent=en?'Ready ✓':'Prêt ✓';dsp.classList.remove('ph');
+   sum.innerHTML=Q.map((x,i)=>`${x.q.replace(/ \?|\?/,'')} : <b>${x.f(A[i])}</b>`).join('<br>');
+   const msg=en?`Hi Goual Studio! 👋 Quote request from your calculator:\n• Pages: ${Q[0].f(A[0])}\n• Budget: ${Q[1].f(A[1])}\n• Deadline: ${Q[2].f(A[2])}\nCan we talk?`:`Bonjour Goual Studio ! 👋 Demande de devis depuis votre calculatrice :\n• Pages : ${Q[0].f(A[0])}\n• Budget : ${Q[1].f(A[1])}\n• Délai : ${Q[2].f(A[2])}\nOn en parle ?`;
+   wa.href=waTo(msg);wa.querySelector('span').textContent=en?'Send my quote request':'Envoyer ma demande';fit();return}
+  c.classList.remove('done');sum.innerHTML=A.map((a,i)=>`<span style="opacity:.6">${Q[i].f(a)}</span>`).join(' · ');
+  q.innerHTML=`<b>${st+1}/3</b> · ${Q[st].q}`;const n=v===''?0:+v;dsp.textContent=Q[st].f(n);dsp.classList.toggle('ph',v==='');fit()};
+ c.querySelectorAll('.keys button').forEach(b=>b.onclick=()=>{const k=b.dataset.c;
+  if(/^\d+$/.test(k)){if(st>=3)return;if((v+k).replace(/^0+/,'').length>Q[st].max)return;v=(v+k).replace(/^0+(?=\d)/,'');if(v==='0')v=''}
+  else if(k==='bk')v=v.slice(0,-1);
+  else if(k==='ac'){if(v==='')(st=0,A=[]);v=''}
+  else if(k==='pv'){if(st>0){st--;v=String(A[st]);A=A.slice(0,st)}}
+  else if(k==='op'){sysNotif(en?'Calculator':'Calculatrice',en?'No maths needed. I handle the numbers 😉':'Pas besoin de calculs. Les chiffres, je m’en occupe 😉');b.classList.add('on');setTimeout(()=>b.classList.remove('on'),400)}
+  else if(k==='eq'){if(st>=3){wa.click();return}if(v===''||+v===0){dsp.animate([{transform:'translateX(0)'},{transform:'translateX(-10px)'},{transform:'translateX(10px)'},{transform:'translateX(0)'}],{duration:300});return}A[st]=+v;v='';st++}
+  draw()});
+ draw()}
+/* ---- calendrier ---- */
+function calHTML(l){return `<div class="cal"></div>`}
+function calAfter(el,l){const en=l==='en',loc=en?'en-US':'fr-FR';const box=el.querySelector('.cal');
+ const now=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Dubai'}));now.setHours(0,0,0,0);
+ let ym=new Date(now.getFullYear(),now.getMonth(),1),sel=null,slot=null;
+ const SL=['10:00','12:00','14:00','16:00','18:00'];
+ const draw=()=>{const m=ym.toLocaleDateString(loc,{month:'long'}),y=ym.getFullYear();
+  const wd=[...Array(7)].map((_,i)=>new Date(2024,0,1+i).toLocaleDateString(loc,{weekday:'narrow'}));
+  const first=(ym.getDay()+6)%7,days=new Date(y,ym.getMonth()+1,0).getDate();
+  let cells='';for(let i=0;i<first;i++)cells+='<span></span>';
+  for(let d=1;d<=days;d++){const dt=new Date(y,ym.getMonth(),d);const past=dt<=now,isT=+dt===+now,on=sel&&+dt===+sel;cells+=`<button data-d="${d}" class="${past&&!isT?'x':''}${isT?' t x':''}${on?' on':''}">${d}</button>`}
+  const ok=sel&&slot;
+  const label=sel?sel.toLocaleDateString(loc,{weekday:'long',day:'numeric',month:'long'}):'';
+  box.innerHTML=`<div class="mh"><b><i>${m.charAt(0).toUpperCase()+m.slice(1)}</i> ${y}</b><span><button data-m="-1">‹</button><button data-m="1">›</button></span></div>
+  <div class="wd">${wd.map(w=>`<span>${w}</span>`).join('')}</div><div class="dd">${cells}</div>
+  <h4>${en?'Time (Dubai)':'Heure (Dubaï)'}${sel?' · '+label:''}</h4><div class="sl">${SL.map(t=>`<button data-t="${t}" class="${slot===t?'on':''}">${en?(()=>{const h=+t.slice(0,2);return (h>12?h-12:h)+(h>=12?' PM':' AM')})():t.replace(':','h')}</button>`).join('')}</div>
+  <a class="book${ok?' ok':''}" target="_blank" rel="noopener">${WAIMG2}${ok?(en?'Book this call on WhatsApp':'Réserver cet appel sur WhatsApp'):(en?'Pick a day and a time':'Choisissez un jour et une heure')}</a>`;
+  if(ok){const tl=en?box.querySelector('.sl .on').textContent:slot.replace(':','h');box.querySelector('.book').href=waTo(en?`Hi Goual Studio! 👋 I'd like to book a call on ${label} at ${tl} (Dubai time). Does that work for you?`:`Bonjour Goual Studio ! 👋 J'aimerais réserver un appel le ${label} à ${tl} (heure de Dubaï). Ça vous va ?`)}
+  box.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{const n=new Date(ym.getFullYear(),ym.getMonth()+ +b.dataset.m,1);if(n<new Date(now.getFullYear(),now.getMonth(),1))return;ym=n;draw()});
+  box.querySelectorAll('.dd button').forEach(b=>b.onclick=()=>{sel=new Date(ym.getFullYear(),ym.getMonth(),+b.dataset.d);draw()});
+  box.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{slot=b.dataset.t;draw()})};
+ draw()}
+/* ---- plans ---- */
+function mapsHTML(l){const en=l==='en';return `<div class="maps"><iframe loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=55.255%2C25.183%2C55.295%2C25.212&layer=mapnik&marker=25.1972%2C55.2744" title="Dubai"></iframe>
+ <div class="pinc"><b>☕ Goual Studio HQ</b><div class="rate">★★★★★ · ${en?'Espresso rated 5/5 by the founder':'Espresso noté 5/5 par le fondateur'}</div><small>${en?'Main office: a café somewhere in Dubai. Fast Wi-Fi, excellent espresso, zero meetings that could have been an email.':'Bureau principal : un café quelque part à Dubaï. Wi-Fi rapide, espresso excellent, zéro réunion qui aurait pu être un mail.'}</small>
+ <a target="_blank" rel="noopener" href="${waTo(en?"Hi Goual Studio! 👋 Coffee in Dubai to talk about my website? ☕":"Bonjour Goual Studio ! 👋 Un café à Dubaï pour parler de mon site ? ☕")}">☕ ${en?'Meet for a coffee':'Prendre un café ensemble'}</a></div></div>`}
+/* ---- appareil photo ---- */
+
+const DOG='<img class="dog" src="img/camera-dog.jpg" alt="">';
+function camHTML(l){const en=l==='en';return `<div class="cam"><div class="vf"><div class="hint">${en?'Tap the shutter to take a photo 📸':'Appuyez sur le déclencheur pour prendre une photo 📸'}</div>${DOG}<div class="cap"></div><div class="fl"></div></div><div class="mode">${en?'PHOTO':'PHOTO'}</div><div class="bar2"><div class="th"></div><button class="sh" aria-label="shutter"><i></i></button><button class="fx" aria-label="flip">⟲</button></div></div>`}
+function camAfter(el,l){const en=l==='en';const c=el.querySelector('.cam'),fl=c.querySelector('.fl'),cap=c.querySelector('.cap'),th=c.querySelector('.th');let n=0;
+ const C=en?['Oops, wrong camera. Meet my head of quality control. 🐶','He approves every website before launch. Very strict.','Still him. He refuses to leave the frame.','Fun fact: he has more Instagram followers than most brands.']
+           :['Oups, mauvaise caméra. Je vous présente mon responsable qualité. 🐶','Il valide chaque site avant la mise en ligne. Très exigeant.','Toujours lui. Il refuse de quitter le cadre.','Le saviez-vous : il a plus d’abonnés que certaines marques.'];
+ const snd=()=>{try{const A=new (window.AudioContext||window.webkitAudioContext)(),b=A.createBuffer(1,A.sampleRate*.12,A.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,3);const s=A.createBufferSource(),g=A.createGain();g.gain.value=.35;s.buffer=b;s.connect(g).connect(A.destination);s.start()}catch(e){}};
+ const shoot=()=>{snd();fl.classList.remove('go');void fl.offsetWidth;fl.classList.add('go');c.classList.remove('shot');setTimeout(()=>{cap.textContent=C[n%C.length];n++;c.classList.add('shot');th.innerHTML=DOG;},180)};
+ c.querySelector('.sh').onclick=shoot;c.querySelector('.fx').onclick=()=>{sysNotif(en?'Camera':'Appareil photo',en?'Front camera is also him. Sorry.':'La caméra avant, c’est lui aussi. Désolé.')}}
+const X2=[
+ {k:'calc',cls:'i-img',fr:'Calculatrice',en:'Calculator',w:330,h:640,html:calcHTML,after:calcAfter},
+ {k:'cal',cls:'i-cal',fr:'Calendrier',en:'Calendar',w:420,h:640,html:calHTML,after:calAfter},
+ {k:'maps',cls:'i-maps',fr:'Plans',en:'Maps',w:640,h:520,html:mapsHTML},
+ {k:'cam',cls:'i-cam',fr:'Appareil photo',en:'Camera',w:420,h:640,html:camHTML,after:camAfter}
+];
+const ALL=()=>P.concat(X,X2);
 const ST=(()=>{let o={};try{o=JSON.parse(localStorage.getItem('gs-set')||'{}')}catch(e){}return Object.assign({wp:'pool',float:1,notif:1,vib:1,coffee:72},o)})();
 function saveST(){try{localStorage.setItem('gs-set',JSON.stringify(ST))}catch(e){}applyST()}
 function applyST(){const h=document.documentElement.classList;h.remove('wp-sunset','wp-night');if(ST.wp!=='pool')h.add('wp-'+ST.wp);h.toggle('nofloat',!ST.float)}
@@ -502,7 +655,7 @@ function galAfter(el){let i=0;const lb=el.querySelector('.lbx'),vv=lb.querySelec
 X.splice(2,0,{k:'pho',cls:'i-img',fr:'Galerie',en:'Gallery',w:900,h:640,html:galHTML,after:galAfter},{k:'set',cls:'i-img',fr:'Réglages',en:'Settings',w:420,h:680,html:setHTML,after:setAfter});
 const WA_MSG={en:"Hi Goual Studio! 👋 I love what you do and I'd like a website too. Can we talk?",fr:"Bonjour Goual Studio ! 👋 J'adore ce que vous faites et j'aimerais avoir un site internet moi aussi. On en parle ?"};
 const waHref=()=>{const l=L()==='fr'?'fr':'en';return (l==='en'?'https://wa.me/971503154697':'https://wa.me/33659039438')+'?text='+encodeURIComponent(WA_MSG[l])};
-const IMG={pho:'img/app-photos.png',set:'img/app-settings.png',pool:'img/app-pool.png',komi:'img/app-komi-blanc.png',shero:'img/app-sin.png'};
+const IMG={calc:'img/app-calc.png',pho:'img/app-photos.png',set:'img/app-settings.png',pool:'img/app-pool.png',komi:'img/app-komi-blanc.png',shero:'img/app-sin.png'};
 const FAV=k=>{const p=P.find(x=>x.k===k);return p&&p.fav?`<b class="mono">${p.mono}</b><img class="fav" src="${p.fav}" alt="" onerror="this.remove()">`:''};
 const ic=(cls,k)=>`<div class="ic ${cls}">${k==='rev'?LOCK:''}${FAV(k)}${IMG[k]?`<img class="full" src="${IMG[k]}" alt="">`:''}${IMG[k]||FAV(k)?'':k==='wa'?'<img src="img/wa.png" alt="WhatsApp">':k==='gart'?'<img class="gart" src="img/goualart-logo.png" alt="Goual Art">':SVG[k]}</div>`;
 const DOCK=()=>[
@@ -523,7 +676,8 @@ const desk=document.getElementById('desk'),icons=document.getElementById('icons'
 const grid=document.getElementById('grid'),pdock=document.getElementById('pdock'),sheet=document.getElementById('sheet');
 function build(){
   const l=L();
-  document.getElementById('icons2').innerHTML=X.filter(x=>x.k!=='trash').map(p=>`<div class="dicon" data-p="${p.k}">${ic(p.cls,p.k)}<span>${p[l]}</span></div>`).join('');
+  document.getElementById('grid2').innerHTML=X2.map(p=>`<button class="app" data-p="${p.k}">${ic(p.cls,p.k)}<span>${p[l]}</span></button>`).join('');
+  document.getElementById('icons2').innerHTML=X.filter(x=>x.k!=='trash').concat(X2).map(p=>`<div class="dicon" data-p="${p.k}">${ic(p.cls,p.k)}<span>${p[l]}</span></div>`).join('');
   icons.innerHTML=P.map(p=>`<div class="dicon" data-p="${p.k}">${ic(p.cls,p.k)}<span>${p[l]}</span></div>`).join('');
   document.getElementById('trash').innerHTML=`<div class="dicon" data-p="trash">${ic('i-trash','trash')}<span>${X.find(x=>x.k==='trash')[l]}</span></div>`;
   const d=DOCK();
@@ -718,6 +872,9 @@ addEventListener('pointermove',e=>{document.querySelectorAll(sel).forEach(el=>{c
 addEventListener('deviceorientation',e=>{if(e.gamma==null)return;const x=50+e.gamma*1.4,y=20+(e.beta-40)*1.2;
   document.querySelectorAll(sel).forEach(el=>{el.style.setProperty('--mx',x+'%');el.style.setProperty('--my',y+'%')})},{passive:true});
 })();
+(function(){const pg=document.getElementById('pages'),dt=document.querySelectorAll('#dots i');if(!pg)return;
+ pg.addEventListener('scroll',()=>{const i=Math.round(pg.scrollLeft/pg.clientWidth);dt.forEach((d,k)=>d.classList.toggle('on',k===i))},{passive:true});
+ dt.forEach((d,k)=>d.onclick=()=>pg.scrollTo({left:k*pg.clientWidth,behavior:'smooth'}))})();
 /* ---------- petits easter eggs ---------- */
 document.addEventListener('click',e=>{const l=L(),en=l==='en';
  if(e.target.closest('.batt')){const v=ST.coffee;sysNotif(en?'Battery':'Batterie',en?`100% motivated · coffee at ${v}%`:`100 % motivé · café à ${v} %`)}
