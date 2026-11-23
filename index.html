@@ -464,8 +464,8 @@ html.nofloat .floater{display:none}
 .o-img{margin:8px 0;height:70px;border:2px dashed #999;display:grid;place-items:center;color:#888;font-size:12px}
 .o-uc{color:#f60;font-weight:bold;animation:blink 1s steps(2) infinite}@keyframes blink{50%{opacity:0}}
 .o-ft{font-size:10px;color:#666;margin-top:6px}
-.new{background:url(img/after-villa.jpg) center/cover;color:#fff;clip-path:inset(0 0 0 50%);font-family:Georgia,"Times New Roman",serif}
-.new:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,20,30,.85),rgba(4,20,30,.25) 70%)}
+.new{background:url(img/after-komi.jpg) center/cover;color:#fff;clip-path:inset(0 0 0 50%);font-family:Georgia,"Times New Roman",serif}
+
 .n-nav{position:relative;display:flex;align-items:center;justify-content:space-between;padding:14px 22px;font-family:Inter,sans-serif;font-size:11px;letter-spacing:.5px}
 .n-nav b{font-size:14px;letter-spacing:3px;font-weight:600}.n-nav b i{font-style:normal;color:#5fe0ea}
 .n-nav span{opacity:.8}.n-nav em{font-style:normal;background:#2bb3c0;padding:6px 12px;border-radius:99px;font-weight:600}
@@ -477,7 +477,7 @@ html.nofloat .floater{display:none}
 .ba-h{position:absolute;top:0;bottom:0;left:50%;width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 12px rgba(0,0,0,.4);z-index:3}
 .ba-h span{position:absolute;top:50%;left:50%;width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:50%;background:rgba(255,255,255,.9);color:#0b1620;display:grid;place-items:center;font-weight:700;font-size:15px;box-shadow:0 6px 18px rgba(0,0,0,.35);backdrop-filter:blur(8px)}
 .ba .tag{position:absolute;bottom:10px;font-style:normal;font-family:Inter,sans-serif;font-size:11px;font-weight:600;padding:5px 10px;border-radius:99px;z-index:2;background:rgba(0,0,0,.55);color:#fff}
-.ba .t1{left:10px}.ba .t2{right:10px;background:rgba(43,179,192,.9)}
+.ba .t1{left:10px;top:40px;bottom:auto}.ba .t2{right:10px;background:rgba(43,179,192,.9)}
 .ccta{display:inline-flex;align-items:center;gap:9px;background:#22a52a;color:#fff;font-weight:600;font-size:14px;padding:11px 20px;border-radius:99px;box-shadow:0 14px 30px -12px rgba(0,0,0,.6);transition:transform .2s}
 .ccta:hover{transform:translateY(-2px) scale(1.03)}.ccta img{width:18px;height:18px}
 .reel{display:flex;gap:16px;align-items:center;justify-content:center;height:min(560px,calc(100vh - 290px))}
@@ -489,6 +489,48 @@ html.nofloat .floater{display:none}
 .rslot .rt small{display:block;font-weight:500;font-size:11px;opacity:.8}
 .rslot .snd{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.45);display:grid;place-items:center;font-size:13px;backdrop-filter:blur(6px)}
 .reel-cap{font-size:12px;opacity:.8;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+
+.old.wp{background:#f1f1f1;font-family:"Times New Roman",Times,serif;font-size:11px;color:#333;overflow:hidden}
+.wp-admin{background:#23282d;color:#eee;font:11px Arial,sans-serif;display:flex;gap:12px;padding:5px 8px}.wp-admin .r{margin-left:auto}
+.wp-head{background:linear-gradient(#7fb3d5,#2e6f9e);padding:12px 14px;color:#fff}
+.wp-head a{font-size:24px;color:#ffff66;text-decoration:underline;font-weight:bold;text-shadow:2px 2px 0 #000}.wp-head small{display:block;font-style:italic;color:#e0e0e0;font-size:11px}
+.wp-nav{background:#ddd;border-bottom:2px solid #999;display:flex;gap:2px;padding:3px 4px}
+.wp-nav a{background:linear-gradient(#fff,#ccc);border:1px solid #999;padding:2px 7px;font:11px Arial;color:#00c;text-decoration:underline}
+.wp-body{display:flex;gap:8px;padding:8px}
+.wp-main{flex:1}
+.wp-slide{position:relative;height:96px;background:url(img/after-komi.jpg) 30% 40%/240% auto;filter:saturate(.55) contrast(1.2) blur(.6px);display:grid;place-items:center;border:3px double #888}
+.wp-slide b{background:rgba(0,0,0,.65);color:#ff0;font:bold 14px Impact,Arial;padding:4px 10px;letter-spacing:1px}
+.wp-slide .sl,.wp-slide .sr{position:absolute;top:35%;background:#000;color:#fff;font:bold 18px Arial;padding:0 6px;opacity:.7}.wp-slide .sl{left:4px}.wp-slide .sr{right:4px}
+.wp-slide i{position:absolute;bottom:3px;font-style:normal;color:#fff;font-size:9px}
+.wp-t{font:bold 17px Georgia;color:#1a0dab;text-decoration:underline;margin:8px 0 3px}
+.wp-p{line-height:1.3}
+.wp-btns{display:flex;gap:6px;margin-top:8px;align-items:center;flex-wrap:wrap}
+.wp-btns .b1{background:linear-gradient(#7ee03f,#2e8b06);color:#fff;font:bold 13px Arial;padding:6px 12px;border:2px outset #6c3;border-radius:2px;text-shadow:1px 1px #000;box-shadow:3px 3px 0 #000}
+.wp-btns .b2{background:#ff2a2a;color:#ff0;font:bold 11px "Comic Sans MS",cursive;padding:4px 9px;border-radius:12px 0 12px 0;border:2px dashed #900}
+.wp-btns .b3{background:#e7e7e7;border:1px solid #aaa;padding:3px 6px;font:10px Verdana;color:#555}
+.wp-side{width:118px;display:flex;flex-direction:column;gap:6px}
+.wg{background:#fff;border:1px solid #ccc;padding:5px;display:flex;flex-direction:column;gap:2px}
+.wg b{font:bold 11px Arial;border-bottom:1px solid #ddd;padding-bottom:2px;margin-bottom:2px}.wg a{color:#00c;text-decoration:underline;font-size:10.5px}
+.wg .srch{display:flex;gap:2px}.wg .srch i{flex:1;border:1px inset #999;height:14px;background:#fff}.wg .srch em{font:10px Arial;font-style:normal;background:#ddd;border:1px outset #aaa;padding:0 3px}
+.wp-cookie{position:absolute;left:0;right:0;bottom:14px;background:rgba(30,30,30,.92);color:#fff;font:11px Arial;padding:7px 10px;display:flex;gap:8px;align-items:center}
+.wp-cookie span{background:#0073aa;padding:2px 8px;border-radius:2px}.wp-cookie .no{background:none;text-decoration:underline}
+.wp-chat{position:absolute;right:8px;bottom:50px;background:#ff6600;color:#fff;font:bold 11px Arial;padding:6px 10px;border-radius:14px 14px 0 14px;box-shadow:2px 2px 6px rgba(0,0,0,.4);animation:wob 1.6s infinite}
+@keyframes wob{50%{transform:rotate(-4deg) scale(1.05)}}
+.wp-foot{position:absolute;left:0;right:0;bottom:0;background:#333;color:#aaa;font:9px Arial;padding:2px 8px}
+/* trio */
+.trio{display:flex;align-items:center;justify-content:center;gap:16px;width:100%;max-width:860px}
+.tphone{flex:0 0 24%;aspect-ratio:9/16;border-radius:24px;overflow:hidden;position:relative;background:#000;box-shadow:0 30px 60px -24px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.2);cursor:pointer;transition:transform .4s cubic-bezier(.2,.9,.3,1.1)}
+.tphone:hover{transform:translateY(-6px) scale(1.02)}
+.tphone video{width:100%;height:100%;object-fit:cover}
+.tphone .rt{position:absolute;left:0;right:0;bottom:0;padding:30px 12px 11px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff;font-size:12.5px;font-weight:600}.tphone .rt small{display:block;font-weight:500;font-size:10.5px;opacity:.8}
+.tphone .snd{position:absolute;top:9px;right:9px;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.45);display:grid;place-items:center;font-size:12px}
+.tweb{flex:1;align-self:stretch;display:flex;flex-direction:column;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.18);cursor:pointer;transition:transform .4s cubic-bezier(.2,.9,.3,1.1);margin:0}
+.tweb:hover{transform:translateY(-6px)}
+.tweb .vp{flex:1;position:relative;overflow:hidden}
+.tweb .vp img{position:absolute;left:0;top:0;width:100%;animation:webscroll 26s cubic-bezier(.6,0,.4,1) infinite}
+.tweb:hover .vp img{animation-play-state:paused}
+@keyframes webscroll{0%,6%{transform:translateY(0)}20%,26%{transform:translateY(-14.3%)}40%,46%{transform:translateY(-28.6%)}60%,66%{transform:translateY(-42.9%)}80%,88%{transform:translateY(-57%)}100%{transform:translateY(0)}}
+.tweb .wl{position:absolute;left:10px;bottom:10px;background:rgba(11,22,32,.8);color:#fff;font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:99px;backdrop-filter:blur(8px)}
 html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:none!important}
 </style>
 </head>
@@ -504,27 +546,36 @@ html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:n
   <div class="meteo" id="meteo"><div class="top"><div><div class="city" data-fr>Dubaï, maintenant</div><div class="city" data-en>Dubai, right now</div><div class="deg" id="mDeg">--°</div><div class="cond" id="mCond"></div></div><div class="wic" id="mIc"></div></div><div class="vs" id="mVs"></div><div class="joke" id="mJoke"></div><div class="joke2" id="mJoke2"></div></div>
   <div class="icons" id="icons"></div>
   <div class="center" id="center">
-    <div class="cseg"><button data-cv="ba" class="on"><span data-en>Before / After</span><span data-fr>Avant / Après</span></button><button data-cv="reel">Showreel</button></div>
+    <div class="cseg"><button data-cv="ba" class="on"><span data-en>Before / After</span><span data-fr>Avant / Après</span></button><button data-cv="reel">Showcase</button></div>
     <div class="cv cv-ba on">
-      <div class="brw"><div class="brw-top"><i></i><i></i><i></i><span class="url">www.bluelagoonpools.com</span></div>
+      <div class="brw"><div class="brw-top"><i></i><i></i><i></i><span class="url">www.komi-honey.com</span></div>
         <div class="ba" id="ba">
-          <div class="old">
-            <div class="o-mq"><marquee scrollamount="4">★ WELCOME TO OUR WEBSITE !!! ★ BEST POOLS IN TOWN ★ CALL NOW !!! ★</marquee></div>
-            <div class="o-wrap"><div class="o-side"><b>MENU</b><a>Home</a><a>About us</a><a>Services</a><a>Galery</a><a>Contact</a><div class="o-cnt">Visitors: <span>000042</span></div></div>
-            <div class="o-main"><h1>Blue Lagoon Pools LLC</h1><p class="o-sub">We make pools since many years!!!</p><div class="o-img">🏊 [image not found]</div><p>Our Projects: <b>0+</b> &nbsp; Happy Clients: <b>0+</b></p><p class="o-uc">🚧 Site under construction 🚧</p><p class="o-ft">© 2012 Blue Lagoon Pools · Best viewed in Internet Explorer 6</p></div></div>
+          <div class="old wp">
+            <div class="wp-admin"><b>Ⓦ</b><span>Komi Honey</span><span>✎ Customize</span><span>💬 0</span><span>+ New</span><span class="r">Howdy, admin ▾</span></div>
+            <div class="wp-head"><a>Komi Honey</a><small>Just another WordPress site</small></div>
+            <div class="wp-nav"><a>Home</a><a>Shop</a><a>About Us</a><a>Blog</a><a>Uncategorized</a><a>Contact Us</a><a>Cart (0)</a></div>
+            <div class="wp-body"><div class="wp-main">
+              <div class="wp-slide"><span class="sl">‹</span><b>WELCOME TO OUR HONEY SHOP!!!</b><span class="sr">›</span><i>● ○ ○ ○</i></div>
+              <h3 class="wp-t">Hello world!</h3><p class="wp-p">Welcome to WordPress. This is your first post. Edit or delete it, then start writing! Lorem ipsum dolor sit amet, consectetur…</p>
+              <div class="wp-btns"><span class="b1">BUY NOW !!!</span><span class="b2">» Click Here «</span><span class="b3">Read more...</span></div>
+            </div><div class="wp-side"><div class="wg"><b>Search</b><span class="srch"><i></i><em>Search</em></span></div><div class="wg"><b>Recent Posts</b><a>Hello world!</a><a>Sample Page</a></div><div class="wg"><b>Categories</b><a>Uncategorized (1)</a></div><div class="wg"><b>Archives</b><a>November 2019</a></div></div></div>
+            <div class="wp-cookie">🍪 This website uses cookies to improve your experience. <span>Accept</span><span class="no">Read More</span></div>
+            <div class="wp-chat">💬 Need help?</div>
+            <div class="wp-foot">Proudly powered by WordPress | Theme: Twenty Nineteen</div>
           </div>
-          <div class="new" id="baNew">
-            <div class="n-nav"><b>BLUE<i>LAGOON</i></b><span>Models · Configurator · Projects</span><em>Free quote</em></div>
-            <div class="n-hero"><small>DUBAI · PREMIUM POOLS</small><h2>Your pool,<br><i>reinvented.</i></h2><p>Choose your model and your tiles. See it in your own villa.</p><span class="n-btn">Open the 3D configurator →</span></div>
-          </div>
+          <div class="new" id="baNew"></div>
           <div class="ba-h" id="baH"><span>‹ ›</span></div>
-          <em class="tag t1"><span data-en>Before</span><span data-fr>Avant</span></em><em class="tag t2"><span data-en>After · Goual Studio</span><span data-fr>Après · Goual Studio</span></em>
+          <em class="tag t1"><span data-en>Before</span><span data-fr>Avant</span></em><em class="tag t2"><span data-en>After · KŌMI by Goual Studio</span><span data-fr>Après · KŌMI par Goual Studio</span></em>
         </div></div>
       <a class="ccta" id="baCta" target="_blank" rel="noopener"><img src="img/wa.png" alt=""><span data-en>I want the same for my business</span><span data-fr>Je veux la même chose pour mon entreprise</span></a>
     </div>
     <div class="cv cv-reel">
-      <div class="reel" id="reel"></div>
-      <div class="reel-cap" id="reelCap"><span data-en>Hover to unmute · click to open the Gallery</span><span data-fr>Survolez pour le son · cliquez pour ouvrir la Galerie</span></div>
+      <div class="trio" id="trio">
+        <div class="tphone" data-go="pho"><video muted loop playsinline preload="metadata" poster="motion/fm27.jpg" data-src="motion/fm27.mp4"></video><span class="snd">🔇</span><div class="rt">FM27 Features<small>Motion Design</small></div></div>
+        <div class="tweb" data-go="pool"><div class="brw-top"><i></i><i></i><i></i><span class="url">studio.goual.fr/piscine</span></div><div class="vp"><img src="img/show-pool.jpg" alt="Pool website"><span class="wl"><span data-en>Website · Pool 3D</span><span data-fr>Site web · Pool 3D</span></span></div></div>
+        <div class="tphone" data-go="pho"><video muted loop playsinline preload="metadata" data-src="https://goual.fr/reels/reel-4.mp4"></video><span class="snd">🔇</span><div class="rt">R9<small><span data-en>AI Animation</span><span data-fr>Animation IA</span></small></div></div>
+      </div>
+      <div class="reel-cap"><span data-en>Motion design · Websites · AI animation — hover for sound</span><span data-fr>Motion design · Sites web · Animation IA — survolez pour le son</span></div>
     </div>
   </div>
   <div class="trash" id="trash"></div>
@@ -980,16 +1031,12 @@ addEventListener('deviceorientation',e=>{if(e.gamma==null)return;const x=50+e.ga
  setTimeout(()=>requestAnimationFrame(intro),1200);
  const cta=()=>{document.getElementById('baCta').href=waTo(L()==='en'?"Hi Goual Studio! 👋 I saw your Before/After demo. I want the same for my business. Can we talk?":"Bonjour Goual Studio ! 👋 J'ai vu votre démo Avant/Après. Je veux la même chose pour mon entreprise. On en parle ?")};cta();
  document.getElementById('baCta').addEventListener('pointerdown',cta);
- /* showreel */
- const RL=GAL.filter(g=>g.c==='motion'||g.l).concat(GAL.filter(g=>!g.l&&g.c!=='motion').slice(0,6));
- const box=document.getElementById('reel');let built=false,timer=null,idx=0;
- function reel(on){if(!on){clearInterval(timer);box.querySelectorAll('video').forEach(v=>v.pause());return}
-  if(!built){built=true;box.innerHTML=[0,1,2].map(k=>`<div class="rslot${k===1?' mid':''}"><video muted loop playsinline preload="metadata"></video><span class="snd">🔇</span><div class="rt"></div></div>`).join('');
-   box.querySelectorAll('.rslot').forEach((sl,k)=>{load(sl,k);const v=sl.querySelector('video'),sd=sl.querySelector('.snd');
-    sl.onmouseenter=()=>{v.muted=false;sd.textContent='🔊'};sl.onmouseleave=()=>{v.muted=true;sd.textContent='🔇'};sl.onclick=()=>openP('pho')})}
-  box.querySelectorAll('video').forEach(v=>v.play().catch(()=>{}));
-  clearInterval(timer);timer=setInterval(()=>{const sl=box.querySelectorAll('.rslot')[idx%3];if(!sl.matches(':hover'))load(sl,3+idx);idx++},6000)}
- function load(sl,k){const g=RL[k%RL.length],v=sl.querySelector('video');v.style.opacity=0;setTimeout(()=>{v.src=GU(g);if(g.po)v.poster=GP(g);v.play().catch(()=>{});v.style.opacity=1;sl.querySelector('.rt').innerHTML=`${g.cap}<small>${g.sub}</small>`},300)}
+ /* trio */
+ const tr=document.getElementById('trio');let tb=false;
+ function reel(on){const vs=tr.querySelectorAll('video');if(!on){vs.forEach(v=>v.pause());return}
+  if(!tb){tb=true;vs.forEach(v=>{v.src=v.dataset.src});tr.querySelectorAll('.tphone').forEach(t=>{const v=t.querySelector('video'),sd=t.querySelector('.snd');t.onmouseenter=()=>{v.muted=false;sd.textContent='🔊'};t.onmouseleave=()=>{v.muted=true;sd.textContent='🔇'}});
+   tr.querySelectorAll('[data-go]').forEach(t=>t.onclick=()=>openP(t.dataset.go))}
+  vs.forEach(v=>v.play().catch(()=>{}))}
  set(cur);
 })();
 /* ---------- petits easter eggs ---------- */
