@@ -430,6 +430,7 @@ html.nofloat .floater{display:none}
 .cam .sh i{width:60px;height:60px;border-radius:50%;background:#fff;transition:transform .1s}
 .cam .sh:active i{transform:scale(.88)}
 .cam .fx{width:46px;height:46px;border-radius:50%;background:#1c1c1e;display:grid;place-items:center;font-size:20px}
+.i-bm{background:#fff}.i-bm .mono{color:#000;font-family:Georgia,serif;font-weight:700;font-size:19px;letter-spacing:1px}.i-bm img.fav{background:#fff}
 html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:none!important}
 </style>
 </head>
@@ -509,7 +510,8 @@ const P=[
  {k:'term',cls:'i-fav i-term',fav:'https://terminal-industries.com/favicon.ico',mono:'T/',fr:'Terminal',en:'Terminal',url:'https://terminal-industries.com/'},
  {k:'accent',cls:'i-fav i-accent',fav:'https://accentboissons.com/favicon.ico',mono:'Accent',fr:'Accent',en:'Accent',url:'https://accentboissons.com/'},
  {k:'ova',cls:'i-fav i-ova',fav:'https://ovasport.com/favicon.ico',mono:'ŌVA',fr:'ŌVA Sport',en:'ŌVA Sport',url:'https://ovasport.com/'},
- {k:'shero',cls:'i-img',img:'img/app-sin.png',fr:'SIN Red Paris',en:'SIN Red Paris',url:'https://mane458957-maker.github.io/sin-hero/'}
+ {k:'shero',cls:'i-img',img:'img/app-sin.png',fr:'SIN Red Paris',en:'SIN Red Paris',url:'https://mane458957-maker.github.io/sin-hero/'},
+ {k:'batiste',cls:'i-fav i-bm',fav:'https://www.batistemillion.com/favicon.ico',mono:'BM',fr:'Batiste Million',en:'Batiste Million',url:'https://www.batistemillion.com/'}
 ];
 const L=()=>document.documentElement.lang;
 const WAIMG='<img src="img/wa.png" alt="">';
@@ -683,7 +685,7 @@ function build(){
   const d=DOCK();
   const bd=x=>x.k==='wa'?'<span class="badge">1</span>':'';
   dock.innerHTML=d.map(x=>`<a class="di${x.k==='wa'?' wa-bounce':''}" href="${x.href}" ${x.ext?'target="_blank" rel="noopener"':''}>${ic(x.cls,x.k)}${bd(x)}<span class="tip">${x.t}</span></a>`).join('');
-  grid.innerHTML=`${P.map(p=>`<button class="app" data-p="${p.k}">${ic(p.cls,p.k)}<span>${p[l]}</span></button>`).join('')}<button class="app" id="langApp">${ic('i-lang','lang')}<span>${l==='en'?'Français':'English'}</span></button><button class="app folder" id="fdApp"><div class="ic fd">${SOC.map(x=>`<i class="${x.cls}">${SVG[x.k]}</i>`).join('')}<i></i></div><span>${l==='en'?'Social':'Réseaux sociaux'}</span></button>${X.filter(x=>x.k!=='trash').map(p=>`<button class="app" data-p="${p.k}">${ic(p.cls,p.k)}<span>${p[l]}</span></button>`).join('')}<button class="app trashapp" data-p="trash">${ic('i-trash','trash')}<span>${X.find(x=>x.k==='trash')[l]}</span></button>`;
+  grid.innerHTML=`${P.map(p=>`<button class="app" data-p="${p.k}">${ic(p.cls,p.k)}<span>${p[l]}</span></button>`).join('')}<button class="app folder" id="fdApp"><div class="ic fd">${SOC.map(x=>`<i class="${x.cls}">${SVG[x.k]}</i>`).join('')}<i></i></div><span>${l==='en'?'Social':'Réseaux sociaux'}</span></button>${X.filter(x=>x.k!=='trash').map(p=>`<button class="app" data-p="${p.k}">${ic(p.cls,p.k)}<span>${p[l]}</span></button>`).join('')}<button class="app" id="langApp">${ic('i-lang','lang')}<span>${l==='en'?'Français':'English'}</span></button><button class="app trashapp" data-p="trash">${ic('i-trash','trash')}<span>${X.find(x=>x.k==='trash')[l]}</span></button>`;
   document.getElementById('fin').innerHTML=SOC.map(x=>`<a href="${x.href}" target="_blank" rel="noopener">${ic(x.cls,x.k)}<span>${x.t}</span></a>`).join('');
   document.getElementById('fdApp').onclick=()=>document.getElementById('fov').classList.add('show');
   pdock.innerHTML=d.filter(x=>x.k!=='tt'&&x.k!=='yt').map(x=>`<a href="${x.href}" ${x.ext?'target="_blank" rel="noopener"':''}>${ic(x.cls,x.k)}${bd(x)}</a>`).join('');
