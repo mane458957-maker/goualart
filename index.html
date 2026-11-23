@@ -552,27 +552,6 @@ html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:n
   </div>
   <div class="meteo" id="meteo"><div class="top"><div><div class="city" data-fr>Dubaï, maintenant</div><div class="city" data-en>Dubai, right now</div><div class="deg" id="mDeg">--°</div><div class="cond" id="mCond"></div></div><div class="wic" id="mIc"></div></div><div class="vs" id="mVs"></div><div class="joke" id="mJoke"></div><div class="joke2" id="mJoke2"></div></div>
   <div class="icons" id="icons"></div>
-  <div class="center" id="center">
-    <div class="cseg"><button data-cv="ba" class="on"><span data-en>Time machine</span><span data-fr>Machine à remonter le temps</span></button><button data-cv="reel">Showcase</button></div>
-    <div class="cv cv-ba on">
-      <div class="brw"><div class="brw-top"><i></i><i></i><i></i><span class="url">www.komi-honey.com</span></div>
-        <div class="ba" id="ba">
-          <div class="old" style="background:url(img/before-komi.jpg) center/cover"></div>
-          <div class="new" id="baNew"></div>
-          <div class="ba-h" id="baH"><span>‹ ›</span></div><div class="lens" id="lens"><em><span data-en>2019 version</span><span data-fr>Version 2019</span></em></div><div class="hint"><span data-en>🔦 Move your mouse to see the old website</span><span data-fr>🔦 Passez la souris pour voir l’ancien site</span></div>
-          <em class="tag t1"><span data-en>Before</span><span data-fr>Avant</span></em><em class="tag t2"><span data-en>Today · KŌMI by Goual Studio</span><span data-fr>Aujourd’hui · KŌMI par Goual Studio</span></em>
-        </div></div>
-      <a class="ccta" id="baCta" target="_blank" rel="noopener"><img src="img/wa.png" alt=""><span data-en>I want the same for my business</span><span data-fr>Je veux la même chose pour mon entreprise</span></a>
-    </div>
-    <div class="cv cv-reel">
-      <div class="trio" id="trio">
-        <div class="tphone" data-go="pho"><video muted loop playsinline preload="metadata" poster="motion/fm27.jpg" data-src="motion/fm27.mp4"></video><span class="snd">🔇</span><div class="rt">FM27 Features<small>Motion Design</small></div></div>
-        <div class="tweb" data-go="komi"><div class="brw-top"><i></i><i></i><i></i><span class="url">komi-honey.com</span></div><div class="vp"><img src="img/show-komi.jpg" alt="KŌMI website"><span class="wl"><span data-en>Website · KŌMI</span><span data-fr>Site web · KŌMI</span></span></div></div>
-        <div class="tphone" data-go="pho"><video muted loop playsinline preload="metadata" data-src="https://goual.fr/reels/reel-4.mp4"></video><span class="snd">🔇</span><div class="rt">R9<small><span data-en>AI Animation</span><span data-fr>Animation IA</span></small></div></div>
-      </div>
-      <div class="reel-cap"><span data-en>Motion design · Websites · AI animation — hover for sound</span><span data-fr>Motion design · Sites web · Animation IA — survolez pour le son</span></div>
-    </div>
-  </div>
   <div class="trash" id="trash"></div>
   <div class="icons2" id="icons2"></div>
   <div class="duo" id="duo"><div class="iph"><div class="scr"><div class="isl"></div><div class="ld" id="duoLd">…</div><iframe id="duoF" title="aperçu mobile"></iframe></div></div><div class="cap"><button id="duoP" aria-label="précédent">‹</button><span><span id="duoT"></span><small data-fr>Version mobile, en direct</small><small data-en>Live mobile version</small></span><button id="duoN" aria-label="suivant">›</button></div></div>
@@ -1011,31 +990,6 @@ addEventListener('deviceorientation',e=>{if(e.gamma==null)return;const x=50+e.ga
  pg.addEventListener('scroll',()=>{const i=Math.round(pg.scrollLeft/pg.clientWidth);dt.forEach((d,k)=>d.classList.toggle('on',k===i))},{passive:true});
  dt.forEach((d,k)=>d.onclick=()=>pg.scrollTo({left:k*pg.clientWidth,behavior:'smooth'}))})();
 
-/* ---------- centre : Avant/Après + Showreel ---------- */
-(function(){const C=document.getElementById('center');if(!C)return;
- let cur='ba';try{cur=localStorage.getItem('gs-center')||'ba'}catch(e){}
- const set=v=>{cur=v;C.querySelectorAll('.cseg button').forEach(b=>b.classList.toggle('on',b.dataset.cv===v));C.querySelectorAll('.cv').forEach(x=>x.classList.toggle('on',x.classList.contains('cv-'+v)));try{localStorage.setItem('gs-center',v)}catch(e){};reel(v==='reel')};
- C.querySelectorAll('.cseg button').forEach(b=>b.onclick=()=>set(b.dataset.cv));
- /* rayons X : la souris révèle l'ancien site */
- const ba=document.getElementById('ba'),nw=document.getElementById('baNew'),ln=document.getElementById('lens');
- let R0=0,RT=0,mx=-300,my=-300,tx=-300,ty=-300,inside=false,auto=true,t0=performance.now();
- const apply=()=>{nw.style.setProperty('--mx',mx+'px');nw.style.setProperty('--my',my+'px');nw.style.setProperty('--r',R0+'px');ln.style.transform=`translate(${mx}px,${my}px)`;ln.style.setProperty('--r',R0+'px');ln.style.opacity=R0>8?1:0};
- ba.addEventListener('pointermove',e=>{const r=ba.getBoundingClientRect();tx=e.clientX-r.left;ty=e.clientY-r.top;inside=true;auto=false;RT=Math.min(r.width,r.height)*.3});
- ba.addEventListener('pointerleave',()=>{inside=false;RT=0});
- ba.addEventListener('pointerdown',()=>{RT=Math.min(ba.clientWidth,ba.clientHeight)*.55;setTimeout(()=>{if(inside)RT=Math.min(ba.clientWidth,ba.clientHeight)*.3},700)});
- (function loop(t){const w=ba.clientWidth,h=ba.clientHeight;
-   if(auto&&w){const k=(t-t0)/1000;if(k>1.2&&k<9){tx=w*(.5+.32*Math.sin(k*.9));ty=h*(.5+.25*Math.sin(k*1.7));RT=Math.min(w,h)*.26}else if(k>=9){RT=0}}
-   mx+=(tx-mx)*.18;my+=(ty-my)*.18;R0+=(RT-R0)*.14;if(mx<-250){mx=tx;my=ty}apply();requestAnimationFrame(loop)})(performance.now());
- const cta=()=>{document.getElementById('baCta').href=waTo(L()==='en'?"Hi Goual Studio! 👋 I saw your Before/After demo. I want the same for my business. Can we talk?":"Bonjour Goual Studio ! 👋 J'ai vu votre démo Avant/Après. Je veux la même chose pour mon entreprise. On en parle ?")};cta();
- document.getElementById('baCta').addEventListener('pointerdown',cta);
- /* trio */
- const tr=document.getElementById('trio');let tb=false;
- function reel(on){const vs=tr.querySelectorAll('video');if(!on){vs.forEach(v=>v.pause());return}
-  if(!tb){tb=true;vs.forEach(v=>{v.src=v.dataset.src});tr.querySelectorAll('.tphone').forEach(t=>{const v=t.querySelector('video'),sd=t.querySelector('.snd');t.onmouseenter=()=>{v.muted=false;sd.textContent='🔊'};t.onmouseleave=()=>{v.muted=true;sd.textContent='🔇'}});
-   tr.querySelectorAll('[data-go]').forEach(t=>t.onclick=()=>openP(t.dataset.go))}
-  vs.forEach(v=>v.play().catch(()=>{}))}
- set(cur);
-})();
 /* boucle garantie pour toutes les vidéos */
 document.addEventListener('ended',e=>{const v=e.target;if(v&&v.tagName==='VIDEO'){v.currentTime=0;const p=v.play();if(p)p.catch(()=>{})}},true);
 /* ---------- petits easter eggs ---------- */
