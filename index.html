@@ -332,9 +332,9 @@ html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:n
 
 <script>
 // liens réseaux : à compléter
-const INSTAGRAM="https://www.instagram.com/";
-const YOUTUBE="https://www.youtube.com/";
-const TIKTOK="https://www.tiktok.com/";
+const INSTAGRAM="https://www.instagram.com/goual_art/";
+const YOUTUBE="https://www.youtube.com/@goualart";
+const TIKTOK="https://www.tiktok.com/@goualart";
 const SVG={
  pool:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M3 15c1.5 1.2 3 1.2 4.5 0s3-1.2 4.5 0 3 1.2 4.5 0 3-1.2 4.5 0"/><path d="M3 19c1.5 1.2 3 1.2 4.5 0s3-1.2 4.5 0 3 1.2 4.5 0 3-1.2 4.5 0"/><path d="M8 13V5a2 2 0 0 1 4 0M16 13V5a2 2 0 0 0-4 0M8 8h8"/></svg>',
  komi:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M8 3h8v2H8z" opacity=".9"/><path d="M7 6h10a2 2 0 0 1 2 2v10a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V8a2 2 0 0 1 2-2z" opacity=".95"/><path d="M12 10l2.6 1.5v3L12 16l-2.6-1.5v-3z" fill="#f07a18"/></svg>',
@@ -597,9 +597,25 @@ document.getElementById('toastIc').innerHTML=SVG.goual;
 document.getElementById('fov').onclick=e=>{if(!e.target.closest('a'))e.currentTarget.classList.remove('show')};
 /* notification WhatsApp */
 const nf=document.getElementById('notif');
-nf.onclick=()=>window.open(waHref(),'_blank','noopener');
-setTimeout(()=>{nf.className='notif '+(innerWidth>820?'d':'m');requestAnimationFrame(()=>nf.classList.add('show'))},innerWidth>820?9000:4500);
-setTimeout(()=>nf.classList.remove('show'),innerWidth>820?17000:11000);
+const nfDefault=nf.innerHTML;let nfHref=null;
+nf.onclick=()=>window.open(nfHref||waHref(),'_blank','noopener');
+function showNotif(html,href,ms){nf.innerHTML=html;nfHref=href;nf.className='notif '+(innerWidth>820?'d':'m');requestAnimationFrame(()=>requestAnimationFrame(()=>nf.classList.add('show')));setTimeout(()=>nf.classList.remove('show'),ms||7000)}
+setTimeout(()=>showNotif(nfDefault,null,8000),innerWidth>820?9000:4500);
+/* notifications réseaux sociaux, au hasard */
+const SN=[
+ {k:'insta',cls:'i-insta',href:()=>INSTAGRAM,t:'Instagram',en:'goual_art posted a new video 🎬 · 261K followers',fr:'goual_art a publié une nouvelle vidéo 🎬 · 261K abonnés'},
+ {k:'tt',cls:'i-tt',href:()=>TIKTOK,t:'TikTok',en:'@goualart just posted a new video 🔥',fr:'@goualart vient de poster une nouvelle vidéo 🔥'},
+ {k:'yt',cls:'i-yt',href:()=>YOUTUBE,t:'YouTube',en:'Goual Art uploaded a new video ▶️',fr:'Goual Art a mis en ligne une nouvelle vidéo ▶️'}
+];
+let snLeft=4,snBag=[];
+function nextSocial(){
+  if(snLeft--<=0)return;
+  if(!snBag.length)snBag=SN.slice().sort(()=>Math.random()-.5);
+  const n=snBag.pop(),l=L();
+  if(!document.hidden&&!document.querySelector('.fov.show'))showNotif(`<div class="ic ${n.cls}">${SVG[n.k]}</div><div><b>${n.t} <small>${l==='en'?'now':'maintenant'}</small></b><span>${n[l]}</span></div>`,n.href(),6500);
+  setTimeout(nextSocial,22000+Math.random()*18000);
+}
+setTimeout(nextSocial,(innerWidth>820?9000:4500)+14000+Math.random()*8000);
 /* iPhone duo : aperçu mobile des projets */
 let di=0;const duoF=document.getElementById('duoF'),duoLd=document.getElementById('duoLd');
 function duo(i){di=(i+P.length)%P.length;const p=P[di];document.getElementById('duoT').textContent=p[L()];duoLd.style.opacity=1;duoLd.textContent=L()==='en'?'Loading…':'Chargement…';duoF.src=p.url}
