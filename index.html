@@ -511,7 +511,7 @@ const P=[
  {k:'accent',cls:'i-fav i-accent',fav:'https://accentboissons.com/favicon.ico',mono:'Accent',fr:'Accent',en:'Accent',url:'https://accentboissons.com/'},
  {k:'ova',cls:'i-fav i-ova',fav:'https://ovasport.com/favicon.ico',mono:'ŌVA',fr:'ŌVA Sport',en:'ŌVA Sport',url:'https://ovasport.com/'},
  {k:'shero',cls:'i-img',img:'img/app-sin.png',fr:'SIN Red Paris',en:'SIN Red Paris',url:'https://mane458957-maker.github.io/sin-hero/'},
- {k:'batiste',cls:'i-fav i-bm',fav:'https://www.batistemillion.com/favicon.ico',mono:'BM',fr:'Batiste Million',en:'Batiste Million',url:'https://www.batistemillion.com/'}
+ {k:'batiste',cls:'i-img',fr:'Batiste Million',en:'Batiste Million',url:'https://www.batistemillion.com/'}
 ];
 const L=()=>document.documentElement.lang;
 const WAIMG='<img src="img/wa.png" alt="">';
@@ -657,7 +657,7 @@ function galAfter(el){let i=0;const lb=el.querySelector('.lbx'),vv=lb.querySelec
 X.splice(2,0,{k:'pho',cls:'i-img',fr:'Galerie',en:'Gallery',w:900,h:640,html:galHTML,after:galAfter},{k:'set',cls:'i-img',fr:'Réglages',en:'Settings',w:420,h:680,html:setHTML,after:setAfter});
 const WA_MSG={en:"Hi Goual Studio! 👋 I love what you do and I'd like a website too. Can we talk?",fr:"Bonjour Goual Studio ! 👋 J'adore ce que vous faites et j'aimerais avoir un site internet moi aussi. On en parle ?"};
 const waHref=()=>{const l=L()==='fr'?'fr':'en';return (l==='en'?'https://wa.me/971503154697':'https://wa.me/33659039438')+'?text='+encodeURIComponent(WA_MSG[l])};
-const IMG={calc:'img/app-calc.png',pho:'img/app-photos.png',set:'img/app-settings.png',pool:'img/app-pool.png',komi:'img/app-komi-blanc.png',shero:'img/app-sin.png'};
+const IMG={batiste:'img/app-batiste.png',calc:'img/app-calc.png',pho:'img/app-photos.png',set:'img/app-settings.png',pool:'img/app-pool.png',komi:'img/app-komi-blanc.png',shero:'img/app-sin.png'};
 const FAV=k=>{const p=P.find(x=>x.k===k);return p&&p.fav?`<b class="mono">${p.mono}</b><img class="fav" src="${p.fav}" alt="" onerror="this.remove()">`:''};
 const ic=(cls,k)=>`<div class="ic ${cls}">${k==='rev'?LOCK:''}${FAV(k)}${IMG[k]?`<img class="full" src="${IMG[k]}" alt="">`:''}${IMG[k]||FAV(k)?'':k==='wa'?'<img src="img/wa.png" alt="WhatsApp">':k==='gart'?'<img class="gart" src="img/goualart-logo.png" alt="Goual Art">':SVG[k]}</div>`;
 const DOCK=()=>[
