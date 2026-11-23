@@ -545,6 +545,7 @@ html.nofloat .floater{display:none}
 .drone .led{animation:bl 1.2s steps(2) infinite}.drone .led.g{animation-delay:.6s}
 .drone-sh div{width:80px;height:28px;border-radius:50%;background:rgba(0,20,30,.35);filter:blur(8px)}
 html.nofloat .drone,html.nofloat .drone-sh{display:none}
+.three-layer{position:fixed;inset:0;z-index:1;pointer-events:none}
 html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:none!important}
 </style>
 </head>
@@ -747,7 +748,7 @@ function setHTML(l){const en=l==='en';
  <div class="gt">${en?'Coffee':'Café'}</div><div class="grp"><div class="row" style="flex-direction:column;align-items:stretch;padding-bottom:10px"><input type="range" min="0" max="100" value="${ST.coffee}" id="cof"><div style="display:flex;justify-content:space-between;font-size:15px;color:#8e8e93"><span>☕ <b id="cofv" style="color:#000;font-weight:600">${ST.coffee}%</b></span><span id="coft">${coffeeTxt(ST.coffee,l)}</span></div></div></div>
  <div class="foot">${en?'Coffee level directly affects coding speed.':'Le niveau de café influe directement sur la vitesse de code.'}</div>
  <div class="gt">${en?'About':'Informations'}</div><div class="grp about">
- ${inf(en?'Name':'Nom','Goual Studio')}${inf(en?'Software Version':'Version du logiciel','Studio OS 26')}${inf(en?'Processor':'Processeur',en?'Espresso, double shot':'Espresso, double dose')}${inf(en?'Memory':'Mémoire',en?'1,000 ideas':'1 000 idées')}${inf(en?'Storage':'Stockage',en?'Full of websites':'Plein de sites')}${inf(en?'Location':'Localisation','Dubai 🇦🇪')}${inf('Bugs',en?'0 (officially)':'0 (officiellement)')}${inf(en?'Warranty':'Garantie',en?'As long as coffee lasts':'Tant qu’il y a du café')}
+ ${inf(en?'Name':'Nom','Goual Studio')}${inf(en?'Software Version':'Version du logiciel','Studio OS 26')}${inf(en?'Processor':'Processeur',en?'Espresso, double shot':'Espresso, double dose')}${inf(en?'Memory':'Mémoire',en?'1,000 ideas':'1 000 idées')}${inf(en?'Storage':'Stockage',en?'Full of websites':'Plein de sites')}${inf(en?'Location':'Localisation','Dubai 🇦🇪')}${inf('Bugs',en?'0 (officially)':'0 (officiellement)')}${inf(en?'3D models':'Modèles 3D','Taohid Animation (CC BY) · extraakash')}${inf(en?'Warranty':'Garantie',en?'As long as coffee lasts':'Tant qu’il y a du café')}
  </div></div>`}
 function setAfter(el,l){const en=l==='en';
  el.querySelectorAll('.sw').forEach(b=>b.onclick=()=>{const k=b.dataset.k;
@@ -956,13 +957,7 @@ frame();
 const BUOY='<svg width="96" height="96" viewBox="0 0 96 96"><defs><radialGradient id="bg1" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#dfe6ea"/></radialGradient><radialGradient id="bg2" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#ff7a6b"/><stop offset="1" stop-color="#d7263d"/></radialGradient></defs><circle cx="48" cy="48" r="40" fill="url(#bg1)"/><g fill="url(#bg2)"><path d="M48 8a40 40 0 0 1 28.3 11.7L62.1 33.9A20 20 0 0 0 48 28z"/><path d="M88 48a40 40 0 0 1-11.7 28.3L62.1 62.1A20 20 0 0 0 68 48z"/><path d="M48 88a40 40 0 0 1-28.3-11.7l14.2-14.2A20 20 0 0 0 48 68z"/><path d="M8 48a40 40 0 0 1 11.7-28.3l14.2 14.2A20 20 0 0 0 28 48z"/></g><circle cx="48" cy="48" r="19" fill="rgba(10,80,100,.55)"/><circle cx="48" cy="48" r="40" fill="none" stroke="rgba(0,0,0,.08)" stroke-width="2"/><path d="M22 30a32 32 0 0 1 18-14" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7" fill="none"/></svg>';
 const DUCK='<svg width="70" height="62" viewBox="0 0 70 62"><ellipse cx="34" cy="44" rx="28" ry="15" fill="#ffd23f"/><path d="M8 40c6 10 30 14 46 6" stroke="#f2b705" stroke-width="3" fill="none"/><circle cx="44" cy="22" r="15" fill="#ffd23f"/><path d="M56 22c6-1 11 1 12 4-3 3-8 3-13 1z" fill="#ff8a1f"/><circle cx="48" cy="18" r="2.6" fill="#1b1b1b"/><circle cx="48.8" cy="17.2" r=".8" fill="#fff"/><path d="M18 40c6-6 16-6 20 0" stroke="#f2b705" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="38" cy="14" rx="5" ry="2.5" fill="#fff" opacity=".45"/></svg>';
 const F=[{el:document.getElementById('buoy'),html:BUOY,r:48,x:.62,y:.62,spin:0},{el:document.getElementById('duck'),html:DUCK,r:34,x:.38,y:.78,spin:0}];
-if(innerWidth>820){
- const LAPTOP='<svg width="128" height="92" viewBox="0 0 128 92"><path d="M18 6h92a5 5 0 0 1 5 5v58H13V11a5 5 0 0 1 5-5z" fill="#c9ced6"/><rect x="18" y="11" width="92" height="53" rx="2" fill="#0f1720"/><g stroke-linecap="round" stroke-width="3"><path d="M26 20h22" stroke="#ff79c6"/><path d="M52 20h30" stroke="#8be9fd"/><path d="M32 28h40" stroke="#50fa7b"/><path d="M32 36h18" stroke="#f1fa8c"/><path d="M54 36h26" stroke="#bd93f9"/><path d="M26 44h30" stroke="#ff79c6"/><path d="M32 52h44" stroke="#8be9fd"/></g><path d="M4 69h120l-6 12a5 5 0 0 1-4.5 3H14.5A5 5 0 0 1 10 81z" fill="#dfe3e8"/><path d="M52 69h24l-2 4H54z" fill="#b5bbc4"/></svg>';
- const CAMERA='<svg width="96" height="68" viewBox="0 0 96 68"><rect x="4" y="16" width="88" height="48" rx="9" fill="#1f2125"/><path d="M30 16l6-10h24l6 10z" fill="#1f2125"/><rect x="72" y="8" width="14" height="8" rx="2" fill="#2c2f35"/><circle cx="48" cy="40" r="20" fill="#3a3d44"/><circle cx="48" cy="40" r="15" fill="#111"/><circle cx="48" cy="40" r="9" fill="#123a5a"/><circle cx="44" cy="36" r="3.5" fill="#fff" opacity=".7"/><circle cx="80" cy="26" r="3" fill="#ff3b30"/><rect x="10" y="22" width="12" height="6" rx="2" fill="#3a3d44"/></svg>';
- const TABLET='<svg width="112" height="84" viewBox="0 0 112 84"><rect x="4" y="6" width="96" height="70" rx="9" fill="#24272d"/><rect x="11" y="13" width="82" height="56" rx="3" fill="#f6f2ea"/><path d="M18 56c10-22 20-30 30-18s18 4 24-12" fill="none" stroke="#2bb3c0" stroke-width="4" stroke-linecap="round"/><circle cx="72" cy="26" r="6" fill="#ff7a59"/><path d="M22 30c6-6 12-6 16 0" stroke="#ffd23f" stroke-width="3" fill="none" stroke-linecap="round"/><g transform="rotate(-38 90 60)"><rect x="70" y="56" width="44" height="6" rx="3" fill="#e9eaee"/><path d="M114 56l8 3-8 3z" fill="#555"/></g></svg>';
- const CLAP='<svg width="92" height="84" viewBox="0 0 92 84"><rect x="6" y="30" width="80" height="50" rx="4" fill="#1d1f23"/><g transform="rotate(-14 8 28)"><rect x="6" y="14" width="80" height="16" rx="2" fill="#f4f4f4"/><path d="M16 14l10 16M34 14l10 16M52 14l10 16M70 14l10 16" stroke="#1d1f23" stroke-width="7"/></g><rect x="6" y="30" width="80" height="10" fill="#f4f4f4"/><path d="M16 30l8 10M34 30l8 10M52 30l8 10M70 30l8 10" stroke="#1d1f23" stroke-width="6"/><text x="14" y="56" font-family="Inter,Arial" font-weight="700" font-size="9" fill="#fff">GOUAL STUDIO</text><text x="14" y="70" font-family="Inter,Arial" font-size="8" fill="#9aa">SCENE 01 · TAKE 3</text></svg>';
- [[LAPTOP,58,.47,.36],[CAMERA,44,.74,.3],[TABLET,48,.3,.55],[CLAP,40,.56,.8]].forEach(([h,r,x,y])=>{const d=document.createElement('div');d.className='floater';document.getElementById('wall').appendChild(d);F.push({el:d,html:h,r,x,y,spin:0})});
-}
+
 let mx=-999,my=-999;
 addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY},{passive:true});
 addEventListener('pointerdown',e=>{mx=e.clientX;my=e.clientY},{passive:true});
@@ -1007,22 +1002,6 @@ addEventListener('deviceorientation',e=>{if(e.gamma==null)return;const x=50+e.ga
 /* boucle garantie pour toutes les vidéos */
 document.addEventListener('ended',e=>{const v=e.target;if(v&&v.tagName==='VIDEO'){v.currentTime=0;const p=v.play();if(p)p.catch(()=>{})}},true);
 
-/* ---------- drone qui survole la piscine (PC) ---------- */
-(function(){if(innerWidth<=820||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
- const W=document.getElementById('wall');const sh=document.createElement('div'),dr=document.createElement('div');sh.className='drone-sh';dr.className='drone';
- const rot='<g class="rot"><ellipse rx="17" ry="3.2" fill="#d9dde3" opacity=".75"/><ellipse rx="3.2" ry="17" fill="#d9dde3" opacity=".45"/></g>';
- dr.innerHTML=`<svg width="130" height="130" viewBox="-65 -65 130 130"><g stroke="#2a2d33" stroke-width="7" stroke-linecap="round"><path d="M-36-36L36 36M36-36L-36 36"/></g>${[[-38,-38],[38,-38],[-38,38],[38,38]].map(([x,y])=>`<g transform="translate(${x} ${y})"><circle r="20" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.35)" stroke-width="1.5"/>${rot}<circle r="4" fill="#2a2d33"/></g>`).join('')}<rect x="-18" y="-14" width="36" height="28" rx="9" fill="#e9ecf0"/><rect x="-10" y="-8" width="20" height="16" rx="5" fill="#2a2d33"/><circle cx="0" cy="11" r="5" fill="#111"/><circle cx="0" cy="11" r="2.5" fill="#2b6fb3"/><circle class="led" cx="-14" cy="-10" r="2.4" fill="#ff3b30"/><circle class="led g" cx="14" cy="-10" r="2.4" fill="#34c759"/></svg>`;
- sh.innerHTML='<div></div>';W.appendChild(sh);W.appendChild(dr);
- let x=innerWidth*.5,y=innerHeight*.45,vx=0,vy=0,t=0,mx=null,my=null,last=0;
- addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY},{passive:true});
- (function fly(){t+=1/60;const tx=innerWidth*(.5+.32*Math.sin(t*.13)),ty=innerHeight*(.45+.25*Math.sin(t*.21+1));
-  let gx=tx,gy=ty;if(mx!=null){const d=Math.hypot(mx-x,my-y);if(d<260){gx=x+(x-mx)*.8;gy=y+(y-my)*.8}}
-  vx+=(gx-x)*.0009;vy+=(gy-y)*.0009;vx*=.97;vy*=.97;x+=vx;y+=vy;
-  const tilt=Math.max(-14,Math.min(14,vx*6)),h=40+8*Math.sin(t*1.3);
-  dr.style.transform=`translate(${x-65}px,${y-65-h}px) rotate(${tilt}deg)`;sh.style.transform=`translate(${x-40}px,${y-14}px) scale(${1-h/200})`;
-  if(window.__drop&&t-last>.9){window.__drop(x,y,.25);last=t}
-  requestAnimationFrame(fly)})();
-})();
 /* ---------- petits easter eggs ---------- */
 document.addEventListener('click',e=>{const l=L(),en=l==='en';
  if(e.target.closest('.batt')){const v=ST.coffee;sysNotif(en?'Battery':'Batterie',en?`100% motivated · coffee at ${v}%`:`100 % motivé · café à ${v} %`)}
@@ -1072,6 +1051,56 @@ duoF.onload=()=>duoLd.style.opacity=0;
 document.getElementById('duoP').onclick=()=>duo(di-1);document.getElementById('duoN').onclick=()=>duo(di+1);
 
 if(innerWidth>820){setTimeout(()=>document.getElementById('toast').classList.add('show'),1200);setTimeout(()=>document.getElementById('toast').classList.remove('show'),7000)}
+</script>
+
+<script type="importmap">{"imports":{"three":"./js/three/build/three.module.min.js"}}</script>
+<script type="module">
+/* ---------- objets 3D qui flottent sur la piscine (PC) ---------- */
+if(innerWidth>820&&!matchMedia('(prefers-reduced-motion: reduce)').matches){(async()=>{
+ const THREE=await import('three');
+ const {GLTFLoader}=await import('./js/three/examples/jsm/loaders/GLTFLoader.js');
+ const {RoomEnvironment}=await import('./js/three/examples/jsm/environments/RoomEnvironment.js');
+ const wall=document.getElementById('wall');
+ const R=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'low-power'});
+ R.setPixelRatio(Math.min(devicePixelRatio,1.5));R.setSize(innerWidth,innerHeight);R.outputColorSpace=THREE.SRGBColorSpace;R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.05;
+ R.domElement.className='three-layer';wall.appendChild(R.domElement);
+ const S=new THREE.Scene();const pm=new THREE.PMREMGenerator(R);S.environment=pm.fromScene(new RoomEnvironment(),.04).texture;
+ S.add(new THREE.HemisphereLight(0xcff8ff,0x0a3a4a,1.2));const dl=new THREE.DirectionalLight(0xffffff,2.2);dl.position.set(-300,500,800);S.add(dl);
+ let W=innerWidth,H=innerHeight;const cam=new THREE.OrthographicCamera(-W/2,W/2,H/2,-H/2,-2000,2000);cam.position.z=1000;
+ addEventListener('resize',()=>{W=innerWidth;H=innerHeight;R.setSize(W,H);cam.left=-W/2;cam.right=W/2;cam.top=H/2;cam.bottom=-H/2;cam.updateProjectionMatrix()});
+ const ITEMS=[
+  {url:'3d/phone-fold.glb',size:190,x:.44,y:.40,rx:-.55,ry:.5,fold:1},
+  {url:'3d/phone.glb',size:165,x:.30,y:.70,rx:-.6,ry:-.4},
+  {url:'3d/controller.glb',size:170,x:.60,y:.78,rx:.9,ry:.3}
+ ];
+ const L=new GLTFLoader();const objs=[];let foldMixer=null,foldAct=null,foldOpen=false;
+ for(const it of ITEMS){
+  L.load(it.url,g=>{const m=g.scene;const box=new THREE.Box3().setFromObject(m);const c=box.getCenter(new THREE.Vector3()),sz=box.getSize(new THREE.Vector3());
+   m.position.sub(c);const piv=new THREE.Group();piv.add(m);const k=it.size/Math.max(sz.x,sz.y,sz.z);piv.scale.setScalar(k);
+   const holder=new THREE.Group();holder.add(piv);S.add(holder);
+   const o={it,holder,piv,x:it.x*W,y:it.y*H,vx:0,vy:0,t:Math.random()*10,spin:0,r:it.size*.45,last:0};objs.push(o);
+   if(it.fold&&g.animations.length){foldMixer=new THREE.AnimationMixer(m);foldAct=foldMixer.clipAction(g.animations[0]);foldAct.clampWhenFinished=true;foldAct.setLoop(THREE.LoopOnce);foldAct.play();foldAct.paused=true;foldAct.time=0;o.fold=true;
+    setTimeout(()=>toggleFold(),3500)}
+  });
+ }
+ function toggleFold(){if(!foldAct)return;foldOpen=!foldOpen;foldAct.paused=false;foldAct.timeScale=foldOpen?1:-1;if(!foldOpen&&foldAct.time===0)foldAct.time=foldAct.getClip().duration;foldAct.play()}
+ let mx=-9999,my=-9999;addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;hover(e)},{passive:true});
+ const rc=new THREE.Raycaster(),pv=new THREE.Vector2();
+ const free=t=>!t.closest('.dicon,.dock,.win,.meteo,.postit,.icons2,.notif,.bar,button,a,.trash,.fov,.sheet');
+ function hit(e){pv.set(e.clientX/W*2-1,-(e.clientY/H)*2+1);rc.setFromCamera(pv,cam);const f=objs.find(o=>o.fold);if(!f)return false;return rc.intersectObject(f.holder,true).length>0}
+ function hover(e){if(!free(e.target)){return}document.body.style.cursor=hit(e)?'pointer':''}
+ addEventListener('click',e=>{if(free(e.target)&&hit(e)){toggleFold();try{haptic()}catch(_){}}});
+ const clock=new THREE.Clock();
+ (function loop(){const dt=Math.min(clock.getDelta(),.05);if(foldMixer)foldMixer.update(dt);
+  const off=document.documentElement.classList.contains('nofloat');R.domElement.style.display=off?'none':'';
+  for(const o of objs){o.t+=dt;const dx=o.x-mx,dy=o.y-my,d=Math.hypot(dx,dy),RR=o.r+140;
+   if(d<RR&&d>0&&!o.fold){const k=(1-d/RR)*.9;o.vx+=dx/d*k;o.vy+=dy/d*k;o.spin+=(dx>0?1:-1)*k*.02;if(window.__drop&&o.t-o.last>.4){window.__drop(o.x,o.y,.5);o.last=o.t}}
+   o.vx+=Math.sin(o.t*.3+o.r)*.004;o.vy+=Math.cos(o.t*.25+o.r)*.004;o.vx*=.965;o.vy*=.965;o.spin*=.96;o.x+=o.vx;o.y+=o.vy;
+   const m=o.r+20;if(o.x<m+260){o.x=m+260;o.vx=Math.abs(o.vx)*.6}if(o.x>W-m-360){o.x=W-m-360;o.vx=-Math.abs(o.vx)*.6}if(o.y<m+40){o.y=m+40;o.vy=Math.abs(o.vy)*.6}if(o.y>H-m-90){o.y=H-m-90;o.vy=-Math.abs(o.vy)*.6}
+   o.holder.position.set(o.x-W/2,H/2-o.y+Math.sin(o.t*1.4)*5,0);
+   o.piv.rotation.set(o.it.rx+Math.sin(o.t*1.1)*.06,o.it.ry+Math.sin(o.t*.5)*.25+o.spin,Math.sin(o.t*.9)*.05)}
+  R.render(S,cam);requestAnimationFrame(loop)})();
+})().catch(e=>console.warn('3D',e))}
 </script>
 </body>
 </html>
