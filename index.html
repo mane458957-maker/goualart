@@ -436,6 +436,59 @@ html.nofloat .floater{display:none}
 .icons2{grid-template-columns:repeat(3,92px)!important}
 .icons2 [data-p="rev"]{order:1}.icons2 [data-p="pho"]{order:2}.icons2 [data-p="set"]{order:3}.icons2 [data-p="cal"]{order:4}.icons2 [data-p="maps"]{order:5}.icons2 [data-p="cam"]{order:6}.icons2 [data-p="calc"]{order:8;grid-column:2}.icons2 [data-p="pdf"]{order:9}
 .postit{top:610px!important}
+
+/* ---------- centre : Avant/Après + Showreel ---------- */
+.center{position:absolute;left:270px;right:360px;top:50px;bottom:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;z-index:2;pointer-events:none}
+.center>*{pointer-events:auto}
+@media (max-width:1180px),(max-height:640px){.center{display:none}}
+.cseg{display:flex;gap:2px;padding:3px;border-radius:99px;background:linear-gradient(135deg,rgba(255,255,255,.2),rgba(255,255,255,.06));backdrop-filter:blur(6px) saturate(180%);-webkit-backdrop-filter:blur(6px) saturate(180%);box-shadow:inset 1px 1px 0 rgba(255,255,255,.6),0 10px 30px -12px rgba(0,0,0,.5)}
+.cseg button{padding:7px 16px;border-radius:99px;font-size:12.5px;font-weight:600;color:#fff;font-family:inherit}
+.cseg button.on{background:rgba(255,255,255,.9);color:#0b1620}
+.cv{display:none;flex-direction:column;align-items:center;gap:14px;width:100%}.cv.on{display:flex;animation:cvIn .5s cubic-bezier(.2,.9,.3,1.1)}
+@keyframes cvIn{from{opacity:0;transform:translateY(16px) scale(.97)}}
+.brw{width:min(100%,680px);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 40px 80px -30px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.15)}
+.brw-top{height:32px;background:#eceff2;display:flex;align-items:center;gap:6px;padding:0 12px}
+.brw-top i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.brw-top i:nth-child(2){background:#febc2e}.brw-top i:nth-child(3){background:#28c840}
+.brw-top .url{margin:0 auto;background:#fff;border-radius:7px;padding:3px 40px;font-size:11.5px;color:#5b6672}
+.ba{position:relative;aspect-ratio:16/9.4;overflow:hidden;user-select:none;cursor:ew-resize;touch-action:none}
+.ba .old,.ba .new{position:absolute;inset:0}
+.old{background:#c0c0c0 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M0 0h4v4H0zM4 4h4v4H4z' fill='%23b3b3b3'/%3E%3C/svg%3E");font-family:"Comic Sans MS","Comic Sans",cursive;color:#000;font-size:13px}
+.o-mq{background:#000080;color:#ff0;font-weight:bold;padding:3px 0;font-size:13px}
+.o-wrap{display:flex;gap:8px;padding:8px}
+.o-side{width:120px;background:#ff0;border:3px ridge #f0f;padding:6px;display:flex;flex-direction:column;gap:4px}
+.o-side a{color:#00e;text-decoration:underline;font-size:13px}.o-side b{color:red}
+.o-cnt{margin-top:8px;font-size:11px}.o-cnt span{background:#000;color:#0f0;font-family:monospace;padding:1px 3px}
+.o-main{flex:1;background:#fff;border:2px inset #999;padding:8px 10px}
+.o-main h1{font-size:26px;color:#f00;text-shadow:2px 2px #0f0;margin-bottom:2px;font-weight:bold}
+.o-sub{color:#008000;font-style:italic}
+.o-img{margin:8px 0;height:70px;border:2px dashed #999;display:grid;place-items:center;color:#888;font-size:12px}
+.o-uc{color:#f60;font-weight:bold;animation:blink 1s steps(2) infinite}@keyframes blink{50%{opacity:0}}
+.o-ft{font-size:10px;color:#666;margin-top:6px}
+.new{background:url(img/after-villa.jpg) center/cover;color:#fff;clip-path:inset(0 0 0 50%);font-family:Georgia,"Times New Roman",serif}
+.new:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,20,30,.85),rgba(4,20,30,.25) 70%)}
+.n-nav{position:relative;display:flex;align-items:center;justify-content:space-between;padding:14px 22px;font-family:Inter,sans-serif;font-size:11px;letter-spacing:.5px}
+.n-nav b{font-size:14px;letter-spacing:3px;font-weight:600}.n-nav b i{font-style:normal;color:#5fe0ea}
+.n-nav span{opacity:.8}.n-nav em{font-style:normal;background:#2bb3c0;padding:6px 12px;border-radius:99px;font-weight:600}
+.n-hero{position:relative;padding:20px 26px;max-width:62%}
+.n-hero small{font-family:Inter,sans-serif;font-size:10px;letter-spacing:3px;color:#5fe0ea}
+.n-hero h2{font-size:44px;line-height:1.02;font-weight:400;margin:8px 0 10px}.n-hero h2 i{color:#5fe0ea}
+.n-hero p{font-family:Inter,sans-serif;font-size:13px;opacity:.85;line-height:1.5}
+.n-btn{display:inline-block;margin-top:14px;font-family:Inter,sans-serif;font-size:12px;font-weight:600;background:#fff;color:#0b1620;padding:9px 16px;border-radius:99px}
+.ba-h{position:absolute;top:0;bottom:0;left:50%;width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 12px rgba(0,0,0,.4);z-index:3}
+.ba-h span{position:absolute;top:50%;left:50%;width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:50%;background:rgba(255,255,255,.9);color:#0b1620;display:grid;place-items:center;font-weight:700;font-size:15px;box-shadow:0 6px 18px rgba(0,0,0,.35);backdrop-filter:blur(8px)}
+.ba .tag{position:absolute;bottom:10px;font-style:normal;font-family:Inter,sans-serif;font-size:11px;font-weight:600;padding:5px 10px;border-radius:99px;z-index:2;background:rgba(0,0,0,.55);color:#fff}
+.ba .t1{left:10px}.ba .t2{right:10px;background:rgba(43,179,192,.9)}
+.ccta{display:inline-flex;align-items:center;gap:9px;background:#22a52a;color:#fff;font-weight:600;font-size:14px;padding:11px 20px;border-radius:99px;box-shadow:0 14px 30px -12px rgba(0,0,0,.6);transition:transform .2s}
+.ccta:hover{transform:translateY(-2px) scale(1.03)}.ccta img{width:18px;height:18px}
+.reel{display:flex;gap:16px;align-items:center;justify-content:center;height:min(560px,calc(100vh - 290px))}
+.rslot{height:86%;aspect-ratio:9/16;border-radius:22px;overflow:hidden;position:relative;background:#000;box-shadow:0 30px 60px -24px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.18);cursor:pointer;transition:transform .4s cubic-bezier(.2,.9,.3,1.1)}
+.rslot.mid{height:100%}
+.rslot:hover{transform:translateY(-6px) scale(1.02)}
+.rslot video{width:100%;height:100%;object-fit:cover;transition:opacity .6s}
+.rslot .rt{position:absolute;left:0;right:0;bottom:0;padding:30px 14px 12px;background:linear-gradient(transparent,rgba(0,0,0,.7));color:#fff;font-size:13px;font-weight:600}
+.rslot .rt small{display:block;font-weight:500;font-size:11px;opacity:.8}
+.rslot .snd{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.45);display:grid;place-items:center;font-size:13px;backdrop-filter:blur(6px)}
+.reel-cap{font-size:12px;opacity:.8;text-shadow:0 1px 4px rgba(0,0,0,.5)}
 html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:none!important}
 </style>
 </head>
@@ -450,6 +503,30 @@ html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:n
   </div>
   <div class="meteo" id="meteo"><div class="top"><div><div class="city" data-fr>Dubaï, maintenant</div><div class="city" data-en>Dubai, right now</div><div class="deg" id="mDeg">--°</div><div class="cond" id="mCond"></div></div><div class="wic" id="mIc"></div></div><div class="vs" id="mVs"></div><div class="joke" id="mJoke"></div><div class="joke2" id="mJoke2"></div></div>
   <div class="icons" id="icons"></div>
+  <div class="center" id="center">
+    <div class="cseg"><button data-cv="ba" class="on"><span data-en>Before / After</span><span data-fr>Avant / Après</span></button><button data-cv="reel">Showreel</button></div>
+    <div class="cv cv-ba on">
+      <div class="brw"><div class="brw-top"><i></i><i></i><i></i><span class="url">www.bluelagoonpools.com</span></div>
+        <div class="ba" id="ba">
+          <div class="old">
+            <div class="o-mq"><marquee scrollamount="4">★ WELCOME TO OUR WEBSITE !!! ★ BEST POOLS IN TOWN ★ CALL NOW !!! ★</marquee></div>
+            <div class="o-wrap"><div class="o-side"><b>MENU</b><a>Home</a><a>About us</a><a>Services</a><a>Galery</a><a>Contact</a><div class="o-cnt">Visitors: <span>000042</span></div></div>
+            <div class="o-main"><h1>Blue Lagoon Pools LLC</h1><p class="o-sub">We make pools since many years!!!</p><div class="o-img">🏊 [image not found]</div><p>Our Projects: <b>0+</b> &nbsp; Happy Clients: <b>0+</b></p><p class="o-uc">🚧 Site under construction 🚧</p><p class="o-ft">© 2012 Blue Lagoon Pools · Best viewed in Internet Explorer 6</p></div></div>
+          </div>
+          <div class="new" id="baNew">
+            <div class="n-nav"><b>BLUE<i>LAGOON</i></b><span>Models · Configurator · Projects</span><em>Free quote</em></div>
+            <div class="n-hero"><small>DUBAI · PREMIUM POOLS</small><h2>Your pool,<br><i>reinvented.</i></h2><p>Choose your model and your tiles. See it in your own villa.</p><span class="n-btn">Open the 3D configurator →</span></div>
+          </div>
+          <div class="ba-h" id="baH"><span>‹ ›</span></div>
+          <em class="tag t1"><span data-en>Before</span><span data-fr>Avant</span></em><em class="tag t2"><span data-en>After · Goual Studio</span><span data-fr>Après · Goual Studio</span></em>
+        </div></div>
+      <a class="ccta" id="baCta" target="_blank" rel="noopener"><img src="img/wa.png" alt=""><span data-en>I want the same for my business</span><span data-fr>Je veux la même chose pour mon entreprise</span></a>
+    </div>
+    <div class="cv cv-reel">
+      <div class="reel" id="reel"></div>
+      <div class="reel-cap" id="reelCap"><span data-en>Hover to unmute · click to open the Gallery</span><span data-fr>Survolez pour le son · cliquez pour ouvrir la Galerie</span></div>
+    </div>
+  </div>
   <div class="trash" id="trash"></div>
   <div class="icons2" id="icons2"></div>
   <div class="duo" id="duo"><div class="iph"><div class="scr"><div class="isl"></div><div class="ld" id="duoLd">…</div><iframe id="duoF" title="aperçu mobile"></iframe></div></div><div class="cap"><button id="duoP" aria-label="précédent">‹</button><span><span id="duoT"></span><small data-fr>Version mobile, en direct</small><small data-en>Live mobile version</small></span><button id="duoN" aria-label="suivant">›</button></div></div>
@@ -887,6 +964,34 @@ addEventListener('deviceorientation',e=>{if(e.gamma==null)return;const x=50+e.ga
 (function(){const pg=document.getElementById('pages'),dt=document.querySelectorAll('#dots i');if(!pg)return;
  pg.addEventListener('scroll',()=>{const i=Math.round(pg.scrollLeft/pg.clientWidth);dt.forEach((d,k)=>d.classList.toggle('on',k===i))},{passive:true});
  dt.forEach((d,k)=>d.onclick=()=>pg.scrollTo({left:k*pg.clientWidth,behavior:'smooth'}))})();
+
+/* ---------- centre : Avant/Après + Showreel ---------- */
+(function(){const C=document.getElementById('center');if(!C)return;
+ let cur='ba';try{cur=localStorage.getItem('gs-center')||'ba'}catch(e){}
+ const set=v=>{cur=v;C.querySelectorAll('.cseg button').forEach(b=>b.classList.toggle('on',b.dataset.cv===v));C.querySelectorAll('.cv').forEach(x=>x.classList.toggle('on',x.classList.contains('cv-'+v)));try{localStorage.setItem('gs-center',v)}catch(e){};reel(v==='reel')};
+ C.querySelectorAll('.cseg button').forEach(b=>b.onclick=()=>set(b.dataset.cv));
+ /* avant / après */
+ const ba=document.getElementById('ba'),nw=document.getElementById('baNew'),h=document.getElementById('baH');let drag=false,touched=false;
+ const pos=p=>{p=Math.max(0,Math.min(100,p));nw.style.clipPath=`inset(0 0 0 ${p}%)`;h.style.left=p+'%'};
+ const fromEv=e=>{const r=ba.getBoundingClientRect();pos((e.clientX-r.left)/r.width*100)};
+ ba.addEventListener('pointerdown',e=>{drag=true;touched=true;ba.setPointerCapture(e.pointerId);fromEv(e)});
+ ba.addEventListener('pointermove',e=>{if(drag)fromEv(e)});ba.addEventListener('pointerup',()=>drag=false);
+ let t0=null;const intro=t=>{if(touched)return;if(!t0)t0=t;const k=(t-t0)/1000;const p=50+38*Math.sin(k*1.1)*Math.exp(-k*.12);pos(p);if(k<14)requestAnimationFrame(intro);else pos(50)};
+ setTimeout(()=>requestAnimationFrame(intro),1200);
+ const cta=()=>{document.getElementById('baCta').href=waTo(L()==='en'?"Hi Goual Studio! 👋 I saw your Before/After demo. I want the same for my business. Can we talk?":"Bonjour Goual Studio ! 👋 J'ai vu votre démo Avant/Après. Je veux la même chose pour mon entreprise. On en parle ?")};cta();
+ document.getElementById('baCta').addEventListener('pointerdown',cta);
+ /* showreel */
+ const RL=GAL.filter(g=>g.c==='motion'||g.l).concat(GAL.filter(g=>!g.l&&g.c!=='motion').slice(0,6));
+ const box=document.getElementById('reel');let built=false,timer=null,idx=0;
+ function reel(on){if(!on){clearInterval(timer);box.querySelectorAll('video').forEach(v=>v.pause());return}
+  if(!built){built=true;box.innerHTML=[0,1,2].map(k=>`<div class="rslot${k===1?' mid':''}"><video muted loop playsinline preload="metadata"></video><span class="snd">🔇</span><div class="rt"></div></div>`).join('');
+   box.querySelectorAll('.rslot').forEach((sl,k)=>{load(sl,k);const v=sl.querySelector('video'),sd=sl.querySelector('.snd');
+    sl.onmouseenter=()=>{v.muted=false;sd.textContent='🔊'};sl.onmouseleave=()=>{v.muted=true;sd.textContent='🔇'};sl.onclick=()=>openP('pho')})}
+  box.querySelectorAll('video').forEach(v=>v.play().catch(()=>{}));
+  clearInterval(timer);timer=setInterval(()=>{const sl=box.querySelectorAll('.rslot')[idx%3];if(!sl.matches(':hover'))load(sl,3+idx);idx++},6000)}
+ function load(sl,k){const g=RL[k%RL.length],v=sl.querySelector('video');v.style.opacity=0;setTimeout(()=>{v.src=GU(g);if(g.po)v.poster=GP(g);v.play().catch(()=>{});v.style.opacity=1;sl.querySelector('.rt').innerHTML=`${g.cap}<small>${g.sub}</small>`},300)}
+ set(cur);
+})();
 /* ---------- petits easter eggs ---------- */
 document.addEventListener('click',e=>{const l=L(),en=l==='en';
  if(e.target.closest('.batt')){const v=ST.coffee;sysNotif(en?'Battery':'Batterie',en?`100% motivated · coffee at ${v}%`:`100 % motivé · café à ${v} %`)}
