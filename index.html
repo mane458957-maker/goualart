@@ -464,7 +464,7 @@ html.nofloat .floater{display:none}
 .o-img{margin:8px 0;height:70px;border:2px dashed #999;display:grid;place-items:center;color:#888;font-size:12px}
 .o-uc{color:#f60;font-weight:bold;animation:blink 1s steps(2) infinite}@keyframes blink{50%{opacity:0}}
 .o-ft{font-size:10px;color:#666;margin-top:6px}
-.new{background:url(img/after-komi.jpg) center/cover;color:#fff;clip-path:inset(0 0 0 50%);font-family:Georgia,"Times New Roman",serif}
+.new{background:url(img/after-komi.jpg) center/cover;color:#fff;--mx:-200px;--my:-200px;--r:0px;-webkit-mask-image:radial-gradient(circle var(--r) at var(--mx) var(--my),transparent 98%,#000 100%);mask-image:radial-gradient(circle var(--r) at var(--mx) var(--my),transparent 98%,#000 100%);font-family:Georgia,"Times New Roman",serif}
 
 .n-nav{position:relative;display:flex;align-items:center;justify-content:space-between;padding:14px 22px;font-family:Inter,sans-serif;font-size:11px;letter-spacing:.5px}
 .n-nav b{font-size:14px;letter-spacing:3px;font-weight:600}.n-nav b i{font-style:normal;color:#5fe0ea}
@@ -531,6 +531,13 @@ html.nofloat .floater{display:none}
 .tweb:hover .vp img{animation-play-state:paused}
 @keyframes webscroll{0%,5%{transform:translateY(0)}16%,21%{transform:translateY(-16.67%)}32%,37%{transform:translateY(-33.33%)}48%,53%{transform:translateY(-50%)}64%,69%{transform:translateY(-66.67%)}80%,88%{transform:translateY(-78%)}100%{transform:translateY(0)}}
 .tweb .wl{position:absolute;left:10px;bottom:10px;background:rgba(11,22,32,.8);color:#fff;font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:99px;backdrop-filter:blur(8px)}
+.ba{cursor:none}.ba-h{display:none!important}
+.lens{position:absolute;left:0;top:0;width:0;height:0;z-index:4;pointer-events:none}
+.lens:before{content:"";position:absolute;left:calc(var(--r) * -1);top:calc(var(--r) * -1);width:calc(var(--r) * 2);height:calc(var(--r) * 2);border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.9),0 0 0 6px rgba(255,255,255,.18),0 10px 40px rgba(0,0,0,.45),inset 0 0 30px rgba(255,255,255,.25)}
+.lens em{position:absolute;left:0;top:calc(var(--r) + 10px);transform:translateX(-50%);white-space:nowrap;font:600 10.5px Inter,sans-serif;font-style:normal;background:rgba(11,22,32,.8);color:#fff;padding:3px 9px;border-radius:99px;letter-spacing:.3px}
+.ba .t1{display:none}
+.ba .hint{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);z-index:3;font:600 11.5px Inter,sans-serif;background:rgba(11,22,32,.78);color:#fff;padding:6px 12px;border-radius:99px;backdrop-filter:blur(8px);transition:opacity .4s}
+.ba:hover .hint{opacity:0}
 html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:none!important}
 </style>
 </head>
@@ -546,7 +553,7 @@ html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:n
   <div class="meteo" id="meteo"><div class="top"><div><div class="city" data-fr>Dubaï, maintenant</div><div class="city" data-en>Dubai, right now</div><div class="deg" id="mDeg">--°</div><div class="cond" id="mCond"></div></div><div class="wic" id="mIc"></div></div><div class="vs" id="mVs"></div><div class="joke" id="mJoke"></div><div class="joke2" id="mJoke2"></div></div>
   <div class="icons" id="icons"></div>
   <div class="center" id="center">
-    <div class="cseg"><button data-cv="ba" class="on"><span data-en>Before / After</span><span data-fr>Avant / Après</span></button><button data-cv="reel">Showcase</button></div>
+    <div class="cseg"><button data-cv="ba" class="on"><span data-en>Time machine</span><span data-fr>Machine à remonter le temps</span></button><button data-cv="reel">Showcase</button></div>
     <div class="cv cv-ba on">
       <div class="brw"><div class="brw-top"><i></i><i></i><i></i><span class="url">www.komi-honey.com</span></div>
         <div class="ba" id="ba">
@@ -564,8 +571,8 @@ html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:n
             <div class="wp-foot">Proudly powered by WordPress | Theme: Twenty Nineteen</div>
           </div>
           <div class="new" id="baNew"></div>
-          <div class="ba-h" id="baH"><span>‹ ›</span></div>
-          <em class="tag t1"><span data-en>Before</span><span data-fr>Avant</span></em><em class="tag t2"><span data-en>After · KŌMI by Goual Studio</span><span data-fr>Après · KŌMI par Goual Studio</span></em>
+          <div class="ba-h" id="baH"><span>‹ ›</span></div><div class="lens" id="lens"><em><span data-en>2019 version</span><span data-fr>Version 2019</span></em></div><div class="hint"><span data-en>🔦 Move your mouse to see the old website</span><span data-fr>🔦 Passez la souris pour voir l’ancien site</span></div>
+          <em class="tag t1"><span data-en>Before</span><span data-fr>Avant</span></em><em class="tag t2"><span data-en>Today · KŌMI by Goual Studio</span><span data-fr>Aujourd’hui · KŌMI par Goual Studio</span></em>
         </div></div>
       <a class="ccta" id="baCta" target="_blank" rel="noopener"><img src="img/wa.png" alt=""><span data-en>I want the same for my business</span><span data-fr>Je veux la même chose pour mon entreprise</span></a>
     </div>
@@ -1021,14 +1028,16 @@ addEventListener('deviceorientation',e=>{if(e.gamma==null)return;const x=50+e.ga
  let cur='ba';try{cur=localStorage.getItem('gs-center')||'ba'}catch(e){}
  const set=v=>{cur=v;C.querySelectorAll('.cseg button').forEach(b=>b.classList.toggle('on',b.dataset.cv===v));C.querySelectorAll('.cv').forEach(x=>x.classList.toggle('on',x.classList.contains('cv-'+v)));try{localStorage.setItem('gs-center',v)}catch(e){};reel(v==='reel')};
  C.querySelectorAll('.cseg button').forEach(b=>b.onclick=()=>set(b.dataset.cv));
- /* avant / après */
- const ba=document.getElementById('ba'),nw=document.getElementById('baNew'),h=document.getElementById('baH');let drag=false,touched=false;
- const pos=p=>{p=Math.max(0,Math.min(100,p));nw.style.clipPath=`inset(0 0 0 ${p}%)`;h.style.left=p+'%'};
- const fromEv=e=>{const r=ba.getBoundingClientRect();pos((e.clientX-r.left)/r.width*100)};
- ba.addEventListener('pointerdown',e=>{drag=true;touched=true;ba.setPointerCapture(e.pointerId);fromEv(e)});
- ba.addEventListener('pointermove',e=>{if(drag)fromEv(e)});ba.addEventListener('pointerup',()=>drag=false);
- let t0=null;const intro=t=>{if(touched)return;if(!t0)t0=t;const k=(t-t0)/1000;const p=50+38*Math.sin(k*1.1)*Math.exp(-k*.12);pos(p);if(k<14)requestAnimationFrame(intro);else pos(50)};
- setTimeout(()=>requestAnimationFrame(intro),1200);
+ /* rayons X : la souris révèle l'ancien site */
+ const ba=document.getElementById('ba'),nw=document.getElementById('baNew'),ln=document.getElementById('lens');
+ let R0=0,RT=0,mx=-300,my=-300,tx=-300,ty=-300,inside=false,auto=true,t0=performance.now();
+ const apply=()=>{nw.style.setProperty('--mx',mx+'px');nw.style.setProperty('--my',my+'px');nw.style.setProperty('--r',R0+'px');ln.style.transform=`translate(${mx}px,${my}px)`;ln.style.setProperty('--r',R0+'px');ln.style.opacity=R0>8?1:0};
+ ba.addEventListener('pointermove',e=>{const r=ba.getBoundingClientRect();tx=e.clientX-r.left;ty=e.clientY-r.top;inside=true;auto=false;RT=Math.min(r.width,r.height)*.3});
+ ba.addEventListener('pointerleave',()=>{inside=false;RT=0});
+ ba.addEventListener('pointerdown',()=>{RT=Math.min(ba.clientWidth,ba.clientHeight)*.55;setTimeout(()=>{if(inside)RT=Math.min(ba.clientWidth,ba.clientHeight)*.3},700)});
+ (function loop(t){const w=ba.clientWidth,h=ba.clientHeight;
+   if(auto&&w){const k=(t-t0)/1000;if(k>1.2&&k<9){tx=w*(.5+.32*Math.sin(k*.9));ty=h*(.5+.25*Math.sin(k*1.7));RT=Math.min(w,h)*.26}else if(k>=9){RT=0}}
+   mx+=(tx-mx)*.18;my+=(ty-my)*.18;R0+=(RT-R0)*.14;if(mx<-250){mx=tx;my=ty}apply();requestAnimationFrame(loop)})(performance.now());
  const cta=()=>{document.getElementById('baCta').href=waTo(L()==='en'?"Hi Goual Studio! 👋 I saw your Before/After demo. I want the same for my business. Can we talk?":"Bonjour Goual Studio ! 👋 J'ai vu votre démo Avant/Après. Je veux la même chose pour mon entreprise. On en parle ?")};cta();
  document.getElementById('baCta').addEventListener('pointerdown',cta);
  /* trio */
