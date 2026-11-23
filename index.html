@@ -499,9 +499,9 @@ function galAfter(el){let i=0;const lb=el.querySelector('.lbx'),vv=lb.querySelec
  const close=()=>{vv.pause();vv.removeAttribute('src');vv.load();lb.classList.remove('show')};
  lb.querySelector('.lx').onclick=close;lb.querySelector('.lp').onclick=()=>show(i-1);lb.querySelector('.ln').onclick=()=>show(i+1);
  let sx=0;lb.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});lb.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>50)show(i+(d<0?1:-1))})}
-X.splice(2,0,{k:'pho',cls:'i-pho',fr:'Galerie',en:'Gallery',w:900,h:640,html:galHTML,after:galAfter},{k:'set',cls:'i-set',fr:'Réglages',en:'Settings',w:420,h:680,html:setHTML,after:setAfter});
+X.splice(2,0,{k:'pho',cls:'i-img',fr:'Galerie',en:'Gallery',w:900,h:640,html:galHTML,after:galAfter},{k:'set',cls:'i-img',fr:'Réglages',en:'Settings',w:420,h:680,html:setHTML,after:setAfter});
 const waHref=()=>L()==='en'?'https://wa.me/971503154697':'https://wa.me/33659039438';
-const IMG={pool:'img/app-pool.png',komi:'img/app-komi-blanc.png',shero:'img/app-sin.png'};
+const IMG={pho:'img/app-photos.png',set:'img/app-settings.png',pool:'img/app-pool.png',komi:'img/app-komi-blanc.png',shero:'img/app-sin.png'};
 const FAV=k=>{const p=P.find(x=>x.k===k);return p&&p.fav?`<b class="mono">${p.mono}</b><img class="fav" src="${p.fav}" alt="" onerror="this.remove()">`:''};
 const ic=(cls,k)=>`<div class="ic ${cls}">${k==='rev'?LOCK:''}${FAV(k)}${IMG[k]?`<img class="full" src="${IMG[k]}" alt="">`:''}${IMG[k]||FAV(k)?'':k==='wa'?'<img src="img/wa.png" alt="WhatsApp">':k==='gart'?'<img class="gart" src="img/goualart-logo.png" alt="Goual Art">':SVG[k]}</div>`;
 const DOCK=()=>[
@@ -741,7 +741,7 @@ document.getElementById('fov').onclick=e=>{if(!e.target.closest('a'))e.currentTa
 const nf=document.getElementById('notif');
 const nfDefault=nf.innerHTML;let nfHref=null;
 nf.onclick=()=>{if(nfHref==='#'){nf.classList.remove('show');return}window.open(nfHref||waHref(),'_blank','noopener')};
-function sysNotif(t,txt){showNotif(`<div class="ic i-set">${SVG.set}</div><div><b>${t}</b><span>${txt}</span></div>`,'#',5000,1)}
+function sysNotif(t,txt){showNotif(`<div class="ic i-img"><img class="full" src="img/app-settings.png" alt=""></div><div><b>${t}</b><span>${txt}</span></div>`,'#',5000,1)}
 function showNotif(html,href,ms,force){if(!force&&!ST.notif)return;nf.innerHTML=html;nfHref=href;nf.className='notif '+(innerWidth>820?'d':'m');requestAnimationFrame(()=>requestAnimationFrame(()=>nf.classList.add('show')));setTimeout(()=>nf.classList.remove('show'),ms||7000)}
 setTimeout(()=>showNotif(nfDefault,null,8000),innerWidth>820?9000:4500);
 /* notifications réseaux sociaux, au hasard */
