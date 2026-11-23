@@ -350,7 +350,7 @@ const SVG={
 };
 // projets : chaque icône ouvre directement le site
 const P=[
- {k:'pool',cls:'i-pool',fr:'Piscine 3D',en:'Pool 3D',url:'https://studio.goual.fr/piscine/'},
+ {k:'pool',cls:'i-img',fr:'Piscine 3D',en:'Pool 3D',url:'https://studio.goual.fr/piscine/'},
  {k:'komi',cls:'i-img',img:'img/app-komi.png',fr:'KŌMI',en:'KŌMI',url:'https://mane458957-maker.github.io/komi/'},
  {k:'shero',cls:'i-img',img:'img/app-sin.png',fr:'SIN Red Paris',en:'SIN Red Paris',url:'https://mane458957-maker.github.io/sin-hero/'}
 ];
@@ -375,7 +375,7 @@ const X=[
 ];
 const ALL=()=>P.concat(X);
 const waHref=()=>L()==='en'?'https://wa.me/971503154697':'https://wa.me/33659039438';
-const IMG={komi:'img/app-komi.png',shero:'img/app-sin.png'};
+const IMG={pool:'img/app-pool.png',komi:'img/app-komi.png',shero:'img/app-sin.png'};
 const ic=(cls,k)=>`<div class="ic ${cls}">${k==='rev'?LOCK:''}${IMG[k]?`<img class="full" src="${IMG[k]}" alt="">`:''}${IMG[k]?'':k==='wa'?'<img src="img/wa.png" alt="WhatsApp">':k==='gart'?'<img class="gart" src="img/goualart-logo.png" alt="Goual Art">':SVG[k]}</div>`;
 const DOCK=()=>[
  {cls:'i-goualart',k:'gart',href:'https://goual.fr',t:'Goual Art · goual.fr'},
