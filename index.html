@@ -290,10 +290,29 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .i-accent{background:linear-gradient(160deg,#ffb36b,#f0642e)}.i-accent .mono{font-family:Georgia,serif;font-style:italic;font-weight:700;font-size:14px}.i-accent img.fav{background:#f7894a}
 .i-ova{background:linear-gradient(160deg,#f4f4f4,#d9d9d9)}.i-ova .mono{color:#111;font-size:16px;letter-spacing:1px}.i-ova img.fav{background:#eee}
 .notif .nthumb{width:84px;height:48px;object-fit:cover;border-radius:8px;flex:none;margin-left:2px}.notif.d:has(.nthumb){width:420px;margin-left:-210px}
+
+/* ---------- Liquid Glass ---------- */
+.dock,.pdock,.widget,.meteo,.fov .fin,.notif,.bar{
+  background:linear-gradient(135deg,rgba(255,255,255,.20),rgba(255,255,255,.05) 55%,rgba(255,255,255,.12));
+  backdrop-filter:blur(5px) saturate(190%) brightness(1.06);-webkit-backdrop-filter:blur(5px) saturate(190%) brightness(1.06);
+  border:0;
+  box-shadow:inset 1.5px 1.5px 0 -.5px rgba(255,255,255,.75),inset -1px -1px 0 -.5px rgba(255,255,255,.35),inset 0 0 18px rgba(255,255,255,.10),inset 0 -10px 24px -14px rgba(255,255,255,.35),0 20px 44px -18px rgba(0,20,30,.55)}
+.lgx .dock,.lgx .pdock,.lgx .widget,.lgx .meteo,.lgx .fov .fin,.lgx .notif{backdrop-filter:url(#liquid) blur(3px) saturate(190%) brightness(1.06)}
+.bar{box-shadow:inset 0 -1px 0 rgba(255,255,255,.25)}
+.widget,.pdock{position:relative}
+.dock:before,.pdock:before,.widget:before,.meteo:before,.fov .fin:before,.notif:before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;
+  background:radial-gradient(120% 90% at var(--mx,25%) var(--my,0%),rgba(255,255,255,.38),rgba(255,255,255,0) 45%);mix-blend-mode:overlay;transition:background .15s}
+.dock>*,.pdock>*,.widget>*,.meteo>*,.fov .fin>*,.notif>*{position:relative;z-index:1}
+.notif{background:linear-gradient(135deg,rgba(255,255,255,.72),rgba(255,255,255,.52));color:#0b1620}
+.notif span{color:#1d2b36}
+.fov .fin{position:relative}
+/* appui façon iPhone */
+.app .ic,.pdock .ic,.dicon .ic,.di .ic,.fin .ic{transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.app:active .ic,.pdock a:active .ic,.dicon:active .ic,.di:active .ic,.fin a:active .ic,.press .ic{transform:scale(.86)!important}
 html[lang=fr] [data-en]{display:none!important}html[lang=en] [data-fr]{display:none!important}
 </style>
 </head>
-<body>
+<body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="liquid" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.006 0.009" numOctaves="2" seed="7" result="n"><animate attributeName="baseFrequency" dur="18s" values="0.006 0.009;0.009 0.006;0.006 0.009" repeatCount="indefinite"/></feTurbulence><feGaussianBlur in="n" stdDeviation="2" result="nb"/><feDisplacementMap in="SourceGraphic" in2="nb" scale="38" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
 <div class="wall" id="wall"><canvas id="water"></canvas><div class="floater" id="buoy"></div><div class="floater" id="duck"></div><i></i><i></i><i></i><i></i><div class="wm">goual.<small>STUDIO</small></div></div>
 
 <div class="desk" id="desk">
@@ -589,6 +608,27 @@ function step(){
   requestAnimationFrame(step);
 }
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches)step();else F.forEach(f=>f.el.style.transform=`translate(${f.x}px,${f.y}px)`);
+})();
+
+
+/* ---------- Liquid Glass : reflet qui suit le doigt / la souris ---------- */
+(function(){
+const ua=navigator.userAgent;
+if(/Chrome|Chromium|Edg\//.test(ua)&&!/iPhone|iPad|Firefox/.test(ua))document.documentElement.classList.add('lgx');
+const sel='.dock,.pdock,.widget,.meteo,.fov .fin,.notif';
+addEventListener('pointermove',e=>{document.querySelectorAll(sel).forEach(el=>{const r=el.getBoundingClientRect();if(!r.width)return;
+  el.style.setProperty('--mx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');el.style.setProperty('--my',((e.clientY-r.top)/r.height*100).toFixed(1)+'%')})},{passive:true});
+addEventListener('deviceorientation',e=>{if(e.gamma==null)return;const x=50+e.gamma*1.4,y=20+(e.beta-40)*1.2;
+  document.querySelectorAll(sel).forEach(el=>{el.style.setProperty('--mx',x+'%');el.style.setProperty('--my',y+'%')})},{passive:true});
+})();
+/* ---------- vibration au toucher, comme un iPhone ---------- */
+(function(){
+let lbl=null;
+function iosTick(){if(!lbl){lbl=document.createElement('label');lbl.setAttribute('aria-hidden','true');lbl.style.cssText='position:fixed;left:-99px;width:1px;height:1px;opacity:0;overflow:hidden';
+  const i=document.createElement('input');i.type='checkbox';i.setAttribute('switch','');i.tabIndex=-1;lbl.appendChild(i);document.body.appendChild(lbl)}lbl.click()}
+window.haptic=function(){try{if(navigator.vibrate&&!/iPhone|iPad/.test(navigator.userAgent))navigator.vibrate(9);else iosTick()}catch(e){}};
+const tap='.app,.pdock a,.dicon,.di,.fin a,.notif,.sheet button,.sheet a,.cta,#empty';
+document.addEventListener('click',e=>{if(e.target.closest(tap))haptic()},true);
 })();
 
 let l0='en';try{l0=localStorage.getItem('gs-lang')||'en'}catch(e){}
