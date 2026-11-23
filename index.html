@@ -500,7 +500,8 @@ function galAfter(el){let i=0;const lb=el.querySelector('.lbx'),vv=lb.querySelec
  lb.querySelector('.lx').onclick=close;lb.querySelector('.lp').onclick=()=>show(i-1);lb.querySelector('.ln').onclick=()=>show(i+1);
  let sx=0;lb.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});lb.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>50)show(i+(d<0?1:-1))})}
 X.splice(2,0,{k:'pho',cls:'i-img',fr:'Galerie',en:'Gallery',w:900,h:640,html:galHTML,after:galAfter},{k:'set',cls:'i-img',fr:'Réglages',en:'Settings',w:420,h:680,html:setHTML,after:setAfter});
-const waHref=()=>L()==='en'?'https://wa.me/971503154697':'https://wa.me/33659039438';
+const WA_MSG={en:"Hi Goual Studio! 👋 I love what you do and I'd like a website too. Can we talk?",fr:"Bonjour Goual Studio ! 👋 J'adore ce que vous faites et j'aimerais avoir un site internet moi aussi. On en parle ?"};
+const waHref=()=>{const l=L()==='fr'?'fr':'en';return (l==='en'?'https://wa.me/971503154697':'https://wa.me/33659039438')+'?text='+encodeURIComponent(WA_MSG[l])};
 const IMG={pho:'img/app-photos.png',set:'img/app-settings.png',pool:'img/app-pool.png',komi:'img/app-komi-blanc.png',shero:'img/app-sin.png'};
 const FAV=k=>{const p=P.find(x=>x.k===k);return p&&p.fav?`<b class="mono">${p.mono}</b><img class="fav" src="${p.fav}" alt="" onerror="this.remove()">`:''};
 const ic=(cls,k)=>`<div class="ic ${cls}">${k==='rev'?LOCK:''}${FAV(k)}${IMG[k]?`<img class="full" src="${IMG[k]}" alt="">`:''}${IMG[k]||FAV(k)?'':k==='wa'?'<img src="img/wa.png" alt="WhatsApp">':k==='gart'?'<img class="gart" src="img/goualart-logo.png" alt="Goual Art">':SVG[k]}</div>`;
