@@ -815,6 +815,11 @@ function build(){
 let z=10,wins={},cascade=0;
 function openP(k){
   const p=ALL().find(x=>x.k===k); if(!p)return;
+  if(p.url&&!/github\.io|studio\.goual\.fr/.test(p.url)){
+    window.open(p.url,'_blank','noopener');
+    try{sysNotif(p[L()],L()==='en'?'Opened in a new tab ↗':'Ouvert dans un nouvel onglet ↗')}catch(e){}
+    return;
+  }
   if(innerWidth<=820){
     document.getElementById('shC').innerHTML=p.html?p.html(L()):`<iframe src="${p.url}" allow="fullscreen"></iframe>`;
     document.getElementById('shExt').style.display=p.html?'none':'';if(p.after)p.after(document.getElementById('shC'),L());
