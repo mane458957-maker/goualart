@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glam by Majha — Black Friday de Noël (concept)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#141414}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#eaf1f8;color:var(--ink);font-family:'Jost',system-ui,sans-serif;overflow-x:hidden}
+  #stage{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block;touch-action:pan-y}
+  .spacer{height:900vh}
+  .band{position:fixed;top:0;left:0;right:0;z-index:12;background:#0d0d0d;color:#fff;height:34px;overflow:hidden;display:flex;align-items:center;
+    font-size:11px;letter-spacing:.24em;text-transform:uppercase;white-space:nowrap}
+  .band div{display:inline-block;padding-left:100%;animation:mq 28s linear infinite}
+  @keyframes mq{to{transform:translateX(-100%)}}
+  header{position:fixed;top:34px;left:0;right:0;z-index:11;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;
+    background:linear-gradient(rgba(255,255,255,.75),rgba(255,255,255,0))}
+  .logo{position:absolute;left:50%;transform:translateX(-50%);height:24px}
+  nav{display:flex;gap:26px;font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+  nav a{color:inherit;text-decoration:none}
+  .bag{font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+  .panel{position:fixed;z-index:6;opacity:0;pointer-events:none}
+  h1,h2{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1}
+  h1 em,h2 em{font-style:italic;font-weight:400}
+  .kicker{font-size:11px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:14px}
+  #p1{left:8vw;top:30vh;width:min(470px,40vw);text-align:center}
+  #p1 h1{font-size:clamp(46px,5vw,78px);text-transform:uppercase;letter-spacing:.01em}
+  #p1 p{margin-top:20px;font-size:15px;line-height:1.75}
+  .btn{display:inline-block;margin-top:26px;padding:17px 46px;background:#0d0d0d;color:#fff;text-decoration:none;font-size:12px;letter-spacing:.26em;text-transform:uppercase}
+  #p2{left:0;right:0;top:15vh;text-align:center}
+  #p2 h2{font-size:clamp(40px,4.6vw,66px)}
+  #p2b{left:0;right:0;bottom:5vh;text-align:center}
+  .add{display:inline-block;margin-top:14px;padding:15px 40px;background:#0d0d0d;color:#fff;border:0;text-decoration:none;font-family:'Jost';font-size:11px;letter-spacing:.26em;text-transform:uppercase;cursor:pointer}
+  .price{font-family:'Cormorant Garamond';font-size:22px;margin-top:4px}
+  .row{display:flex;justify-content:center;align-items:center;gap:18px}
+  .arrow.sm{width:36px;height:36px;font-size:14px}
+  .sname{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:32px}
+  .sub{font-size:11px;letter-spacing:.3em;text-transform:uppercase;opacity:.75;margin-top:4px}
+  .nav2{display:flex;justify-content:center;align-items:center;gap:24px;margin-top:14px}
+  .arrow{background:rgba(255,255,255,.6);border:1px solid var(--ink);color:var(--ink);width:44px;height:44px;border-radius:50%;font-size:16px;cursor:pointer;backdrop-filter:blur(6px)}
+  .tip{font-size:10px;letter-spacing:.28em;text-transform:uppercase}
+  #p3{left:0;right:0;top:15vh;text-align:center}
+  #p3 h2{font-size:clamp(44px,5.2vw,80px)}
+  .kin{position:fixed;left:0;right:0;z-index:5;white-space:nowrap;pointer-events:none;opacity:0;will-change:transform}
+  .kin span{display:inline-block;padding-right:.6em}
+  .k1{top:12vh;font-family:'Cormorant Garamond';font-style:italic;font-size:15vw;color:#141414}
+  .k2{top:24vh;font-size:9vw;letter-spacing:.06em;color:transparent;-webkit-text-stroke:1.5px #141414;font-weight:500;text-transform:uppercase}
+  .k3{top:64vh;font-family:'Cormorant Garamond';font-style:italic;font-size:12vw;color:#c08a5e}
+  .k4{top:78vh;font-size:7vw;letter-spacing:.14em;text-transform:uppercase;color:#141414;font-weight:300}
+  #p5{left:0;right:0;bottom:6vh;text-align:center}
+  .card{display:inline-block;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:24px 30px;text-align:center;
+    box-shadow:0 20px 50px -25px rgba(0,0,0,.35)}
+  .card .big{font-family:'Cormorant Garamond';font-size:44px;line-height:1}
+  .card p{font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-top:8px;line-height:1.7}
+  .card .btn{margin-top:16px}
+  .hint{position:fixed;z-index:6;left:50%;bottom:18px;transform:translateX(-50%);font-size:10px;letter-spacing:.3em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
+  .hint i{width:1px;height:34px;background:linear-gradient(#141414,transparent);animation:d 1.8s infinite}
+  @keyframes d{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+  #loading{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;background:#f3f6fa;font-family:'Cormorant Garamond';font-style:italic;font-size:26px;transition:opacity .6s}
+  #loading div{width:140px;height:1px;background:rgba(0,0,0,.12)} #loading span{display:block;height:100%;width:0;background:#141414}
+  @media (max-width:820px){
+    nav{display:none}
+    header{padding:0 16px;height:56px}
+    .logo{height:18px}
+    #p1{left:20px;right:20px;width:auto;top:17vh}
+    #p1 h1{font-size:38px}
+    #p1 p{font-size:13px;margin-top:12px;line-height:1.6}
+    .btn{padding:14px 34px;margin-top:16px}
+    #p2{top:14vh} #p2 h2{font-size:38px}
+    #p3{top:13vh} #p3 h2{font-size:40px}
+    .k1{font-size:17vw;top:15vh}.k2{font-size:11vw;top:27vh}.k3{font-size:16vw;top:63vh}.k4{font-size:9vw;top:76vh}
+    .card .big{font-size:36px}.card{padding:18px 20px}
+  }
+</style>
+</head>
+<body>
+<canvas id="stage"></canvas>
+<div id="loading">Glam by Majha<div><span id="bar"></span></div></div>
+<div class="band"><div>Dernier Black Friday ✦ -50 % sur tout le site dès 3 articles ✦ Vendredi 27 novembre, de 18h à minuit ✦ Dernier Black Friday ✦ -50 % sur tout le site dès 3 articles ✦ Vendredi 27 novembre, de 18h à minuit ✦</div></div>
+<header><nav><a href="#">Teint</a><a href="#">Lèvres</a><a href="#">Yeux</a></nav><img class="logo" src="logo.png" alt="GLAM BY MAJHA"><div class="bag">Panier (0)</div></header>
+
+<section class="panel" id="p1">
+  <h1>Dernier<br><em>Black Friday</em></h1>
+  <p>Pour Noël, révèle ton éclat avec Glam by Majha.<br><br>-50 % sur tout le site dès 3 articles<br>Vendredi 27 novembre, de 18h à minuit</p>
+  <a class="btn" href="https://glambymajha.com/collections/levres">Découvrir</a>
+</section>
+
+<section class="panel" id="p2b">
+  <div class="row"><button class="arrow sm" id="prev" aria-label="Teinte précédente">←</button><div><div class="sub">Rouge à lèvres</div><div class="sname" id="sname"></div></div><button class="arrow sm" id="next" aria-label="Teinte suivante">→</button></div>
+  <div class="price">12,00 €</div>
+  <a class="add" id="add" href="https://glambymajha.com/products/rouge-a-levres">Ajouter au panier</a></section>
+
+
+<div class="kin k1" data-dir="-1"><span>Dernier Black Friday</span><span>Dernier Black Friday</span></div>
+<div class="kin k2" data-dir="1"><span>-50 % sur tout le site</span><span>-50 % sur tout le site</span></div>
+<div class="kin k3" data-dir="-1"><span>Révèle ton éclat</span><span>Révèle ton éclat</span></div>
+<div class="kin k4" data-dir="1"><span>Glam by Majha ✦ 27 novembre ✦ 18h — minuit ✦</span><span>Glam by Majha ✦ 27 novembre ✦ 18h — minuit ✦</span></div>
+
+<section class="panel" id="p5"><div class="card">
+  <div class="big">-50 % <em>sur tout le site</em></div>
+  <p>Dès 3 articles · Vendredi 27 novembre · 18h — minuit</p>
+  <a class="btn" href="https://glambymajha.com/products/rouge-a-levres">J'en profite</a>
+</div></section>
+
+<div class="hint" id="hint">Scroll<i></i></div>
+<div class="spacer"></div>
+
+<script>
+const SHADES=[["Velvet Peach","velvet-peach","#ed776b"],["Dusty Rose","dusty-rose","#e18a81"],["Famous","famous","#bc536d"],["Mocha","mocha","#a4604c"]];
+const NF=60,TIP={x:0.2143,y:0.6995};
+// positions dans la neige (x,y = pied du rouge à lèvres, h = hauteur relative de l'image du décor)
+const SPOTS={pc:[[.46,.775,.27],[.575,.765,.264],[.69,.78,.276],[.81,.80,.291]],
+             mobile:[[.43,.745,.144],[.565,.735,.141],[.70,.75,.149],[.86,.765,.155]]};
+const $=id=>document.getElementById(id);
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),seg=(p,a,b)=>clamp((p-a)/(b-a));
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2,lerp=(a,b,t)=>a+(b-a)*t;
+const win=(p,a,b,f=.03)=>clamp(Math.min((p-a)/f,(b-p)/f));
+
+/* ---------- images ---------- */
+let loaded=0,need=0;
+function load(src,req){const im=new Image();if(req){need++;im.onload=()=>{loaded++;$('bar').style.width=(loaded/need*100)+'%';
+  if(loaded===need){$('loading').style.opacity=0;setTimeout(()=>$('loading').remove(),600);}};}im.src=src;return im;}
+const ok=im=>im&&im.complete&&im.naturalWidth>0;
+const PLATE={pc:[load('bg/pc.webp',true),load('bg/pc_blur.webp',false)],mobile:[load('bg/mobile.webp',true),load('bg/mobile_blur.webp',false)]};
+const closedBlur=load('lip/closed_blur.webp',false);
+const FR=SHADES.map((s,k)=>{const a=[];for(let j=0;j<NF;j++)a.push(load('lip/'+s[1]+'/'+String(j*2+1).padStart(3,'0')+'.webp',j===0));return a;});
+const TRAIT=SHADES.map(s=>load('trait/'+s[1]+'.webp',false));
+
+const cv=$('stage'),ctx=cv.getContext('2d');let W=1,H=1,mobile=false;
+function resize(){W=innerWidth;H=innerHeight;const d=Math.min(devicePixelRatio,2);cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);mobile=W/H<1;onScroll();buildWriting();}
+addEventListener('resize',resize);
+
+/* ---------- sélection ---------- */
+let cur=0;const POS=[null,null,null,null];
+function setShade(i){cur=(i+4)%4;$('sname').textContent=SHADES[cur][0];}
+setShade(0);
+$('prev').onclick=()=>setShade(cur-1);$('next').onclick=()=>setShade(cur+1);
+$('add').onclick=e=>{e.preventDefault();const b=document.querySelector('.bag');b.dataset.n=(+b.dataset.n||0)+1;b.textContent='Panier ('+b.dataset.n+')';$('add').textContent='Ajouté ✓';setTimeout(()=>$('add').textContent='Ajouter au panier',1400);};
+let hits=[],sx=null,sy=null,swiped=false;
+cv.addEventListener('pointerdown',e=>{sx=e.clientX;sy=e.clientY;swiped=false;});
+cv.addEventListener('pointermove',e=>{if(sx===null||swiped||p<.1||p>.5)return;const dx=e.clientX-sx,dy=e.clientY-sy;
+  if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.3){setShade(cur+(dx<0?1:-1));swiped=true;}});
+cv.addEventListener('pointerup',e=>{if(!swiped&&sx!==null&&Math.hypot(e.clientX-sx,e.clientY-sy)<8&&p>.1&&p<.5)
+  for(const h of hits)if(e.clientX>h.x0&&e.clientX<h.x1&&e.clientY>h.y0&&e.clientY<h.y1){setShade(h.i);break;}sx=null;});
+
+/* ---------- neige qui tombe ---------- */
+const FLAKES=[...Array(170)].map(()=>({x:Math.random(),y:Math.random(),z:.3+Math.random()*.7,ph:Math.random()*6.28}));
+function snow(dt,t){
+  const n=mobile?110:170;
+  for(let k=0;k<n;k++){const f=FLAKES[k];f.y+=dt*(.03+.07*f.z);if(f.y>1.05){f.y=-.05;f.x=Math.random();}
+    const x=(f.x+Math.sin(t*.6+f.ph)*.012*f.z)*W,y=f.y*H,r=(mobile?1.2:1.6)+f.z*f.z*(mobile?3:4.2);
+    const g=ctx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,`rgba(255,255,255,${.55+.4*f.z})`);g.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle=g;ctx.fillRect(x-r,y-r,2*r,2*r);}
+}
+
+/* ---------- ombres / neige au pied ---------- */
+function softShadow(x,y,rx,ry,a){ctx.save();ctx.translate(x,y);ctx.scale(1,ry/rx);const g=ctx.createRadialGradient(0,0,0,0,0,rx);
+  g.addColorStop(0,`rgba(70,90,120,${a})`);g.addColorStop(1,'rgba(70,90,120,0)');ctx.fillStyle=g;ctx.fillRect(-rx,-rx,2*rx,2*rx);ctx.restore();}
+const sn=document.createElement('canvas'),snX=sn.getContext('2d');
+function snowFoot(plate,map,x,y,h,a){ // remet un peu de neige du décor devant le pied
+  const w=h*.5,hh=h*.075;if(w<4)return;sn.width=Math.ceil(w);sn.height=Math.ceil(hh);
+  const sx0=(x-w/2-map.ox)/map.s,sy0=(y-hh*.35-map.oy)/map.s;
+  snX.drawImage(plate,sx0,sy0,w/map.s,hh/map.s,0,0,w,hh);
+  snX.globalCompositeOperation='destination-in';const g=snX.createRadialGradient(w/2,hh*1.05,0,w/2,hh*1.05,w*.42);
+  g.addColorStop(0,'rgba(0,0,0,1)');g.addColorStop(.55,'rgba(0,0,0,.9)');g.addColorStop(1,'rgba(0,0,0,0)');
+  snX.save();snX.scale(1,1);snX.fillStyle=g;snX.fillRect(0,0,w,hh);snX.restore();snX.globalCompositeOperation='source-over';
+  ctx.globalAlpha=a;ctx.drawImage(sn,x-w/2,y-hh*.35);ctx.globalAlpha=1;}
+
+/* ---------- écriture "Black Friday" ---------- */
+const wr=document.createElement('canvas'),wrX=wr.getContext('2d');let PATH=[],WB={x0:0,x1:0};
+function buildWriting(){wcKey='';
+  const fs=mobile?W*.2:Math.min(W*.13,H*.2);wr.width=Math.ceil(W);wr.height=Math.ceil(H);
+  wrX.clearRect(0,0,W,H);wrX.font=`${fs}px 'Great Vibes', cursive`;wrX.textAlign='center';wrX.textBaseline='middle';
+  wrX.fillStyle='#000';const cy=mobile?H*.5:H*.46;wrX.fillText('Black Friday',W/2,cy);
+  const d=wrX.getImageData(0,0,wr.width,wr.height).data;PATH=[];let x0=-1,x1=-1;
+  for(let x=0;x<wr.width;x+=2){let sy=0,n=0;for(let y=Math.max(0,Math.floor(cy-fs));y<Math.min(wr.height,cy+fs);y+=2){if(d[(y*wr.width+x)*4+3]>80){sy+=y;n++;}}
+    if(n){if(x0<0)x0=x;x1=x;PATH.push([x,sy/n]);}}
+  for(let k=0;k<3;k++)PATH=PATH.map((q,i,a)=>[q[0],(a[Math.max(0,i-2)][1]+a[Math.max(0,i-1)][1]+q[1]+a[Math.min(a.length-1,i+1)][1]+a[Math.min(a.length-1,i+2)][1])/5]);
+  WB={x0,x1};
+}
+function pathAt(s){if(!PATH.length)return [W/2,H/2];const i=Math.min(PATH.length-1,Math.floor(s*(PATH.length-1)));return PATH[i];}
+const wc=document.createElement('canvas'),wcX=wc.getContext('2d');let wcKey='';
+function drawWriting(s,col){
+  if(s<=0||!PATH.length)return;const head=pathAt(s);
+  const key=col+W+'x'+H;if(key!==wcKey){wcKey=key;wc.width=wr.width;wc.height=wr.height;wcX.clearRect(0,0,wc.width,wc.height);
+    wcX.drawImage(wr,0,0);wcX.globalCompositeOperation='source-in';wcX.fillStyle=col;wcX.fillRect(0,0,wc.width,wc.height);
+    wcX.globalCompositeOperation='source-atop';const g=wcX.createLinearGradient(0,0,0,wc.height);g.addColorStop(.38,'rgba(255,255,255,.22)');g.addColorStop(.55,'rgba(0,0,0,.1)');
+    wcX.fillStyle=g;wcX.fillRect(0,0,wc.width,wc.height);wcX.globalCompositeOperation='source-over';}
+  ctx.save();ctx.beginPath();ctx.rect(0,0,head[0]+2,H);ctx.clip();ctx.drawImage(wc,0,0,W,H);ctx.restore();
+}
+/* ---------- scroll ---------- */
+let target=0,p=0;
+function onScroll(){const m=document.documentElement.scrollHeight-innerHeight;target=m>0?clamp(scrollY/m):0;}
+addEventListener('scroll',onScroll,{passive:true});
+const KIN=[...document.querySelectorAll('.kin')];
+let last=performance.now();
+function tick(now){
+  requestAnimationFrame(tick);const dt=Math.min(.05,(now-last)/1000);last=now;const t=now/1000;
+  p+=(target-p)*.1;
+  const layout=mobile?'mobile':'pc',[plate,blur]=PLATE[layout];
+  const fl=ease(seg(p,.10,.18)), op=seg(p,.36,.50), kin=win(p,.76,.93,.04), wrS=seg(p,.55,.73), e5=ease(seg(p,.51,.56));
+  ctx.fillStyle='#eaf1f8';ctx.fillRect(0,0,W,H);
+  if(!ok(plate)){snow(dt,t);return;}
+  const iw=plate.naturalWidth,ih=plate.naturalHeight,s=Math.max(W/iw,H/ih),ox=(W-iw*s)/2,oy=(H-ih*s)/2,map={s,ox,oy};
+  ctx.drawImage(plate,ox,oy,iw*s,ih*s);
+  const bAmt=Math.max(fl,e5);
+  if(bAmt>0&&ok(blur)){ctx.globalAlpha=bAmt;ctx.drawImage(blur,ox,oy,iw*s,ih*s);ctx.globalAlpha=1;
+    ctx.fillStyle=`rgba(240,245,250,${.18*bAmt})`;ctx.fillRect(0,0,W,H);}
+
+  // les 4 rouges à lèvres
+  const SP=SPOTS[layout].map(([x,y,h])=>({x:ox+x*iw*s,y:oy+y*ih*s,h:h*ih*s}));
+  // en l'air : le choisi devant, les 3 autres "en bataille" derrière
+  const fh=mobile?H*.44:H*.58,fx=W*.5,fy=H*(mobile?.5:.52)+fh*.47;
+  const dx=mobile?W*.34:fh*.62;
+  const SLOT={0:[fx,fy,fh,0,0],1:[fx+dx,fy-fh*.2,fh*.6,.12,1],'-1':[fx-dx,fy-fh*.16,fh*.64,-.13,1],2:[fx+dx*(mobile?.42:.5),fy-fh*.42,fh*.46,.06,1]};
+  hits=[];const items=[];
+  for(let i=0;i<4;i++){let r=(i-cur+4)%4;if(r===3)r=-1;const T=SLOT[r];
+    if(!POS[i])POS[i]=T.slice();for(let k=0;k<5;k++)POS[i][k]+=(T[k]-POS[i][k])*.09;
+    const k=Math.abs(r);const li=ease(seg(p,.10+.012*k,.18+.012*k));
+    const sp=SP[i],q=POS[i],bob=Math.sin(t*1.3+i*1.7)*H*.008*li;
+    items.push({i,sp,l:li,X:lerp(sp.x,q[0],li),Y:lerp(sp.y,q[1],li)+bob,Hh:lerp(sp.h,q[2],li),rot:q[3]*li,back:q[4]*li});}
+  items.sort((A,B)=>A.Hh-B.Hh);
+  for(const it of items){const {i,sp,l,X,Y,Hh,rot,back}=it,sL=Hh/1185;
+    let fi=0;if(i===cur){fi=Math.round(op*(NF-1));while(fi>0&&!ok(FR[i][fi]))fi--;}
+    const img=FR[i][fi];if(!ok(img))continue;
+    const a=1-e5;if(a<=.01)continue;
+    softShadow(sp.x+sp.h*.06,sp.y,sp.h*.22*(1+l*.6),sp.h*.035,.45*(1-l)*a);
+    ctx.save();ctx.translate(X,Y-Hh*.5);ctx.rotate(rot);ctx.translate(-X,-(Y-Hh*.5));
+    const bl=back*.7;
+    if(bl<1){ctx.globalAlpha=a*(1-bl);ctx.drawImage(img,X-410*sL,Y-1380*sL,810*sL,1440*sL);}
+    if(bl>0&&ok(closedBlur)){ctx.globalAlpha=a*bl;ctx.drawImage(closedBlur,X-410*sL,Y-1380*sL,810*sL,1440*sL);}
+    ctx.restore();ctx.globalAlpha=1;
+    if(l<.5)snowFoot(plate,map,sp.x,sp.y,sp.h,1-l*2);
+    hits.push({i,x0:X-Hh*.2,x1:X+Hh*.2,y0:Y-Hh,y1:Y});}
+  hits.reverse();
+  // 5. le rouge à lèvres écrit "Black Friday"
+  if(e5>0){const col=SHADES[cur][2],tr=TRAIT[cur];drawWriting(wrS,col);
+    const head=pathAt(wrS),D=mobile?W*.62:H*.55;
+    if(ok(tr)){ctx.globalAlpha=e5*(1-seg(p,.73,.77));ctx.drawImage(tr,head[0]-TIP.x*D,head[1]-TIP.y*D,D,D);ctx.globalAlpha=1;}}
+  snow(dt,t);
+
+  // textes
+  const o={p1:win(p,-1,.09),p2b:win(p,.17,.5),p5:win(p,.92,2)};
+  for(const k in o){const el=$(k);el.style.opacity=o[k];el.style.pointerEvents=o[k]>.5?'auto':'none';}
+  KIN.forEach((el,k)=>{const dir=+el.dataset.dir,sp=(.8+k*.25)*W;el.style.opacity=kin;
+    const pr=seg(p,.74,.95);el.style.transform=`translateX(${dir>0?(-sp*.6+pr*sp):(-pr*sp)}px)`;});
+  $('hint').style.opacity=1-seg(p,0,.04);
+}
+resize();if(document.fonts)document.fonts.ready.then(buildWriting);
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
