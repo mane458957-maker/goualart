@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Glam by Majha — Black Friday de Noël (concept)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -56,8 +56,8 @@
   .card .big{font-family:'Cormorant Garamond';font-size:44px;line-height:1}
   .card p{font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-top:8px;line-height:1.7}
   .card .btn{margin-top:16px}
-  .hint{position:fixed;z-index:6;left:50%;bottom:18px;transform:translateX(-50%);font-size:11px;font-weight:500;color:#8e1b2c;letter-spacing:.3em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
-  .hint i{width:2px;height:40px;background:linear-gradient(#8e1b2c,rgba(142,27,44,0));animation:d 1.8s infinite}
+  .hint{position:fixed;z-index:6;left:50%;bottom:calc(5vh + env(safe-area-inset-bottom));transform:translateX(-50%);font-size:12px;font-weight:500;color:#d4a074;text-shadow:0 1px 3px rgba(60,35,20,.45);filter:drop-shadow(0 1px 2px rgba(60,35,20,.35));letter-spacing:.3em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
+  .hint i{width:2px;height:40px;background:linear-gradient(#d4a074,rgba(212,160,116,0));animation:d 1.8s infinite}
   @keyframes d{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
   #loading{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;background:#f3f6fa;font-family:'Cormorant Garamond';font-style:italic;font-size:26px;transition:opacity .6s}
   #loading div{width:140px;height:1px;background:rgba(0,0,0,.12)} #loading span{display:block;height:100%;width:0;background:#141414}
