@@ -56,8 +56,8 @@
   .card .big{font-family:'Cormorant Garamond';font-size:44px;line-height:1}
   .card p{font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-top:8px;line-height:1.7}
   .card .btn{margin-top:16px}
-  .hint{position:fixed;z-index:6;left:50%;bottom:calc(5vh + env(safe-area-inset-bottom));transform:translateX(-50%);font-size:12px;font-weight:500;color:#d4a074;text-shadow:0 1px 3px rgba(60,35,20,.45);filter:drop-shadow(0 1px 2px rgba(60,35,20,.35));letter-spacing:.3em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
-  .hint i{width:2px;height:40px;background:linear-gradient(#d4a074,rgba(212,160,116,0));animation:d 1.8s infinite}
+  .hint{position:fixed;z-index:6;left:50%;bottom:calc(5vh + env(safe-area-inset-bottom));transform:translateX(-50%);font-size:12px;font-weight:500;color:#0d0d0d;letter-spacing:.3em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
+  .hint i{width:2px;height:40px;background:linear-gradient(rgba(13,13,13,0),#0d0d0d);animation:d 1.8s infinite}
   @keyframes d{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
   #loading{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;background:#f3f6fa;font-family:'Cormorant Garamond';font-style:italic;font-size:26px;transition:opacity .6s}
   #loading div{width:140px;height:1px;background:rgba(0,0,0,.12)} #loading span{display:block;height:100%;width:0;background:#141414}
@@ -105,7 +105,7 @@
   <a class="btn" href="https://glambymajha.com/products/rouge-a-levres">J'en profite</a>
 </div></section>
 
-<div class="hint" id="hint">Scroll<i></i></div>
+<div class="hint" id="hint"><i></i>Scroll</div>
 <div class="spacer"></div>
 
 <script>
