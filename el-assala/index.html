@@ -32,7 +32,7 @@ nav{display:flex;gap:26px;font-size:14px}nav a{color:var(--ink);text-decoration:
 .interior{position:absolute;inset:0;background:#efe3cf;transform-origin:50% 54%}
 .iscene{position:absolute;left:50%;top:50%;width:max(100vw,calc(100svh*2576/1438));aspect-ratio:2576/1438;transform:translate(-50%,-50%)}
 .iscene img{position:absolute;inset:0;width:100%;height:100%;display:block}
-#smoke{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#smoke{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;opacity:0;transition:opacity 1.2s}.live #smoke{opacity:1}
 .rackwrap{position:absolute;left:50%;top:54%;width:min(1100px,90vw);transition:width .6s cubic-bezier(.2,.8,.2,1);transform:translate(-50%,-50%);--w:clamp(92px,10.4vw,148px)}
 .rail{position:relative;height:9px;margin:0 2%;border-radius:5px;background:linear-gradient(#f4dca4,#b48a45 55%,#7d5a26);box-shadow:0 3px 8px rgba(80,50,20,.25)}
 .post{position:absolute;top:4px;width:8px;height:calc(var(--w)*2.55 + 70px);background:linear-gradient(90deg,#7d5a26,#ecd19a 45%,#8a6630);border-radius:4px}
@@ -74,6 +74,8 @@ nav{display:flex;gap:26px;font-size:14px}nav a{color:var(--ink);text-decoration:
 .signtxt b{display:block;font:400 2.45cqw/1 "Cormorant Garamond",Marcellus,serif;letter-spacing:.06em}
 .signtxt span{display:block;margin-top:.55cqw;font:500 .62cqw/1 Jost,sans-serif;letter-spacing:.32em;color:#e8dcc6}
 nav{transition:opacity .4s}body:not(.inside) nav,body:not(.inside) .logo{opacity:0;pointer-events:none}
+.enter{position:absolute;left:50%;bottom:9%;transform:translateX(-50%);z-index:3;border:1px solid rgba(255,240,210,.7);background:rgba(40,26,14,.55);color:#fbf3e4;padding:13px 26px;border-radius:30px;font-size:15px;letter-spacing:.02em;backdrop-filter:blur(6px);min-height:48px}
+.enter:hover{background:rgba(40,26,14,.75)}
 .scrollhint{position:absolute;left:50%;bottom:2.4%;transform:translateX(-50%);font-size:13px;color:#fff;letter-spacing:.02em;text-shadow:0 1px 3px rgba(0,0,0,.35);animation:bob 2s infinite}
 @keyframes bob{50%{transform:translate(-50%,-6px)}}
 /* ---------- fiche ---------- */
@@ -107,7 +109,9 @@ nav{transition:opacity .4s}body:not(.inside) nav,body:not(.inside) .logo{opacity
  .rackwrap{--w:28vw}
  .panel{grid-template-columns:1fr;grid-template-rows:52vh 1fr;overflow:auto}.pimg{padding-top:50px}.pimg div{height:46vh}.pinfo{padding:16px 20px 90px}
  .ui{flex-wrap:wrap;justify-content:center}.hint,.arrows{display:none}}
-@media(prefers-reduced-motion:reduce){.pimg div,.scrollhint{animation:none}}
+@media(prefers-reduced-motion:reduce){.pimg div,.enter{position:absolute;left:50%;bottom:9%;transform:translateX(-50%);z-index:3;border:1px solid rgba(255,240,210,.7);background:rgba(40,26,14,.55);color:#fbf3e4;padding:13px 26px;border-radius:30px;font-size:15px;letter-spacing:.02em;backdrop-filter:blur(6px);min-height:48px}
+.enter:hover{background:rgba(40,26,14,.75)}
+.scrollhint{animation:none}}
 </style>
 </head>
 <body>
@@ -122,7 +126,6 @@ nav{transition:opacity .4s}body:not(.inside) nav,body:not(.inside) .logo{opacity
  <div class="stage" id="stage">
   <div class="interior" id="interior">
    <div class="iscene" id="iscene"><img src="interieur.jpg" alt="Intérieur de la boutique El Assala" draggable="false"></div>
-   <canvas id="smoke"></canvas>
    <div class="rackwrap" id="rack">
     <div class="rail"></div><span class="post l"></span><span class="post r"></span>
     <div class="view" id="view"><div class="track" id="track"></div></div>
@@ -130,6 +133,7 @@ nav{transition:opacity .4s}body:not(.inside) nav,body:not(.inside) .logo{opacity
    </div>
   </div>
 
+   <canvas id="smoke"></canvas>
    <div class="ui">
     <span class="hint">Survolez une pièce · cliquez pour la voir de près</span>
     <div class="tabs" role="tablist"><button data-cat="tout" class="on">Tout</button><button data-cat="abayas">Abayas</button><button data-cat="makhaweer">Makhaweer</button></div>
@@ -141,7 +145,8 @@ nav{transition:opacity .4s}body:not(.inside) nav,body:not(.inside) .logo{opacity
     <img src="facade-trou.webp" alt="Façade de la boutique El Assala" draggable="false">
     <div class="signtxt"><b>EL ASSALA</b><span>COLLECTION</span></div>
    </div>
-   <div class="scrollhint" id="shint">Faites défiler pour entrer ↓</div>
+   <button class="enter" id="enter">Entrer dans la boutique ♪</button>
+   <div class="scrollhint" id="shint">ou faites défiler ↓</div>
   </div>
   </div>
  </div>
@@ -261,7 +266,7 @@ function onScroll(){
  const is=Math.min(1,.8+.34*zoom)*curZ;
  $('interior').style.transform=`translate(${(dx*(1-zoom)).toFixed(1)}px,${(dy*(1-zoom)).toFixed(1)}px) scale(${is.toFixed(4)})`;
  document.body.classList.toggle('inside',p>.45);
- $('shint').style.opacity=1-sm(0,.06,p);
+ $('shint').style.opacity=1-sm(0,.06,p);$('enter').style.opacity=1-sm(0,.05,p);$('enter').style.pointerEvents=p>.05?'none':'';
  live=p>.6;stage.classList.toggle('live',live);
 }
 addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',()=>{fitRack();const l=limits();offT=Math.min(l.max,Math.max(l.min,offT));onScroll()});
@@ -332,21 +337,18 @@ addEventListener('keydown',e=>{
 const cv=$('smoke'),cx2=cv.getContext('2d');let parts=[],cw=0,chh=0,dpr=1;
 function sizeSmoke(){dpr=Math.min(2,devicePixelRatio||1);cw=innerWidth;chh=innerHeight;cv.width=cw*dpr;cv.height=chh*dpr;cx2.setTransform(dpr,0,0,dpr,0,0)}
 sizeSmoke();addEventListener('resize',sizeSmoke);
-function emitters(){const sw=Math.max(cw,chh*2576/1438),sh=sw*1438/2576,l=(cw-sw)/2,t=(chh-sh)/2;
- let rx=l+sw*2552/2576,ry=t+sh*1112/1438;if(rx>cw-24){rx=cw-24;ry=Math.min(ry,chh-40)}
- let lx=l+sw*150/2576,ly=t+sh*1050/1438;if(lx<24)lx=24;
- return[{x:rx,y:ry,k:1},{x:lx,y:ly,k:.55}]}
+function emitters(){const m=Math.max(26,cw*.045);return[{x:m,y:chh*.9,k:1},{x:cw-m,y:chh*.9,k:1}]}
 let tick=0;
 function smoke(){
  tick++;cx2.clearRect(0,0,cw,chh);
  if(!reduce&&live||parts.length){
-  if(!reduce)emitters().forEach(e=>{if(Math.random()<.55*e.k)parts.push({x:e.x+(Math.random()-.5)*3,y:e.y,vx:(Math.random()-.5)*.15,vy:-.55-Math.random()*.35,r:2+Math.random()*2,age:0,life:240+Math.random()*160,s:Math.random()*6.28,k:e.k})});
+  if(!reduce)emitters().forEach(e=>{if(Math.random()<.7*e.k)parts.push({x:e.x+(Math.random()-.5)*4,y:e.y,vx:(Math.random()-.5)*.2,vy:-.9-Math.random()*.6,r:3+Math.random()*3,age:0,life:300+Math.random()*200,s:Math.random()*6.28,k:e.k,d:e.x<cw/2?1:-1})});
   parts=parts.filter(q=>q.age<q.life);
   for(const q of parts){q.age++;
-   q.vx+=Math.sin(q.age*.025+q.s)*.012-.0025;q.vy*=.997;q.x+=q.vx;q.y+=q.vy;q.r+=.22+q.age*.0012;
-   const a=Math.min(1,q.age/25)*(1-q.age/q.life)*.24*q.k;
+   q.vx+=Math.sin(q.age*.022+q.s)*.018+q.d*.0012;q.vx*=.985;q.vy*=.999;q.x+=q.vx;q.y+=q.vy;q.r+=.18+q.age*.0011;
+   const a=Math.min(1,q.age/18)*Math.pow(Math.max(0,1-q.age/q.life),1.4)*.65*q.k;
    const g=cx2.createRadialGradient(q.x,q.y,0,q.x,q.y,q.r);
-   g.addColorStop(0,`rgba(120,108,98,${a})`);g.addColorStop(.5,`rgba(150,140,130,${a*.55})`);g.addColorStop(1,'rgba(160,150,140,0)');
+   g.addColorStop(0,`rgba(255,255,255,${a})`);g.addColorStop(.45,`rgba(250,248,245,${a*.5})`);g.addColorStop(1,'rgba(255,255,255,0)');
    cx2.fillStyle=g;cx2.beginPath();cx2.arc(q.x,q.y,q.r,0,6.283);cx2.fill();}
  }
  requestAnimationFrame(smoke);
@@ -360,7 +362,7 @@ function pluck(f){const k=f.toFixed(2);if(bufCache[k])return bufCache[k];
  const sr=AC.sampleRate,len=Math.floor(sr*2.4),b=AC.createBuffer(1,len,sr),d=b.getChannelData(0),N=Math.max(2,Math.round(sr/f));
  for(let i=0;i<N;i++)d[i]=(Math.random()*2-1)*(1-i/N*.3);
  for(let i=1;i<N;i++)d[i]=(d[i]+d[i-1])*.5;
- for(let i=N;i<len;i++)d[i]=.4985*(d[i-N]+d[i-N-1]);
+ d[N]=d[0];for(let i=N+1;i<len;i++)d[i]=.4985*(d[i-N]+d[i-N-1]);
  return bufCache[k]=b}
 function note(f,t,v){const s=AC.createBufferSource();s.buffer=pluck(f);const g=AC.createGain();g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+2.3);
  const lp=AC.createBiquadFilter();lp.type='lowpass';lp.frequency.value=2600;s.connect(lp);lp.connect(g);g.connect(master);g.connect(rev);s.start(t);s.stop(t+2.4)}
@@ -383,7 +385,7 @@ function schedule(){
   mt+=len;mi=(mi+1)%MEL.length}
  while(pt<AC.currentTime+.6){for(const [k,o,v] of PERC){const t=pt+o*BEAT;k==='d'?doum(t,v):tek(t,v)}pt+=4*BEAT}
 }
-function initAudio(){AC=new (window.AudioContext||window.webkitAudioContext)();master=AC.createGain();master.gain.value=0;master.connect(AC.destination);
+function initAudio(){AC=new (window.AudioContext||window.webkitAudioContext)();window.__ac=AC;master=AC.createGain();window.__m=master;master.gain.value=0;master.connect(AC.destination);
  rev=AC.createConvolver();const L=AC.sampleRate*3,ir=AC.createBuffer(2,L,AC.sampleRate);for(let c=0;c<2;c++){const d=ir.getChannelData(c);for(let i=0;i<L;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/L,2.6)}
  rev.buffer=ir;const wet=AC.createGain();wet.gain.value=.35;rev.connect(wet);wet.connect(master);
  const lp=AC.createBiquadFilter();lp.type='lowpass';lp.frequency.value=380;lp.connect(master);
@@ -392,13 +394,15 @@ function initAudio(){AC=new (window.AudioContext||window.webkitAudioContext)();m
  mt=pt=AC.currentTime+.2}
 const snd=$('snd');
 function setSound(on){
- if(on){if(!AC)initAudio();AC.resume();if(!timer)timer=setInterval(schedule,120);schedule();master.gain.cancelScheduledValues(AC.currentTime);master.gain.setTargetAtTime(.55,AC.currentTime,.8)}
+ if(on){if(!AC)initAudio();AC.resume();if(mt<AC.currentTime+.05){mt=pt=AC.currentTime+.15}if(!timer)timer=setInterval(schedule,120);schedule();master.gain.cancelScheduledValues(AC.currentTime);master.gain.setTargetAtTime(.8,AC.currentTime,.8)}
  else if(AC){master.gain.setTargetAtTime(0,AC.currentTime,.3);setTimeout(()=>{if(!playing&&AC){clearInterval(timer);timer=null;AC.suspend()}},900)}
  playing=on;snd.classList.toggle('on',on);snd.setAttribute('aria-pressed',on);snd.querySelector('span').textContent=on?'Couper le son':'Activer l\'ambiance'}
 snd.onclick=e=>{e.stopPropagation();userSet=true;try{setSound(!playing)}catch(_){}};
 let userSet=false;
-const firstGesture=()=>{if(!userSet&&!playing){try{setSound(true)}catch(_){}}removeEventListener('pointerdown',firstGesture);removeEventListener('keydown',firstGesture)};
-addEventListener('pointerdown',firstGesture);addEventListener('keydown',firstGesture);
+const GEV=['click','touchend','keydown'];
+const firstGesture=e=>{if(e&&e.target&&e.target.closest&&e.target.closest('#snd,#enter'))return;if(!userSet&&!playing){try{setSound(true)}catch(_){}}GEV.forEach(n=>removeEventListener(n,firstGesture,true))};
+GEV.forEach(n=>addEventListener(n,firstGesture,true));
+$('enter').onclick=e=>{e.stopPropagation();userSet=true;try{setSound(true)}catch(_){}const sc=$('scroller');scrollTo({top:sc.offsetTop+(sc.offsetHeight-innerHeight)*.82,behavior:reduce?'auto':'smooth'})};
 document.addEventListener('visibilitychange',()=>{if(!AC)return;if(document.hidden)AC.suspend();else if(playing)AC.resume()});
 
 build(false);onScroll();requestAnimationFrame(frame);
