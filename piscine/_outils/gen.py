@@ -48,9 +48,11 @@ def build(P):
                  f'<div><strong>{st}</strong><span>{lb}</span></div>', f'stat{i}')
     s = sub1(s, r'(<div class="eyebrow rv">(?:Nos savoir-faire|What we do)</div>\s*<h2 class="rv">)[^<]*(</h2>)', None, 'svc h2') if False else s
     s = re.sub(r'(<div class="eyebrow rv">(?:Nos savoir-faire|What we do)</div>\s*<h2 class="rv">)[^<]*(</h2>)', lambda m: m.group(1) + P['svc_h2'] + m.group(2), s, count=1)
-    for i, (h, p, pr) in enumerate(P['services']):
-        s = sub1(s, r'<h3>(?:Piscine béton sur-mesure|Piscine coque|Rénovation|Entretien &amp; équipements|Custom concrete pools|Fibreglass pools|Renovation|Maintenance &amp; equipment)</h3><p>[^<]*</p><div class="price">[^<]*</div>',
-                 f'<h3>{h}</h3><p>{p}</p><div class="price">{pr}</div>', f'card{i}')
+    cpat = r'<h3>(?:Piscine béton sur-mesure|Piscine coque|Rénovation|Entretien &amp; équipements|Custom concrete pools|Fibreglass pools|Renovation|Maintenance &amp; equipment)</h3><p>[^<]*</p><div class="price">[^<]*</div>'
+    ms = list(re.finditer(cpat, s))
+    if len(ms) < len(P['services']): print("INTROUVABLE: cartes", len(ms))
+    for m, (h, p, pr) in reversed(list(zip(ms, P['services']))):
+        s = s[:m.start()] + f'<h3>{h}</h3><p>{p}</p><div class="price">{pr}</div>' + s[m.end():]
     s = sub1(s, r'<p class="lead rv">[^\n]*?<span data-c="zone">.*?</p>', f'<p class="lead rv">{P["zone_lead"]}</p>', 'zone lead')
     s = sub1(s, r'<div>📍 <span data-c="address">[^<]*</span></div>', f'<div>📍 <span data-c="address">{P["address"]}</span></div>' + ''.join(f'\n        <div>{x}</div>' for x in P.get('extra_contact', [])), 'address div')
     s = sub1(s, r'<span data-c="email" data-href="mailto">[^<]*</span>|<a data-c="email" data-href="mailto">[^<]*</a>', f'<a data-c="email" data-href="mailto">{P["email"]}</a>', 'email vis')

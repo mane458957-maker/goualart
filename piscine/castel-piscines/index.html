@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Castel Piscines — Constructeur de piscines, Castelsarrasin</title>
+<meta name="description" content="Castel Piscines construit, rénove et équipe les piscines du Tarn-et-Garonne depuis 1990, depuis son magasin de Castelsarrasin. Piscines traditionnelles, coques polyester, rénovation et entretien.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ COULEURS DU CLIENT : modifier ici ============ */
+:root{
+  --navy:#0b1d2a; --navy2:#12293a; --aqua:#2bb3c0; --aqua2:#7fe0e8;
+  --sand:#f5f1ea; --stone:#e6dfd2; --ink:#14212b; --muted:#5b6b76;
+  --r:18px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Manrope,system-ui,sans-serif;color:var(--ink);background:var(--sand);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:"DM Serif Display",Georgia,serif;font-weight:400;line-height:1.05}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+
+/* NAV */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px 22px;transition:background .4s}
+.nav.solid{background:rgba(11,29,42,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.logo{font-family:"DM Serif Display",serif;font-size:22px;color:#fff;letter-spacing:.5px}
+.logo span{color:var(--aqua2)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--aqua);color:#04161c;font-weight:700;padding:12px 20px;border-radius:999px;font-size:14px;border:0;cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:var(--aqua2)}
+.btn.ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px)}
+
+
+/* ============ CHANTIER AU SCROLL (images extraites de la vidéo) ============ */
+#build{position:relative;background:#05111a}
+#build .stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;z-index:0}
+#bgc{position:absolute;inset:-60px;width:calc(100% + 120px);height:calc(100% + 120px);filter:blur(40px) brightness(.55) saturate(1.2);display:none}
+#fc{position:absolute;inset:0;width:100%;height:100%;display:block}
+#veil{position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 45%,rgba(3,12,20,.35),rgba(3,12,20,.85));pointer-events:none}
+#build .shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(3,12,20,.45) 0%,rgba(3,12,20,0) 22%,rgba(3,12,20,0) 70%,rgba(3,12,20,.6) 100%)}
+.intro{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:0 24px;pointer-events:none}
+.bigLogo{font-family:"DM Serif Display",serif;font-size:clamp(54px,15vw,170px);letter-spacing:2px;line-height:1;will-change:transform,opacity;text-shadow:0 10px 50px rgba(0,0,0,.35)}
+.bigLogo span{color:var(--aqua2)}
+.bigLogo{font-size:clamp(40px,9vw,120px)!important;white-space:nowrap}
+.tagline{margin-top:22px;font-family:"DM Serif Display",serif;font-size:clamp(24px,5.4vw,46px);line-height:1.15;max-width:760px;will-change:transform,opacity}
+.tagline em{color:var(--aqua2)}
+.subtag{margin-top:14px;font-size:14px;letter-spacing:3px;text-transform:uppercase;font-weight:700;opacity:.8}
+.flow{position:relative;z-index:2;margin-top:-100vh;margin-top:-100svh;pointer-events:none}
+.blk{display:flex;align-items:center;padding:0 18px}
+.blk .txt{pointer-events:auto;max-width:460px;color:#fff;background:rgba(5,17,26,.42);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:22px 22px 24px;will-change:transform,opacity}
+.blk .k{font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--aqua2);margin-bottom:10px}
+.blk h2{font-size:clamp(32px,8vw,64px)}
+.blk p{margin-top:10px;font-size:15px;opacity:.9;line-height:1.55}
+.blk.final .txt{background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0;text-shadow:0 4px 30px rgba(0,0,0,.5)}
+.blk.final{align-items:flex-end;padding-bottom:90px}
+.blk.final h2{font-size:clamp(42px,11vw,96px)}
+.blk .cta{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
+.bhud{position:absolute;left:22px;right:22px;bottom:30px;display:flex;gap:6px;transition:opacity .5s}
+.bhud i{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden;position:relative}
+.bhud i b{position:absolute;inset:0;background:#fff;transform-origin:left;transform:scaleX(0)}
+.bhint{position:absolute;left:50%;bottom:44px;transform:translateX(-50%);color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:8px}
+.bhint:after{content:"";width:1px;height:30px;background:currentColor;animation:bh 1.6s infinite}
+@keyframes bh{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.loader{position:absolute;right:22px;top:76px;font-size:11px;color:rgba(255,255,255,.7);letter-spacing:1px;transition:opacity .6s}
+#nav .logo{transition:opacity .2s}
+@media(min-width:900px){
+  .blk{padding:0 7vw}
+  .blk .txt{max-width:38vw}
+  .bhud{left:7vw;right:auto;width:36vw}
+}
+
+/* ============ RÉALISATIONS : cartes empilées au scroll ============ */
+#real{background:var(--navy);color:#fff;padding:100px 0 12vh}
+.real-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:46px}
+.real-head h2{font-size:clamp(36px,5vw,64px);max-width:640px}
+.real-head p{color:rgba(255,255,255,.6);max-width:340px;line-height:1.6}
+.stack{padding:0 12px}
+.card2{position:sticky;height:calc(100vh - 120px);height:calc(100svh - 120px);max-width:1240px;margin:0 auto 5vh;border-radius:28px;overflow:hidden;transform-origin:50% 0;will-change:transform;background:linear-gradient(160deg,#2b8fa8,#0b3a52 60%,#06131c);box-shadow:0 -24px 60px -20px rgba(0,0,0,.6)}
+.card2 .media{position:absolute;inset:-6% 0;will-change:transform}
+.card2 img{width:100%;height:100%;object-fit:cover;display:block}
+.card2 .media.fail img{display:none}
+.card2:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,14,22,.35) 0%,rgba(4,14,22,0) 30%,rgba(4,14,22,0) 45%,rgba(4,14,22,.85) 100%)}
+.card2 .dim{position:absolute;inset:0;z-index:3;background:#04101a;opacity:0;pointer-events:none}
+.card2 .info{position:absolute;left:22px;right:22px;bottom:24px;z-index:2}
+.card2 .no{font-size:12px;letter-spacing:3px;font-weight:700;opacity:.8}
+.card2 h3{font-size:clamp(40px,7vw,96px);margin:8px 0 6px}
+.card2 .place{opacity:.85;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chips span{font-size:12px;font-weight:700;padding:8px 12px;border-radius:99px;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18)}
+.card2 .tag{position:absolute;top:20px;right:20px;z-index:2;font-size:11px;letter-spacing:2px;font-weight:700;text-transform:uppercase;padding:8px 12px;border-radius:99px;background:rgba(0,0,0,.3);backdrop-filter:blur(8px)}
+@media(min-width:900px){.card2{height:calc(100vh - 160px)}.card2 .info{left:44px;bottom:40px;right:auto;max-width:60%}.stack{padding:0 32px}}
+
+/* ============ CRÉATIONS (bento) ============ */
+.bento{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:42vw;gap:12px;margin-top:46px}
+@media(min-width:900px){.bento{grid-template-columns:repeat(4,1fr);grid-auto-rows:240px}.bento .b0{grid-column:span 2;grid-row:span 2}.bento .b3{grid-column:span 2}}
+.bento .b0{grid-column:span 2}
+@media(max-width:899px){.bento .b7{grid-column:span 2}}
+.bento figure:not(:has(figcaption)):after{display:none}
+.bento figure{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;background:#1a8fb0}
+.bento img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.bento .ph2{position:absolute;inset:0;background:radial-gradient(120% 60% at 30% 20%,rgba(255,255,255,.35),transparent 55%),repeating-radial-gradient(circle at 70% 60%,rgba(255,255,255,.12) 0 6px,transparent 6px 22px),linear-gradient(160deg,var(--a,#38c6d9),var(--b,#0f6f96));transition:transform 1.2s var(--ease)}
+.bento figure:hover img,.bento figure:hover .ph2{transform:scale(1.08)}
+.bento figure:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(4,14,22,.7))}
+.bento figcaption{position:absolute;left:16px;bottom:14px;right:16px;color:#fff;z-index:1;font-weight:600;font-size:15px;transform:translateY(6px);transition:transform .5s var(--ease)}
+.bento figcaption small{display:block;opacity:.75;font-weight:500;font-size:12px}
+.bento figure:hover figcaption{transform:none}
+/* ============ AVIS (défilement continu) ============ */
+.rev{overflow:hidden}
+.rev-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:34px}
+.score{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--stone);border-radius:18px;padding:14px 20px}
+.score .big{font-family:"DM Serif Display",serif;font-size:48px;line-height:1;color:var(--navy)}
+.score small{color:var(--muted);font-size:12px}
+.demo-note{max-width:1180px;margin:0 auto 18px;padding:0 22px;font-size:12px;color:var(--muted);font-style:italic}
+.marquee{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);padding:6px 0}
+.row{display:flex;gap:14px;width:max-content;animation:mq 60s linear infinite}
+.row.rev2{animation-duration:75s;animation-direction:reverse}
+.marquee:hover .row{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+.rc{width:320px;flex:none;background:#fff;border:1px solid var(--stone);border-radius:18px;padding:20px;box-shadow:0 14px 30px -24px rgba(11,29,42,.4)}
+.rc .who{display:flex;align-items:center;gap:12px}
+.rc .av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:15px}
+.rc .who b{display:block;font-size:14px}.rc .who small{color:var(--muted);font-size:12px}
+.rc .g{margin-left:auto;font-weight:800;font-size:15px;background:linear-gradient(90deg,#4285f4,#ea4335,#fbbc05,#34a853);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rc .stars{margin:12px 0 8px;font-size:14px}
+.rc p{font-size:14px;line-height:1.55;color:#2b3a44}
+.rc .pj{margin-top:12px;display:inline-block;font-size:11px;font-weight:700;color:var(--aqua);background:rgba(43,179,192,.1);padding:5px 10px;border-radius:99px}
+
+/* ============ CONFIGURATEUR ============ */
+#config{position:relative;background:var(--navy);color:#fff;padding:90px 0 70px;overflow:hidden;transition:background 1.2s}
+#config.night{background:#040b12}
+.cfg{display:grid;gap:26px}
+@media(min-width:960px){.cfg{grid-template-columns:1.35fr 1fr;align-items:center;gap:50px}}
+.pool{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 40px 80px -30px rgba(0,0,0,.6);touch-action:manipulation}
+@media(min-width:960px){.pool{aspect-ratio:5/4}}
+.pool canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.pool .tap{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;background:rgba(0,0,0,.35);backdrop-filter:blur(8px);padding:8px 14px;border-radius:99px;pointer-events:none;transition:opacity .6s}
+.result{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:6px}
+.result small{opacity:.6;font-size:13px}
+.flip{position:relative;display:inline-block;overflow:hidden;height:1.15em;vertical-align:bottom;font-family:"DM Serif Display",serif;font-size:clamp(30px,4vw,46px);color:var(--aqua2);min-width:8ch}
+.flip span{display:block;transition:transform .7s var(--ease),opacity .7s}
+.flip span.out{position:absolute;left:0;top:0;transform:translateY(-110%);opacity:0}
+.flip span.in{transform:translateY(110%)}
+.lbl{font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:700;opacity:.6;margin:26px 0 12px}
+.sw{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.sw button{position:relative;border:0;background:rgba(255,255,255,.06);border-radius:16px;padding:10px;color:#fff;text-align:left;transition:transform .25s var(--ease),background .3s}
+.sw button:active{transform:scale(.94)}
+.sw button .chip{height:54px;border-radius:10px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.sw button .chip i{display:block}
+.sw button .chip i:first-child{background-size:9px 9px}
+.sw button .t{display:block;margin-top:8px;font-size:13px;font-weight:600}
+.sw button .w{display:block;font-size:11px;opacity:.6}
+.sw button.on{background:rgba(127,224,232,.16)}
+.sw button.on:before{content:"";position:absolute;inset:-2px;border-radius:18px;border:2px solid var(--aqua2)}
+.sw button.ping:after{content:"";position:absolute;inset:0;border-radius:16px;border:2px solid var(--aqua2);animation:ping .7s var(--ease) forwards}
+@keyframes ping{to{transform:scale(1.25);opacity:0}}
+.dn{display:flex;background:rgba(255,255,255,.08);border-radius:99px;padding:5px;position:relative;width:max-content}
+.dn button{position:relative;z-index:1;border:0;background:none;color:#fff;padding:12px 22px;font-weight:700;font-size:14px;border-radius:99px;transition:color .4s;display:flex;gap:8px;align-items:center}
+.dn .knob{position:absolute;top:5px;bottom:5px;left:5px;border-radius:99px;background:#fff;transition:transform .6s var(--ease),width .6s var(--ease),background .6s}
+.dn button.on{color:var(--navy)}
+#config .glow{position:absolute;width:70vw;height:70vw;border-radius:50%;filter:blur(90px);opacity:.25;left:-20vw;top:10%;pointer-events:none;transition:background 1s}
+.cfg1{max-width:1100px}
+#config .pool{aspect-ratio:1672/941!important;border-radius:22px}
+.pool .villa{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;transition:opacity 1.4s ease;user-select:none;-webkit-user-drag:none}
+@media(max-width:600px){#config .pool{margin:0 -22px;border-radius:0}}
+.ctrls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.sw-elec{border:0;background:none;color:#fff;display:flex;align-items:center;gap:12px;padding:0;-webkit-tap-highlight-color:transparent}
+.sw-elec .plate{width:62px;height:62px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(150deg,#ffffff 0%,#eceef0 45%,#cfd3d7 100%);box-shadow:0 10px 22px -6px rgba(0,0,0,.55),inset 0 1px 1px #fff,inset 0 -3px 6px rgba(0,0,0,.12);position:relative}
+.sw-elec .plate:after{content:"";position:absolute;inset:0;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,0) 40%);pointer-events:none}
+.sw-elec .slot{width:28px;height:44px;border-radius:3px;background:linear-gradient(180deg,#2a2d31,#4a4f55);box-shadow:inset 0 2px 4px rgba(0,0,0,.6);perspective:120px;display:block;padding:2px}
+.sw-elec .rocker{display:block;position:relative;width:100%;height:100%;border-radius:2px;transform-origin:50% 50%;transition:transform .22s cubic-bezier(.3,1.6,.5,1),background .22s;
+  transform:rotateX(-18deg);background:linear-gradient(180deg,#fdfdfd 0%,#e9eaeb 48%,#c9ccd0 52%,#f2f3f4 100%);box-shadow:0 2px 3px rgba(0,0,0,.35)}
+.sw-elec.on .rocker{transform:rotateX(18deg);background:linear-gradient(180deg,#f2f3f4 0%,#c9ccd0 48%,#e9eaeb 52%,#fdfdfd 100%)}
+.sw-elec .rocker i{position:absolute;left:0;right:0;text-align:center;font-style:normal;font-weight:800;font-size:7.5px;letter-spacing:.3px;color:#8a8f95;transition:opacity .15s}
+.sw-elec .rocker .off{top:5px}.sw-elec .rocker .on{bottom:5px;opacity:0}
+.sw-elec.on .rocker .on{opacity:1}.sw-elec.on .rocker .off{opacity:0}
+.sw-elec .cap2{font-weight:700;font-size:13px;opacity:.8;transition:color .3s,text-shadow .3s}
+.sw-elec.on .cap2{color:var(--aqua2);opacity:1;text-shadow:0 0 14px rgba(127,224,232,.8)}
+.sw-elec:active .plate{transform:scale(.97)}
+.lt{border:0;border-radius:99px;padding:13px 18px;font-weight:700;font-size:13px;color:#fff;background:rgba(255,255,255,.08);transition:background .4s,box-shadow .4s,color .4s}
+.lt b{margin-left:4px;font-size:11px;opacity:.7}
+.lt.on{background:#9fe9f0;color:var(--navy);box-shadow:0 0 30px rgba(127,224,232,.6)}
+.lt:active{transform:scale(.95)}
+.cfg1 h2{font-size:clamp(30px,4.4vw,52px);margin-bottom:26px}
+#config .pool{aspect-ratio:16/9}
+
+.bar2{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin:20px 0 16px}
+.bar2 .result{margin:0}
+.sw{grid-template-columns:repeat(3,1fr)}
+@media(min-width:700px){.sw{grid-template-columns:repeat(6,1fr)}}
+.sw button .smp{display:block;width:100%;aspect-ratio:16/11;border-radius:10px;box-shadow:0 8px 18px -8px rgba(0,0,0,.6)}
+.sw button .t{margin-top:10px;font-size:14px}
+.sw button .m{display:block;font-size:11px;opacity:.55;margin-top:2px}
+.sw button .w{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:11px;opacity:.85}
+.sw button .w i{width:9px;height:9px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.15)}
+.sw button:hover .smp{transform:translateY(-2px)}
+.sw button .smp{transition:transform .3s var(--ease)}
+.mdl .smp{display:block;width:100%;aspect-ratio:16/9;border-radius:10px;box-shadow:none!important;background:radial-gradient(120% 120% at 50% 40%,rgba(255,255,255,.06),transparent);object-fit:contain}
+/* mobile : tout le configurateur tient sur un écran */
+@media(max-width:600px){
+  #config{padding:70px 0 40px}
+  .cfg1 h2{font-size:26px;margin-bottom:16px}
+  .bar2{margin:12px 0 10px;gap:10px}
+  .flip{font-size:26px}
+  .result small{font-size:12px}
+  .dn{padding:4px}.dn .knob{top:4px;bottom:4px;left:4px}
+  .dn button{padding:8px 12px;font-size:12px}
+  .sw-elec{gap:8px}.sw-elec .plate{width:44px;height:44px;border-radius:11px}.sw-elec .plate:after{border-radius:11px}
+  .sw-elec .slot{width:20px;height:31px}.sw-elec .rocker i{font-size:5.5px}.sw-elec .cap2{font-size:12px}
+  .sw{grid-template-columns:repeat(6,1fr);gap:6px}
+  .sw button{padding:4px;border-radius:10px;min-width:0}
+  .sw button.on:before{inset:-2px;border-radius:12px}
+  .sw button.ping:after{border-radius:10px}
+  .sw button .smp{aspect-ratio:1/1;border-radius:7px}
+  .sw button .t{font-size:9.5px;line-height:1.15;margin-top:5px;text-align:center;overflow-wrap:anywhere;hyphens:auto}
+  .sw button .m,.sw button .w{display:none}
+}
+.dn button{padding:10px 18px;font-size:13px}
+</style>
+<style>
+/* SECTIONS */
+section.s{padding:110px 0}
+.eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--aqua);margin-bottom:14px}
+.s h2{font-size:clamp(34px,4.6vw,58px);max-width:760px}
+.lead{color:var(--muted);font-size:18px;max-width:560px;margin-top:16px;line-height:1.6}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--stone);border-radius:var(--r);overflow:hidden;margin-top:56px}
+.stats div{background:var(--sand);padding:28px 20px}
+.stats strong{font-family:"DM Serif Display",serif;font-size:44px;font-weight:400;display:block;color:var(--navy)}
+.stats span{color:var(--muted);font-size:14px}
+@media(min-width:800px){.stats{grid-template-columns:repeat(4,1fr)}}
+
+.cards{display:grid;gap:16px;margin-top:50px}
+@media(min-width:800px){.cards{grid-template-columns:repeat(2,1fr)}}
+.card{background:#fff;border-radius:var(--r);padding:30px;border:1px solid var(--stone);position:relative;overflow:hidden;transition:transform .35s,box-shadow .35s}
+.card:hover{transform:translateY(-4px);box-shadow:0 24px 50px -24px rgba(11,29,42,.25)}
+.card .n{font-size:13px;color:var(--aqua);font-weight:700}
+.card h3{font-size:30px;margin:10px 0}
+.card p{color:var(--muted);line-height:1.6}
+.card .price{margin-top:18px;font-weight:700;color:var(--navy);font-size:14px}
+
+.dark-s{background:var(--navy);color:#fff}
+.dark-s .lead{color:rgba(255,255,255,.65)}
+.timeline{margin-top:56px;display:grid;gap:0}
+.tl{display:grid;grid-template-columns:56px 1fr;gap:18px;padding:26px 0;border-top:1px solid rgba(255,255,255,.12)}
+.tl .num{font-family:"DM Serif Display",serif;font-size:36px;color:var(--aqua2)}
+.tl h3{font-size:26px}
+.tl p{color:rgba(255,255,255,.65);margin-top:6px;line-height:1.6}
+@media(min-width:900px){.timeline{grid-template-columns:repeat(4,1fr);gap:22px}.tl{grid-template-columns:1fr;border-top:2px solid rgba(127,224,232,.35)}}
+
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:50px}
+@media(min-width:900px){.gallery{grid-template-columns:repeat(3,1fr)}}
+.ph{aspect-ratio:4/5;border-radius:var(--r);position:relative;overflow:hidden;background:#1a8fb0;background-size:cover;background-position:center}
+.ph:nth-child(3n+2){aspect-ratio:4/4.2}
+.ph .water{position:absolute;inset:0;background:
+ radial-gradient(120% 60% at 30% 20%,rgba(255,255,255,.35),transparent 55%),
+ repeating-radial-gradient(circle at 70% 60%,rgba(255,255,255,.12) 0 6px,transparent 6px 22px),
+ linear-gradient(160deg,var(--a,#38c6d9),var(--b,#0f6f96));animation:shim 8s ease-in-out infinite alternate}
+@keyframes shim{to{background-position:20px 10px,-30px 20px,0 0}}
+.ph figcaption{position:absolute;left:14px;bottom:14px;right:14px;color:#fff;font-weight:600;font-size:14px}
+.ph figcaption small{display:block;opacity:.8;font-weight:500}
+
+.quotes{display:grid;gap:16px;margin-top:50px}
+@media(min-width:900px){.quotes{grid-template-columns:repeat(3,1fr)}}
+.q{background:#fff;border-radius:var(--r);padding:28px;border:1px solid var(--stone)}
+.q p{font-family:"DM Serif Display",serif;font-size:22px;line-height:1.3}
+.q span{display:block;margin-top:18px;color:var(--muted);font-size:14px}
+.stars{color:#e4a72b;letter-spacing:2px;margin-bottom:12px}
+
+.devis{display:grid;gap:40px}
+@media(min-width:900px){.devis{grid-template-columns:1fr 1fr;align-items:start}}
+form{background:#fff;border-radius:22px;padding:28px;display:grid;gap:12px;color:var(--ink)}
+input,select,textarea{width:100%;font:inherit;padding:14px 16px;border-radius:12px;border:1px solid var(--stone);background:var(--sand);font-size:15px}
+textarea{min-height:110px;resize:vertical}
+form .btn{justify-content:center;padding:16px}
+.contact-line{margin-top:28px;display:grid;gap:10px;font-size:17px}
+.contact-line a{color:var(--aqua2);font-weight:600}
+footer{background:#071520;color:rgba(255,255,255,.55);padding:40px 0;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.float-call{position:fixed;right:16px;bottom:16px;z-index:60;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+@media(min-width:900px){.float-call{display:none}}
+.wa{position:fixed;right:18px;bottom:22px;z-index:61;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 26px rgba(37,211,102,.45);cursor:pointer;transition:transform .3s var(--ease)}
+.wa:before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:waP 2.2s ease-out infinite}
+@keyframes waP{from{transform:scale(1);opacity:.8}to{transform:scale(1.6);opacity:0}}
+.wa:hover{transform:scale(1.08)}
+.wa .tip{position:absolute;right:70px;white-space:nowrap;background:#fff;color:var(--ink);font-size:13px;font-weight:600;padding:9px 14px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.18);opacity:0;transform:translateX(8px);transition:.3s;pointer-events:none}
+.wa:hover .tip{opacity:1;transform:none}
+@media(min-width:900px){.wa{bottom:26px;right:26px}}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a href="#" class="logo" data-c="logoHtml">Castel <span>Piscines</span></a>
+  <a href="#devis" class="btn">Devis gratuit</a>
+</header>
+
+<!-- ======================= CHANTIER AU SCROLL ======================= -->
+<section id="build">
+  <div class="stick">
+    <canvas id="bgc"></canvas>
+    <canvas id="fc"></canvas>
+    <div class="shade"></div>
+    <div id="veil"></div>
+    <div class="intro">
+      <div class="bigLogo" id="bigLogo" data-c="logoHtml">Castel <span>Piscines</span></div>
+      <div class="tagline" id="tagline">Votre piscine en Tarn-et-Garonne,<br><em>construite et suivie par la même équipe.</em></div>
+      <div class="subtag" id="subtag"><span data-c="city">Castelsarrasin</span> · Depuis 1990 · Devis gratuit</div>
+    </div>
+    <div class="loader" id="loader"></div>
+    <div class="bhint" id="bhint">Scroll</div>
+    <div class="bhud" id="bhud"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+  </div>
+  <!-- Les textes défilent par-dessus la vidéo. La hauteur de chaque bloc = durée de l'étape -->
+  <div class="flow">
+    <div class="blk" style="height:150vh"></div>
+    <div class="blk step" style="height:130vh"><div class="txt"><div class="k">Étape 01</div><h2>Implantation &amp; terrassement</h2><p>Piquetage au centimètre près, puis on creuse. Accès difficile ? On a les engins adaptés.</p></div></div>
+    <div class="blk step" style="height:80vh"><div class="txt"><div class="k">Étape 02</div><h2>Ferraillage &amp; béton</h2><p>Une structure en béton armé, garantie décennale.</p></div></div>
+    <div class="blk step" style="height:110vh"><div class="txt"><div class="k">Étape 03</div><h2>Carrelage &amp; margelles</h2><p>Mosaïque et pierre naturelle posées à la main.</p></div></div>
+    <div class="blk step" style="height:90vh"><div class="txt"><div class="k">Étape 04</div><h2>Mise en eau</h2><p>Filtration, chauffage, éclairage… et le soir venu, les projecteurs s'allument.</p></div></div>
+    <div class="blk final" style="height:130vh"><div class="txt"><div class="k">Le résultat</div><h2>Votre piscine.<br><em>Clé en main.</em></h2><div class="cta"><a href="#devis" class="btn">Devis gratuit</a><a href="#config" class="btn ghost">Choisir mon carrelage</a></div></div></div>
+  </div>
+</section>
+
+<!-- ======================= FORMES DE PISCINE : cartes empilées ======================= -->
+<section id="real">
+  <div class="wrap real-head">
+    <div><div class="eyebrow rv">Formes de piscine</div><h2 class="rv">Une forme pour chaque jardin.</h2></div>
+    <p class="rv">Classique, à débordement, miroir, en bois… Faites défiler pour trouver celle qui vous ressemble.</p>
+  </div>
+  <div class="stack" id="stack"><!-- cartes générées depuis CONFIG.slides --></div>
+</section>
+
+<!-- ======================= CONFIGURATEUR ======================= -->
+<section id="config">
+  <div class="glow" id="glow"></div>
+  <div class="wrap cfg1">
+    <div class="eyebrow rv">Configurateur</div>
+    <h2 class="rv">Choisissez votre modèle et votre carrelage.<br>Voyez le résultat chez vous.</h2>
+    <div class="pool rv" id="pool">
+      <canvas id="water"></canvas>
+      <img class="villa" src="../villa/jour.webp" alt="Villa avec piscine">
+      <img class="villa" id="vNuit" src="../villa/nuit.webp" alt="" style="opacity:0">
+      <div class="tap" id="tapHint">Touchez l'eau</div>
+    </div>
+    <div class="bar2">
+      <div class="result"><small>Choix du carrelage :</small><span class="flip" id="flip"><span>Blanc</span></span></div>
+      <div class="ctrls"><div class="dn" id="dn"><div class="knob" id="knob"></div><button class="on" data-n="0">☀️ Jour</button><button data-n="1">🌙 Nuit</button></div><button class="sw-elec" id="lightBtn" aria-pressed="false" aria-label="Projecteurs"><span class="plate"><span class="slot"><span class="rocker"><i class="on">ON</i><i class="off">OFF</i></span></span></span><span class="cap2">Projecteurs</span></button></div>
+    </div>
+    <div class="lbl">Carrelage</div>
+    <div class="sw" id="sw"></div>
+    <div class="lbl">Modèle de piscine · <span id="mname" style="opacity:1;color:var(--aqua2);letter-spacing:1px"></span></div>
+    <div class="sw mdl" id="mdl"></div>
+  </div>
+</section>
+
+<!-- ======================= CHIFFRES ======================= -->
+<section class="s">
+  <div class="wrap">
+    <div class="eyebrow rv">Pisciniste à Castelsarrasin · Tarn-et-Garonne</div>
+    <h2 class="rv">Un constructeur de piscines ancré à Castelsarrasin</h2>
+    <p class="lead rv">Créée en 1990, Castel Piscines construit et rénove des piscines dans le Tarn-et-Garonne et les départements voisins, le Gers et le Lot-et-Garonne. Chaque projet est étudié par l'équipe, qui se déplace chez vous pour conseiller l'implantation, la structure, le revêtement, la filtration et le local technique, puis remet un devis détaillé. L'entreprise pose aussi des coques polyester de ses partenaires Mondépra et Aboral, et tient un magasin de produits et d'équipements.</p>
+    <div class="stats rv">
+      <div><strong>1990</strong><span>année de création</span></div>
+      <div><strong>73</strong><span>avis clients en ligne</span></div>
+      <div><strong>4,0</strong><span>note moyenne</span></div>
+      <div><strong>3</strong><span>départements couverts</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SERVICES ======================= -->
+<section class="s" style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow rv">Nos savoir-faire</div>
+    <h2 class="rv">Construction, rénovation, entretien</h2>
+    <div class="cards">
+      <article class="card rv"><div class="n">01</div><h3>Construction sur mesure</h3><p>Étude sur place, conseil sur la structure, le revêtement, la filtration et l'éclairage, puis devis détaillé étape par étape.</p><div class="price">Devis gratuit</div></article>
+      <article class="card rv"><div class="n">02</div><h3>Coques polyester</h3><p>Pose de coques Mondépra et Aboral : qualité, durabilité et entretien réduit.</p><div class="price">Devis gratuit</div></article>
+      <article class="card rv"><div class="n">03</div><h3>Rénovation</h3><p>Liner abîmé, margelles, équipements vieillissants ou accès difficile : remise à neuf complète, jusqu'à la terrasse.</p><div class="price">Sur devis</div></article>
+      <article class="card rv"><div class="n">04</div><h3>Entretien & équipement</h3><p>Filtration, traitement de l'eau, chauffage, volets et sécurité, mise en route et hivernage, magasin sur place.</p><div class="price">Sur devis</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PROCESS ======================= -->
+<section class="s dark-s">
+  <div class="wrap">
+    <div class="eyebrow rv">Comment ça se passe</div>
+    <h2 class="rv">4 étapes. Zéro stress.</h2>
+    <div class="timeline">
+      <div class="tl rv"><div class="num">01</div><div><h3>Visite gratuite</h3><p>On vient chez vous étudier le terrain, l'accès et vos envies.</p></div></div>
+      <div class="tl rv"><div class="num">02</div><div><h3>Plan 3D &amp; devis</h3><p>Vous visualisez votre future piscine avant de signer.</p></div></div>
+      <div class="tl rv"><div class="num">03</div><div><h3>Chantier</h3><p>4 à 8 semaines selon le projet, avec un suivi photo chaque semaine.</p></div></div>
+      <div class="tl rv"><div class="num">04</div><div><h3>Mise en eau</h3><p>Livraison, réglages et prise en main de vos équipements.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CRÉATIONS DU CLIENT ======================= -->
+<section class="s" id="creations">
+  <div class="wrap">
+    <div class="eyebrow rv">Nos créations</div>
+    <h2 class="rv">Les piscines que nous avons construites.</h2>
+    <div class="bento" id="bento"></div>
+  </div>
+</section>
+
+<!-- ======================= AVIS ======================= -->
+<section class="s rev" id="avis">
+  <div class="wrap rev-head">
+    <div><div class="eyebrow rv">Avis clients</div><h2 class="rv">Ils ont plongé.</h2></div>
+    <div class="score rv"><div class="big" id="scoreN">4,9</div><div><div class="stars">★★★★★</div><small id="scoreT">Note moyenne · avis Google</small></div></div>
+  </div>
+  <div class="demo-note" id="demoNote">Exemple d'avis : vos vrais avis Google s'afficheront ici</div>
+  <div class="marquee"><div class="row" id="row1"></div></div>
+  <div class="marquee"><div class="row rev2" id="row2"></div></div>
+</section>
+
+<!-- ======================= DEVIS ======================= -->
+<section class="s dark-s" id="devis">
+  <div class="wrap devis">
+    <div>
+      <div class="eyebrow rv">Devis gratuit · réponse sous 48 h</div>
+      <h2 class="rv">Parlons de votre future piscine.</h2>
+      <p class="lead rv">Basés à Castelsarrasin, on intervient dans <span data-c="zone">le Tarn-et-Garonne, le Gers et le Lot-et-Garonne</span>.</p>
+      <div class="contact-line rv">
+        <div>📞 <a data-c="phone" data-href="tel">05 63 95 12 36</a></div>
+        <div>✉️ <a data-c="email" data-href="mailto">contact@castel-piscines.fr</a></div>
+        <div>📍 <span data-c="address">1351 Route de Moissac, 82100 Castelsarrasin</span></div>
+        <div>📍 1351 Route de Moissac, 82100 Castelsarrasin</div>
+        <div>🛒 Magasin : produits, équipements et accessoires</div>
+      </div>
+    </div>
+    <form id="form" class="rv">
+      <input name="nom" placeholder="Nom et prénom" required>
+      <input name="tel" type="tel" placeholder="Téléphone" required>
+      <input name="ville" placeholder="Ville du projet">
+      <select name="projet"><option>Piscine béton</option><option>Piscine coque</option><option>Rénovation</option><option>Entretien / équipement</option></select>
+      <textarea name="msg" placeholder="Votre projet en quelques mots (dimensions, délai, budget...)"></textarea>
+      <button class="btn" type="submit">Envoyer ma demande</button>
+    </form>
+  </div>
+</section>
+
+<footer><div class="wrap"><div>© <span id="y"></span> <span data-c="name">Castel Piscines</span> · SARL Castel Piscines</div><div>Castelsarrasin</div></div></footer>
+<a class="wa" id="wa" aria-label="WhatsApp" role="button"><span class="tip">Une question ? Écrivez-nous</span><svg viewBox="0 0 32 32" width="30" height="30" fill="#fff"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.3.6 4.5 1.8 6.5L3 29l6.9-1.8c1.9 1 4 1.6 6.1 1.6 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.1 1.1 1.1-4-.3-.4c-1.1-1.7-1.6-3.6-1.6-5.6C5.3 10 10.1 5.3 16 5.3S26.7 10 26.7 15.8 21.9 26.4 16 26.4zm5.9-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.7s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.8 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg></a>
+
+<script>
+/* =====================================================================
+   CONFIG CLIENT : la seule partie à modifier pour chaque client
+   ===================================================================== */
+const CONFIG = {
+  name: "Castel Piscines",
+  logoHtml: "Castel <span>Piscines</span>",
+  city: "Castelsarrasin",
+  since: "2009",
+  zone: "le Tarn-et-Garonne, le Gers et le Lot-et-Garonne",
+  phone: "05 63 95 12 36",
+  email: "contact@castel-piscines.fr",
+  address: "1351 Route de Moissac, 82100 Castelsarrasin",
+  callLabel: "📞 Appeler",
+  whatsapp: "",          // numéro au format international sans + ni espaces (ex. 33600000000). Vide = bouton inactif
+  whatsappMsg: "Bonjour, je souhaite un devis pour une piscine.",
+
+  // CHANTIER : images extraites de la vidéo (dossier /frames)
+  // map = avancement de la vidéo (0→1) au début/fin de chaque étape de texte (terrassement, béton, carrelage, mise en eau)
+  build: {
+    mobile:  { path:"../frames/f_",    ext:".webp", count:122, pad:3, map:[0,.15,.3,.4,1] },
+    desktop: { path:"../frames-pc/f_", ext:".webp", count:122, pad:3, map:[0,.14,.34,.42,1] }
+  },
+
+  // FORMES DE PISCINE : photos génériques (pas les créations du client). Remplacer "img" par vos photos.
+  liveWater: false, // true = eau animée sur les photos des formes
+  slides: [
+    // mask = zone d'eau (blanc) animée ; amp = force des ondulations ; glint = reflets du soleil
+    { title:"Classique", place:"Rectangulaire, lignes droites, nage confortable.", specs:["Toutes dimensions","Béton ou coque","Meilleur rapport qualité-prix"], img:"../formes/classique.webp", mask:"../formes/classique-mask.png", amp:1, glint:1 },
+    { title:"À débordement", place:"L'eau se fond dans l'horizon, effet infini.", specs:["Vue dégagée","Bac tampon","Effet waouh garanti"], img:"../formes/debordement.webp", mask:"../formes/debordement-mask.png", amp:.7, glint:.9 },
+    { title:"Miroir", place:"Une lame d'eau au ras des margelles, reflet parfait.", specs:["Débordement 4 côtés","Architecture contemporaine","Éclairage LED"], img:"../formes/miroir.webp", mask:"../formes/miroir-mask.png", amp:.35, glint:.35 },
+    { title:"Piscine bois", place:"Chaleureuse, naturelle, rapide à installer.", specs:["Hors-sol ou semi-enterrée","Pose en 1 semaine","Budget maîtrisé"], img:"../formes/bois.webp", mask:"../formes/bois-mask.png", amp:1, glint:1 },
+    { title:"Couloir de nage", place:"Long et étroit, pour nager tous les jours.", specs:["Jardins étroits","Nage à contre-courant","Sport & bien-être"], img:"../formes/couloir.webp", mask:"../formes/couloir-mask.png", amp:.7, glint:.8 },
+    { title:"Naturelle", place:"Plage immergée, cascade, ambiance tropicale.", specs:["Forme libre","Plage immergée","Cascade en rochers"], img:"../formes/naturelle.webp", mask:"../formes/naturelle-mask.png", amp:1, glint:1 }
+  ],
+
+  // CRÉATIONS DU CLIENT : ses propres chantiers. 8 photos pour une grille complète.
+  // title / place : ceux du client ; laisser "" s'il n'en a pas (aucun texte n'est affiché). img vide = visuel d'attente.
+  creations: [
+    { title:"Piscine enterrée", place:"Tarn-et-Garonne", img:"https://www.castel-piscines.fr/wp-content/uploads/2021/11/castel-piscines_00-scaled.jpg" },
+    { title:"Piscine enterrée", place:"Tarn-et-Garonne", img:"https://www.castel-piscines.fr/wp-content/uploads/2021/11/castel-piscines_01.jpg" },
+    { title:"Piscine enterrée", place:"Tarn-et-Garonne", img:"https://www.castel-piscines.fr/wp-content/uploads/2021/11/castel-piscines_02.jpg" },
+    { title:"Piscine enterrée", place:"Tarn-et-Garonne", img:"https://www.castel-piscines.fr/wp-content/uploads/2021/11/castel-piscines_03-scaled.jpg" },
+    { title:"Piscine enterrée", place:"Tarn-et-Garonne", img:"https://www.castel-piscines.fr/wp-content/uploads/2021/11/castel-piscines_05.jpg" },
+    { title:"Piscine enterrée", place:"Tarn-et-Garonne", img:"https://www.castel-piscines.fr/wp-content/uploads/2021/11/castel-piscines_06-scaled.jpg" },
+    { title:"Piscine enterrée", place:"Tarn-et-Garonne", img:"https://www.castel-piscines.fr/wp-content/uploads/2021/11/castel-piscines_07.jpg" },
+    { title:"Piscine enterrée", place:"Tarn-et-Garonne", img:"https://www.castel-piscines.fr/wp-content/uploads/2021/11/castel-piscines_08.jpg" }
+  ],
+
+  // AVIS : avis d'EXEMPLE pour la démo. À remplacer par les vrais avis Google du client avant mise en ligne.
+  demoReviews: true,
+  score: { note:"4,0", label:"73 avis en ligne" },
+  reviews: [
+    { name:"Julien M.", city:"Mougins", project:"Piscine béton 10×4", date:"Septembre", text:"Du premier rendez-vous à la mise en eau, tout a été carré. Le chantier a pris 6 semaines comme annoncé, et l'équipe a laissé le jardin propre." },
+    { name:"Sophie L.", city:"Antibes", project:"Couloir de nage", date:"Août", text:"On avait un jardin très étroit, ils ont trouvé la solution. Le plan 3D nous a vraiment aidés à nous décider." },
+    { name:"Karim B.", city:"Nice", project:"Rénovation", date:"Juillet", text:"Liner, margelles et éclairage refaits. La piscine a 20 ans et on dirait qu'elle est neuve. Très bon suivi photo chaque semaine." },
+    { name:"Claire D.", city:"Grasse", project:"Piscine miroir", date:"Juin", text:"Résultat magnifique, exactement ce qu'on avait imaginé. Les projecteurs le soir, c'est magique." },
+    { name:"Thomas R.", city:"Cannes", project:"Piscine à débordement", date:"Mai", text:"Terrain en pente compliqué, mais aucun souci. Devis clair, pas de mauvaise surprise sur la facture finale." },
+    { name:"Nadia K.", city:"Vence", project:"Piscine coque", date:"Avril", text:"Installée en 3 semaines. Ils nous ont expliqué tout l'entretien à la livraison. Je recommande sans hésiter." },
+    { name:"Marc P.", city:"Saint-Raphaël", project:"Plage immergée", date:"Avril", text:"Les enfants ne sortent plus de l'eau ! Équipe sérieuse, ponctuelle et de bon conseil sur le choix du carrelage." },
+    { name:"Élodie F.", city:"Cagnes-sur-Mer", project:"Entretien annuel", date:"Mars", text:"Contrat d'entretien depuis deux ans, eau toujours parfaite. Réactifs quand la pompe a eu un souci." }
+  ],
+
+  // MODÈLES : forme dessinée dans la villa. img (optionnel) = vignette du client à la place du dessin. shape : 0 classique, 1 romaine, 2 en L, 3 mini, 4 ovale, 5 forme libre, 6 rectangle aux dimensions réelles (avec L et W en mètres)
+  models: [
+    { name:"Classique",       dims:"10 × 5 m",  shape:0 },
+    { name:"Romaine",         dims:"9 × 4,5 m", shape:1 },
+    { name:"En L",            dims:"10 × 6 m",  shape:2 },
+    { name:"Mini piscine",    dims:"5 × 3 m",   shape:3 },
+    { name:"Ovale",           dims:"8 × 4 m",   shape:4 },
+    { name:"Forme libre",     dims:"9 × 5 m",   shape:5 }
+  ],
+
+  // style : "mosaic" (petits carreaux) ou "large" (grand format effet pierre) ; var = nuances entre carreaux ; hue = mélange de teintes
+  tiles: [
+    { name:"Blanc",      material:"Mosaïque émaillée",        water:"Bleu lagon",        tile:"#f2f4f3", joint:"#d3dad9", style:"mosaic", var:.08, hue:.05 },
+    { name:"Sable",      material:"Grès cérame effet pierre", water:"Vert caraïbe",      tile:"#dfcba3", joint:"#cdbb94", style:"large",  var:.10, hue:0 },
+    { name:"Gris perle", material:"Mosaïque de verre",        water:"Bleu Méditerranée", tile:"#aab4b9", joint:"#c9d0d3", style:"mosaic", var:.16, hue:.25 },
+    { name:"Bleu",       material:"Mosaïque verre nuancée",   water:"Bleu intense",      tile:"#3b78c3", joint:"#d8e2ea", style:"mosaic", var:.30, hue:.55 },
+    { name:"Anthracite", material:"Grès cérame anthracite",   water:"Vert émeraude",     tile:"#4a5357", joint:"#3c4346", style:"large",  var:.10, hue:0 },
+    { name:"Noir",       material:"Mosaïque noire brillante", water:"Effet miroir",      tile:"#1d2024", joint:"#30353a", style:"mosaic", var:.14, hue:.1 }
+  ]
+};
+
+/* ---------- WhatsApp (inactif tant que CONFIG.whatsapp est vide) ---------- */
+(()=>{const wa=document.getElementById("wa"); if(CONFIG.whatsapp){wa.href="https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(CONFIG.whatsappMsg);wa.target="_blank";wa.rel="noopener";} else wa.addEventListener("click",e=>e.preventDefault());})();
+
+/* ---------- Textes & liens ---------- */
+document.querySelectorAll("[data-c]").forEach(el=>{
+  const k=el.dataset.c, v=CONFIG[k]; if(v==null) return;
+  if(k==="logoHtml") el.innerHTML=v; else el.textContent=v;
+});
+if(!CONFIG.email) document.querySelectorAll('[data-c="email"]').forEach(el=>el.parentElement.remove());
+document.querySelectorAll("[data-href]").forEach(el=>{
+  el.href = el.dataset.href==="tel" ? "tel:"+CONFIG.phone.replace(/\s/g,"") : "mailto:"+CONFIG.email;
+});
+document.getElementById("y").textContent=new Date().getFullYear();
+document.getElementById("form").addEventListener("submit",e=>{
+  e.preventDefault(); const f=new FormData(e.target);
+  const body=[...f.entries()].map(([k,v])=>k+" : "+v).join("\n");
+  if(!CONFIG.email){ location.href="tel:"+CONFIG.phone.replace(/\s/g,""); return; }
+  location.href="mailto:"+CONFIG.email+"?subject="+encodeURIComponent("Demande de devis piscine")+"&body="+encodeURIComponent(body);
+});
+
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const ease=t=>1-Math.pow(1-t,3);
+
+/* =====================================================================
+   RÉALISATIONS : cartes empilées
+   ===================================================================== */
+const stack=document.getElementById("stack"), nav=document.getElementById("nav"), N=CONFIG.slides.length;
+CONFIG.slides.forEach((s,i)=>{
+  const el=document.createElement("article"); el.className="card2";
+  el.style.top=`calc(${innerWidth<900?76:110}px + ${i*10}px)`;
+  el.innerHTML=`<div class="media">${s.img?`<img src="${s.img}" alt="Piscine ${s.title}" loading="lazy" onerror="this.parentNode.classList.add('fail')">`:""}</div>
+    <div class="tag">${String(i+1).padStart(2,"0")} / ${String(N).padStart(2,"0")}</div>
+    <div class="info"><div class="no">FORME DE PISCINE</div><h3>${s.title}</h3><div class="place">${s.place}</div>
+    <div class="chips">${s.specs.map(x=>`<span>${x}</span>`).join("")}</div></div><div class="dim"></div>`;
+  stack.appendChild(el);
+});
+const cards=[...stack.children];
+// ---- eau vivante sur les photos (WebGL) ----
+const LFS=`precision mediump float;uniform sampler2D I,M;uniform vec2 R,IS;uniform float T,A,G;
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float nz(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+1.),f.x),f.y);}
+void main(){vec2 fc=gl_FragCoord.xy/R;fc.y=1.-fc.y;float ca=R.x/R.y,ia=IS.x/IS.y;vec2 uv=fc;
+ if(ca>ia)uv.y=(fc.y-.5)*ia/ca+.5;else uv.x=(fc.x-.5)*ca/ia+.5;
+ float m=texture2D(M,uv).r;vec3 c;
+ if(m<.01){c=texture2D(I,uv).rgb;}else{
+  float persp=.35+.65*uv.y;vec2 w=vec2(uv.x*ia*16.,uv.y*48.)/persp;float t=T;
+  vec2 d=vec2(nz(w+vec2(t*.7,t*.4))-.5,nz(w*1.6-vec2(t*.5,-t*.8))-.5);
+  c=texture2D(I,uv+d*.0035*A*m*persp).rgb;
+  float g=nz(w*1.4+vec2(t*1.3,-t*.9))*nz(w*2.1-vec2(-t*1.1,t*1.2));g=smoothstep(.5,.82,g);
+  float lum=dot(c,vec3(.3,.6,.1));c+=g*G*m*(c*.7+vec3(.22))*(.25+lum)*.9;}
+ gl_FragColor=vec4(c,1.);}`;
+function liveWater(card,s){
+  const media=card.querySelector(".media"), c=document.createElement("canvas"); c.style.cssText="width:100%;height:100%;display:block";
+  const g=c.getContext("webgl"); if(!g||!s.mask) return null;
+  const sh=(t,src)=>{const o=g.createShader(t);g.shaderSource(o,src);g.compileShader(o);return o};
+  const pr=g.createProgram();g.attachShader(pr,sh(g.VERTEX_SHADER,"attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}"));g.attachShader(pr,sh(g.FRAGMENT_SHADER,LFS));g.linkProgram(pr);
+  if(!g.getProgramParameter(pr,g.LINK_STATUS)) return null; g.useProgram(pr);
+  const b=g.createBuffer();g.bindBuffer(g.ARRAY_BUFFER,b);g.bufferData(g.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),g.STATIC_DRAW);
+  const la=g.getAttribLocation(pr,"a");g.enableVertexAttribArray(la);g.vertexAttribPointer(la,2,g.FLOAT,false,0,0);
+  const u={};["I","M","R","IS","T","A","G"].forEach(k=>u[k]=g.getUniformLocation(pr,k));
+  const L={ok:0,c,g,u,vis:false,img:null};
+  const tex=(im,unit)=>{const t=g.createTexture();g.activeTexture(g.TEXTURE0+unit);g.bindTexture(g.TEXTURE_2D,t);
+    [g.TEXTURE_WRAP_S,g.TEXTURE_WRAP_T].forEach(p=>g.texParameteri(g.TEXTURE_2D,p,g.CLAMP_TO_EDGE));g.texParameteri(g.TEXTURE_2D,g.TEXTURE_MIN_FILTER,g.LINEAR);
+    g.texImage2D(g.TEXTURE_2D,0,g.RGB,g.RGB,g.UNSIGNED_BYTE,im);};
+  const load=src=>new Promise((res,rej)=>{const im=new Image();im.onload=()=>res(im);im.onerror=rej;im.src=src;});
+  Promise.all([load(s.img),load(s.mask)]).then(([im,mk])=>{tex(im,0);tex(mk,1);g.uniform1i(u.I,0);g.uniform1i(u.M,1);g.uniform2f(u.IS,im.naturalWidth,im.naturalHeight);
+    g.uniform1f(u.A,s.amp??1);g.uniform1f(u.G,s.glint??1);media.innerHTML="";media.appendChild(c);L.ok=1;L.size();}).catch(()=>{});
+  L.size=()=>{const d=Math.min(devicePixelRatio||1,1.5);c.width=Math.max(2,c.clientWidth*d);c.height=Math.max(2,c.clientHeight*d);g.viewport(0,0,c.width,c.height);};
+  new IntersectionObserver(es=>L.vis=es[0].isIntersecting,{rootMargin:"100px"}).observe(card);
+  addEventListener("resize",()=>L.ok&&L.size());
+  return L;
+}
+const lives=CONFIG.liveWater?cards.map((c,i)=>liveWater(c,CONFIG.slides[i])).filter(Boolean):[];
+function livesFrame(){const t=performance.now()/1000;lives.forEach(L=>{if(!L.ok||!L.vis)return;const g=L.g;g.uniform2f(L.u.R,L.c.width,L.c.height);g.uniform1f(L.u.T,t);g.drawArrays(g.TRIANGLES,0,3);});}
+function cardsFrame(){
+  const H=innerHeight;
+  cards.forEach((c,i)=>{
+    const r=c.getBoundingClientRect(), img=c.firstElementChild;
+    img.style.transform=`translateY(${clamp((r.top)/H,-1,1)*-5}%)`;
+    const next=cards[i+1]; if(!next) return;
+    const nr=next.getBoundingClientRect(), topStick=parseFloat(getComputedStyle(next).top)||0;
+    const k=clamp(1-(nr.top-topStick)/(H*.85));
+    c.style.transform=`scale(${1-.07*k})`; c.lastElementChild.style.opacity=k*.55;
+  });
+}
+function navScroll(){ nav.classList.toggle("solid", document.getElementById("build").getBoundingClientRect().bottom<innerHeight*.6); }
+addEventListener("scroll",navScroll,{passive:true}); navScroll();
+
+/* =====================================================================
+   CRÉATIONS + AVIS
+   ===================================================================== */
+const bento=document.getElementById("bento"), waterGrad=[["#38c6d9","#0f6f96"],["#5fd6d0","#127b86"],["#7fd0f0","#1d5f9a"],["#3fb6c9","#0d4f6e"],["#8ee3d9","#1c8a8a"],["#55c3e8","#164b7a"]];
+if(!CONFIG.creations.length) document.getElementById("creations").style.display="none";
+CONFIG.creations.forEach((c,i)=>{const f=document.createElement("figure");f.className="rv b"+i;
+  const [a,b]=waterGrad[i%6];
+  f.innerHTML=(c.img?`<img src="${c.img}" alt="${c.title}" loading="lazy">`:`<div class="ph2" style="--a:${a};--b:${b}"></div>`)+(c.title||c.place?`<figcaption>${c.title||""}${c.place?`<small>${c.place}</small>`:""}</figcaption>`:"");
+  bento.appendChild(f);});
+const avCols=["#2bb3c0","#e07a5f","#3d5a80","#81b29a","#b5838d","#f2a541","#6d597a","#457b9d"];
+const revCard=(r,i)=>`<div class="rc"><div class="who"><div class="av" style="background:${avCols[i%8]}">${r.name.split(" ").map(w=>w[0]).join("").slice(0,2)}</div><div><b>${r.name}</b><small>${[r.city,r.date].filter(Boolean).join(" · ")}</small></div>${r.google===false?"":`<span class="g">G</span>`}</div>${r.stars===0?"<div style=\"height:12px\"></div>":`<div class="stars">★★★★★</div>`}<p>${r.text}</p><span class="pj">${r.project}</span></div>`;
+const R=CONFIG.reviews, half=Math.ceil(R.length/2);
+if(R.length<6){ // peu d'avis : grille fixe au lieu du défilement
+  const r1=document.getElementById("row1"); r1.innerHTML=R.map(revCard).join(""); r1.style.cssText="animation:none;width:auto;flex-wrap:wrap;justify-content:center;padding:0 22px";
+  r1.parentElement.style.cssText="-webkit-mask:none;mask:none"; document.getElementById("row2").parentElement.style.display="none";
+} else [[R.slice(0,half),"row1"],[R.slice(half),"row2"]].forEach(([list,id],k)=>{const html=list.map((r,i)=>revCard(r,i+k*half)).join("");document.getElementById(id).innerHTML=html+html;});
+if(!CONFIG.demoReviews&&!CONFIG.score) document.querySelector(".score").style.display="none";
+if(CONFIG.score){document.getElementById("scoreN").textContent=CONFIG.score.note;document.getElementById("scoreT").textContent=CONFIG.score.label;}
+document.getElementById("demoNote").style.display=CONFIG.demoReviews?"block":"none";
+
+/* =====================================================================
+   CONFIGURATEUR : villa + eau en temps réel (WebGL) dans le bassin
+   ===================================================================== */
+// Coins du bassin dans l'image de la villa (en pixels, image 1672x941) : haut-gauche, haut-droite, bas-droite, bas-gauche
+const POOL={w:1672,h:941,quad:[[420,569],[1268,569],[1463,825],[226,825]]};
+const cv=document.getElementById("water");
+const gl=cv.getContext("webgl",{antialias:false,premultipliedAlpha:false});
+const hex3=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)/255);
+// homographie : coordonnées image (0..1) -> coordonnées bassin (u,v 0..1)
+function homog(q){ // carré unité -> quadrilatère
+  const [[x0,y0],[x1,y1],[x2,y2],[x3,y3]]=q;
+  const dx1=x1-x2,dx2=x3-x2,dy1=y1-y2,dy2=y3-y2,sx=x0-x1+x2-x3,sy=y0-y1+y2-y3;
+  const den=dx1*dy2-dx2*dy1, g=(sx*dy2-dx2*sy)/den, h=(dx1*sy-sx*dy1)/den;
+  return [x1-x0+g*x1, x3-x0+h*x3, x0, y1-y0+g*y1, y3-y0+h*y3, y0, g, h, 1];
+}
+function inv3(m){const[a,b,c,d,e,f,g,h,i]=m;const A=e*i-f*h,B=-(d*i-f*g),C=d*h-e*g,det=a*A+b*B+c*C;
+  return [A/det,-(b*i-c*h)/det,(b*f-c*e)/det,B/det,(a*i-c*g)/det,-(a*f-c*d)/det,C/det,-(a*h-b*g)/det,(a*e-b*d)/det];}
+const HM=inv3(homog(POOL.quad.map(([x,y])=>[x/POOL.w,y/POOL.h])));
+const toUV=(x,y)=>{const m=HM,w=m[6]*x+m[7]*y+m[8];return[(m[0]*x+m[1]*y+m[2])/w,(m[3]*x+m[4]*y+m[5])/w]};
+const PW=2.0; // le bassin fait 2x plus long que large
+const VS="attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}";
+const FS=`precision highp float;
+uniform vec2 R;uniform float T,NIGHT,LIGHTS;uniform vec3 A0,G0,A1,G1,P0,P1,RIP;uniform vec4 D0,D1,D2,D3,BB;uniform mat3 HM;uniform float SH0,SH1,SHT;uniform vec2 RS0,RS1;uniform sampler2D TD,TN;uniform vec2 Z0,Z1,Z2,Z3;
+const float PWV=${PW.toFixed(1)};
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+vec2 h2(vec2 p){return fract(sin(vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))))*43758.5453);}
+float nz(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+1.),f.x),f.y);}
+float sdBox(vec2 p,vec2 c,vec2 b){vec2 d=abs(p-c)-b;return length(max(d,0.))+min(max(d.x,d.y),0.);}
+float sdEl(vec2 p,vec2 c,vec2 r){return (length((p-c)/r)-1.)*min(r.x,r.y);}
+float smin(float a,float b,float k){float h=clamp(.5+.5*(b-a)/k,0.,1.);return mix(b,a,h)-k*h*(1.-h);}
+// formes du bassin, en coordonnées du bassin (x 0→2, y 0→1)
+float shapeSD(float s,vec2 p,vec2 rs){
+ if(s>5.5)return sdBox(p,vec2(1.,.52),rs);
+ if(s<.5)return sdBox(p,vec2(1.,.5),vec2(1.,.5));
+ if(s<1.5)return min(sdBox(p,vec2(1.21,.5),vec2(.79,.42)),length(p-vec2(.42,.5))-.42);
+ if(s<2.5)return min(sdBox(p,vec2(1.05,.38),vec2(.85,.22)),sdBox(p,vec2(.5,.56),vec2(.3,.34)));
+ if(s<3.5)return sdBox(p,vec2(1.,.5),vec2(.42,.33));
+ if(s<4.5)return sdEl(p,vec2(1.,.5),vec2(.82,.38));
+ return smin(sdEl(p,vec2(.62,.52),vec2(.55,.40)),sdEl(p,vec2(1.42,.47),vec2(.55,.44)),.15);}
+float isFull(float s){return s<.5?1.:0.;}
+float mir(float x){return abs(fract(x*.5)*2.-1.);}
+float cr(vec2 a,vec2 b,vec2 p){return (b.x-a.x)*(p.y-a.y)-(b.y-a.y)*(p.x-a.x);}
+float zoneS(vec2 q){return min(cr(Z1,Z2,q)/length(Z2-Z1),min(cr(Z2,Z3,q)/length(Z3-Z2),cr(Z3,Z0,q)/length(Z0-Z3)));}
+float zoneD(vec2 q){return min(min(cr(Z0,Z1,q)/length(Z1-Z0),cr(Z1,Z2,q)/length(Z2-Z1)),min(cr(Z2,Z3,q)/length(Z3-Z2),cr(Z3,Z0,q)/length(Z0-Z3)));}
+float drop(vec2 p,vec4 d){float a=T-d.z;if(a<0.||a>4.)return 0.;float r=length(p-d.xy),f=a*.5;return d.w*sin((r-f)*45.)*exp(-pow((r-f)*9.,2.))*exp(-a*.9);}
+float H(vec2 p){float t=T*.5;
+ float v=nz(p*3.+vec2(t,t*.7))*.5+nz(p*6.-vec2(t*1.3,-t))*.25+nz(p*13.+vec2(-t*2.,t*1.6))*.12;
+ v+=drop(p,D0)+drop(p,D1)+drop(p,D2)+drop(p,D3);
+ float a=T-RIP.z;if(a>0.&&a<3.){float r=length(p-RIP.xy),f=a*.75;v+=sin((r-f)*32.)*exp(-pow((r-f)*6.,2.))*exp(-a*1.1)*1.4;}
+ return v;}
+float caust(vec2 p,float t){vec2 i=floor(p),f=fract(p);float f1=8.,f2=8.;
+ for(int y=-1;y<=1;y++)for(int x=-1;x<=1;x++){vec2 g=vec2(float(x),float(y));vec2 o=h2(i+g);o=.5+.45*sin(t+6.2831*o);vec2 r=g+o-f;float d=dot(r,r);if(d<f1){f2=f1;f1=d;}else if(d<f2)f2=d;}
+ return pow(1.-smoothstep(0.,.14,sqrt(f2)-sqrt(f1)),4.);}
+vec3 tiles(vec2 q,vec3 A,vec3 G,vec3 P){bool big=P.x<10.;vec2 g=q*P.x;
+ if(big)g.x+=floor(g.y)*.5; // pose décalée pour le grand format
+ vec2 id=floor(g),f=fract(g);float m=min(min(f.x,1.-f.x),min(f.y,1.-f.y));
+ float jw=big?.018:.06;float jt=1.-smoothstep(jw,jw+.035,m);
+ float r=h(id);vec2 r2=h2(id+7.);
+ vec3 c=A*(1.-P.y*.5+P.y*r)+(r2.x-.5)*P.z*vec3(-.22,.06,.3);
+ if(big){c*=.9+.16*nz(q*26.+id*3.)+.06*nz(q*90.);c=mix(c,c*1.08,smoothstep(.6,.9,nz(q*12.+id)));}
+ c*=.9+.1*smoothstep(0.,big?.06:.22,m);
+ return mix(max(c,0.),G,jt);}
+void main(){
+ vec2 q=vec2(gl_FragCoord.x/R.x,1.-gl_FragCoord.y/R.y);
+ vec3 w=HM*vec3(q,1.);vec2 uv=w.xy/w.z;
+ vec2 p=vec2(uv.x*${PW.toFixed(1)},uv.y);
+ float e=.0025;vec2 n=vec2(H(p+vec2(e,0))-H(p-vec2(e,0)),H(p+vec2(0,e))-H(p-vec2(0,e)))/(2.*e);
+ float mo=smoothstep(0.,.9,T-SHT);float sd=mix(shapeSD(SH0,p,RS0),shapeSD(SH1,p,RS1),mo);float sh=mo<.5?SH0:SH1;
+ float m=1.-smoothstep(-.003,.003,sd);bool full=sh<.5;
+ vec2 fp=p+n*.008;
+ // paroi du fond visible (on regarde par-dessus la paroi avant)
+ float wall=.11;bool isW=full&&fp.y<wall;
+ vec2 tq=isW?vec2(fp.x,fp.y/wall*.32):vec2(fp.x,.32+(fp.y-wall)/(1.-wall)*.95);
+ float a=T-RIP.z,r=length(p-RIP.xy),f=max(a,0.)*.75;float k=1.-smoothstep(f-.03,f+.03,r);
+ vec3 tile=mix(tiles(tq,A0,G0,P0),tiles(tq,A1,G1,P1),k);
+ vec3 col=tile*vec3(.6,.88,.96)+vec3(0.,.085,.15);
+ if(isW)col*=.72;
+ float c=caust(tq*5.,T*1.1)*.6+caust(tq*8.+3.,T*1.5)*.4;
+ float day=1.-NIGHT;
+ col+=c*vec3(1.,1.,.94)*.2*day*(.45+.55*dot(tile,vec3(.33)))*(isW?.4:1.);
+ // marches romaines / plage immergée : zones peu profondes plus claires
+ float sf=0.,stepL=0.;
+ if(abs(sh-1.)<.5&&p.x<.42){float d=length(p-vec2(.42,.5));sf=d>.30?1.:(d>.18?.66:.33);stepL=(1.-smoothstep(0.,.006,abs(d-.30)))+(1.-smoothstep(0.,.006,abs(d-.18)));}
+ vec3 shallow=tile*vec3(.86,.97,1.)+vec3(.02,.07,.09);col=mix(col,shallow,sf*.7);col+=stepL*.12*vec3(1.,1.,.95);
+ col*=mix(1.,.06,NIGHT);
+ // 4 projecteurs : 2 de chaque côté
+ vec3 lit=vec3(0.);
+ // éclairage doux : remplissage homogène + halo léger autour de chaque projecteur + petite lentille
+ float halo=0.,lens=0.;
+ for(int i=0;i<6;i++){vec2 L;
+  float lx=BB.y-BB.x,my=(BB.z+BB.w)*.5;
+  if(i==0)L=vec2(BB.x+.02,my);else if(i==1)L=vec2(BB.y-.02,my);
+  else if(i==2)L=vec2(BB.x+lx*.33,BB.z+.05);else if(i==3)L=vec2(BB.x+lx*.67,BB.z+.05);
+  else if(i==4)L=vec2(BB.x+lx*.33,BB.w-.03);else L=vec2(BB.x+lx*.67,BB.w-.03);
+  vec2 d=(p-L)*vec2(1.,1.3);float dd=dot(d,d);
+  halo+=exp(-dd*10.);lens+=exp(-dd*500.);}
+ halo*=m;lens*=m;
+ vec3 tint=vec3(.3,.85,1.);
+ vec3 light=tile*tint*(.22+1.1*halo)+vec3(0.,.07,.11)*(1.+2.5*halo)+c*.08*tint*halo;
+ light=1.-exp(-light*1.5);                 // pas de zones brûlées
+ light+=lens*vec3(.85,1.,1.)*.8;            // le projecteur lui-même
+ col=mix(col,col*mix(.6,.15,NIGHT)+light*mix(.45,1.,NIGHT),LIGHTS);
+ // surface : reflets
+ vec3 N=normalize(vec3(-n*.5,1.));vec3 Hh=normalize(vec3(.35,.55,.75)+vec3(0,0,1));
+ col+=pow(max(dot(N,Hh),0.),140.)*mix(vec3(1.,.97,.9)*.9,vec3(1.,.8,.5)*.25,NIGHT);
+ col+=(1.-N.z)*mix(vec3(.6,.8,.9),vec3(.2,.25,.4),NIGHT)*.35;
+ float fres=mix(.14,.02,clamp(p.y,0.,1.));
+ col=mix(col,mix(vec3(.85,.88,.85),vec3(.06,.09,.2),NIGHT),fres);
+ col+=NIGHT*vec3(1.,.7,.35)*.22*exp(-pow(p.y*5.,2.))*(.6+.4*nz(vec2(p.x*8.,T)));  // reflet des lumières de la maison
+ // ombre portée des parois
+ col*=.62+.38*smoothstep(0.,.07,-sd);
+ col=pow(max(col,0.),vec3(.96));
+ // la photo de la villa (jour/nuit) ; l'eau remplace le bassin vert
+ vec4 im=mix(texture2D(TD,q),texture2D(TN,q),NIGHT);
+ vec3 orig=mix(col,im.rgb,im.a);
+ // bassins plus petits : margelle qui suit la forme, puis pelouse prise dans la photo
+ float zw=mix(isFull(SH0),isFull(SH1),mo);
+ vec3 outc=orig;
+ float zd=zoneD(q);
+ if(zw<.999&&zd>0.){
+  float cw=.05;
+  // dallage travertin assorti à la margelle de la photo, jusqu'au contour du bassin
+  vec3 bD=(texture2D(TD,vec2(.3,.905)).rgb+texture2D(TD,vec2(.5,.905)).rgb+texture2D(TD,vec2(.7,.905)).rgb)/3.;
+  vec3 bN=(texture2D(TN,vec2(.3,.905)).rgb+texture2D(TN,vec2(.5,.905)).rgb+texture2D(TN,vec2(.7,.905)).rgb)/3.;
+  vec3 base=mix(bD,bN,NIGHT);
+  vec2 gg=vec2(uv.x*5.,uv.y*2.6);gg.x+=floor(gg.y)*.5;vec2 gid=floor(gg),gf=fract(gg);
+  float jm=min(min(gf.x,1.-gf.x)*1.6,min(gf.y,1.-gf.y));
+  vec2 dsrc=vec2(.1+.8*mir(p.x*.7+h(gid)),.893+.02*mir(p.y*3.+h(gid+3.)));
+  vec3 det=mix(texture2D(TD,dsrc).rgb,texture2D(TN,dsrc).rgb,NIGHT);
+  float dl=dot(det,vec3(.33))/max(dot(base,vec3(.33)),.01);
+  vec3 pav=base*(.95+.09*h(gid))*mix(1.,clamp(dl,.8,1.2),.6)*(.985+.03*nz(uv*240.));
+  pav*=.9+.1*smoothstep(0.,.025,jm);
+  vec3 cop=base*1.05*mix(1.,clamp(dl,.85,1.15),.5);
+  cop*=1.-.12*(1.-smoothstep(0.,.004,abs(sd-cw)));   // joint entre margelle et dallage
+  cop*=.93+.07*smoothstep(0.,.008,sd);               // arête côté eau
+  vec3 deck2=mix(cop,pav,smoothstep(cw-.002,cw+.002,sd));
+  deck2+=LIGHTS*NIGHT*exp(-max(sd,0.)*22.)*vec3(.02,.2,.24);
+  vec3 gen=mix(col,deck2,smoothstep(-.002,.002,sd));
+  outc=mix(orig,gen,(1.-zw)*smoothstep(.003,.014,zoneS(q)));
+ }
+ col=outc;
+ gl_FragColor=vec4(col,1.);}`;
+let U={}, waterOK=false;
+if(gl){
+  const sh=(t,s)=>{const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))console.error(gl.getShaderInfoLog(o));return o};
+  const pr=gl.createProgram(); gl.attachShader(pr,sh(gl.VERTEX_SHADER,VS)); gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FS)); gl.linkProgram(pr);
+  if(gl.getProgramParameter(pr,gl.LINK_STATUS)){
+    gl.useProgram(pr);
+    const b=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,b); gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+    const loc=gl.getAttribLocation(pr,"a"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+    ["R","T","NIGHT","LIGHTS","SH0","SH1","SHT","BB","RS0","RS1","TD","TN","Z0","Z1","Z2","Z3","A0","G0","A1","G1","P0","P1","RIP","D0","D1","D2","D3","HM"].forEach(k=>U[k]=gl.getUniformLocation(pr,k));
+    // mat3 en colonnes pour GLSL
+    gl.uniformMatrix3fv(U.HM,false,[HM[0],HM[3],HM[6],HM[1],HM[4],HM[7],HM[2],HM[5],HM[8]]);
+    waterOK=true;
+    // textures de la villa + zone de la margelle d'origine (à redessiner pour les petits bassins)
+    const ZONE=[[380,553],[1309,553],[1642,874],[54,874]];
+    ZONE.forEach((z,i)=>gl.uniform2f(U["Z"+i],z[0]/POOL.w,z[1]/POOL.h));
+    const loadTex=(src,unit)=>new Promise(res=>{const im=new Image();im.onload=()=>{const t=gl.createTexture();gl.activeTexture(gl.TEXTURE0+unit);gl.bindTexture(gl.TEXTURE_2D,t);
+      [gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T].forEach(p=>gl.texParameteri(gl.TEXTURE_2D,p,gl.CLAMP_TO_EDGE));gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
+      gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,false);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,im);res();};im.src=src;});
+    const villaImgs=[...document.querySelectorAll(".pool .villa")];
+    Promise.all([loadTex(villaImgs[0].getAttribute("src"),0),loadTex(villaImgs[1].getAttribute("src"),1)]).then(()=>{gl.uniform1i(U.TD,0);gl.uniform1i(U.TN,1);villaImgs.forEach(v=>v.style.display="none");});
+  }
+}
+function sizeWater(){const s=Math.min(devicePixelRatio||1,1.5);cv.width=cv.clientWidth*s;cv.height=cv.clientHeight*s;if(gl)gl.viewport(0,0,cv.width,cv.height);}
+addEventListener("resize",sizeWater); sizeWater();
+
+const tp=t=>[t.style==='large'?5.:24.,t.var,t.hue];
+const SHAPE_BB=[[0,2,0,1],[0,2,.08,.92],[.2,1.9,.16,.9],[.58,1.42,.17,.83],[.18,1.82,.12,.88],[.07,1.97,.08,.92]];
+const rsOf=m=>m.shape===6?[Math.min(1,m.L*.1),Math.min(.5,m.W*.1)]:[1,.5];
+const bbOf=m=>{if(m.shape!==6)return SHAPE_BB[m.shape];const r=rsOf(m);return[1-r[0],1+r[0],.52-r[1],.52+r[1]];};
+const st={rs0:rsOf(CONFIG.models[0]), rs1:rsOf(CONFIG.models[0]), sh0:CONFIG.models[0].shape, sh1:CONFIG.models[0].shape, sht:-99, mcur:0, cur:0, P0:tp(CONFIG.tiles[0]), P1:tp(CONFIG.tiles[0]), A0:hex3(CONFIG.tiles[0].tile), G0:hex3(CONFIG.tiles[0].joint), A1:hex3(CONFIG.tiles[0].tile), G1:hex3(CONFIG.tiles[0].joint), rip:[0,0,-99], night:0, nightT:0, lights:0, lightsT:0, drops:[[0,0,-99,0],[0,0,-99,0],[0,0,-99,0],[0,0,-99,0]], di:0};
+const now=()=>performance.now()/1000;
+const toP=(cx,cy)=>{const r=cv.getBoundingClientRect();const [u,v]=toUV((cx-r.left)/r.width,(cy-r.top)/r.height);return[u*PW,v]};
+const inPool=(cx,cy)=>{const r=cv.getBoundingClientRect();const [u,v]=toUV((cx-r.left)/r.width,(cy-r.top)/r.height);return u>-.02&&u<1.02&&v>-.02&&v<1.02};
+
+// pastilles
+const sw=document.getElementById("sw"), flip=document.getElementById("flip");
+// échantillon de carrelage dessiné en code (brillance, joints, nuances, partie sous l'eau)
+function drawSample(cv2,t){
+  const x=cv2.getContext("2d"),W=cv2.width,H=cv2.height; let seed=t.name.length*97+7; const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+  const base=hex3(t.tile).map(v=>v*255), big=t.style==="large";
+  x.fillStyle=t.joint; x.fillRect(0,0,W,H);
+  const ts=big?118:30, gap=big?3:4, cols=Math.ceil(W/ts)+1, rows=Math.ceil(H/ts)+1;
+  for(let r=0;r<rows;r++)for(let c=-1;c<cols;c++){
+    const ox=big&&r%2?ts/2:0, px=c*ts+ox+gap/2, py=r*ts+gap/2, s=ts-gap;
+    const k=1-t.var/2+t.var*rnd(), hs=(rnd()-.5)*t.hue;
+    const col=[base[0]*k-60*hs,base[1]*k+15*hs,base[2]*k+75*hs].map(v=>Math.max(0,Math.min(255,v|0)));
+    const g=x.createLinearGradient(px,py,px+s,py+s);
+    g.addColorStop(0,`rgb(${col.map(v=>Math.min(255,v+28))})`); g.addColorStop(.55,`rgb(${col})`); g.addColorStop(1,`rgb(${col.map(v=>v*.82|0)})`);
+    x.fillStyle=g; const rr=big?3:4; x.beginPath(); x.roundRect?x.roundRect(px,py,s,s,rr):x.rect(px,py,s,s); x.fill();
+    if(big){ for(let n=0;n<70;n++){x.fillStyle=`rgba(${rnd()<.5?"255,255,255":"0,0,0"},${rnd()*.07})`;x.beginPath();x.arc(px+rnd()*s,py+rnd()*s,rnd()*7+1,0,7);x.fill();} }
+    x.strokeStyle="rgba(255,255,255,.55)"; x.lineWidth=1.2; x.beginPath(); x.moveTo(px+2,py+s-3); x.lineTo(px+2,py+2); x.lineTo(px+s-3,py+2); x.stroke();
+    x.strokeStyle="rgba(0,0,0,.18)"; x.beginPath(); x.moveTo(px+s-1,py+3); x.lineTo(px+s-1,py+s-1); x.lineTo(px+3,py+s-1); x.stroke();
+    if(!big&&rnd()<.35){x.fillStyle="rgba(255,255,255,.35)";x.beginPath();x.ellipse(px+s*.3,py+s*.28,s*.14,s*.07,-.6,0,7);x.fill();}
+  }
+  // reflet brillant
+  const sh=x.createLinearGradient(0,0,W,H); sh.addColorStop(0,"rgba(255,255,255,0)"); sh.addColorStop(.38,"rgba(255,255,255,.22)"); sh.addColorStop(.46,"rgba(255,255,255,0)"); x.fillStyle=sh; x.fillRect(0,0,W,H);
+  // partie droite sous l'eau
+  x.save(); x.beginPath(); x.moveTo(W*.6,0); for(let y=0;y<=H;y+=8) x.lineTo(W*.6+Math.sin(y*.05)*7,y); x.lineTo(W,H); x.lineTo(W,0); x.closePath(); x.clip();
+  const w=waterHex(t.tile).match(/\d+/g).map(Number); x.fillStyle=`rgba(${w},.62)`; x.fillRect(0,0,W,H);
+  x.strokeStyle="rgba(255,255,255,.35)"; x.lineWidth=2; for(let i=0;i<9;i++){x.beginPath(); for(let X=W*.55;X<W;X+=6){const Y=i*26+12+Math.sin(X*.07+i)*6; X===W*.55?x.moveTo(X,Y):x.lineTo(X,Y);} x.stroke();}
+  x.restore();
+  x.strokeStyle="rgba(255,255,255,.75)"; x.lineWidth=2; x.beginPath(); for(let y=0;y<=H;y+=8) {const X=W*.6+Math.sin(y*.05)*7; y?x.lineTo(X,y):x.moveTo(X,y);} x.stroke();
+}
+const waterHex=(t)=>{const a=hex3(t);const w=[a[0]*.6,a[1]*.88+.085,a[2]*.96+.15].map(v=>Math.round(Math.min(1,v)*255));return`rgb(${w})`};
+CONFIG.tiles.forEach((t,i)=>{
+  const b=document.createElement("button"); if(!i) b.className="on";
+  b.innerHTML=`<canvas class="smp" width="320" height="220"></canvas><span class="t">${t.name}</span><span class="m">${t.material}</span><span class="w"><i style="background:${waterHex(t.tile)}"></i>${t.water}</span>`;
+  drawSample(b.querySelector("canvas"),t);
+  b.onclick=()=>selectTile(i,b);
+  sw.appendChild(b);
+});
+function setFlip(txt){
+  const old=flip.querySelector("span:not(.out)"); const n=document.createElement("span"); n.textContent=txt; n.className="in"; flip.appendChild(n);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{n.className=""; if(old){old.className="out"; setTimeout(()=>old.remove(),800);}}));
+}
+function selectTile(i,btn){
+  if(i===st.cur) return;
+  const t=CONFIG.tiles[i]; st.cur=i;
+  st.A0=st.A1; st.G0=st.G1; st.P0=st.P1; st.A1=hex3(t.tile); st.G1=hex3(t.joint); st.P1=tp(t);
+  st.rip=[PW*(.3+Math.random()*.4), .35+Math.random()*.3, now()];
+  [...sw.children].forEach(b=>b.classList.remove("on","ping")); btn.classList.add("on"); void btn.offsetWidth; btn.classList.add("ping");
+  setFlip(t.name);
+  document.getElementById("glow").style.background=waterHex(t.tile);
+  if(navigator.vibrate) navigator.vibrate(10);
+}
+document.getElementById("glow").style.background=waterHex(CONFIG.tiles[0].tile);
+setTimeout(()=>{flip.querySelector("span").textContent=CONFIG.tiles[0].name},0);
+
+// modèles de piscine
+const mdl=document.getElementById("mdl"), mname=document.getElementById("mname");
+// vignettes : coque vue du dessus, dessinée en code
+function shellPath(shape,md){const p=new Path2D();
+  if(shape===6){const w=Math.min(290,md.L*26),h=Math.min(150,md.W*26);p.roundRect(160-w/2,90-h/2,w,h,8);return p;}
+  if(shape===1){p.moveTo(80,30);p.lineTo(296,30);p.quadraticCurveTo(306,30,306,40);p.lineTo(306,140);p.quadraticCurveTo(306,150,296,150);p.lineTo(80,150);p.arc(80,90,60,Math.PI/2,Math.PI*1.5);p.closePath();}
+  else if(shape===2){p.moveTo(28,30);p.lineTo(292,30);p.quadraticCurveTo(300,30,300,38);p.lineTo(300,100);p.lineTo(130,100);p.lineTo(130,142);p.quadraticCurveTo(130,150,122,150);p.lineTo(28,150);p.quadraticCurveTo(20,150,20,142);p.lineTo(20,38);p.quadraticCurveTo(20,30,28,30);p.closePath();}
+  else if(shape===4)p.ellipse(160,90,140,62,0,0,Math.PI*2);
+  else if(shape===3)p.roundRect(85,38,150,104,10);
+  else if(shape===5){const k=4.6,ox=4,oy=8,P=(x,y)=>[x*k+ox,y*k+oy];p.moveTo(...P(8,18));p.bezierCurveTo(...P(8,6),...P(27,4),...P(34,10));p.bezierCurveTo(...P(41,4),...P(60,6),...P(60,18));p.bezierCurveTo(...P(60,30),...P(41,32),...P(34,26));p.bezierCurveTo(...P(27,32),...P(8,30),...P(8,18));p.closePath();}
+  else p.roundRect(20,30,280,120,10);
+  return p;}
+function drawShell(cv,shape,md){const x=cv.getContext("2d"),P=shellPath(shape,md);x.clearRect(0,0,320,180);
+  x.save();x.shadowColor="rgba(0,0,0,.45)";x.shadowBlur=18;x.shadowOffsetY=8;x.fillStyle="#cfe9f5";x.fill(P);x.restore();
+  x.save();x.clip(P);
+  let g=x.createLinearGradient(0,0,320,180);g.addColorStop(0,"#a8d9ee");g.addColorStop(1,"#6fb3d3");x.fillStyle=g;x.fillRect(0,0,320,180);
+  const rg=x.createRadialGradient(150,80,10,150,80,170);rg.addColorStop(0,"rgba(255,255,255,.25)");rg.addColorStop(1,"rgba(255,255,255,0)");x.fillStyle=rg;x.fillRect(0,0,320,180);
+  const step=(path,c)=>{x.fillStyle=c;x.fill(path);x.strokeStyle="rgba(255,255,255,.65)";x.lineWidth=1.5;x.stroke(path);};
+  if(shape===0){[[95,"#bfe4f3"],[70,"#b3dff0"],[45,"#a6d8ec"]].forEach(([d,c])=>{const s_=new Path2D();s_.moveTo(20,30);s_.lineTo(20+d,30);s_.lineTo(20,30+d*.95);s_.closePath();step(s_,c);});
+    const b_=new Path2D();b_.rect(268,30,32,120);step(b_,"#b6e0f1");}
+  if(shape===1){[[60,"#bfe4f3"],[44,"#b3dff0"],[28,"#a6d8ec"]].forEach(([r,c])=>{const s_=new Path2D();s_.arc(80,90,r,Math.PI/2,Math.PI*1.5);s_.closePath();step(s_,c);});}
+  if(shape===2){[[150,"#bfe4f3"],[134,"#b3dff0"],[118,"#a6d8ec"]].forEach(([y,c])=>{const s_=new Path2D();s_.rect(20,y-16,110,16);step(s_,c);});}
+  if(shape===6){const w=Math.min(290,md.L*26),h=Math.min(150,md.W*26),x0=160-w/2,y0=90-h/2,d=Math.min(70,h*.6);
+    [[d,"#bfe4f3"],[d*.72,"#b3dff0"],[d*.45,"#a6d8ec"]].forEach(([k,c])=>{const s_=new Path2D();s_.moveTo(x0,y0);s_.lineTo(x0+k,y0);s_.lineTo(x0,y0+k*.95);s_.closePath();step(s_,c);});}
+  if(shape===3){const s_=new Path2D();s_.rect(85,38,150,26);step(s_,"#b8e1f1");const s2=new Path2D();s2.rect(85,38,40,104);step(s2,"#bfe4f3");}
+  if(shape===4){[[50,"#bfe4f3"],[36,"#b3dff0"]].forEach(([r,c])=>{const s_=new Path2D();s_.ellipse(40,90,r*1.25,r,0,-Math.PI/2,Math.PI/2);s_.closePath();step(s_,c);});}
+  if(shape===5){[[46,"#bfe4f3"],[32,"#b3dff0"]].forEach(([r,c])=>{const s_=new Path2D();s_.arc(70,90,r,Math.PI*.55,Math.PI*1.45);s_.lineTo(70,90);s_.closePath();step(s_,c);});}
+  x.lineWidth=22;x.strokeStyle="rgba(20,80,110,.28)";x.stroke(P);x.lineWidth=12;x.strokeStyle="rgba(20,80,110,.22)";x.stroke(P);
+  x.restore();
+  x.lineWidth=7;x.strokeStyle="#dff3fb";x.stroke(P);x.lineWidth=1.2;x.strokeStyle="rgba(255,255,255,.9)";x.stroke(P);}
+CONFIG.models.forEach((md,i)=>{const b=document.createElement("button"); if(!i)b.className="on";
+  b.innerHTML=(md.img?`<img class="smp" src="${md.img}" alt="${md.name}">`:`<canvas class="smp" width="320" height="180"></canvas>`)+`<span class="t">${md.name}</span><span class="m">${md.dims}</span>`;
+  if(!md.img) drawShell(b.querySelector("canvas"),md.shape,md);
+  b.onclick=()=>{ if(i===st.mcur) return; st.mcur=i; const now_=now(); const cur=(now_-st.sht)>.9?st.sh1:(now_-st.sht>.45?st.sh1:st.sh0);
+    st.rs0=(now_-st.sht)>.45?st.rs1:st.rs0; st.sh0=cur; st.sh1=md.shape; st.rs1=rsOf(md); st.sht=now_; st.rip=[PW*.5,.5,now_];
+    [...mdl.children].forEach(x=>x.classList.remove("on","ping")); b.classList.add("on"); void b.offsetWidth; b.classList.add("ping");
+    mname.textContent=md.name+" · "+md.dims; if(navigator.vibrate) navigator.vibrate(10); };
+  mdl.appendChild(b);});
+mname.textContent=CONFIG.models[0].name+" · "+CONFIG.models[0].dims;
+
+// jour / nuit
+const dn=document.getElementById("dn"), knob=document.getElementById("knob"), dnb=[...dn.querySelectorAll("button")], vNuit=document.getElementById("vNuit");
+function placeKnob(){const b=dn.querySelector("button.on");knob.style.width=b.offsetWidth+"px";knob.style.transform=`translateX(${b.offsetLeft-5}px)`;knob.style.background=st.nightT?"#9fe9f0":"#fff";}
+dnb.forEach(b=>b.onclick=()=>{dnb.forEach(x=>x.classList.remove("on"));b.classList.add("on");st.nightT=+b.dataset.n;placeKnob();
+  vNuit.style.opacity=st.nightT;
+  document.getElementById("config").classList.toggle("night",!!st.nightT);
+  addDropUV(PW*.5,.5,1.2);});
+addEventListener("resize",placeKnob); setTimeout(placeKnob,50); document.fonts&&document.fonts.ready.then(placeKnob);
+// projecteurs
+const lightBtn=document.getElementById("lightBtn");
+let actx;
+function clickSound(on){try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();const t=actx.currentTime,len=.05,buf=actx.createBuffer(1,actx.sampleRate*len,actx.sampleRate),d=buf.getChannelData(0);
+  for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,8);
+  const src=actx.createBufferSource(),f=actx.createBiquadFilter(),g=actx.createGain();src.buffer=buf;f.type="bandpass";f.frequency.value=on?2600:2000;f.Q.value=1.2;g.gain.value=.9;
+  src.connect(f).connect(g).connect(actx.destination);src.start(t);}catch(e){}}
+lightBtn.onclick=()=>{st.lightsT=st.lightsT?0:1; const on=!!st.lightsT; lightBtn.classList.toggle("on",on); lightBtn.setAttribute("aria-pressed",on); clickSound(on); if(navigator.vibrate) navigator.vibrate(15);};
+
+// toucher l'eau
+function addDropUV(x,y,s=1){st.drops[st.di]=[x,y,now(),s]; st.di=(st.di+1)%4;}
+function addDrop(cx,cy,s=1){if(!inPool(cx,cy)) return; const [x,y]=toP(cx,cy); addDropUV(x,y,s); document.getElementById("tapHint").style.opacity=0;}
+const pool=document.getElementById("pool");
+pool.addEventListener("pointerdown",e=>addDrop(e.clientX,e.clientY));
+let lastMove=0; pool.addEventListener("pointermove",e=>{if(e.pointerType==="mouse"&&now()-lastMove>.18){lastMove=now();addDrop(e.clientX,e.clientY,.45);}});
+if(!waterOK){cv.style.background="linear-gradient(160deg,#6fd6e6,#1b8fb4)";}
+
+/* =====================================================================
+   CHANTIER : séquence d'images pilotée par le scroll + textes qui défilent
+   ===================================================================== */
+const B=innerWidth>=900?CONFIG.build.desktop:CONFIG.build.mobile, SB=[0,.317,.512,.78,1], build=document.getElementById("build"), fc=document.getElementById("fc"), fx=fc.getContext("2d"), bgc=document.getElementById("bgc"), bx=bgc.getContext("2d");
+const imgs=new Array(B.count), loaded=new Array(B.count).fill(false); let nLoaded=0;
+const order=[]; [16,8,4,2,1].forEach(st=>{for(let i=0;i<B.count;i+=st) if(!order.includes(i)) order.push(i)}); if(!order.includes(B.count-1)) order.splice(1,0,B.count-1);
+let qi=0; const loaderEl=document.getElementById("loader");
+function loadNext(){ if(qi>=order.length) return; const i=order[qi++]; const im=new Image(); im.decoding="async";
+  im.onload=()=>{loaded[i]=true; nLoaded++; lastKey=""; loaderEl.textContent=nLoaded<B.count?Math.round(nLoaded/B.count*100)+" %":""; if(nLoaded===B.count) loaderEl.style.opacity=0; loadNext();};
+  im.onerror=loadNext; im.src=B.path+String(i+1).padStart(B.pad,"0")+B.ext; imgs[i]=im; }
+for(let k=0;k<6;k++) loadNext();
+let lastKey="";
+function sizeBuild(){const d=Math.min(devicePixelRatio||1,2);fc.width=fc.clientWidth*d;fc.height=fc.clientHeight*d;bgc.width=Math.max(1,bgc.clientWidth/4);bgc.height=Math.max(1,bgc.clientHeight/4);lastKey="";}
+addEventListener("resize",sizeBuild); sizeBuild();
+function nearest(i){ if(loaded[i]) return i; for(let d=1;d<B.count;d++){ if(i-d>=0&&loaded[i-d]) return i-d; if(i+d<B.count&&loaded[i+d]) return i+d; } return -1; }
+// zoom : au départ on cadre la maison (pas la pelouse), puis on dézoome
+function cover(ctx,im,w,h,z,ay){ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality="high";const r=Math.max(w/im.naturalWidth,h/im.naturalHeight)*z,iw=im.naturalWidth*r,ih=im.naturalHeight*r;ctx.drawImage(im,(w-iw)/2,(h-ih)*ay,iw,ih);}
+const sst=(a,b,x)=>{const t=clamp((x-a)/(b-a));return t*t*(3-2*t)};
+const blocks=[...document.querySelectorAll(".flow .blk")], steps=[...document.querySelectorAll(".flow .step")], finalBlk=document.querySelector(".blk.final");
+const bbars=[...document.querySelectorAll(".bhud b")], bhint=document.getElementById("bhint"), bhud=document.getElementById("bhud");
+const bigLogo=document.getElementById("bigLogo"), tagline=document.getElementById("tagline"), subtag=document.getElementById("subtag"), veil=document.getElementById("veil"), navLogo=document.querySelector("#nav .logo");
+let ipT=0,ipC=0,fpT=0,fpC=0;
+function buildScroll(){
+  const H=innerHeight, intro=blocks[0].getBoundingClientRect();
+  ipT=clamp(-intro.top/(intro.height-H*.35));               // 0 → 1 pendant l'intro
+  const a=H*.6, r1=steps[0].getBoundingClientRect(), rF=finalBlk.getBoundingClientRect();
+  fpT=clamp((a-r1.top)/(rF.top-r1.top));                    // 0 → 1 pendant les étapes
+}
+addEventListener("scroll",buildScroll,{passive:true}); addEventListener("resize",buildScroll); buildScroll();
+function buildFrame(){
+  ipC+=(ipT-ipC)*.12; fpC+=(fpT-fpC)*.12;
+  const e=ease(ipC);
+  // image
+  let vp=1; for(let i=0;i<4;i++){ if(fpC<=SB[i+1]){ vp=B.map[i]+(B.map[i+1]-B.map[i])*(fpC-SB[i])/(SB[i+1]-SB[i]); break; } }
+  const want=Math.round(clamp(vp)*(B.count-1)), f=nearest(want);
+  const z=1+(innerWidth>=900?.12:.3)*(1-e), ay=.18+.32*e;
+  const key=f+"|"+z.toFixed(3);
+  if(f>=0 && key!==lastKey){ lastKey=key; fx.clearRect(0,0,fc.width,fc.height); cover(fx,imgs[f],fc.width,fc.height,z,ay); if(getComputedStyle(bgc).display!=="none") cover(bx,imgs[f],bgc.width,bgc.height,1,.5); }
+  // intro : logo qui monte et rejoint le menu
+  const H=innerHeight;
+  bigLogo.style.transform=`translateY(${-e*H*.42}px) scale(${1-.72*e})`;
+  bigLogo.style.opacity=1-sst(.75,1,ipC);
+  navLogo.style.opacity=sst(.8,1,ipC);
+  tagline.style.transform=`translateY(${-e*H*.25}px)`; tagline.style.opacity=1-sst(.05,.55,ipC);
+  subtag.style.opacity=1-sst(0,.35,ipC);
+  veil.style.opacity=1-sst(.1,.9,ipC);
+  bhint.style.opacity=1-sst(0,.12,ipC);
+  bhud.style.opacity=sst(.7,1,ipC);
+  // textes : fondu + léger parallaxe selon la position à l'écran
+  [...steps,finalBlk].forEach(b=>{const r=b.getBoundingClientRect(), t=b.firstElementChild;
+    const c=(r.top+r.height/2-H/2)/(H*.75); const o=b===finalBlk?sst(1.1,.35,c+.2):clamp(1-Math.abs(c)*1.15);
+    t.style.opacity=o; t.style.transform=`translateY(${c*-40}px)`;});
+  // barres
+  const ends=[0,.317,.512,.78,1]; bbars.forEach((b,i)=>b.style.transform=`scaleX(${clamp((fpC-ends[i])/(ends[i+1]-ends[i]))})`);
+}
+
+/* ---------- Boucle principale ---------- */
+let visible=true;
+new IntersectionObserver(es=>visible=es[0].isIntersecting).observe(cv);
+function loop(){
+  buildFrame();
+  cardsFrame(); livesFrame();
+  // eau
+  st.night+=(st.nightT-st.night)*.04; st.lights+=(st.lightsT-st.lights)*.08;
+  if(waterOK&&visible){
+    const t=now();
+    gl.uniform2f(U.R,cv.width,cv.height); gl.uniform1f(U.T,t); gl.uniform1f(U.NIGHT,st.night); gl.uniform1f(U.LIGHTS,st.lights); gl.uniform1f(U.SH0,st.sh0); gl.uniform1f(U.SH1,st.sh1); gl.uniform1f(U.SHT,st.sht); gl.uniform4fv(U.BB,bbOf(CONFIG.models[st.mcur])); gl.uniform2fv(U.RS0,st.rs0); gl.uniform2fv(U.RS1,st.rs1);
+    gl.uniform3fv(U.A0,st.A0); gl.uniform3fv(U.G0,st.G0); gl.uniform3fv(U.A1,st.A1); gl.uniform3fv(U.G1,st.G1); gl.uniform3fv(U.P0,st.P0); gl.uniform3fv(U.P1,st.P1);
+    gl.uniform3fv(U.RIP,st.rip);
+    st.drops.forEach((d,i)=>gl.uniform4fv(U["D"+i],d));
+    gl.drawArrays(gl.TRIANGLES,0,3);
+  }
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+/* ---------- Apparitions + compteurs ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return; e.target.classList.add("in");
+  e.target.querySelectorAll?.("[data-count]").forEach(c=>{const n=+c.dataset.count,t0=performance.now();const tick=now=>{const k=clamp((now-t0)/1600);c.textContent="+"+Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)});
+  io.unobserve(e.target); }),{threshold:.15});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
