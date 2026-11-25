@@ -34,7 +34,11 @@
   #p2 h2{font-size:clamp(40px,4.6vw,66px)}
   #p2b{left:0;right:0;bottom:5vh;text-align:center}
   .add{display:inline-block;margin-top:14px;padding:15px 40px;background:#0d0d0d;color:#fff;border:0;text-decoration:none;font-family:'Jost';font-size:11px;letter-spacing:.26em;text-transform:uppercase;cursor:pointer}
-  .price{font-family:'Cormorant Garamond';font-size:22px;margin-top:4px}
+  .price{font-family:'Cormorant Garamond';font-size:22px;margin-top:2px}
+  .swatch{display:block;margin:6px auto 0;width:150px;height:38px;overflow:visible}
+  .swatch path.s{stroke-dasharray:420;stroke-dashoffset:420}
+  .swatch.go path.s{animation:sw 1s cubic-bezier(.3,.7,.2,1) forwards}
+  @keyframes sw{to{stroke-dashoffset:0}}
   .row{display:flex;justify-content:center;align-items:center;gap:18px}
   .arrow.sm{width:36px;height:36px;font-size:14px}
   .sname{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:32px}
@@ -90,6 +94,13 @@
 
 <section class="panel" id="p2b">
   <div class="row"><button class="arrow sm" id="prev" aria-label="Teinte précédente">←</button><div><div class="sub">Rouge à lèvres</div><div class="sname" id="sname"></div></div><button class="arrow sm" id="next" aria-label="Teinte suivante">→</button></div>
+  <svg class="swatch" id="swatch" viewBox="0 0 150 38" aria-hidden="true">
+    <defs><linearGradient id="swg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" id="sw0"/><stop offset=".45" id="sw1"/><stop offset="1" id="sw2"/></linearGradient>
+    <filter id="swf" x="-10%" y="-40%" width="120%" height="180%"><feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2"/><feComponentTransfer><feFuncA type="linear" slope="1"/></feComponentTransfer></filter></defs>
+    <path class="s" d="M10 24 C 34 13, 58 27, 80 18 S 122 13, 140 20" fill="none" stroke="url(#swg)" stroke-width="19" stroke-linecap="round" filter="url(#swf)"/>
+    <path class="s" d="M14 21 C 38 11, 60 23, 82 15 S 120 11, 136 16" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="3" stroke-linecap="round"/>
+  </svg>
   <div class="price">12,00 €</div>
   <a class="add" id="add" href="https://glambymajha.com/products/rouge-a-levres">Ajouter au panier</a></section>
 
@@ -135,7 +146,11 @@ addEventListener('resize',resize);
 
 /* ---------- sélection ---------- */
 let cur=0;const POS=[null,null,null,null];
-function setShade(i){cur=(i+4)%4;$('sname').textContent=SHADES[cur][0];}
+function shadeMix(h,f){const n=parseInt(h.slice(1),16);let r=n>>16,g=n>>8&255,b=n&255;
+  if(f>0){r+=(255-r)*f;g+=(255-g)*f;b+=(255-b)*f;}else{r*=1+f;g*=1+f;b*=1+f;}return `rgb(${r|0},${g|0},${b|0})`;}
+function setShade(i){cur=(i+4)%4;$('sname').textContent=SHADES[cur][0];const h=SHADES[cur][2];
+  $('sw0').setAttribute('stop-color',shadeMix(h,.18));$('sw1').setAttribute('stop-color',h);$('sw2').setAttribute('stop-color',shadeMix(h,-.22));
+  const sw=$('swatch');sw.classList.remove('go');void sw.getBoundingClientRect();sw.classList.add('go');}
 setShade(0);
 $('prev').onclick=()=>setShade(cur-1);$('next').onclick=()=>setShade(cur+1);
 $('add').onclick=e=>{e.preventDefault();const b=document.querySelector('.bag');b.dataset.n=(+b.dataset.n||0)+1;b.textContent='Panier ('+b.dataset.n+')';$('add').textContent='Ajouté ✓';setTimeout(()=>$('add').textContent='Ajouter au panier',1400);};
@@ -147,11 +162,24 @@ cv.addEventListener('pointerup',e=>{if(!swiped&&sx!==null&&Math.hypot(e.clientX-
   for(const h of hits)if(e.clientX>h.x0&&e.clientX<h.x1&&e.clientY>h.y0&&e.clientY<h.y1){setShade(h.i);break;}sx=null;});
 
 /* ---------- neige qui tombe ---------- */
-const FLAKES=[...Array(170)].map(()=>({x:Math.random(),y:Math.random(),z:.3+Math.random()*.7,ph:Math.random()*6.28}));
+const FLAKES=[...Array(170)].map(()=>({x:Math.random(),y:Math.random(),z:.3+Math.random()*.7,ph:Math.random()*6.28,dx:0,dy:0}));
+// les flocons s'écartent sous le doigt / la souris
+const PTR={x:-1e4,y:-1e4,on:0};
+const ptr=(x,y)=>{PTR.x=x;PTR.y=y;PTR.on=1;};
+addEventListener('pointermove',e=>ptr(e.clientX,e.clientY),{passive:true});
+addEventListener('pointerdown',e=>ptr(e.clientX,e.clientY),{passive:true});
+addEventListener('touchstart',e=>{const t=e.touches[0];if(t)ptr(t.clientX,t.clientY);},{passive:true});
+addEventListener('touchmove',e=>{const t=e.touches[0];if(t)ptr(t.clientX,t.clientY);},{passive:true});
+addEventListener('touchend',()=>{PTR.on=0;},{passive:true});
+document.addEventListener('mouseleave',()=>{PTR.on=0;});
 function snow(dt,t){
   const n=mobile?110:170;
   for(let k=0;k<n;k++){const f=FLAKES[k];f.y+=dt*(.03+.07*f.z);if(f.y>1.05){f.y=-.05;f.x=Math.random();}
-    const x=(f.x+Math.sin(t*.6+f.ph)*.012*f.z)*W,y=f.y*H,r=(mobile?1.2:1.6)+f.z*f.z*(mobile?3:4.2);
+    let x=(f.x+Math.sin(t*.6+f.ph)*.012*f.z)*W,y=f.y*H;
+    if(PTR.on){const R=mobile?95:130,vx=x+f.dx-PTR.x,vy=y+f.dy-PTR.y,d=Math.hypot(vx,vy);
+      if(d<R&&d>.1){const k=(1-d/R)*(1-d/R)*R*.9*f.z;f.dx+=(vx/d)*k*dt*9;f.dy+=(vy/d)*k*dt*9;}}
+    f.dx*=Math.pow(.12,dt);f.dy*=Math.pow(.12,dt);x+=f.dx;y+=f.dy;
+    const r=(mobile?1.2:1.6)+f.z*f.z*(mobile?3:4.2);
     const g=ctx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,`rgba(255,255,255,${.55+.4*f.z})`);g.addColorStop(1,'rgba(255,255,255,0)');
     ctx.fillStyle=g;ctx.fillRect(x-r,y-r,2*r,2*r);}
 }
