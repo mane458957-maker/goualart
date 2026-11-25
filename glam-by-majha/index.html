@@ -11,7 +11,7 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:#eaf1f8;color:var(--ink);font-family:'Jost',system-ui,sans-serif;overflow-x:hidden}
   #stage{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block;touch-action:pan-y}
-  .spacer{height:900vh}
+  .spacer{height:780vh}
   .band{position:fixed;top:0;left:0;right:0;z-index:12;background:#0d0d0d;color:#fff;height:34px;overflow:hidden;display:flex;align-items:center;
     font-size:11px;letter-spacing:.24em;text-transform:uppercase;white-space:nowrap}
   .band div{display:inline-block;padding-left:100%;animation:mq 28s linear infinite}
@@ -128,9 +128,6 @@ const PLATE={pc:[load('bg/pc.webp',true),load('bg/pc_blur.webp',false)],mobile:[
 const closedBlur=load('lip/closed_blur.webp',false);
 const FR=SHADES.map((s,k)=>{const a=[];for(let j=0;j<NF;j++)a.push(load('lip/'+s[1]+'/'+String(j*2+1).padStart(3,'0')+'.webp',j===0));return a;});
 const TRAIT=SHADES.map(s=>load('trait/'+s[1]+'.webp',false));
-const PENCIL=[load('crayons/c1.webp',false),load('crayons/c2.webp',false)];
-// crayons couchés dans la neige : x,y (centre, fraction du décor), largeur (fraction de la hauteur du décor), rotation
-const PENS={pc:[[.56,.815,.29,-.05],[.735,.835,.28,.08]],mobile:[[.52,.785,.165,-.06],[.74,.80,.16,.09]]};
 
 const cv=$('stage'),ctx=cv.getContext('2d');let W=1,H=1,mobile=false;
 function resize(){W=innerWidth;H=innerHeight;const d=Math.min(devicePixelRatio,2);cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);mobile=W/H<1;onScroll();buildWriting();}
@@ -144,9 +141,9 @@ $('prev').onclick=()=>setShade(cur-1);$('next').onclick=()=>setShade(cur+1);
 $('add').onclick=e=>{e.preventDefault();const b=document.querySelector('.bag');b.dataset.n=(+b.dataset.n||0)+1;b.textContent='Panier ('+b.dataset.n+')';$('add').textContent='Ajouté ✓';setTimeout(()=>$('add').textContent='Ajouter au panier',1400);};
 let hits=[],sx=null,sy=null,swiped=false;
 cv.addEventListener('pointerdown',e=>{sx=e.clientX;sy=e.clientY;swiped=false;});
-cv.addEventListener('pointermove',e=>{if(sx===null||swiped||p<.1||p>.5)return;const dx=e.clientX-sx,dy=e.clientY-sy;
+cv.addEventListener('pointermove',e=>{if(sx===null||swiped||p<.1||p>.38)return;const dx=e.clientX-sx,dy=e.clientY-sy;
   if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.3){setShade(cur+(dx<0?1:-1));swiped=true;}});
-cv.addEventListener('pointerup',e=>{if(!swiped&&sx!==null&&Math.hypot(e.clientX-sx,e.clientY-sy)<8&&p>.1&&p<.5)
+cv.addEventListener('pointerup',e=>{if(!swiped&&sx!==null&&Math.hypot(e.clientX-sx,e.clientY-sy)<8&&p>.1&&p<.38)
   for(const h of hits)if(e.clientX>h.x0&&e.clientX<h.x1&&e.clientY>h.y0&&e.clientY<h.y1){setShade(h.i);break;}sx=null;});
 
 /* ---------- neige qui tombe ---------- */
@@ -204,7 +201,7 @@ function tick(now){
   requestAnimationFrame(tick);const dt=Math.min(.05,(now-last)/1000);last=now;const t=now/1000;
   p+=(target-p)*.1;
   const layout=mobile?'mobile':'pc',[plate,blur]=PLATE[layout];
-  const fl=ease(seg(p,.10,.18)), op=seg(p,.36,.50), kin=win(p,.76,.93,.04), wrS=seg(p,.55,.73), e5=ease(seg(p,.51,.56));
+  const fl=ease(seg(p,.10,.18)), op=seg(p,.21,.34), kin=win(p,.64,.86,.04), wrS=seg(p,.42,.61), e5=ease(seg(p,.38,.43));
   ctx.fillStyle='#eaf1f8';ctx.fillRect(0,0,W,H);
   if(!ok(plate)){snow(dt,t);return;}
   const iw=plate.naturalWidth,ih=plate.naturalHeight,s=Math.max(W/iw,H/ih),ox=(W-iw*s)/2,oy=(H-ih*s)/2,map={s,ox,oy};
@@ -213,11 +210,6 @@ function tick(now){
   if(bAmt>0&&ok(blur)){ctx.globalAlpha=bAmt;ctx.drawImage(blur,ox,oy,iw*s,ih*s);ctx.globalAlpha=1;
     ctx.fillStyle=`rgba(240,245,250,${.18*bAmt})`;ctx.fillRect(0,0,W,H);}
 
-  // crayons Glam dans la neige
-  PENS[layout].forEach(([px,py,pw,pr],k)=>{const im=PENCIL[k];if(!ok(im))return;
-    const x=ox+px*iw*s,y=oy+py*ih*s,w=pw*ih*s,h=w*im.naturalHeight/im.naturalWidth,a=(1-.75*fl)*(1-e5);if(a<=.01)return;
-    softShadow(x+w*.03,y+h*.42,w*.5,h*.5,.38*a);
-    ctx.save();ctx.globalAlpha=a;ctx.translate(x,y);ctx.rotate(pr);ctx.drawImage(im,-w/2,-h/2,w,h);ctx.restore();ctx.globalAlpha=1;});
   // les 4 rouges à lèvres
   const SP=SPOTS[layout].map(([x,y,h])=>({x:ox+x*iw*s,y:oy+y*ih*s,h:h*ih*s}));
   // en l'air : le choisi devant, les 3 autres "en bataille" derrière
@@ -247,14 +239,14 @@ function tick(now){
   // 5. le rouge à lèvres écrit "Black Friday"
   if(e5>0){const col=SHADES[cur][2],tr=TRAIT[cur];drawWriting(wrS,col);
     const head=pathAt(wrS),D=mobile?W*.62:H*.55;
-    if(ok(tr)){ctx.globalAlpha=e5*(1-seg(p,.73,.77));ctx.drawImage(tr,head[0]-TIP.x*D,head[1]-TIP.y*D,D,D);ctx.globalAlpha=1;}}
+    if(ok(tr)){ctx.globalAlpha=e5*(1-seg(p,.61,.65));ctx.drawImage(tr,head[0]-TIP.x*D,head[1]-TIP.y*D,D,D);ctx.globalAlpha=1;}}
   snow(dt,t);
 
   // textes
-  const o={p1:win(p,-1,.09),p2b:win(p,.17,.5),p5:win(p,.92,2)};
+  const o={p1:win(p,-1,.09),p2b:win(p,.17,.38),p5:win(p,.86,2)};
   for(const k in o){const el=$(k);el.style.opacity=o[k];el.style.pointerEvents=o[k]>.5?'auto':'none';}
   KIN.forEach((el,k)=>{const dir=+el.dataset.dir,sp=(.8+k*.25)*W;el.style.opacity=kin;
-    const pr=seg(p,.74,.95);el.style.transform=`translateX(${dir>0?(-sp*.6+pr*sp):(-pr*sp)}px)`;});
+    const pr=seg(p,.62,.88);el.style.transform=`translateX(${dir>0?(-sp*.6+pr*sp):(-pr*sp)}px)`;});
   $('hint').style.opacity=1-seg(p,0,.04);
 }
 resize();if(document.fonts)document.fonts.ready.then(buildWriting);
