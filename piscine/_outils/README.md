@@ -26,3 +26,8 @@ Signature : voir `mail_templates.py` (en = Moyen-Orient +971 50 315 4697 ; fr = 
 Prix : Émirats AED 2,500 ; France 500 € TTC (retouches incluses, connexion du nom de domaine et du mail, options à discuter).
 Structure : salutation → « j'ai pris la liberté de refaire votre site » + ce que fait la démo → aperçu cliquable → bouton démo
 → offre → (Dubaï : rendez-vous en personne possible) → signature. Un point concret de leur site actuel si utile, avec tact.
+
+
+## Signature : JAMAIS de prénom
+Ne jamais écrire « Mohammed » ni « Mohammed Goual » dans les mails ou messages (demande du 25/11/2026).
+Fin de mail FR : « Bien cordialement,<br>L'équipe Goual Studio » ; EN : « Best regards,<br>The Goual Studio team ». Puis la signature de mail_templates.py.
