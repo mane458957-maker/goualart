@@ -113,6 +113,10 @@
    "whatsapp": null,
    "point_faible": "Textes de gabarit jamais remplacés dans les diaporamas : « Titre de la diapositive », « Écrivez votre légende ici » et bouton « Bouton » (accueil, pages Piscine, Rénovation, Pose de liner) ; les vignettes « Activité N°1/2/3 » sont restées génériques.",
    "remarque": "Site Duda (cdn-website.com, mention « Share by: » en pied de page), typique des sites d'abonnement. Copyright © 2026 mais contenu non finalisé ; le menu « Nos réalisations » pointe vers « # » ; galeries chargées en JS sans légendes. Incohérence : « créée en 2003 » sur l'accueil, SIREN créé en octobre 2004 (PJ). Revendeur LAGHETTO (pas une franchise). Angle : histoire forte du fondateur (plus jeune entrepreneur de France 2001) mal mise en valeur."
+  },
+  "logo": {
+   "url": "https://le-de.cdn-website.com/7c6ee048582b4cfdaeda86bef8eea1fc/dms3rep/multi/opt/1fa125d17fdd4b90be3b8942ba91bd38-1920w.png",
+   "mode": "pastille"
   }
  },
  {
@@ -239,6 +243,10 @@
    "whatsapp": "06 07 28 80 11",
    "point_faible": "Le bandeau cookies affiche des balises de template non remplies « {title} » et « Gérer {vendor_count} fournisseurs » ; plusieurs photos de la galerie « Nos réalisations » sont en .heic (IMG_2301.heic, IMG_2518.heic…), format non affiché par la plupart des navigateurs.",
    "remarque": "WordPress (crédit « Création Gnumérique »), uploads 2022, © 2026. Titres de thème anglais oubliés (« WHAT WE DO ? », « OUR TESTIMONIAL », « GET IN TOUCH », « We built Beautifully… »), fautes (« pisicne », « administartive », « Tout droits réservés »), lien téléphone « Vous avez un projet ? » vers « # », événement « Samedi 14 octobre » sans année, URL vidéo YouTube mal formée. Société créée le 25/05/2021 (SIREN 900672700). Angle : profil du dirigeant primé FPP + 5,0/5 mal valorisés."
+  },
+  "logo": {
+   "url": "https://piscineetbien-etre.com/wp-content/uploads/2022/10/logo-piscine-et-bien-etre.webp",
+   "mode": "pastille"
   }
  },
  {
@@ -365,6 +373,10 @@
    "whatsapp": null,
    "point_faible": "Pied de page figé sur « SARL Castel Piscines – ©2021 », et la page d'accueil annonce « 29 ans » d'activité alors que l'entreprise date de 1990 : le texte n'a pas été mis à jour depuis 2019 environ.",
    "remarque": "WordPress (thème Divi probable, Site Kit 1.45), images de 2021, aucune mise à jour depuis 2021-2023. 27 photos de réalisations sans légende ni lieu (noms de fichiers castel-piscines_00…26). Pas de formulaire de contact, pas d'horaires. Zoom bloqué sur mobile (user-scalable=0), texte parasite « Sélectionner une page », titres coupés (« Analyses / de l'eau »). Indépendant (partenaires coques Mondépra et Aboral, pas une franchise). Angle : plus de 35 ans de métier, un site qui ne le montre pas."
+  },
+  "logo": {
+   "url": "https://www.castel-piscines.fr/wp-content/uploads/2021/05/castel-piscinesnewblanc.png",
+   "mode": "blanc"
   }
  },
  {
@@ -491,6 +503,10 @@
    "whatsapp": null,
    "point_faible": "Fautes visibles : « Vaulcuse » dans les textes alternatifs (« Spa Jacuzzi pas cher Vaulcuse »), « une large choix », « Nos techniciens s'occupe de tout », et un titre « Présentation » sans aucun contenu dessous.",
    "remarque": "Site d'abonnement Jalis (logo Jalis en pied de page, URLs en -w1/-y1, pages « guide local » SEO). Pas de copyright affiché. Nom incohérent (Inter Piscine / Inter-Piscine / Interpiscine). SARL créée en 1991 selon la fiche SIRENE (le site dit « plus de 40 ans »). 12 photos de réalisations avec lieux (Gordes, Ménerbes, Bonnieux…). Angle : clientèle Luberon haut de gamme, site trop « catalogue magasin »."
+  },
+  "logo": {
+   "url": "https://www.interpiscine.fr/templates/captain/img/interface/logo.png",
+   "mode": "pastille"
   }
  },
  {
@@ -614,6 +630,10 @@
    "whatsapp": "06 86 74 79 20",
    "point_faible": "Copyright figé « Action Piscines 47 (2022) », fautes visibles (« Peut importe », « piscinede vos rêves », « tres sympathique ») et lien téléphone de l'en-tête cassé (fragment Google Maps collé au tel:).",
    "remarque": "WordPress créé par Linkweb (version 2022, pas la génération 2026). Incohérences : « créé en 2009 » mais « depuis plus de 20 ans » et « quinze dernières années » ; deux adresses (Boé et Layrac). 44 photos de réalisations sans légende. Boutons « Click me » laissés. Email sur domaine actionpiscines47.fr (différent du site action-piscines-47.fr mais affiché sur le site). À confirmer côté client : agence Linkweb (critère d'exclusion visait les sites Linkweb récents)."
+  },
+  "logo": {
+   "url": "https://www.action-piscines-47.fr/wp-content/uploads/2022/09/logo-action-piscines-47.svg",
+   "mode": "pastille"
   }
  },
  {
@@ -742,6 +762,10 @@
    "whatsapp": null,
    "point_faible": "The footer 'Home' link points to a staging domain (michaels793.sg-host.com) and 'Core Values' links to the template demo site (smartdata.tonytemplates.com/poolservice/demo2). The 'Our Gallery' page shows 9 empty tiles that link to '#' and no photos.",
    "remarque": "WordPress + Elementor on a bought 'tonytemplates' pool-service theme; copyright © 2022. Typos ('Vission', 'What We Offers for Clients', 'so we you can feel confident'), a broken link 'http://pool-services/new-pool-construction/', conflicting hours (5 pm vs. 4 pm), '7+ years' vs. '25 years of experience' claims, and a license expiration date (08/31/2025) shown that has passed. Caveat: mainly a service company. The about page claims '5+ pools built', but it sells new construction and is an Aviva fiberglass dealer. Angle: veteran-owned branding and a real gallery."
+  },
+  "logo": {
+   "url": "https://purpleheartpools.com/wp-content/uploads/2022/06/logo_4.png",
+   "mode": "pastille"
   }
  },
  {
@@ -875,6 +899,10 @@
    "whatsapp": null,
    "point_faible": "The footer still reads '© 2020 by Designer Pools By Ace', and the og:image (share image) is 'paver-patios-boise.jpg', a leftover from a template for a different business.",
    "remarque": "WordPress (Divi-like, 'Select Page' leftover) with 2020/2021 uploads. The meta description is stuffed with unrelated keywords (e.g. 'blue haven pools houston'). Typo 'we also we pride ourselves', a duplicated H2, 'Learn More' going to About instead of Services, and two different phone numbers (704-285-1352 / 704-251-0064). The Google profile shows a 972 phone number. The gallery mixes real 'photoresize' job photos with iStock and manufacturer renders (Malibu, Avanti, Caribbean). No email anywhere (LeadConnector form only)."
+  },
+  "logo": {
+   "url": "https://designerpoolsbyace.com/wp-content/uploads/2020/03/north-carolina-pool-builder.png",
+   "mode": "pastille"
   }
  },
  {
@@ -1142,6 +1170,10 @@
    "whatsapp": null,
    "point_faible": "Footer still says '© Copyright 2022'; a gallery category is misspelled 'Forth Worth Store', and a stray 'Select Page' label shows on every page.",
    "remarque": "WordPress (Divi + WP Rocket), photos from 2011/2016, email Cloudflare-obfuscated (decoded: scasale@seahorsepools.com, same domain). Gallery page H1 reads 'About Us'; empty alt texts; keyword-stuffed footer. Also has a Granbury store. NOTE: search results show third-party mock pages already built for 'seahorse-pools' (lead-to-mock-calibration.pages.dev, sigil-pool-seahorse-pools.pages.dev) — may already be prospected by someone (or by you)."
+  },
+  "logo": {
+   "url": "https://www.seahorsepools.com/wp-content/uploads/2016/08/logo.png",
+   "mode": "pastille"
   }
  },
  {
@@ -1277,6 +1309,10 @@
    "whatsapp": null,
    "point_faible": "Browser title still reads 'Home | Klapprodt Pools' and gallery images carry template alt text 'Image Item' / 'Logo Item'; the header and body give two different showroom hours.",
    "remarque": "WordPress + Divi child theme, © 2023, images uploaded 01/2023. Typos in reviews shown on site ('Kladdprodt', 'I ma very grateful'), 'Keller Texas' without comma, dangling hyphen in site name meta. Moderately modern template (hero video) but not agency-polished; weakest of the three on the 'old site' criterion."
+  },
+  "logo": {
+   "url": "https://klapprodtpools.com/wp-content/uploads/2023/01/klapprodt-pools-1.png",
+   "mode": "pastille"
   }
  },
  {
@@ -1403,6 +1439,10 @@
    "whatsapp": null,
    "point_faible": "Spelling mistakes on the homepage ('apponintment', 'sparkels', 'inconsistant') and footer still '© Copyright 2023'.",
    "remarque": "WordPress (Divi 'Select Page' leftover), © 2023, raw bracketed URL in copy, repeated banners. No email anywhere on site (contact page = phone + form only). about_lead kept generic because the site has no history text."
+  },
+  "logo": {
+   "url": "https://www.jspoolsandspas.com/wp-content/uploads/2020/02/logo-transparent.png",
+   "mode": "pastille"
   }
  },
  {
@@ -1495,6 +1535,10 @@
    "whatsapp": null,
    "point_faible": "Footer frozen at 'BAIRD POOLS © 2023'; the homepage shows no pool photos at all (only badges and an Unsplash stock photo of money), and copy says 'over 35+ years'.",
    "remarque": "Webflow, © 2023, alt text typo 'Money backgroundby'. No email on home or contact page (form only). Gallery page exists (/gallery) but was not fetched, so creations left empty."
+  },
+  "logo": {
+   "url": "https://cdn.prod.website-files.com/663d177c902961ea444572a4/663d177c902961ea444572cf_Pools%20Logo.png",
+   "mode": "pastille"
   }
  }
 ]

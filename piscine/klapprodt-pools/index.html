@@ -42,6 +42,8 @@ button{font:inherit;cursor:pointer}
 .intro{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:0 24px;pointer-events:none}
 .bigLogo{font-family:"DM Serif Display",serif;font-size:clamp(54px,15vw,170px);letter-spacing:2px;line-height:1;will-change:transform,opacity;text-shadow:0 10px 50px rgba(0,0,0,.35)}
 .bigLogo span{color:var(--aqua2)}
+.bigLogo img{height:clamp(90px,22vw,190px);width:auto;max-width:86vw;object-fit:contain;display:block;background:#fff;padding:clamp(10px,2vw,18px) clamp(16px,3vw,28px);border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.logo img{height:40px;width:auto;max-width:200px;object-fit:contain;display:block;background:#fff;padding:4px 10px;border-radius:10px}
 .bigLogo{font-size:clamp(40px,9vw,120px)!important;white-space:nowrap}
 .tagline{margin-top:22px;font-family:"DM Serif Display",serif;font-size:clamp(24px,5.4vw,46px);line-height:1.15;max-width:760px;will-change:transform,opacity}
 .tagline em{color:var(--aqua2)}
@@ -293,7 +295,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <body>
 
 <header class="nav" id="nav">
-  <a href="#" class="logo" data-c="logoHtml">Klapprodt <span>Pools</span></a>
+  <a href="#" class="logo" data-c="logoHtml"><img src="https://klapprodtpools.com/wp-content/uploads/2023/01/klapprodt-pools-1.png" alt="Klapprodt Pools"></a>
   <a href="#devis" class="btn">Free quote</a>
 </header>
 
@@ -305,7 +307,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <div class="shade"></div>
     <div id="veil"></div>
     <div class="intro">
-      <div class="bigLogo" id="bigLogo" data-c="logoHtml">Klapprodt <span>Pools</span></div>
+      <div class="bigLogo" id="bigLogo" data-c="logoHtml"><img src="https://klapprodtpools.com/wp-content/uploads/2023/01/klapprodt-pools-1.png" alt="Klapprodt Pools"></div>
       <div class="tagline" id="tagline">Three generations of craft,<br><em>one backyard at a time.</em></div>
       <div class="subtag" id="subtag"><span data-c="city">Keller</span> · Since 1987 · Free estimate</div>
     </div>
@@ -455,7 +457,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
    ===================================================================== */
 const CONFIG = {
   name: "Klapprodt Pools",
-  logoHtml: "Klapprodt <span>Pools</span>",
+  logoHtml: "<img src=\"https://klapprodtpools.com/wp-content/uploads/2023/01/klapprodt-pools-1.png\" alt=\"Klapprodt Pools\">",
   city: "Keller",
   since: "2009",
   zone: "Dallas–Fort Worth",

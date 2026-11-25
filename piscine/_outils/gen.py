@@ -83,6 +83,18 @@ def build(P):
         if not P.get('models'):
             s = s.replace('dims:"10 × 5 m"', 'dims:"33 × 16 ft"').replace('dims:"9 × 4.5 m"', 'dims:"30 × 15 ft"').replace('dims:"10 × 6 m"', 'dims:"33 × 20 ft"').replace('dims:"5 × 3 m"', 'dims:"16 × 10 ft"').replace('dims:"8 × 4 m"', 'dims:"26 × 13 ft"').replace('dims:"9 × 5 m"', 'dims:"30 × 16 ft"')
     s = s.replace(".bigLogo span{color:var(--aqua2)}", ".bigLogo span{color:var(--aqua2)}\n.bigLogo{font-size:clamp(40px,9vw,120px)!important;white-space:nowrap}", 1)
+    # logo image : P['logo'] = {"url": "...", "mode": "pastille" (couleur ou fond blanc) | "blanc" (logo blanc, sans filtre)}
+    if P.get('logo') and P['logo'].get('url'):
+        img = '<img src="%s" alt="%s">' % (P['logo']['url'], P['name'].replace('&amp;', '&').replace('"', ''))
+        s = s.replace('logoHtml: ' + js(P['logoHtml']), 'logoHtml: ' + js(img)).replace('data-c="logoHtml">' + P['logoHtml'], 'data-c="logoHtml">' + img)
+        if P['logo'].get('mode') == 'blanc':
+            css = ".bigLogo img{height:clamp(90px,22vw,190px);width:auto;max-width:86vw;object-fit:contain;display:block;filter:drop-shadow(0 6px 24px rgba(0,0,0,.45))}\n.logo img{height:40px;width:auto;max-width:200px;object-fit:contain;display:block}"
+        else:
+            css = ".bigLogo img{height:clamp(90px,22vw,190px);width:auto;max-width:86vw;object-fit:contain;display:block;background:#fff;padding:clamp(10px,2vw,18px) clamp(16px,3vw,28px);border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.35)}\n.logo img{height:40px;width:auto;max-width:200px;object-fit:contain;display:block;background:#fff;padding:4px 10px;border-radius:10px}"
+        s = s.replace(".bigLogo span{color:var(--aqua2)}", ".bigLogo span{color:var(--aqua2)}\n" + css, 1)
+    else:
+        print(P['slug'], "ATTENTION : pas de logo image (logo texte)")
+
     os.makedirs(f"{ROOT}/{P['slug']}", exist_ok=True)
     open(f"{ROOT}/{P['slug']}/index.html", 'w').write(s)
     # contrôles

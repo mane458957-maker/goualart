@@ -13,6 +13,13 @@ Règles : vérifier chaque remplacement (afficher « INTROUVABLE » si absent) ;
 moins de 6 photos de réalisations → `creations: []` ; pas d'email → `email: ""` (le formulaire lance un appel) ;
 garder `demoReviews: true` (avis d'exemple marqués) ; `score` seulement si la note Google est connue.
 
+## Logo : OBLIGATOIRE (règle du 25/11/2026)
+Toujours récupérer l'URL absolue du logo de l'en-tête de leur site et la passer à `gen.py` via
+`"logo": {"url": "https://…/logo.png", "mode": "pastille"}` (logo coloré ou à fond blanc → pastille blanche)
+ou `"mode": "blanc"` (logo blanc, souvent la version du pied de page, affiché sans filtre). Couleur inconnue → pastille.
+Logo texte (`logoHtml` seul) UNIQUEMENT si le site n'a aucune image de logo ; gen.py affiche alors un avertissement.
+Quand tu délègues la recherche à des agents, demande-leur explicitement ce champ `logo`.
+
 ## Aperçu pour le mail
 Capture Playwright (Chrome `/usr/bin/google-chrome`, flags `--use-gl=angle --use-angle=swiftshader --enable-unsafe-swiftshader --allow-file-access-from-files`) :
 1280×800, haut de page + section `#config` (forcer `st.night=1;st.nightT=1;st.lights=1;st.lightsT=1;st.sht-=5`), empiler, redimensionner 900 px, JPEG q78 (< 200 Ko)
