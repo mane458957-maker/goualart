@@ -1168,5 +1168,249 @@
   "verdict": "OK",
   "email_verified_on": "aucun email sur poolworldqatar.com (page d'accueil vérifiée)",
   "country": "Qatar"
+ },
+ {
+  "slug": "green-diar-qatar",
+  "name": "Green Diar",
+  "company": "Green Diar Trading and Contracting Co. W.L.L",
+  "city_sheet": "Doha (Business Concorde Center)",
+  "site": "greendiarqatar.com",
+  "phones": "+974 3056 5600 · +974 4413 3710 · +974 5579 5905",
+  "email": "greendiarqatar@gmail.com",
+  "email_other": "",
+  "whatsapp": "",
+  "instagram": "",
+  "contact_form": "https://greendiarqatar.com/contact-us.html",
+  "weak_point": "One thing I noticed on your current site: the \"Follow us\" icons all point to \"#\" and some page code (\"meta-viewport\", \"title\") shows up as visible text at the top of the page.",
+  "remark_fr": "Site HTML statique ancien (© 2019) : liens sociaux en '#', balises meta affichées en texte visible en haut de page, faute 'Usefull link', même texte de slider répété 3 fois, page Projets = 16 photos sans titre ni légende, téléphones sans indicatif +974. Email gmail affiché sur le site.",
+  "logo": "GREEN<span> DIAR</span>",
+  "title": "Green Diar — Swimming Pools &amp; Landscaping, Doha",
+  "desc": "Green Diar builds and maintains swimming pools, jacuzzis, fountains, sauna &amp; steam rooms and landscaping across Qatar.",
+  "city": "Doha",
+  "since": "",
+  "zone": "Doha, Al Wakrah &amp; Lusail",
+  "phone": "+974 3056 5600",
+  "wa": "",
+  "address": "Business Concorde Center, 2nd Floor, Door No. 11, P.O. Box 32367, Doha, Qatar",
+  "tagline": "Build your dream swimming pool<br><em>pools, jacuzzis &amp; water features in Qatar</em>",
+  "subtag": "Pools &amp; landscaping · Free consultation",
+  "eyebrow": "Swimming pool builders in Qatar",
+  "h2": "Pools, jacuzzis and water features built in Qatar",
+  "lead": "Green Diar Trading and Contracting builds swimming pools, jacuzzis, fountains, sauna &amp; steam rooms and water features, and handles pool maintenance, plumbing and soft &amp; hard landscaping.",
+  "stats": [
+   [
+    "1000+",
+    "pools constructed"
+   ],
+   [
+    "957+",
+    "happy customers"
+   ],
+   [
+    "120+",
+    "employees"
+   ],
+   [
+    "Free",
+    "consultation"
+   ]
+  ],
+  "svc_h2": "Our pool services",
+  "cards": [
+   [
+    "Swimming pool construction",
+    "Pools designed and built for villas, compounds and projects.",
+    "Free consultation"
+   ],
+   [
+    "Jacuzzi, sauna &amp; steam room",
+    "Jacuzzis, saunas and steam rooms supplied and installed.",
+    "On quotation"
+   ],
+   [
+    "Pool maintenance &amp; spares",
+    "Regular maintenance and supply of pool spare parts.",
+    "On quotation"
+   ],
+   [
+    "Fountains &amp; landscaping",
+    "Fountains, water features and soft &amp; hard landscaping.",
+    "On quotation"
+   ]
+  ],
+  "zone_html": "We work across <span data-c=\"zone\">Doha, Al Wakrah &amp; Lusail</span>.",
+  "extra_contact": "",
+  "foot1": "Swimming pools &amp; landscaping",
+  "foot2": "Doha",
+  "creations": [
+   [
+    "Swimming pool project",
+    "Qatar",
+    "https://greendiarqatar.com/images/01.jpg"
+   ],
+   [
+    "Swimming pool project",
+    "Qatar",
+    "https://greendiarqatar.com/images/02.jpg"
+   ],
+   [
+    "Swimming pool project",
+    "Qatar",
+    "https://greendiarqatar.com/images/03.jpg"
+   ],
+   [
+    "Swimming pool project",
+    "Qatar",
+    "https://greendiarqatar.com/images/04.jpg"
+   ],
+   [
+    "Swimming pool project",
+    "Qatar",
+    "https://greendiarqatar.com/images/05.jpg"
+   ],
+   [
+    "Swimming pool project",
+    "Qatar",
+    "https://greendiarqatar.com/images/06.jpg"
+   ],
+   [
+    "Swimming pool project",
+    "Qatar",
+    "https://greendiarqatar.com/images/07.jpg"
+   ],
+   [
+    "Swimming pool project",
+    "Qatar",
+    "https://greendiarqatar.com/images/08.jpg"
+   ]
+  ],
+  "send": true,
+  "logo_url": "https://greendiarqatar.com/images/logo.png",
+  "logo_mode": "pastille",
+  "verdict": "OK",
+  "email_verified_on": "https://greendiarqatar.com/ (pied de page / contact)",
+  "country": "Qatar"
+ },
+ {
+  "slug": "al-mamoon-pools",
+  "name": "Al Mamoon",
+  "company": "Al Mamoon Swimming Pools &amp; Spa",
+  "city_sheet": "Doha",
+  "site": "mspools.qa",
+  "phones": "+974 4465 7782",
+  "email": "info@mspools.qa",
+  "email_other": "",
+  "whatsapp": "",
+  "instagram": "",
+  "contact_form": "https://mspools.qa/contacts/",
+  "weak_point": "One thing I noticed on your current site: the footer still shows \"Copyright © 2019\" and the social icons, Terms of Use and Privacy Policy links all point to \"#\".",
+  "remark_fr": "WordPress daté : © 2019 alors que pages modifiées en 2024, icônes sociales vides et liens CGU/Confidentialité en '#', logo d'en-tête sans image (src vide), nom écrit tantôt 'Al-Mamoon' tantôt 'Al Mamoon', minuscules 'qatar', alt text bourrés de mots-clés, horaires incomplets. Beaucoup de projets commerciaux (aéroport, hôtels) mais aussi piscines privées.",
+  "logo": "AL MAMOON<span> POOLS</span>",
+  "title": "Al Mamoon — Swimming Pools &amp; Spa, Doha",
+  "desc": "Al Mamoon Swimming Pools &amp; Spa designs and builds swimming pools, jacuzzis, saunas, steam rooms, fountains and water features in Qatar.",
+  "city": "Doha",
+  "since": "",
+  "zone": "Doha, Al Wakrah &amp; Lusail",
+  "phone": "+974 4465 7782",
+  "wa": "",
+  "address": "Doha, Qatar",
+  "tagline": "Pools, spas &amp; water features<br><em>designed and built in Qatar</em>",
+  "subtag": "Pools &amp; spa · Free consultation",
+  "eyebrow": "Swimming pools in Qatar",
+  "h2": "Residential and commercial pools built in Qatar",
+  "lead": "Al Mamoon Swimming Pools &amp; Spa designs and builds residential and commercial swimming pools, water features, fountains, waterfalls and rockeries, and supplies and installs sauna and steam rooms.",
+  "stats": [
+   [
+    "Pools",
+    "residential &amp; commercial"
+   ],
+   [
+    "Spa",
+    "sauna &amp; steam rooms"
+   ],
+   [
+    "Water",
+    "features &amp; fountains"
+   ],
+   [
+    "Free",
+    "consultation"
+   ]
+  ],
+  "svc_h2": "Our pool services",
+  "cards": [
+   [
+    "Pool design &amp; construction",
+    "Residential and commercial swimming pools and related works.",
+    "Free consultation"
+   ],
+   [
+    "Pool maintenance",
+    "Maintenance of residential and commercial pools.",
+    "On quotation"
+   ],
+   [
+    "Sauna &amp; steam rooms",
+    "Supply and installation of sauna and steam bath rooms.",
+    "On quotation"
+   ],
+   [
+    "Fountains &amp; water features",
+    "Fountains, waterfalls and artificial rockery features.",
+    "On quotation"
+   ]
+  ],
+  "zone_html": "We work across <span data-c=\"zone\">Doha, Al Wakrah &amp; Lusail</span>.",
+  "extra_contact": "",
+  "foot1": "Swimming pools &amp; spa",
+  "foot2": "Doha",
+  "creations": [
+   [
+    "Overflow swimming pool",
+    "Qatar",
+    "https://mspools.qa/wp-content/uploads/2024/07/Overflow-Pool-Qatar.jpeg"
+   ],
+   [
+    "Swimming pool &amp; jacuzzi",
+    "Qatar",
+    "https://mspools.qa/wp-content/uploads/2020/02/IMG_20170510_125350-scaled.jpg"
+   ],
+   [
+    "Indoor private swimming pool",
+    "Qatar",
+    "https://mspools.qa/wp-content/uploads/2021/06/IMG_3243-scaled.jpg"
+   ],
+   [
+    "Infinity swimming pool",
+    "The Pearl, Qatar",
+    "https://mspools.qa/wp-content/uploads/2024/07/Infinity-Swimming-Pool-Pearl-Qatar.jpeg"
+   ],
+   [
+    "Swimming pool",
+    "The Pearl, Qatar",
+    "https://mspools.qa/wp-content/uploads/2021/06/20200906_094642-scaled.jpg"
+   ],
+   [
+    "Compound swimming pool",
+    "Al Dana Compound",
+    "https://mspools.qa/wp-content/uploads/2024/07/Al-Dana-Compound-Swimming-Pool.jpeg"
+   ],
+   [
+    "Glass mosaic swimming pool",
+    "Qatar",
+    "https://mspools.qa/wp-content/uploads/2024/07/Glass-Mosaic-Iris-Swimming-Pool-Qatar.jpeg"
+   ],
+   [
+    "Lagoon swimming pool",
+    "West Bay Lagoon",
+    "https://mspools.qa/wp-content/uploads/2021/06/20200407_110842-scaled.jpg"
+   ]
+  ],
+  "send": true,
+  "logo_url": "",
+  "logo_mode": "pastille",
+  "verdict": "OK",
+  "email_verified_on": "https://mspools.qa/ (pied de page, mailto:info@mspools.qa)",
+  "country": "Qatar"
  }
 ]
