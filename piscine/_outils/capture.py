@@ -9,6 +9,7 @@ async def shot(p,slug):
     pg=await b.new_page(viewport={'width':1280,'height':800})
     await pg.route('**/*',lambda r: r.continue_() if r.request.url.startswith('file:') else r.abort())
     await pg.goto('file://'+BASE+slug+'/index.html'); await pg.wait_for_timeout(3500)
+    await pg.evaluate("""document.querySelectorAll('.bigLogo img,.logo img').forEach(i=>{if(!i.naturalWidth){const s=document.createElement('span');s.textContent=i.alt;s.style.color='#fff';i.replaceWith(s)}})""")
     top=await pg.screenshot()
     await pg.evaluate("document.querySelector('#config').scrollIntoView()"); await pg.wait_for_timeout(1500)
     try: await pg.evaluate("st.night=1;st.nightT=1;st.lights=1;st.lightsT=1;st.sht-=5")

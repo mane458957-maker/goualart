@@ -1,0 +1,940 @@
+[
+ {
+  "lang": "fr",
+  "slug": "tradi-piscines",
+  "name": "Tradi Piscines",
+  "title": "Tradi Piscines — Pisciniste à Saint-Pryvé-Saint-Mesmin, près d'Orléans",
+  "meta": "Tradi Piscines construit, rénove et entretient des piscines béton et bois près d'Orléans (Loiret). Spas, saunas, hammams, équipements et showroom à Saint-Pryvé-Saint-Mesmin.",
+  "logoHtml": "Tradi <span>Piscines</span>",
+  "city": "Saint-Pryvé-Saint-Mesmin",
+  "zone": "Orléans et tout le Loiret",
+  "phone": "02 38 66 65 17",
+  "email": "kitpiscine@aol.com",
+  "address": "101 rue du Puits Rond, 45750 Saint-Pryvé-Saint-Mesmin",
+  "whatsapp": "",
+  "hero": "Votre piscine près d'Orléans,<br><em>construite clés en main.</em>",
+  "subtag": "Construction · Rénovation · Spas · Devis gratuit",
+  "eyebrow": "Pisciniste à Saint-Pryvé-Saint-Mesmin · Loiret",
+  "about_h2": "Un pisciniste du Loiret, de la conception à l'entretien",
+  "about_lead": "Tradi Piscines accompagne les particuliers de l'Orléanais avec un service clés en main : conception, terrassement, gros œuvre, mise en service et entretien. Piscines béton (parpaing, béton coulé ou projeté) ou piscines bois en kit, rénovation, détection de fuite, et un showroom avec plusieurs spas en exposition. Un savoir-faire, un service disponible et un SAV réactif.",
+  "stats": [
+   [
+    "1996",
+    "Entreprise créée"
+   ],
+   [
+    "4,1",
+    "Note Google"
+   ],
+   [
+    "92",
+    "Avis Google"
+   ],
+   [
+    "10 ans",
+    "Garantie décennale"
+   ]
+  ],
+  "svc_h2": "Construction, rénovation et bien-être",
+  "services": [
+   [
+    "Construction de piscines",
+    "Piscines en béton armé (blocs, béton coulé ou projeté) et piscines bois en kit, hors-sol ou semi-enterrées, sur dalle béton ou lit de sable.",
+    "Devis gratuit"
+   ],
+   [
+    "Rénovation & détection de fuite",
+    "Recherche de fuite, reprise de maçonnerie, étanchéité, remise en état des skimmers, de la filtration et du traitement de l'eau.",
+    "Devis gratuit"
+   ],
+   [
+    "Spas, saunas & hammams",
+    "Showroom avec plusieurs spas en exposition, gammes Pure, Sport, Signature et Exclusive, saunas et hammams.",
+    "Sur devis"
+   ],
+   [
+    "Équipements & sécurité",
+    "Robots, couvertures automatiques et à barres, abris, chauffage, pompes à chaleur, traitement de l'eau, éclairage.",
+    "Sur devis"
+   ]
+  ],
+  "zone_lead": "Basés à Saint-Pryvé-Saint-Mesmin, on intervient dans <span data-c=\"zone\">Orléans et tout le Loiret</span>.",
+  "footer1": "Kit Piscines Art Déco Loisirs — Tradi Piscines",
+  "footer2": "Saint-Pryvé-Saint-Mesmin",
+  "extra_contact": [
+   "🕘 Lun–ven : 9h–12h30 et 14h–19h · Sam : 9h–12h30 et 14h–18h",
+   "🛍️ Showroom & magasin sur place"
+  ],
+  "score": [
+   "4,1",
+   "92 avis Google"
+  ],
+  "creations": [],
+  "logo": {
+   "url": "https://www.tradipiscines.fr/wp-content/uploads/sites/2326/2020/09/Logo-Tradi-piscine.png",
+   "mode": "pastille"
+  },
+  "meta_suivi": {
+   "site": "https://www.tradipiscines.fr/",
+   "avis": 92,
+   "note": 4.1,
+   "source_avis": "Fiche PagesJaunes https://www.pagesjaunes.fr/pros/07759491 (bloc Google : 4,1/5, 92 avis ; l'annuaire PJ Loiret affiche 95)",
+   "contact": "",
+   "instagram": "",
+   "facebook": "lien Facebook présent en en-tête (deux URL différentes), non relevé",
+   "formulaire": "https://www.tradipiscines.fr/contact/",
+   "whatsapp": null,
+   "point_faible": "Faute dans la meta-description et les balises de partage de toutes les pages : « Conception de piscines … vers Orélans (45) » au lieu d'« Orléans » ; le pied de page affiche « © 2026 KIT PISCINES ART DECO LOISIRS » au lieu du nom commercial.",
+   "remarque": "Site Solocal (« Réalisé par Solocal »), WordPress multisite + Slider Revolution 6.1.1, images de 2016. Email affiché en clair mais masqué sur la page contact : « kitpiscine[at]aol.com » (domaine AOL, donc accepté). Adresse écrite « Puits Roue » dans le texte et « Puits Rond » sur la carte. La galerie « Nos réalisations » ne contient qu'une image (curseur chargé en JS) : creations vide. PagesJaunes indique que le magasin fait partie du groupement « Oasis Piscines & Spas » (non mentionné sur le site ; c'est un groupement de magasins indépendants, le magasin a son propre site) et cite des marques Everblue/Hydro Sud parmi les produits : à garder en tête. Société créée le 2/9/1996 (PJ)."
+  }
+ },
+ {
+  "lang": "fr",
+  "slug": "lorraine-piscines",
+  "name": "Lorraine Piscines",
+  "title": "Lorraine Piscines — Piscines coques et spas à Marly (Metz)",
+  "meta": "Lorraine Piscines installe des piscines coques et des spas à Marly, près de Metz, et dans toute la Moselle. Showroom, aménagements extérieurs, robots et entretien depuis plus de 25 ans.",
+  "logoHtml": "Lorraine <span>Piscines</span>",
+  "city": "Marly",
+  "zone": "Metz et toute la Moselle",
+  "phone": "03 87 50 58 52",
+  "email": "lorraine.piscines@hotmail.fr",
+  "address": "26 rue des Garennes, 57155 Marly",
+  "whatsapp": "",
+  "hero": "Votre piscine coque en Moselle,<br><em>la détente à la maison.</em>",
+  "subtag": "Piscines coques · Spas · Devis gratuit",
+  "eyebrow": "Pisciniste à Marly · Moselle",
+  "about_h2": "25 ans de piscines et de spas autour de Metz",
+  "about_lead": "Depuis plus de 25 ans, Lorraine Piscines accompagne les familles mosellanes avec une équipe commerciale et des techniciens à l'écoute. Dans son showroom de Marly, découvrez des piscines coques de grandes marques (Ceramic de Luxe, Génération Piscine, Mon de Pra) et une gamme de spas, puis confiez-nous votre projet : nous le réalisons dans les meilleurs délais.",
+  "stats": [
+   [
+    "25 ans",
+    "D'expérience"
+   ],
+   [
+    "1500+",
+    "Clients satisfaits"
+   ],
+   [
+    "4,7",
+    "Note Google"
+   ],
+   [
+    "103",
+    "Avis Google"
+   ]
+  ],
+  "svc_h2": "Piscines, spas et aménagements",
+  "services": [
+   [
+    "Piscines coques",
+    "Installation de piscines coques de toutes tailles : Ceramic de Luxe, Génération Piscine, Mon de Pra.",
+    "Devis gratuit"
+   ],
+   [
+    "Spas & bien-être",
+    "Spas en exposition au showroom de Marly, conseil et installation.",
+    "Sur devis"
+   ],
+   [
+    "Aménagements extérieurs",
+    "Terrassement, plages et abords de piscine pour un projet complet.",
+    "Devis gratuit"
+   ],
+   [
+    "Robots & entretien",
+    "Robots d'entretien, produits et conseils pour garder une eau parfaite.",
+    "Sur devis"
+   ]
+  ],
+  "zone_lead": "Basés à Marly, on intervient dans <span data-c=\"zone\">Metz et toute la Moselle</span>.",
+  "footer1": "Lorraine Piscines SAS",
+  "footer2": "Marly",
+  "extra_contact": [
+   "🕘 Lun : 14h–18h · Mar–sam : 10h–12h et 14h–18h",
+   "🛍️ Showroom sur place"
+  ],
+  "score": [
+   "4,7",
+   "103 avis Google"
+  ],
+  "creations": [],
+  "logo": {
+   "url": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/mnl48kar5GFW1g1a/logo-light-Aq2GMXRbQxServZ9.png",
+   "mode": "blanc"
+  },
+  "meta_suivi": {
+   "site": "https://www.lorraine-piscines.fr/",
+   "avis": 103,
+   "note": 4.7,
+   "source_avis": "Fiche PagesJaunes https://www.pagesjaunes.fr/pros/08768816 (bloc Google : 4,7/5, 103 avis)",
+   "contact": "",
+   "instagram": "Instagram cité sur la fiche PJ, non relevé",
+   "facebook": "",
+   "formulaire": "https://lorraine-piscines.fr/contact",
+   "whatsapp": null,
+   "point_faible": "Le bouton Facebook du site pointe vers la page d'accueil générique https://www.facebook.com/ (aucune page de l'entreprise) ; texte alternatif de gabarit resté en anglais sur les bandeaux (« an abstract photo of a curved building with a blue sky in the background ») ; section « NOS PRODUITS » vide et faute « Nos autre articles ».",
+   "remarque": "Site Hostinger Website Builder (zyrosite) habillé « Réalisé par Aylos » : récent mais bâclé (gabarit, image Unsplash, faute « pour tout demande » sur la page contact). Logo nommé « logo-light » : probablement blanc, mode « blanc » à vérifier. Les images de l'accueil (leonis, levant, elliptic, relax, maia…) semblent être des visuels catalogue des fabricants, pas des réalisations : creations vide ; la page /realisations n'a pas pu être lue (autorisation non obtenue). Note PJ propre : 1/5 sur 11 avis (attention). Créée le 8/3/2002 (PJ), SIREN 441192937. Pas de franchise mentionnée."
+  }
+ },
+ {
+  "lang": "fr",
+  "slug": "normandie-piscines",
+  "name": "Normandie Piscines",
+  "title": "Normandie Piscines — Pisciniste à Carpiquet (Caen) depuis 1967",
+  "meta": "Normandie Piscines, entreprise familiale indépendante, conçoit, construit, rénove et entretient piscines, spas, saunas et hammams à Caen et en Normandie depuis 1967.",
+  "logoHtml": "Normandie <span>Piscines</span>",
+  "city": "Carpiquet",
+  "zone": "Caen, le Calvados et la Normandie",
+  "phone": "02 31 26 80 90",
+  "email": "caen@normandie-piscines.com",
+  "address": "2 rue de la Vigne, 14650 Carpiquet",
+  "whatsapp": "",
+  "hero": "Créateur de bien-être en Normandie,<br><em>depuis 1967.</em>",
+  "subtag": "Depuis 1967 · Entreprise familiale · Devis gratuit",
+  "eyebrow": "Pisciniste à Carpiquet · Calvados",
+  "about_h2": "Une entreprise familiale et indépendante depuis 1967",
+  "about_lead": "Dirigée par Andréa Lapasset, Normandie Piscines conçoit et construit des piscines sur mesure pour les particuliers, les professionnels et les collectivités depuis 1967. Piscines béton, coques polyester ou kits, spas, saunas et hammams : l'entreprise est labellisée ProPiscines par la Fédération des Professionnels de la Piscine.",
+  "stats": [
+   [
+    "1967",
+    "Année de création"
+   ],
+   [
+    "ProPiscines",
+    "Label FPP"
+   ],
+   [
+    "97",
+    "Avis Google"
+   ],
+   [
+    "10 ans",
+    "Garantie décennale"
+   ]
+  ],
+  "svc_h2": "Construction, rénovation et entretien",
+  "services": [
+   [
+    "Construction sur mesure",
+    "Piscines béton, coques polyester prêtes à plonger ou en kit, intérieures ou extérieures.",
+    "Devis gratuit"
+   ],
+   [
+    "Rénovation & recherche de fuite",
+    "Diagnostic, recherche de fuite et rénovation complète de bassins existants.",
+    "Devis gratuit"
+   ],
+   [
+    "Spas, saunas & hammams",
+    "Espaces bien-être sur mesure, intérieurs et extérieurs.",
+    "Sur devis"
+   ],
+   [
+    "Entretien & accessoires",
+    "Sécurité, domotique, chauffage, filtration, nettoyage et abris, en boutique à Carpiquet.",
+    "Sur devis"
+   ]
+  ],
+  "zone_lead": "Basés à Carpiquet, on intervient dans <span data-c=\"zone\">Caen, le Calvados et la Normandie</span>.",
+  "footer1": "Normandie Piscines",
+  "footer2": "Carpiquet",
+  "extra_contact": [
+   "🕘 Lun–ven : 9h–12h et 14h–18h · Sam : 9h–12h",
+   "🛍️ Boutique sur place"
+  ],
+  "score": [
+   "3,7",
+   "97 avis Google"
+  ],
+  "creations": [],
+  "logo": {
+   "url": "https://www.normandie-piscine.fr/wp-content/uploads/2022/12/Logo-Normandie-Piscines.png",
+   "mode": "pastille"
+  },
+  "meta_suivi": {
+   "site": "https://www.normandie-piscine.fr/",
+   "avis": 97,
+   "note": 3.7,
+   "source_avis": "construire-piscine.fr (classement Calvados, agrège Google) https://construire-piscine.fr/dpt-14 : 3,7/5, 97 avis",
+   "contact": "Andréa Lapasset (dirigeante)",
+   "instagram": "",
+   "facebook": "https://www.facebook.com/normandiepiscines/",
+   "formulaire": "https://www.normandie-piscine.fr/contact/new",
+   "whatsapp": null,
+   "point_faible": "Section « Ce qu'ils disent de nous » vide (phrase d'intro, aucun témoignage) sur l'accueil et la page Réalisations ; fautes « il y ai eu », « Parcourez nos réalisation par catégorie », « Piscine extérieur » ; texte alternatif du logo = « Conseils ».",
+   "remarque": "Email affiché sur le site (mailto) avec un domaine différent (normandie-piscines.com vs normandie-piscine.fr) : retenu car le site l'affiche. Site WordPress de l'agence Imagile (Caen), base 2022 mise à jour en 2026 : plus soigné que les autres, prospect plus faible sur l'angle « site vieillot » ; à présenter sous l'angle contenus vides et fautes. Incohérence « près de 60 ans » / « plus de 60 ans ». Les réalisations sont des liens texte sans image exploitable : creations vide. Note Google moyenne (3,7). Indépendant (aucune franchise)."
+  }
+ },
+ {
+  "lang": "fr",
+  "slug": "aqua-and-co",
+  "name": "Aqua And Co",
+  "title": "Aqua And Co — Pisciniste au Haillan, Bordeaux et littoral girondin",
+  "meta": "Aqua And Co construit et rénove des piscines coque polyester et maçonnées au Haillan, à Bordeaux et sur le littoral girondin, y compris dans les jardins difficiles d'accès. Magasin, analyse d'eau et SAV.",
+  "logoHtml": "Aqua <span>And Co</span>",
+  "city": "Le Haillan",
+  "zone": "Bordeaux, la métropole et le littoral girondin",
+  "phone": "05 56 97 54 89",
+  "email": "contact@aqua-and-co.fr",
+  "address": "2 rue Bernard de Girard, 33185 Le Haillan",
+  "whatsapp": "",
+  "hero": "Votre piscine en Gironde,<br><em>même dans les jardins les plus enclavés.</em>",
+  "subtag": "Coque polyester & maçonnée · Devis gratuit",
+  "eyebrow": "Pisciniste au Haillan · Gironde",
+  "about_h2": "Notre expérience à votre service, de Bordeaux au littoral",
+  "about_lead": "Depuis 2012, Aqua And Co conçoit avec vous votre projet de construction ou de rénovation de piscine et de spa. Installateur agréé et revendeur exclusif en Gironde des coques françaises PID, l'équipe réalise aussi des bassins traditionnels maçonnés, et sait intervenir dans les jardins difficiles d'accès grâce au grutage. Votre magasin au Haillan vous accompagne ensuite au quotidien : analyse d'eau gratuite, produits, sécurité et SAV.",
+  "stats": [
+   [
+    "2012",
+    "Création de l'entreprise"
+   ],
+   [
+    "4,5",
+    "Note des avis clients"
+   ],
+   [
+    "46",
+    "Configurations de coques PID"
+   ],
+   [
+    "10 ans",
+    "Garantie décennale"
+   ]
+  ],
+  "svc_h2": "Construction, rénovation et magasin",
+  "services": [
+   [
+    "Piscines coque polyester",
+    "Coques françaises PID, rectangulaires ou à formes libres, de 4,50 × 2,20 m à 10,50 × 4,20 m, posées clés en main avec grutage si besoin.",
+    "Devis gratuit"
+   ],
+   [
+    "Piscines traditionnelles maçonnées",
+    "Bassins sur mesure, margelles et terrasses, spas et hammams.",
+    "Devis gratuit"
+   ],
+   [
+    "Rénovation",
+    "Changement de liner, pièces à sceller, local technique et reprise de maçonnerie.",
+    "Sur devis"
+   ],
+   [
+    "Magasin, entretien & SAV",
+    "Produits chimiques, analyse d'eau gratuite, traitement, sécurité, robots réparés toutes marques, hivernage et remise en route.",
+    "Sur devis"
+   ]
+  ],
+  "zone_lead": "Basés au Haillan, nous intervenons sur <span data-c=\"zone\">Bordeaux, la métropole et le littoral girondin</span>.",
+  "footer1": "SARL Aqua And Co",
+  "footer2": "Le Haillan · Gironde",
+  "extra_contact": [
+   "🕘 Basse saison : lundi 15h–18h, mardi au vendredi 10h–12h et 15h–18h",
+   "🛍️ Magasin et analyse d'eau gratuite sur place"
+  ],
+  "score": [
+   "4,5",
+   "60 avis clients"
+  ],
+  "creations": [
+   [
+    "Piscine coque posée",
+    "Gironde",
+    "https://www.aqua-and-co.fr/images/joomgallery/details/gallery_2/img_0298_20170403_1703470667.jpeg"
+   ],
+   [
+    "Bassin et terrasse",
+    "Gironde",
+    "https://www.aqua-and-co.fr/images/joomgallery/details/gallery_2/img_0433_20170403_1828199136.jpeg"
+   ],
+   [
+    "Piscine enterrée",
+    "Bordeaux",
+    "https://www.aqua-and-co.fr/images/joomgallery/details/gallery_2/img_0903_20170403_1214901631.jpeg"
+   ],
+   [
+    "Piscine familiale",
+    "Gironde",
+    "https://www.aqua-and-co.fr/images/joomgallery/details/gallery_2/img_1114_20170403_1830417275.jpeg"
+   ],
+   [
+    "Piscine avec plage",
+    "Gironde",
+    "https://www.aqua-and-co.fr/images/joomgallery/details/gallery_2/img_1198_20170403_1948716386.jpeg"
+   ],
+   [
+    "Réalisation récente",
+    "Gironde",
+    "https://www.aqua-and-co.fr/images/joomgallery/details/gallery_2/img-1367_20200224_1937380667.jpg"
+   ],
+   [
+    "Piscine maçonnée",
+    "Gironde",
+    "https://www.aqua-and-co.fr/images/joomgallery/details/gallery_2/img_1381_20200224_1205813150.jpeg"
+   ],
+   [
+    "Bassin rénové",
+    "Gironde",
+    "https://www.aqua-and-co.fr/images/joomgallery/details/gallery_2/img_2317_20200224_2020071490.jpeg"
+   ]
+  ],
+  "models": [
+   [
+    "PAROS",
+    "10,50 × 4,20 m",
+    10.5,
+    4.2
+   ],
+   [
+    "KOS",
+    "4,50 × 2,20 m",
+    4.5,
+    2.2
+   ]
+  ],
+  "logo": {
+   "url": "https://www.aqua-and-co.fr/images/headers/logo.png",
+   "mode": "pastille"
+  },
+  "meta_suivi": {
+   "site": "https://www.aqua-and-co.fr/",
+   "avis": 60,
+   "note": 4.5,
+   "source_avis": "lespiscinistes.fr (4,5/5, 60 « avis du web ») https://lespiscinistes.fr/33/le-haillan/aqua-and-co-5i5 — total Google non confirmé séparément ; PagesJaunes : 5/5 sur 6 avis PJ",
+   "contact": "M. Geffray (gérant, mentions légales)",
+   "instagram": "",
+   "facebook": "",
+   "formulaire": "https://www.aqua-and-co.fr/contacts.html",
+   "whatsapp": null,
+   "point_faible": "Page Contacts sans adresse email visible (« protégée contre les robots, activez JavaScript ») et bloc de connexion Joomla mi-anglais (« Login with Google + », « Login or register ») affiché aux visiteurs ; coquilles : « pénistaltique », « seront vous conseiller », « Fabication » ; la méta-description parle encore du magasin « d'Eysines » alors que l'adresse est au Haillan.",
+   "remarque": "Site Joomla (FAT LAB Communication, hébergé OVH), galerie JoomGallery de 39 photos sans légendes datées 2017/2020, aucun lien réseau social, aucun chiffre sur l'accueil. Email contact@aqua-and-co.fr affiché en clair dans les mentions légales (https://www.aqua-and-co.fr/mentions-legales.html). SARL créée en 2012 (RCS Bordeaux 749 988 366). Revendeur PID, pas une franchise."
+  }
+ },
+ {
+  "lang": "fr",
+  "slug": "piscine-de-latlantique",
+  "name": "Piscine de l'Atlantique",
+  "title": "Piscine de l'Atlantique — Pisciniste à Saint-Médard-en-Jalles depuis 2002",
+  "meta": "Piscine de l'Atlantique construit et rénove des piscines coque et béton à Saint-Médard-en-Jalles, Bordeaux et dans le Médoc. Magasin, équipements, analyses d'eau et SAV depuis 2002.",
+  "logoHtml": "Piscine de <span>l'Atlantique</span>",
+  "city": "Saint-Médard-en-Jalles",
+  "zone": "Bordeaux Métropole, le Médoc et le bassin d'Arcachon",
+  "phone": "05 56 12 29 12",
+  "email": "piscine@piscinedelatlantique.com",
+  "address": "1 rue Alfred de Musset, 33160 Saint-Médard-en-Jalles",
+  "whatsapp": "",
+  "hero": "Votre future piscine se trouve forcément ici,<br><em>en Gironde depuis 2002.</em>",
+  "subtag": "Depuis 2002 · Devis gratuit sous 48 h",
+  "eyebrow": "Pisciniste à Saint-Médard-en-Jalles · Gironde",
+  "about_h2": "La passion de créer, le plaisir d'innover",
+  "about_lead": "Depuis 2002, Piscine de l'Atlantique transforme les envies de piscine en réalité autour de Saint-Médard-en-Jalles : piscines coque et béton sur mesure, rénovation, équipements et conseils personnalisés. Le magasin vous accueille pour vos analyses d'eau, vos produits et le SAV.",
+  "stats": [
+   [
+    "20+",
+    "Ans d'expérience"
+   ],
+   [
+    "200+",
+    "Piscines construites"
+   ],
+   [
+    "1000+",
+    "Analyses d'eau"
+   ],
+   [
+    "4,5",
+    "Note des avis clients"
+   ]
+  ],
+  "svc_h2": "Construction, rénovation et magasin",
+  "services": [
+   [
+    "Construction de piscines coque",
+    "Bassins coque de toutes tailles, de la mini-piscine de 10 m² au bassin familial, posés clés en main.",
+    "Devis gratuit"
+   ],
+   [
+    "Piscines béton sur mesure",
+    "Piscines maçonnées, à débordement ou intérieures carrelées, conçues selon votre terrain.",
+    "Devis gratuit"
+   ],
+   [
+    "Rénovation de piscines",
+    "Remise à neuf du revêtement, de la filtration et des équipements de votre bassin.",
+    "Sur devis"
+   ],
+   [
+    "Magasin, équipements & SAV",
+    "Vente d'équipements, analyses d'eau, conseils personnalisés et service après-vente.",
+    "Sur devis"
+   ]
+  ],
+  "zone_lead": "Basés à Saint-Médard-en-Jalles, nous intervenons sur <span data-c=\"zone\">Bordeaux Métropole, le Médoc et le bassin d'Arcachon</span>.",
+  "footer1": "Piscine de l'Atlantique",
+  "footer2": "Saint-Médard-en-Jalles · Gironde",
+  "extra_contact": [
+   "🕘 Lundi 14h30–18h · Mardi au vendredi 9h30–12h30 et 14h30–18h",
+   "🛍️ Magasin de piscine sur place"
+  ],
+  "score": [
+   "4,5",
+   "90 avis clients"
+  ],
+  "creations": [
+   [
+    "Piscine coque",
+    "Saint-Médard-en-Jalles",
+    "https://piscinedelatlantique.fr/wp-content/uploads/2023/06/piscine-coque-saint-medard-en-jalles-saint-aubin-medoc-33.jpeg"
+   ],
+   [
+    "Piscine coque",
+    "Castelnau-de-Médoc",
+    "https://piscinedelatlantique.fr/wp-content/uploads/2023/06/piscine_coque_castelnaudemedoc.jpg"
+   ],
+   [
+    "Piscine coque 6 × 3 m",
+    "Saint-Médard-en-Jalles",
+    "https://piscinedelatlantique.fr/wp-content/uploads/2023/06/piscine_coque_saint_medard_en_jalles_6x3.jpg"
+   ],
+   [
+    "Piscine à débordement",
+    "Bordeaux",
+    "https://piscinedelatlantique.fr/wp-content/uploads/2023/06/piscine_debordements_bordeaux.jpg"
+   ],
+   [
+    "Piscine intérieure carrelée",
+    "Bordeaux",
+    "https://piscinedelatlantique.fr/wp-content/uploads/2023/06/piscine_interieur_carrelage_bordeaux.jpg"
+   ],
+   [
+    "Mini-piscine 10 m²",
+    "Gironde",
+    "https://piscinedelatlantique.fr/wp-content/uploads/2023/06/mini_piscine_10m2.jpg"
+   ],
+   [
+    "Piscine balnéo",
+    "Gironde",
+    "https://piscinedelatlantique.fr/wp-content/uploads/2023/06/balneo-9-scaled.jpg"
+   ]
+  ],
+  "logo": {
+   "url": "https://piscinedelatlantique.fr/wp-content/uploads/2023/07/logo-piscine-de-latlantique-pisciniste-saint-medard-en-jalles-e1688310877413.png",
+   "mode": "pastille"
+  },
+  "meta_suivi": {
+   "site": "https://piscinedelatlantique.fr/",
+   "avis": 90,
+   "note": 4.5,
+   "source_avis": "lespiscinistes.fr (4,5/5, 90 « avis du web ») https://lespiscinistes.fr/33/saint-medard-en-jalles/piscine-de-l-atlantique-32g — total Google non confirmé séparément ; PagesJaunes : 3,9/5 sur 14 avis PJ",
+   "contact": "",
+   "instagram": "",
+   "facebook": "https://www.facebook.com/piscines.delatlantique",
+   "formulaire": "https://piscinedelatlantique.fr/contact-devis-piscine/",
+   "whatsapp": null,
+   "point_faible": "Bandeau cookies non configuré qui affiche les variables brutes « {vendor_count} » et « {title} » ; faute « Conseils personalisés » sur l'accueil ; les cartes « Nos piscines » pointent vers « # » (liens morts) ; stat floue « 10 + Garantie décennale ».",
+   "remarque": "WordPress + Elementor 3.13 (thème 2023, uploads 2023/06-07 et quelques images ajoutées en 2026/11 : site encore touché, à vérifier visuellement avant l'envoi — prospect moins prioritaire si le rendu est soigné). Email affiché sur le site en .com alors que le site est en .fr (le site l'affiche lui-même, donc retenu) ; lespiscinistes montre aussi piscinedelatlantique@gmail.com. Société créée en 2018 selon lespiscinistes, le site dit « depuis 2002 ». Pas de réseau mentionné (partenaires Bayrol, CTX, AstralPool, Polaris)."
+  }
+ },
+ {
+  "lang": "us",
+  "slug": "griffin-pools",
+  "name": "Griffin Pools",
+  "title": "Griffin Pools — Custom pool builder in Lakeland, Polk County",
+  "meta": "Griffin Pools is a family-owned custom pool builder in Lakeland, FL since 1975: new pools, remodels, hot tubs and plunge pools across Polk, Highlands and Hardee Counties. Elite Pebble Tec builder.",
+  "logoHtml": "Griffin <span>Pools</span>",
+  "city": "Lakeland",
+  "zone": "Polk, Highlands and Hardee Counties, Central Florida",
+  "phone": "863-665-8080",
+  "email": "michelle@griffinpools.com",
+  "address": "3404 Reynolds Rd, Lakeland, FL 33803",
+  "whatsapp": "",
+  "hero": "Building beautiful custom pools<br><em>since 1975.</em>",
+  "subtag": "State-certified pool contractor CPC1459778 · Free design consultation",
+  "eyebrow": "Pool builder · Lakeland, FL",
+  "about_h2": "Family-owned since 1975, and you're family to us",
+  "about_lead": "Founded by Tommy Griffin, Griffin Pools has built more than 7,000 pools in Polk County. Since 2021 the company is owned by Larry Bosse, a third-generation pool contractor, and Michelle Bosse. They are the only Elite Pebble Tec builder in Polk, Highlands and Hardee Counties.",
+  "stats": [
+   [
+    "7,000+",
+    "Pools built"
+   ],
+   [
+    "1975",
+    "Family-owned since"
+   ],
+   [
+    "4×",
+    "The Ledger 'Best of the Best'"
+   ],
+   [
+    "Elite",
+    "Pebble Tec builder"
+   ]
+  ],
+  "svc_h2": "From first sketch to first swim",
+  "services": [
+   [
+    "New Custom Pools",
+    "Geometric, tropical and freeform pools designed around your backyard and built by a state-certified team.",
+    "Free estimate"
+   ],
+   [
+    "Pool Remodels",
+    "New finishes, tile and upgrades with Pebble Tec surfaces that bring an older pool back to life.",
+    "Free estimate"
+   ],
+   [
+    "Hot Tubs & Plunge Pools",
+    "Spas, spillovers, waterfalls and compact plunge pools for smaller yards.",
+    "Free estimate"
+   ],
+   [
+    "Financing",
+    "Financing options through HFS Financial, Lyon Financial and VistaFi Solutions.",
+    "On request"
+   ]
+  ],
+  "zone_lead": "Based in Lakeland, we build across <span data-c=\"zone\">Lakeland, Winter Haven, Haines City, Davenport, Bartow and Polk, Highlands and Hardee Counties</span>.",
+  "footer1": "Griffin Pools, Inc. · Lic# CPC1459778",
+  "footer2": "Lakeland, FL",
+  "extra_contact": [
+   "📍 3404 Reynolds Rd, Lakeland, FL 33803"
+  ],
+  "creations": [
+   [
+    "Bella Piscina",
+    "Lakeland, FL",
+    "https://griffinpools.com/wp-content/uploads/2021/06/Gallery-Geometric-Style-Bella-Piscina-6-1024x510.jpg"
+   ],
+   [
+    "Lap pool by the lake",
+    "Winter Haven, FL",
+    "https://griffinpools.com/wp-content/uploads/2021/06/Gallery-Geometric-Style-Lap-Pool-By-the-Lake-3-1024x533.jpg"
+   ],
+   [
+    "Golf course view",
+    "Lakeland, FL",
+    "https://griffinpools.com/wp-content/uploads/2021/06/Gallery-Geometric-Style-Glorius-Golf-Course-View-1-1024x768.jpg"
+   ],
+   [
+    "Large sun-shelf pool",
+    "Bartow, FL",
+    "https://griffinpools.com/wp-content/uploads/2021/06/Gallery-Geometric-Style-Large-Sunshelf-Pool-1-1024x768.jpg"
+   ],
+   [
+    "Pink Flamingo pool",
+    "Lakeland, FL",
+    "https://griffinpools.com/wp-content/uploads/2021/06/Gallery-Geometric-Style-Pink-Flamingo-Pool-1-1024x626.jpg"
+   ],
+   [
+    "A spectacular pool, day or night",
+    "Lakeland, FL",
+    "https://griffinpools.com/wp-content/uploads/2021/06/Gallery-Geometric-Style-A-Spectacular-Pool-Day-or-Night-1-1024x768.jpg"
+   ],
+   [
+    "Haines City hideout",
+    "Haines City, FL",
+    "https://griffinpools.com/wp-content/uploads/2024/07/Haines-City-Hideout-768x1024.jpg"
+   ],
+   [
+    "Davenport daydream",
+    "Davenport, FL",
+    "https://griffinpools.com/wp-content/uploads/2024/07/Davenport-Daydream.jpg"
+   ]
+  ],
+  "us_places": [
+   "Lakeland",
+   "Winter Haven",
+   "Haines City",
+   "Davenport",
+   "Bartow",
+   "Auburndale"
+  ],
+  "logo": {
+   "url": "https://griffinpools.com/wp-content/uploads/2021/06/cropped-griffinpools-icon-270x270.jpg",
+   "mode": "pastille"
+  },
+  "meta_suivi": {
+   "site": "https://griffinpools.com/",
+   "avis": 131,
+   "note": null,
+   "source_avis": "131 Google reviews, from the earlier wave's note (deja_usa.txt). Not re-checked in this wave; the rating is unknown",
+   "contact": "Larry & Michelle Bosse (co-owners since April 2021); founder Tommy Griffin",
+   "instagram": "griffinpoolsbosse",
+   "facebook": "https://www.facebook.com/Griffin-Pools-By-Bosse-100375775644222",
+   "formulaire": "https://griffinpools.com/contact/",
+   "whatsapp": null,
+   "point_faible": "The main 'What We Do' menu item links to '#' (goes nowhere), and the About page still says 'family-owned for over 45 years' for a company founded in 1975 (now 51 years).",
+   "remarque": "WordPress site from 2021 credited to the agency Tinsley Creative. It is fairly clean, so this is a weaker angle than a truly outdated site. Other issues: empty about:blank links, a stray 'Δ' above the contact form, 'if you have question regarding', and branding that mixes 'Griffin Pools' and 'Griffin Pools by Bosse'. The header logo file was not found (it may be an inline SVG), so the site icon is used. The email is on the site's own domain, shown on the contact page."
+  }
+ },
+ {
+  "lang": "us",
+  "slug": "san-diego-pools",
+  "name": "San Diego Pools",
+  "title": "San Diego Pools — Custom pool builder since 1976, San Diego County",
+  "meta": "San Diego Pools is a family-owned custom pool builder serving San Diego County since 1976: new gunite pools, spas, infinity edges and resort-style backyards, from 3D design to permits and construction.",
+  "logoHtml": "San Diego <span>Pools</span>",
+  "city": "San Diego",
+  "zone": "San Diego County, from La Jolla and Carlsbad to Poway and El Cajon",
+  "phone": "(888) 737-6657",
+  "email": "info@sandiegopools.com",
+  "address": "8622 Argent St, Ste G, Santee, CA 92071",
+  "whatsapp": "",
+  "hero": "50 years of building<br><em>beautiful San Diego pools.</em>",
+  "subtag": "Family owned · New construction only · Free design & estimate",
+  "eyebrow": "Custom pool builder · San Diego, CA",
+  "about_h2": "A family-owned builder focused only on new construction",
+  "about_lead": "Since 1976, San Diego Pools has designed and built thousands of custom pools across San Diego County. The team handles everything in-house, from a free design consultation and 3D plans to permits, engineering, excavation, steel, plumbing, gunite, tile, coping, decking and the final finish, then walks you through startup and care.",
+  "stats": [
+   [
+    "1976",
+    "Building pools since"
+   ],
+   [
+    "4.6★",
+    "Rating on 73 Google reviews"
+   ],
+   [
+    "Thousands",
+    "Of pools built in San Diego"
+   ],
+   [
+    "C53-410251",
+    "California contractor license"
+   ]
+  ],
+  "svc_h2": "From first sketch to first swim",
+  "services": [
+   [
+    "Custom Gunite Pools",
+    "Freeform and geometric family pools, built ground-up to fit your yard and the way you live.",
+    "Free estimate"
+   ],
+   [
+    "Infinity & Resort-Style Designs",
+    "Vanishing edges, water features, spools and cocktail pools for a true backyard resort.",
+    "Free estimate"
+   ],
+   [
+    "Pools & Spas",
+    "Pool and spa combinations with Pentair equipment and automation.",
+    "Free estimate"
+   ],
+   [
+    "3D Design & Permits",
+    "Free design consultation, 3D renderings, engineering and permitting handled for you.",
+    "On request"
+   ]
+  ],
+  "zone_lead": "Based in Santee, we build across <span data-c=\"zone\">La Jolla, Carlsbad, Encinitas, Rancho Santa Fe, Poway, Escondido, El Cajon, Chula Vista and the greater San Diego area</span>.",
+  "footer1": "San Diego Pools · License C53-410251",
+  "footer2": "Santee, CA",
+  "extra_contact": [
+   "🛠 New construction only · Se habla español"
+  ],
+  "score": [
+   "4.6",
+   "73 reviews"
+  ],
+  "creations": [
+   [
+    "Resort-style backyard pool",
+    "La Jolla, CA",
+    "https://sandiegopools.com/wp-content/uploads/2022/08/large1.jpg"
+   ],
+   [
+    "Custom gunite pool",
+    "Carlsbad, CA",
+    "https://sandiegopools.com/wp-content/uploads/2022/08/large2.jpg"
+   ],
+   [
+    "Pool & spa combination",
+    "Rancho Santa Fe, CA",
+    "https://sandiegopools.com/wp-content/uploads/2022/08/large3.jpg"
+   ],
+   [
+    "Freeform family pool",
+    "Poway, CA",
+    "https://sandiegopools.com/wp-content/uploads/2023/02/pool4.webp"
+   ],
+   [
+    "Backyard pool build",
+    "Encinitas, CA",
+    "https://sandiegopools.com/wp-content/uploads/2025/10/pool.webp"
+   ],
+   [
+    "Modern pool & deck",
+    "Escondido, CA",
+    "https://sandiegopools.com/wp-content/uploads/2025/10/13-scaled-1.webp"
+   ],
+   [
+    "Custom backyard pool",
+    "El Cajon, CA",
+    "https://sandiegopools.com/wp-content/uploads/2025/10/pic3-min.webp"
+   ]
+  ],
+  "us_places": [
+   "La Jolla",
+   "Carlsbad",
+   "Encinitas",
+   "Rancho Santa Fe",
+   "Poway",
+   "Escondido"
+  ],
+  "logo": {
+   "url": "https://sandiegopools.com/wp-content/uploads/2023/02/New-logo-pool.png",
+   "mode": "pastille"
+  },
+  "meta_suivi": {
+   "site": "https://sandiegopools.com/",
+   "avis": 73,
+   "note": 4.6,
+   "source_avis": "Birdeye profile (birdeye.com/san-diego-pools-169766450651304): 4.6 / 78 reviews, of which 73 from Google and 5 from Facebook. Exact live Google count not checked separately",
+   "contact": "info@sandiegopools.com (shown in the site footer and on subpages)",
+   "instagram": "sandiegopools",
+   "facebook": "https://www.facebook.com/SDPOOLS/",
+   "formulaire": "https://sandiegopools.com/contact/",
+   "whatsapp": null,
+   "point_faible": "The main 'Portfolio' menu item links to '#' and goes nowhere. Subpages still show '© SAN DIEGO POOLS 2022' and a 'Pool of the Month' from March 2020. The site gives two different addresses: 8622 Argent St, Santee on the homepage and 8070 La Jolla Shores Dr #433, La Jolla in the subpage footers.",
+   "remarque": "WordPress + Slider Revolution, with a dead Google+ icon, a menu that appears twice, raw image URLs showing as link text in the gallery, leftover 'Please prove you are human by selecting the key.' captcha text, and 'Cory'/'Corey' in testimonials. The '2019 Pool of the Year' page is set to noindex and its og:image is a 32×32 favicon. Caveat: some images were uploaded in 10/2025 and there is an active SEO blog, so it is maintained but not redesigned. The site is mid-range rather than very old. Angle: 50-year family business since 1976, new construction only."
+  }
+ },
+ {
+  "lang": "us",
+  "slug": "purselley-pools",
+  "name": "Purselley Pools",
+  "title": "Purselley Pools — Custom pool builder, Fort Worth",
+  "meta": "Purselley Pools builds custom gunite pools in Fort Worth and DFW, with Custom, Elite and Signature packages, 3D renderings, premium finishes and smart automation, backed by years of pool service experience.",
+  "logoHtml": "Purselley <span>Pools</span>",
+  "city": "Fort Worth",
+  "zone": "Fort Worth and the Dallas–Fort Worth area",
+  "phone": "844-750-7665",
+  "email": "",
+  "address": "7509 Pebble Dr, Ste 130, Fort Worth, TX 76118",
+  "whatsapp": "",
+  "hero": "Beautiful pools,<br><em>built right.</em>",
+  "subtag": "Custom · Elite · Signature packages · Free estimate",
+  "eyebrow": "Pool builder · Fort Worth, TX",
+  "about_h2": "We've been around the block",
+  "about_lead": "Purselley started out servicing and restoring pools across Dallas–Fort Worth. That hands-on experience now goes into every new build: 12-inch walls and floors, 1/2-inch steel on 8-inch centers, quality plumbing and piers where needed. Detailed construction plans and 3D renderings let you see your pool before the first shovel hits the ground.",
+  "stats": [
+   [
+    "4.8★",
+    "Rating on 252 Google reviews"
+   ],
+   [
+    "12 in.",
+    "Thick walls and floors"
+   ],
+   [
+    "3",
+    "Build packages: Custom, Elite, Signature"
+   ],
+   [
+    "3D",
+    "Renderings before construction"
+   ]
+  ],
+  "svc_h2": "Your pool. Your way.",
+  "services": [
+   [
+    "New Pool Construction",
+    "Custom gunite pools with detailed plans, 3D renderings and help choosing every material and finish.",
+    "Free estimate"
+   ],
+   [
+    "Finishes & Features",
+    "Decorative tile, premium plaster, pebble and mosaic finishes, tanning shelves, benches, spas and LED lighting.",
+    "Free estimate"
+   ],
+   [
+    "Automation & Comfort",
+    "Heaters and chillers, dynamic lighting and water features, and pool control from your smartphone.",
+    "On request"
+   ],
+   [
+    "Pool Service & Restoration",
+    "Service, repair and restoration from the team that started out caring for DFW pools.",
+    "On request"
+   ]
+  ],
+  "zone_lead": "Based in Fort Worth, we build across <span data-c=\"zone\">Fort Worth, Southlake, Keller, Colleyville, Aledo, Benbrook and the wider Dallas–Fort Worth area</span>.",
+  "footer1": "Purselley Pools · Purselley Pool & Spa",
+  "footer2": "Fort Worth, TX",
+  "extra_contact": [
+   "📐 3D renderings with every custom design"
+  ],
+  "score": [
+   "4.8",
+   "252 reviews"
+  ],
+  "creations": [
+   [
+    "Thornhill",
+    "Fort Worth, TX",
+    "https://images-pw.pixieset.com/elementfield/23851235/THornhill-7-b966c379-e368b232.jpg"
+   ],
+   [
+    "Thomas",
+    "Fort Worth, TX",
+    "https://images-pw.pixieset.com/elementfield/67968145/1317_Thomas-2-0b642b73-c0f45853.jpg"
+   ],
+   [
+    "Pembroke",
+    "Fort Worth, TX",
+    "https://images-pw.pixieset.com/elementfield/85779145/2200_Pembroke-9-62e7713c-55eab6b4.jpg"
+   ],
+   [
+    "Troon",
+    "Fort Worth, TX",
+    "https://images-pw.pixieset.com/elementfield/91169145/6216_Troon-5-a473b206-052482d5.jpg"
+   ],
+   [
+    "Arles",
+    "Fort Worth, TX",
+    "https://images-pw.pixieset.com/elementfield/42169145/1412_Arles-2-56da8100-ef43ab8e.jpg"
+   ],
+   [
+    "Saint Benet",
+    "Fort Worth, TX",
+    "https://images-pw.pixieset.com/elementfield/18109145/4668_SaintBenet-6-73c2377c-c1efd035.jpg"
+   ],
+   [
+    "Worth Hills",
+    "Worth Hills, Fort Worth",
+    "https://images-pw.pixieset.com/elementfield/68109145/3317_WorthHills-12-e601c837-1ad84719.jpg"
+   ],
+   [
+    "Thomas (night)",
+    "Fort Worth, TX",
+    "https://images-pw.pixieset.com/elementfield/48062425/1317_Thomas-14-5a0a74b5.jpg"
+   ]
+  ],
+  "us_places": [
+   "Southlake",
+   "Keller",
+   "Colleyville",
+   "Aledo",
+   "Benbrook",
+   "Westover Hills"
+  ],
+  "logo": {
+   "url": "https://images-pw.pixieset.com/profile/950661/1730c151eb3fa85c1174c784cdad833bf71cd3ad2f9382e6a123ba1c1a1da400.png",
+   "mode": "pastille"
+  },
+  "meta_suivi": {
+   "site": "https://www.purselleypools.com/ (also http://purselleypoolandspa.com/)",
+   "avis": 252,
+   "note": 4.8,
+   "source_avis": "Birdeye profile (reviews.birdeye.com/purselley-pools-156204703813084): 4.8 / 253 reviews, of which 252 from Google",
+   "contact": "No email anywhere on the site (contact page shows only phone and address); quote form only",
+   "instagram": "",
+   "facebook": "",
+   "formulaire": "https://www.purselleypools.com/quote/",
+   "whatsapp": null,
+   "point_faible": "The New Construction page has visible typos: 'deign' for design, 'you pool's' for your pool's, 'tanning shelfs' and 'Some of the available feature include'. The menu and footer contain several dead '#' links.",
+   "remarque": "The site is built on Pixieset, a photographer portfolio platform, with an empty meta description, a menu that appears twice, almost no alt text, and only a LinkedIn link as a raw URL ('Purselley Pool & Spa' vs. the 'Purselley Pools' brand). The gallery has 44 named projects but the page itself shows almost no images. Prices are published: Custom $60K–100K, Elite $100K–250K, Signature $250K+. NO EMAIL: manual contact via phone or quote form. Caveat: the design looks clean and minimal, so the angle is content, SEO and typos rather than 'old site'."
+  }
+ }
+]
