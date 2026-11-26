@@ -603,7 +603,8 @@
   "logo_url": "https://hanfordqatar.com/wp-content/uploads/2021/10/logo2.png",
   "logo_mode": "pastille",
   "verdict": "OK",
-  "email_verified_on": "https://hanfordqatar.com/ (header/contact + page swimming-pools-construction-company-in-qatar)"
+  "email_verified_on": "https://hanfordqatar.com/ (header/contact + page swimming-pools-construction-company-in-qatar)",
+  "mail_name": "Hanford Qatar"
  },
  {
   "slug": "carlen-pools",
@@ -797,5 +798,375 @@
   "logo_mode": "pastille",
   "verdict": "OK",
   "email_verified_on": "https://poolmasters.net/about-us.php (lien mailto protégé Cloudflare)"
+ },
+ {
+  "slug": "doha-pools-landscape",
+  "name": "Doha Pools",
+  "company": "Doha Pools &amp; Landscape W.L.L",
+  "city_sheet": "Doha (Ain Khalid)",
+  "site": "dohapools.qa",
+  "phones": "+974 4001 0962",
+  "email": "",
+  "email_other": "sales@dohapools.qa (annuaire qataroilandgasdirectory uniquement, NON publié sur le site)",
+  "whatsapp": "",
+  "instagram": "facebook.com/p/Doha-Pools-And-Landscape-wlll-100063927372892",
+  "contact_form": "https://dohapools.qa/contact/",
+  "weak_point": "One thing I noticed on your current site: the \"Why Choose Us\" section repeats the same placeholder sentence (\"Move information smoothly between tools to keep your team aligned\") five times, and the customer and experience counters show 0.",
+  "remark_fr": "Site WordPress récent (2026) mais bâclé : texte de template répété 5 fois dans « Why Choose Us », compteurs à 0 (« 0 k+ » clients, « 0 + » années), titres incohérents (« Premium Pool Because Deserves Nothings »), fautes (« Our company have been »), icônes réseaux sociaux sans lien, galerie de photos stock, alt vides, carte centrée sur Doha en général. Aucun email publié sur le site (formulaire seulement).",
+  "logo": "DOHA<span> POOLS</span>",
+  "title": "Doha Pools — Swimming Pools &amp; Landscaping, Doha",
+  "desc": "Doha Pools &amp; Landscape designs and builds swimming pools, landscaping, irrigation and water features in Qatar, with a service department for repairs, parts and pool chemicals.",
+  "city": "Doha",
+  "since": "",
+  "zone": "Doha, Al Wakrah &amp; Lusail",
+  "phone": "+974 4001 0962",
+  "wa": "",
+  "address": "Office No. 132, Ain Khalid Al Nayef Souq, Doha, Qatar",
+  "tagline": "Pools, landscaping &amp; water features<br><em>designed and built in Qatar</em>",
+  "subtag": "Pools &amp; landscaping · Free consultation",
+  "eyebrow": "Swimming pools in Doha",
+  "h2": "From design to construction, and service after",
+  "lead": "Doha Pools &amp; Landscape offers design-only, design-build and construction management for swimming pools, landscaping, irrigation and water features, plus a service department for repairs, parts, chemicals and water chemistry advice.",
+  "stats": [
+   [
+    "Pools",
+    "design &amp; build"
+   ],
+   [
+    "Landscape",
+    "irrigation &amp; fountains"
+   ],
+   [
+    "Spa",
+    "sauna &amp; steam rooms"
+   ],
+   [
+    "Free",
+    "consultation"
+   ]
+  ],
+  "svc_h2": "Our pool services",
+  "cards": [
+   [
+    "Pool design &amp; construction",
+    "Design-only, design-build or construction management for your swimming pool.",
+    "Free consultation"
+   ],
+   [
+    "Pool repairs &amp; equipment",
+    "Repairs, pool equipment, parts and chemicals from our service department.",
+    "On quotation"
+   ],
+   [
+    "Spa, sauna &amp; steam rooms",
+    "Spa, sauna room and steam room installations.",
+    "On quotation"
+   ],
+   [
+    "Landscaping &amp; fountains",
+    "Landscaping, irrigation, fountains, pool shades and poolside furniture.",
+    "On quotation"
+   ]
+  ],
+  "zone_html": "We work across <span data-c=\"zone\">Doha, Al Wakrah &amp; Lusail</span>.",
+  "extra_contact": "",
+  "foot1": "Swimming pools &amp; landscaping",
+  "foot2": "Doha",
+  "creations": [],
+  "send": false,
+  "logo_url": "https://dohapools.qa/wp-content/uploads/2026/02/Doha-Pools-logo-1.webp",
+  "logo_mode": "pastille",
+  "verdict": "OK",
+  "email_verified_on": "aucun email sur dohapools.qa (about/services vérifiés ; page contact refusée au fetch)",
+  "country": "Qatar"
+ },
+ {
+  "slug": "flowers-pool",
+  "name": "Flowers Pool",
+  "company": "Flowers Pool W.L.L",
+  "city_sheet": "Doha",
+  "site": "flowers-pool.com",
+  "phones": "+974 7094 9424",
+  "email": "info@flowers-pool.com",
+  "email_other": "",
+  "whatsapp": "bouton « WhatsApp us » sur le site (même numéro +974 7094 9424)",
+  "instagram": "",
+  "contact_form": "https://flowers-pool.com/contact-us/",
+  "weak_point": "One thing I noticed on your current site: the contact form on the home page only has \"Name\" and \"Email\" fields and a \"Subscribe\" button, so visitors cannot actually describe their pool project.",
+  "remark_fr": "Site WordPress 2023 peu soigné : fautes et ponctuation (« &MAINTENANCE », « BEST POOL SERVICES EVER!. », phrases incomplètes « ... etc. »), formulaire d'accueil sans champ message avec bouton « Subscribe », alt de logos partenaires = noms de fichiers (« download (2) »), handle Twitter invalide, adresse = simple P.O. Box, horaires mal formatés, aucun réseau social. Bonne galerie de projets réels avec lieux.",
+  "logo": "FLOWERS<span> POOL</span>",
+  "title": "Flowers Pool — Swimming Pool Contractor, Doha",
+  "desc": "Flowers Pool W.L.L builds concrete swimming pools and jacuzzis, installs sauna and steam rooms, and maintains pools, fountains and water features for villas, palaces and towers across Qatar.",
+  "city": "Doha",
+  "since": "",
+  "zone": "Doha, Al Wakrah, Al Khor &amp; Umm Salal",
+  "phone": "+974 7094 9424",
+  "wa": "+974 7094 9424",
+  "address": "P.O. Box 212003, Doha, Qatar",
+  "tagline": "Your dream swimming pool<br><em>from residential villas to high-rise towers</em>",
+  "subtag": "Construction, refurbishment &amp; maintenance · Free consultation",
+  "eyebrow": "Swimming pool contractor in Qatar",
+  "h2": "Every aspect of your pool project, handled",
+  "lead": "Whether you are looking for a new swimming pool, a pool refurbishment or a reliable servicing and maintenance contractor, Flowers Pool takes care of every aspect of construction, or works as a sub-contractor when required.",
+  "stats": [
+   [
+    "ISO",
+    "certified company"
+   ],
+   [
+    "Villas",
+    "palaces &amp; resorts"
+   ],
+   [
+    "Sauna",
+    "steam &amp; jacuzzi"
+   ],
+   [
+    "Free",
+    "consultation"
+   ]
+  ],
+  "svc_h2": "Our pool services",
+  "cards": [
+   [
+    "Concrete pool construction",
+    "Construction of concrete swimming pools, from residential villas to high-rise towers.",
+    "Free consultation"
+   ],
+   [
+    "Pool maintenance",
+    "Swimming pool water maintenance and general maintenance.",
+    "On quotation"
+   ],
+   [
+    "Jacuzzi, sauna &amp; steam rooms",
+    "Jacuzzi construction, sauna and steam room installation and maintenance.",
+    "On quotation"
+   ],
+   [
+    "Fountains &amp; water features",
+    "Water features and fountains, built and maintained.",
+    "On quotation"
+   ]
+  ],
+  "zone_html": "We work across <span data-c=\"zone\">Doha, Al Wakrah, Al Khor &amp; Umm Salal</span>.",
+  "extra_contact": "Saturday to Thursday, 8:00 am to 5:00 pm",
+  "foot1": "Swimming pool contractor",
+  "foot2": "Doha",
+  "creations": [
+   [
+    "Private villa pool",
+    "Al Hilal, Doha",
+    "https://flowers-pool.com/wp-content/uploads/2023/03/Project-1.jpg"
+   ],
+   [
+    "Private villa pool",
+    "Qatar",
+    "https://flowers-pool.com/wp-content/uploads/2023/03/Project-2.jpg"
+   ],
+   [
+    "Hotel pool",
+    "Al Khor",
+    "https://flowers-pool.com/wp-content/uploads/2023/03/Project-3.jpg"
+   ],
+   [
+    "Private resort pool",
+    "Umm Salal",
+    "https://flowers-pool.com/wp-content/uploads/2023/03/Project-4.jpg"
+   ],
+   [
+    "Private villa pool",
+    "Fereej Al Soudan, Doha",
+    "https://flowers-pool.com/wp-content/uploads/2023/03/Project-5.jpg"
+   ],
+   [
+    "Private palace pool",
+    "Muaither",
+    "https://flowers-pool.com/wp-content/uploads/2023/03/Project-6.jpg"
+   ],
+   [
+    "Private villa pool",
+    "Abu Hamour, Doha",
+    "https://flowers-pool.com/wp-content/uploads/2023/03/Project-7.jpg"
+   ],
+   [
+    "Private villa pool",
+    "Al Wakrah",
+    "https://flowers-pool.com/wp-content/uploads/2023/03/Project-11.jpg"
+   ],
+   [
+    "Private villa pool",
+    "Al Khor",
+    "https://flowers-pool.com/wp-content/uploads/2023/03/Project-12.jpg"
+   ]
+  ],
+  "send": true,
+  "logo_url": "https://flowers-pool.com/wp-content/uploads/2023/02/flower-04-ts1642229763.svg",
+  "logo_mode": "pastille",
+  "verdict": "OK",
+  "email_verified_on": "https://flowers-pool.com/ (page d'accueil, Contact Info)",
+  "country": "Qatar"
+ },
+ {
+  "slug": "winmax-pools",
+  "name": "Winmax Pools",
+  "company": "Winmax Pools",
+  "city_sheet": "Doha (Suhaim Towers)",
+  "site": "winmaxpools.com",
+  "phones": "+974 3042 4250",
+  "email": "info@winmaxpools.com",
+  "email_other": "",
+  "whatsapp": "https://wa.me/97430424250",
+  "instagram": "instagram.com/winmaxpools · FB facebook.com/winmaxpools · LinkedIn linkedin.com/company/winmax-pools",
+  "contact_form": "https://winmaxpools.com/",
+  "weak_point": "One thing I noticed on your current site: the projects section stays on \"Loading projects...\" and the counters show \"0+\" and \"0%\", which hides the 10+ years of work you mention.",
+  "remark_fr": "Site React récent (© 2026) mais inachevé : sections projets/blog bloquées sur « Loading projects... / Loading blogs... », compteurs à « 0+ » et « 0% », image « placeholder » visible, balises meta affichées en texte, listes de marques et clients dupliquées, fautes (« too,The every single time »), lien arabe sans URL. À cibler sur l'aspect inachevé.",
+  "logo": "WINMAX<span> POOLS</span>",
+  "title": "Winmax Pools — Pool Construction &amp; Maintenance, Doha",
+  "desc": "Winmax Pools designs, builds, renovates and maintains swimming pools in Doha, with leak repair, filtration, pH maintenance and pool equipment supply.",
+  "city": "Doha",
+  "since": "",
+  "zone": "Doha, Al Wakrah &amp; Lusail",
+  "phone": "+974 3042 4250",
+  "wa": "+974 3042 4250",
+  "address": "Suhaim Towers, 6th Floor, Office 610, Suhaim bin Hamad Street, Doha, Qatar",
+  "tagline": "Pools built and cared for<br><em>by the Winmax team in Doha</em>",
+  "subtag": "Construction, renovation &amp; maintenance · Free consultation",
+  "eyebrow": "Swimming pools in Doha",
+  "h2": "From pool construction to weekly care",
+  "lead": "Winmax Pools handles pool construction, cleaning, filtering, pH maintenance, leak repair and renovation, with more than 10 years of experience.",
+  "stats": [
+   [
+    "10+",
+    "years of experience"
+   ],
+   [
+    "Build",
+    "design &amp; construction"
+   ],
+   [
+    "Care",
+    "cleaning &amp; pH"
+   ],
+   [
+    "Free",
+    "consultation"
+   ]
+  ],
+  "svc_h2": "Our pool services",
+  "cards": [
+   [
+    "Pool design &amp; construction",
+    "New swimming pools designed and built for your villa or compound.",
+    "Free consultation"
+   ],
+   [
+    "Repair &amp; renovation",
+    "Leak fixing and renovation of existing pools.",
+    "On quotation"
+   ],
+   [
+    "Cleaning &amp; maintenance",
+    "Pool cleaning, filtering and pH maintenance.",
+    "On quotation"
+   ],
+   [
+    "Equipment &amp; chemicals",
+    "Supply of pool equipment and pool chemicals.",
+    "On quotation"
+   ]
+  ],
+  "zone_html": "We work across <span data-c=\"zone\">Doha, Al Wakrah &amp; Lusail</span>.",
+  "extra_contact": "",
+  "foot1": "Pool construction &amp; maintenance",
+  "foot2": "Doha",
+  "creations": [],
+  "send": true,
+  "logo_url": "https://winmaxpools.com/assets/winmax-logo-CJQ11gFC.webp",
+  "logo_mode": "pastille",
+  "verdict": "OK",
+  "email_verified_on": "https://winmaxpools.com/ (page d'accueil)",
+  "country": "Qatar"
+ },
+ {
+  "slug": "pool-world-qatar",
+  "name": "Pool World",
+  "company": "PoolWorld Trading &amp; Contracting W.L.L",
+  "city_sheet": "Doha (Old Salata)",
+  "site": "poolworldqatar.com",
+  "phones": "+974 3016 9452",
+  "email": "",
+  "email_other": "",
+  "whatsapp": "+974 3016 9452 (lien api.whatsapp.com sur le site)",
+  "instagram": "instagram.com/poolworldgcc · Facebook · YouTube",
+  "contact_form": "",
+  "weak_point": "One thing I noticed on your current site: several gallery items are still titled \"Default\" with \"Default Content\", and five service cards link to \"#\".",
+  "remark_fr": "Site WordPress/Elementor 2024 bâclé : 5 cartes services en lien « # », galerie avec titres « Default / Default Content », article « Elementor #2401 » avec image placeholder, titres de template sans rapport (« Find a Builder », « Vacay Everyday »), « X » isolé dans l'en-tête, URL vidéo brute affichée, © 2024 figé, « 18 years » incohérent avec 2006. Aucun email publié (WhatsApp seulement).",
+  "logo": "POOL<span> WORLD</span>",
+  "title": "Pool World — Swimming Pools, Doha",
+  "desc": "Pool World Qatar designs and builds swimming pools, and handles installation, maintenance, cleaning, renovation and pool equipment supply across Qatar since 2006.",
+  "city": "Doha",
+  "since": "2006",
+  "zone": "Doha, Al Wakrah &amp; Lusail",
+  "phone": "+974 3016 9452",
+  "wa": "+974 3016 9452",
+  "address": "Office No. 18, Transworld Tower, Street 930, Building 4, Zone 17, Old Salata, Doha, Qatar",
+  "tagline": "Swimming pools in Qatar<br><em>designed, built and maintained since 2006</em>",
+  "subtag": "Pools &amp; equipment · Free consultation",
+  "eyebrow": "Swimming pools in Doha",
+  "h2": "Pool design, construction and care",
+  "lead": "PoolWorld Trading &amp; Contracting offers pool design and construction, installation, maintenance, cleaning, renovation and pool equipment supply in Qatar.",
+  "stats": [
+   [
+    "2006",
+    "in Qatar"
+   ],
+   [
+    "Design",
+    "&amp; construction"
+   ],
+   [
+    "Care",
+    "maintenance &amp; cleaning"
+   ],
+   [
+    "Free",
+    "consultation"
+   ]
+  ],
+  "svc_h2": "Our pool services",
+  "cards": [
+   [
+    "Pool design &amp; construction",
+    "Swimming pools designed and built in Qatar.",
+    "Free consultation"
+   ],
+   [
+    "Pool installation &amp; renovation",
+    "Installation of new pools and renovation of existing ones.",
+    "On quotation"
+   ],
+   [
+    "Maintenance &amp; cleaning",
+    "Pool maintenance and cleaning services.",
+    "On quotation"
+   ],
+   [
+    "Pool equipment supply",
+    "Supply of pool equipment.",
+    "On quotation"
+   ]
+  ],
+  "zone_html": "We work across <span data-c=\"zone\">Doha, Al Wakrah &amp; Lusail</span>.",
+  "extra_contact": "",
+  "foot1": "Swimming pools",
+  "foot2": "Doha",
+  "creations": [],
+  "send": false,
+  "logo_url": "https://poolworldqatar.com/wp-content/uploads/2024/06/cropped-logo--142x92.png",
+  "logo_mode": "pastille",
+  "verdict": "OK",
+  "email_verified_on": "aucun email sur poolworldqatar.com (page d'accueil vérifiée)",
+  "country": "Qatar"
  }
 ]
