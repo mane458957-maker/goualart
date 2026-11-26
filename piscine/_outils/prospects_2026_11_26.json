@@ -118,7 +118,9 @@
   "logo_url": "https://opallandscaping.com/wp-content/uploads/2024/02/cropped-cropped-image00001-81x74.jpeg",
   "logo_mode": "pastille",
   "verdict": "OK",
-  "email_verified_on": "https://opallandscaping.com/"
+  "email_verified_on": "https://opallandscaping.com/",
+  "country": "UAE",
+  "mail_name": "Opal Landscaping"
  },
  {
   "slug": "green-horizon-pools",
@@ -239,7 +241,8 @@
   "logo_url": "https://horizonscape.ae/wp-content/uploads/2025/09/Mask-group.png",
   "logo_mode": "pastille",
   "verdict": "OK",
-  "email_verified_on": "https://horizonscape.ae/"
+  "email_verified_on": "https://horizonscape.ae/",
+  "country": "UAE"
  },
  {
   "slug": "al-hajis-pools",
@@ -360,7 +363,8 @@
   "logo_url": "https://alhajisgroups.com/wp-content/uploads/2021/03/lo-2-120x96.png",
   "logo_mode": "pastille",
   "verdict": "OK",
-  "email_verified_on": "https://alhajisgroups.com/contact-us/"
+  "email_verified_on": "https://alhajisgroups.com/contact-us/",
+  "country": "UAE"
  },
  {
   "slug": "al-reef-landscape",
@@ -481,6 +485,317 @@
   "logo_url": "https://static.wixstatic.com/media/c9e286_ba8bf448ccda41d795fd54b3803355ae~mv2.jpeg",
   "logo_mode": "pastille",
   "verdict": "OK (cible) — mais pas d'email vérifié (send=false)",
-  "email_verified_on": ""
+  "email_verified_on": "",
+  "country": "UAE"
+ },
+ {
+  "slug": "hanford-qatar",
+  "name": "Hanford",
+  "company": "Hanford Contracting and Landscaping WLL (Hanford Qatar)",
+  "city_sheet": "Doha",
+  "country": "Qatar",
+  "site": "hanfordqatar.com",
+  "phones": "+974 4468 9112 · +974 5513 4457",
+  "email": "info@hanfordqatar.com",
+  "email_other": "",
+  "whatsapp": "",
+  "instagram": "instagram.com/hanfordqatar · FB facebook.com/hanfordqatar · LinkedIn linkedin.com/company/hanford-qatar",
+  "contact_form": "https://hanfordqatar.com/",
+  "weak_point": "One thing I noticed on your current site: the customer testimonials on the home page are still the template's placeholder Latin text (\"Vivamus vitae elementum sapien...\"), next to headings like \"Pro-age Products to Emphasize Your Natural Beauty\" that come from a cosmetics theme.",
+  "remark_fr": "Site WordPress/WPBakery (© 2022) avec restes de template : témoignages en lorem ipsum, titres d'un thème cosmétique (\"Only Safe and Healthy Ingredients\", \"Real-Time Delivery Tracking\"), liens \"#\", 'WhatsApp us' sans numéro, lien Pergolas qui pointe vers Water features, titre de page 'Home', icône 'arrow_right_alt' en texte, incohérences (fondé 2004 vs 2005, 16+ ans vs neuf ans), fautes ('we've got completed over 250+ comes'). Bureaux aussi à Dubaï mais société indépendante.",
+  "logo": "HANFORD<span> QATAR</span>",
+  "title": "Hanford — Swimming Pools &amp; Landscaping, Doha",
+  "desc": "Hanford designs, builds, renovates and maintains swimming pools, spas and gardens in Qatar: outdoor, indoor and infinity pools, irrigation, fountains and pergolas.",
+  "city": "Doha",
+  "since": "2005",
+  "zone": "Doha, The Pearl &amp; all Qatar",
+  "phone": "+974 4468 9112",
+  "wa": "",
+  "address": "Doha, Qatar",
+  "tagline": "Swimming pools &amp; landscaping<br><em>outdoor, indoor &amp; infinity pools in Qatar</em>",
+  "subtag": "Pools &amp; landscaping · Free consultation",
+  "eyebrow": "Villa pools in Qatar",
+  "h2": "Pools and gardens built for Qatar homes",
+  "lead": "Hanford designs and builds bespoke outdoor, indoor and basement pools in reinforced concrete, tiled or vinyl-lined, refurbishes older pools and spas, and creates gardens, irrigation, fountains, pergolas and gazebos.",
+  "stats": [
+   [
+    "250+",
+    "completed projects"
+   ],
+   [
+    "2005",
+    "pool company established"
+   ],
+   [
+    "Pools",
+    "design to maintenance"
+   ],
+   [
+    "Free",
+    "consultation"
+   ]
+  ],
+  "svc_h2": "Our pool services",
+  "cards": [
+   [
+    "Pool design &amp; construction",
+    "Bespoke outdoor, indoor and basement pools, tiled or vinyl-lined.",
+    "Free consultation"
+   ],
+   [
+    "Pool &amp; spa renovation",
+    "Refurbishment and revitalisation of older pools and spas.",
+    "On quotation"
+   ],
+   [
+    "Pool maintenance",
+    "Servicing and cleaning by our in-house engineering team.",
+    "On quotation"
+   ],
+   [
+    "Landscaping &amp; water features",
+    "Soft and hard landscaping, irrigation, fountains, pergolas and gazebos.",
+    "On quotation"
+   ]
+  ],
+  "zone_html": "We work across <span data-c=\"zone\">Doha, The Pearl &amp; all Qatar</span>.",
+  "extra_contact": "",
+  "foot1": "Swimming pools &amp; landscaping",
+  "foot2": "Doha, Qatar",
+  "creations": [
+   [
+    "Infinity pool",
+    "Umm Bab Palace",
+    "https://hanfordqatar.com/wp-content/uploads/2021/11/Infinity-swimming-pool-ummbob-palace.jpg"
+   ],
+   [
+    "Step-down pool",
+    "Umm Bab",
+    "https://hanfordqatar.com/wp-content/uploads/2021/11/Step-down-Pool-Ummbob.jpg"
+   ],
+   [
+    "Villa pool",
+    "Umm Bab",
+    "https://hanfordqatar.com/wp-content/uploads/2021/11/swimming-pool-ummbob.jpg"
+   ],
+   [
+    "Tower pool",
+    "8A Tower, The Pearl",
+    "https://hanfordqatar.com/wp-content/uploads/2021/11/swimming-pool-pearl-qatar-8A-tower-scaled.jpg"
+   ],
+   [
+    "Jacuzzi",
+    "The Pearl",
+    "https://hanfordqatar.com/wp-content/uploads/2021/11/jacuzzi-pearl-qatar-scaled.jpg"
+   ],
+   [
+    "Kids pool",
+    "The Pearl",
+    "https://hanfordqatar.com/wp-content/uploads/2021/11/Kids-pool-pearl-qatar-scaled.jpg"
+   ],
+   [
+    "Swimming pool",
+    "Doha",
+    "https://hanfordqatar.com/wp-content/uploads/2021/11/Swimming-Pools-6.jpg"
+   ]
+  ],
+  "send": true,
+  "logo_url": "https://hanfordqatar.com/wp-content/uploads/2021/10/logo2.png",
+  "logo_mode": "pastille",
+  "verdict": "OK",
+  "email_verified_on": "https://hanfordqatar.com/ (header/contact + page swimming-pools-construction-company-in-qatar)"
+ },
+ {
+  "slug": "carlen-pools",
+  "name": "Carlen Pools",
+  "company": "Carlen Pools (division of Elec Qatar WLL)",
+  "city_sheet": "Doha (Mamoura)",
+  "country": "Qatar",
+  "site": "carlenpools.com",
+  "phones": "+974 4001 3604",
+  "email": "info@carlenpools.com",
+  "email_other": "",
+  "whatsapp": "",
+  "instagram": "(liens Facebook/Instagram du site = '#', aucun réseau publié)",
+  "contact_form": "https://carlenpools.com/",
+  "weak_point": "One thing I noticed on your current site: the Facebook and \"Intagram\" icons in the footer, like the \"Read More\" and \"View Services\" buttons on the banners, all point to \"#\", so visitors land nowhere when they click them.",
+  "remark_fr": "Site © 2022 inachevé : liens réseaux sociaux et boutons des bannières en '#', 5 bannières avec texte identique, meta description/keywords vides, fautes ('Intagram', 'maintanance', 'o match', 'trills', 'door step'), lien footer contenant juste une virgule, 'WHY CARLEN POOL?'. Petite division récente d'Elec Qatar WLL (pas un grand groupe).",
+  "logo": "CARLEN<span> POOLS</span>",
+  "title": "Carlen Pools — Swimming Pools &amp; Spas, Doha",
+  "desc": "Carlen Pools designs, builds, renovates and maintains swimming pools, spas, fountains, saunas and steam rooms in Doha, Qatar, with 3D designs and 24-hour support.",
+  "city": "Doha",
+  "since": "",
+  "zone": "Doha, Lusail, Al Rayyan &amp; all Qatar",
+  "phone": "+974 4001 3604",
+  "wa": "",
+  "address": "Mamoura Plaza, 2nd Floor, Doha, Qatar",
+  "tagline": "Reliable service<br><em>for 100% pool enjoyment</em>",
+  "subtag": "Pools, spas &amp; fountains · Free consultation",
+  "eyebrow": "Swimming pools in Doha",
+  "h2": "Pools and spas designed, built and cared for in Qatar",
+  "lead": "Carlen Pools designs your pool with 3D schematics and simulation videos, builds it on schedule, renovates existing pools and spas, and maintains them with planned and around-the-clock service.",
+  "stats": [
+   [
+    "10+",
+    "ongoing projects"
+   ],
+   [
+    "24 hrs",
+    "support"
+   ],
+   [
+    "3D",
+    "pool design"
+   ],
+   [
+    "Free",
+    "consultation"
+   ]
+  ],
+  "svc_h2": "Our pool services",
+  "cards": [
+   [
+    "Pool design",
+    "3D schematics and simulation videos of your future pool.",
+    "Free consultation"
+   ],
+   [
+    "Pool &amp; spa construction",
+    "Swimming pools, spas, fountains, saunas and steam rooms built to schedule.",
+    "On quotation"
+   ],
+   [
+    "Renovation",
+    "Revamping or redesigning existing pools and spas.",
+    "On quotation"
+   ],
+   [
+    "Maintenance",
+    "Planned and corrective maintenance, cleaning and water balancing, 24 hrs.",
+    "On quotation"
+   ]
+  ],
+  "zone_html": "We work across <span data-c=\"zone\">Doha, Lusail, Al Rayyan &amp; all Qatar</span>.",
+  "extra_contact": "",
+  "foot1": "Swimming pools &amp; spas",
+  "foot2": "Doha, Qatar",
+  "creations": [
+   [
+    "VVIP villa pool",
+    "Doha",
+    "https://carlenpools.com/public/storage/project/image_1664540971.jpeg"
+   ],
+   [
+    "American School of Doha",
+    "Doha",
+    "https://carlenpools.com/public/storage/project/image_1664541003.jpeg"
+   ],
+   [
+    "Place Vendome Mall",
+    "Lusail",
+    "https://carlenpools.com/public/storage/project/image_1664541036.jpeg"
+   ],
+   [
+    "Private property",
+    "Qatar",
+    "https://carlenpools.com/public/storage/project/image_1664541079.jpeg"
+   ],
+   [
+    "Naufar Hospital",
+    "Qatar",
+    "https://carlenpools.com/public/storage/project/image_1689681061.jpeg"
+   ],
+   [
+    "Oryx Sport Academy",
+    "Qatar",
+    "https://carlenpools.com/public/storage/project/image_1689681469.jpeg"
+   ]
+  ],
+  "send": true,
+  "logo_url": "https://carlenpools.com/public/frontend/images/sticky-logo.svg",
+  "logo_mode": "pastille",
+  "verdict": "OK",
+  "email_verified_on": "https://carlenpools.com/ (footer / contact)"
+ },
+ {
+  "slug": "pool-masters-qatar",
+  "name": "Pool Masters",
+  "company": "Pool Masters Trading Contracting &amp; Services",
+  "city_sheet": "Doha (showroom Barwa Village, Al Wakrah)",
+  "country": "Qatar",
+  "site": "poolmasters.net",
+  "phones": "+974 6633 3505 · +974 4413 5763 (lien tel: +974 4040 2325)",
+  "email": "sales@poolmasters.net",
+  "email_other": "",
+  "whatsapp": "",
+  "instagram": "instagram.com/poolmastersqatar · FB facebook.com/PoolMastersQatar",
+  "contact_form": "https://poolmasters.net/about-us.php",
+  "weak_point": "One thing I noticed on your current site: the landline shown in the footer (+974 4413 5763) is not the number the link actually dials (+974 4040 2325), so a mobile visitor tapping it may reach the wrong line.",
+  "remark_fr": "Template générique : menu 'Services' en '#', meta keywords d'une entreprise de paysagisme ('Landscape construction company in Qatar'), numéro du footer différent de son lien tel:, fautes ('Saunna', 'Land Scaping', phrase tronquée 'you will receive promptly...'), marque écrite 'Pool Masters'/'Poolmasters', seulement 2 photos de projets. Email en protection Cloudflare (décodé : sales@poolmasters.net). Bureau aussi en Arabie Saoudite. Ne pas confondre avec poolmasters.ae (Dubaï, exclu).",
+  "logo": "POOL<span> MASTERS</span>",
+  "title": "Pool Masters — Swimming Pools &amp; Spas, Doha",
+  "desc": "Pool Masters builds ready-made swimming pools, refurbishes and maintains pools in Qatar, and supplies spas, saunas, steam rooms, pool equipment, shades and fountains.",
+  "city": "Doha",
+  "since": "",
+  "zone": "Doha, Al Wakrah &amp; all Qatar",
+  "phone": "+974 6633 3505",
+  "wa": "",
+  "address": "Showroom Barwa Village, Building No. 9, Al Wakrah, Qatar",
+  "tagline": "Quality swimming pools<br><em>built, refurbished &amp; maintained in Qatar</em>",
+  "subtag": "Pools, spas &amp; landscaping · Free consultation",
+  "eyebrow": "Swimming pools in Qatar",
+  "h2": "Your pool, from construction to care",
+  "lead": "Pool Masters creates ready-made swimming pools, refurbishes existing pools and maintains them, and supplies spas, saunas, steam rooms, pool equipment, poolside furniture, shades, landscaping and fountains.",
+  "stats": [
+   [
+    "Pools",
+    "construction &amp; refurbishment"
+   ],
+   [
+    "Spas",
+    "saunas &amp; steam rooms"
+   ],
+   [
+    "Showroom",
+    "Barwa Village"
+   ],
+   [
+    "Free",
+    "consultation"
+   ]
+  ],
+  "svc_h2": "Our pool services",
+  "cards": [
+   [
+    "Pool construction",
+    "Quality ready-made swimming pools for homes in Qatar.",
+    "Free consultation"
+   ],
+   [
+    "Pool refurbishment",
+    "Renovation of existing swimming pools.",
+    "On quotation"
+   ],
+   [
+    "Pool maintenance",
+    "Regular maintenance to keep your pool in top condition.",
+    "On quotation"
+   ],
+   [
+    "Spas, saunas &amp; landscaping",
+    "Spas, saunas, steam rooms, pool shades, landscaping and fountains.",
+    "On quotation"
+   ]
+  ],
+  "zone_html": "We work across <span data-c=\"zone\">Doha, Al Wakrah &amp; all Qatar</span>.",
+  "extra_contact": "",
+  "foot1": "Swimming pools &amp; spas",
+  "foot2": "Doha, Qatar",
+  "creations": [],
+  "send": true,
+  "logo_url": "https://poolmasters.net/image/logo.png",
+  "logo_mode": "pastille",
+  "verdict": "OK",
+  "email_verified_on": "https://poolmasters.net/about-us.php (lien mailto protégé Cloudflare)"
  }
 ]

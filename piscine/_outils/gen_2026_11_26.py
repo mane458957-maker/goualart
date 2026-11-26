@@ -52,6 +52,9 @@ def gen(d):
         # vérifie le texte visible (hors commentaires)
         vis=re.sub(r'<!--.*?-->|//[^\n]*|/\*.*?\*/','',s,flags=re.S).lower()
         if bad in vis and bad not in ("nice",): print(d["slug"],"RESTE:",bad)
+    if d.get("country","UAE")!="UAE":
+        for a,b in [('city:"Palm Jumeirah"','city:"%s"'%d["city"]),('city:"Dubai Hills"','city:"%s"'%d["city"]),('city:"Al Barari"','city:"%s"'%d["city"]),('city:"Arabian Ranches"','city:"%s"'%d["city"]),('city:"Emirates Hills"','city:"%s"'%d["city"]),('city:"Jumeirah"','city:"%s"'%d["city"]),('city:"Mirdif"','city:"%s"'%d["city"]),('city:"The Springs"','city:"%s"'%d["city"])]:
+            s=s.replace(a,b)
     if d.get("logo_url"):
         img='<img src=\\"%s\\" alt=\\"%s\\">'%(d["logo_url"],d["name"].replace('"',''))
         img2='<img src="%s" alt="%s">'%(d["logo_url"],d["name"].replace('"',''))
